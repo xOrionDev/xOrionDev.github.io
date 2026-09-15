@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KK Service — Case Study by Orion Muhamadiev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand: #0d9488;
+  --brand-hover: #0f766e;
+  --brand-soft: #d9f5f0;
+
+  --bg: #ffffff;
+  --bg-surface: #f7f8f9;
+  --bg-grey: #f0f2f7;
+  --bg-dark: #0a0a0a;
+
+  --text: #000000;
+  --text-secondary: #363d50;
+  --text-muted: #abacaf;
+  --text-on-dark: #ffffff;
+  --text-on-dark-secondary: #a3a3a3;
+
+  --border: #eceef1;
+  --border-dark: #1f1f1f;
+
+  --success: #00af66;
+  --success-soft: #00af6633;
+  --error: #ec3d45;
+  --error-soft: #e6000033;
+  --warning: #ff9e00;
+  --warning-soft: #ff9e0033;
+  --info: #4f95f4;
+  --info-soft: #4f95f433;
+
+  --auto: #6366f1;
+  --auto-soft: #6366f11f;
+
+  --radius-pill: 999px;
+  --radius-card: 16px;
+  --radius-btn: 12px;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.9em; background: var(--bg-grey); padding: 2px 6px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+.container-wide { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+/* === LANGUAGE SWITCHER === */
+.back-fixed {
+  position: fixed;
+  top: 24px; left: 24px;
+  z-index: 100;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 16px 8px 13px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  color: rgba(255,255,255,0.75);
+  font-weight: 600; font-size: 13px; letter-spacing: 0.02em;
+  text-decoration: none; transition: all 0.15s;
+}
+.back-fixed:hover { color: #fff; border-color: rgba(255,255,255,0.35); }
+@media (max-width: 640px) { .back-fixed { top: 16px; left: 16px; padding: 7px 13px 7px 11px; font-size: 12px; } }
+
+.lang-fixed { position: fixed; top: 24px; right: 24px; z-index: 100; display: flex; background: rgba(10,10,10,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); padding: 4px; border-radius: var(--radius-pill); box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+.lang-fixed button { background: transparent; border: 0; color: rgba(255,255,255,0.6); padding: 7px 14px; border-radius: var(--radius-pill); font-weight: 600; font-size: 13px; cursor: pointer; font-family: inherit; letter-spacing: 0.05em; transition: all 0.15s; }
+.lang-fixed button.active { background: var(--brand); color: white; }
+.lang-fixed button:hover:not(.active) { color: white; }
+
+/* === HERO === */
+.hero { background: var(--bg-dark); color: var(--text-on-dark); padding: 100px 0 100px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(13,148,136,0.55), transparent 70%); filter: blur(60px); }
+.hero::after { content: ''; position: absolute; bottom: -300px; left: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(99,102,241,0.35), transparent 70%); filter: blur(60px); }
+.hero-content { position: relative; z-index: 1; }
+.hero .tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-pill); font-size: 13px; font-weight: 500; color: var(--text-on-dark-secondary); margin-bottom: 24px; }
+.hero .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
+.hero h1 { font-size: clamp(48px, 8vw, 96px); line-height: 0.95; margin: 0 0 24px; font-weight: 800; letter-spacing: -0.04em; }
+.hero h1 .accent { background: linear-gradient(135deg, #2dd4bf, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .lede { font-size: clamp(18px, 2vw, 22px); max-width: 720px; color: var(--text-on-dark-secondary); margin-bottom: 56px; line-height: 1.5; }
+.hero-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border-dark); padding-top: 32px; }
+.hero-meta > div { border-right: 1px solid var(--border-dark); padding: 0 24px; }
+.hero-meta > div:first-child { padding-left: 0; }
+.hero-meta > div:last-child { border-right: 0; padding-right: 0; }
+.hero-meta .label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark-secondary); margin-bottom: 8px; }
+.hero-meta .value { font-size: 17px; font-weight: 600; color: var(--text-on-dark); }
+
+section { padding: 100px 0; }
+section.bg-grey { background: var(--bg-surface); }
+section.bg-dark { background: var(--bg-dark); color: var(--text-on-dark); }
+section.bg-dark .section-label { color: var(--text-on-dark-secondary); }
+section.bg-dark h2 { color: var(--text-on-dark); }
+section.bg-dark p { color: var(--text-on-dark-secondary); }
+
+.section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 24px; display: inline-flex; align-items: center; gap: 12px; }
+.section-label::before { content: ''; width: 24px; height: 1px; background: var(--brand); }
+h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800; margin: 0 0 32px; max-width: 820px; }
+h3 { font-size: 26px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; margin: 0 0 16px; }
+h4 { font-size: 19px; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.01em; }
+p { font-size: 17px; line-height: 1.7; color: var(--text-secondary); margin: 0 0 20px; max-width: 760px; }
+p.lead { font-size: 21px; line-height: 1.55; color: var(--text); font-weight: 400; }
+strong { color: var(--text); font-weight: 600; }
+section.bg-dark strong { color: white; }
+
+ul.bullets { list-style: none; padding: 0; margin: 24px 0; }
+ul.bullets li { padding: 16px 0; border-bottom: 1px solid var(--border); font-size: 17px; display: flex; gap: 16px; align-items: flex-start; }
+ul.bullets li::before { content: ''; width: 6px; height: 6px; background: var(--brand); border-radius: 50%; margin-top: 12px; flex-shrink: 0; }
+ul.bullets li:last-child { border-bottom: 0; }
+section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+.card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 32px; }
+.card.dark { background: #0f0f0f; border-color: var(--border-dark); }
+.card.dark h4 { color: var(--text-on-dark); }
+.card.dark p { color: var(--text-on-dark-secondary); }
+
+.stat-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 28px; }
+.stat-card .icon { width: 44px; height: 44px; border-radius: var(--radius-btn); background: var(--brand-soft); color: var(--brand); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.stat-card .icon svg { width: 22px; height: 22px; }
+.stat-card .big { font-size: 48px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; margin-bottom: 8px; }
+.stat-card .label { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+
+.quote { border-left: 3px solid var(--brand); padding: 8px 0 8px 28px; margin: 40px 0; font-size: 24px; line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; color: var(--text); max-width: 820px; }
+.quote cite { display: block; font-size: 14px; color: var(--text-muted); font-style: normal; font-weight: 500; margin-top: 12px; }
+
+.browser-frame { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-card); overflow: hidden; box-shadow: 0 30px 80px -20px rgba(0,0,0,0.15); margin: 32px 0; }
+.browser-frame .bar { background: var(--bg-surface); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
+.browser-frame .dot { width: 12px; height: 12px; border-radius: 50%; }
+.browser-frame .dot.r { background: #ff5f57; }
+.browser-frame .dot.y { background: #febc2e; }
+.browser-frame .dot.g { background: #28c840; }
+.browser-frame .url { flex: 1; text-align: center; font-size: 13px; color: var(--text-muted); background: var(--bg); border-radius: 6px; padding: 4px 12px; max-width: 360px; margin: 0 auto; }
+.browser-frame .content { padding: 20px 24px; }
+
+.kanban-board { display: flex; gap: 14px; overflow-x: auto; padding: 4px 2px; }
+.kanban-col { background: var(--bg-grey); border-radius: 12px; padding: 12px; min-width: 200px; flex: 1; }
+.kanban-col .col-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+.kanban-col .col-title .n { background: var(--bg); border-radius: 999px; padding: 1px 7px; font-size: 11px; }
+.kanban-card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; font-size: 12.5px; }
+.kanban-card .id { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted); margin-bottom: 4px; }
+.kanban-card .name { font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.kanban-card .flags { display: flex; gap: 4px; flex-wrap: wrap; }
+
+.flag-chip { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 700; letter-spacing: 0.02em; }
+.flag-chip.auto { background: var(--auto-soft); color: var(--auto); }
+.flag-chip.vip { background: #fef3c7; color: #b45309; }
+.flag-chip.fraud { background: var(--error-soft); color: var(--error); }
+.flag-chip.lit { background: var(--bg-grey); color: var(--text-secondary); }
+.flag-chip.manual { background: var(--warning-soft); color: var(--warning); }
+
+.source-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 20px 0; }
+.source-pill { font-size: 12px; padding: 5px 12px; border-radius: 999px; background: var(--bg-grey); color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; }
+
+.queue-row { display: flex; align-items: center; gap: 14px; padding: 13px 20px; border-bottom: 1px solid var(--border); border-left: 4px solid var(--border); }
+.queue-row:last-child { border-bottom: 0; }
+.queue-row.aged-1 { border-left-color: #fde68a; }
+.queue-row.aged-2 { border-left-color: #fb923c; }
+.queue-row.aged-3 { border-left-color: var(--error); }
+.queue-row .qname { font-weight: 700; flex: 1; font-size: 13.5px; }
+.queue-row .qmeta { font-size: 12px; color: var(--text-muted); width: 150px; }
+.queue-row .qwait { font-size: 12px; font-weight: 700; width: 64px; text-align: right; color: var(--text-secondary); }
+
+.table-mock { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--bg); }
+.table-mock th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 700; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--bg-surface); }
+.table-mock td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; color: var(--text-secondary); }
+.table-mock tr:last-child td { border-bottom: 0; }
+.table-mock .name { color: var(--text); font-weight: 600; }
+
+.status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; }
+.status-badge.pending { background: var(--warning-soft); color: var(--warning); }
+.status-badge.approved { background: var(--success-soft); color: var(--success); }
+.status-badge.rejected { background: var(--error-soft); color: var(--error); }
+.status-badge.active { background: var(--info-soft); color: #1360c9; }
+
+.field-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.field-row .k { color: var(--text-muted); }
+.field-row .v { color: var(--text); font-weight: 600; text-align: right; }
+
+.process-step { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+.process-step:last-child { border-bottom: 0; }
+.process-step .step-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--brand-soft); color: var(--brand); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
+.process-step.done .step-num { background: var(--brand); color: white; }
+.process-step h4 { margin: 6px 0 8px; }
+.process-step p { margin: 0; max-width: 720px; }
+
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--border); margin: 24px 0; }
+.compare > div { padding: 32px; }
+.compare .before { background: #fff5f5; }
+.compare .after { background: #f5fff5; border-left: 1px solid var(--border); }
+.compare .label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: var(--radius-pill); margin-bottom: 16px; }
+.compare .before .label { background: rgba(236, 61, 69, 0.12); color: var(--error); }
+.compare .after .label { background: rgba(0, 175, 102, 0.12); color: var(--success); }
+
+.pillar { background: linear-gradient(135deg, #0a0a0a, #0f2b28); color: white; padding: 36px 28px; border-radius: var(--radius-card); position: relative; overflow: hidden; }
+.pillar::before { content: ''; position: absolute; top: -50px; right: -50px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(13,148,136,0.5), transparent); filter: blur(40px); }
+.pillar .num { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.pillar h4 { color: white; font-size: 22px; margin-bottom: 16px; letter-spacing: -0.01em; }
+.pillar p { color: rgba(255,255,255,0.7); font-size: 15px; margin: 0; }
+
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; }
+.badge.brand { background: var(--brand-soft); color: var(--brand); }
+.badge.auto { background: var(--auto-soft); color: var(--auto); }
+
+.cta { background: linear-gradient(135deg, #0d9488, #6366f1); color: white; padding: 80px 0; text-align: center; }
+.cta h2 { color: white; max-width: 720px; margin: 0 auto 24px; font-size: clamp(32px, 4vw, 48px); }
+.cta p { color: rgba(255,255,255,0.85); margin: 0 auto 40px; max-width: 720px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; background: white; color: var(--brand); padding: 16px 32px; border-radius: var(--radius-pill); font-weight: 600; font-size: 16px; text-decoration: none; transition: transform 0.2s; }
+.btn:hover { transform: translateY(-2px); text-decoration: none; }
+.btn-secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+
+footer { background: var(--bg-dark); color: var(--text-on-dark-secondary); padding: 60px 0 40px; }
+footer .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+footer .author { display: flex; align-items: center; gap: 14px; }
+footer .author .avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), #6366f1); display: inline-flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
+footer .author .name { color: white; font-weight: 600; font-size: 17px; }
+footer .author .role { font-size: 13px; color: var(--text-on-dark-secondary); }
+footer .links a { color: var(--text-on-dark-secondary); margin-left: 28px; font-size: 14px; }
+footer .links a:hover { color: white; }
+
+@media (max-width: 900px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero-meta { grid-template-columns: 1fr 1fr; }
+  .compare { grid-template-columns: 1fr; }
+  .compare .after { border-left: 0; border-top: 1px solid var(--border); }
+  section { padding: 60px 0; }
+  .lang-fixed { top: 16px; right: 16px; }
+  .kanban-col { min-width: 160px; }
+}
+</style>
+</head>
+<body>
+
+<!-- BACK TO PORTFOLIO -->
+<a class="back-fixed" href="../index.html"><span aria-hidden="true">←</span> <span data-i18n="nav.back">All work</span></a>
+
+<!-- LANGUAGE SWITCHER -->
+<div class="lang-fixed">
+  <button id="langEn" class="active" onclick="setLang('en')">EN</button>
+  <button id="langRu" onclick="setLang('ru')">RU</button>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-content">
+    <div class="tag"><span class="dot"></span> <span data-i18n="hero.tag">Case Study · 2025–2026</span></div>
+    <h1 data-i18n-html="hero.title">KK Service<br><span class="accent">AI + Human Credit Desk</span></h1>
+    <p class="lede" data-i18n="hero.lede">Designing the internal tool Alif Bank's credit committee uses to process loan applications — an AI scoring engine clears most cases automatically, and a human can step in at any moment to catch what the model missed, or get help making the harder call.</p>
+
+    <div class="hero-meta">
+      <div><div class="label" data-i18n="hero.role.label">Role</div><div class="value" data-i18n="hero.role.value">Sole Product Designer</div></div>
+      <div><div class="label" data-i18n="hero.duration.label">Duration</div><div class="value" data-i18n="hero.duration.value">6+ months</div></div>
+      <div><div class="label" data-i18n="hero.status.label">Status</div><div class="value" data-i18n="hero.status.value">Completed & live</div></div>
+      <div><div class="label" data-i18n="hero.company.label">Company</div><div class="value" data-i18n="hero.company.value">Alif Bank (internal tool)</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="overview.label">Project Overview</div>
+    <h2 data-i18n="overview.title">Ten channels fed one credit committee. None of them spoke to each other.</h2>
+    <p class="lead" data-i18n="overview.p1">Loan applications reached Alif Bank's credit committee from ten different systems — the online banking app, the partner shop platform, the CRM, the core banking system, and more. An AI scoring engine could resolve most applications automatically. The ones it couldn't — or shouldn't, like a possible-fraud flag — needed a human, fast, with full context.</p>
+    <p data-i18n-html="overview.p2">My job was to design <strong>one queue</strong> that made automated and human-reviewed cases visually distinct at a glance, split the human work across the right specialists, and made sure risk signals could never be silently auto-approved.</p>
+    <p data-i18n="overview.p3">I designed the full system end to end: journey mapping across four employee roles, the unified application board, the credit-decision screen, and the admin panel that configures it all.</p>
+
+    <div class="grid-4" style="margin-top: 56px;">
+      <div class="stat-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <div class="big">3</div>
+        <div class="label" data-i18n="overview.stat.stages">specialized review stages</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon" style="background:var(--auto-soft); color: var(--auto)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1m17.4-6.4l-4.2 4.2m-6.4 6.4l-4.2 4.2m12.8 0l-4.2-4.2M6.6 5.6l4.2 4.2"/></svg></div>
+        <div class="big">10 → 1</div>
+        <div class="label" data-i18n="overview.stat.channels">intake channels unified into one queue</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div class="big">13</div>
+        <div class="label" data-i18n="overview.stat.statuses">Kanban statuses across the pipeline</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon" style="background:var(--error-soft); color: var(--error)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01M10.29 3.86l-8.18 14.18A2 2 0 003.82 21h16.36a2 2 0 001.71-2.96L13.71 3.86a2 2 0 00-3.42 0z"/></svg></div>
+        <div class="big">7</div>
+        <div class="label" data-i18n="overview.stat.flags">client risk/status flags surfaced in-queue</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="bg-grey">
+  <div class="container">
+    <div class="section-label" data-i18n="problem.label">The Problem</div>
+    <h2 data-i18n="problem.title">Automation that hides its own work is automation nobody trusts.</h2>
+
+    <div class="grid-2" style="margin-top: 48px;">
+      <div>
+        <h3 data-i18n="problem.business.title">Business reality</h3>
+        <p data-i18n="problem.business.p">Applications arrived from ten different source systems, each with its own ad hoc tracking. There was no single queue, no shared vocabulary for status, and no consistent way to tell which cases the scoring engine had already resolved versus which ones a human still needed to touch.</p>
+        <p data-i18n="problem.business.p2">Three things had to be true at once:</p>
+        <ul class="bullets">
+          <li data-i18n="problem.business.li1">Most applications had to clear automatically, or the committee would drown in volume.</li>
+          <li data-i18n="problem.business.li2">A human had to be able to intervene on any case, at any point — to fix a model mistake, or get help on a hard one.</li>
+          <li data-i18n="problem.business.li3">Certain signals — possible fraud, litigation, a deceased applicant — could never be silently auto-approved, no matter what the model said.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 data-i18n="problem.user.title">Ten channels, one queue (where they landed)</h3>
+        <p data-i18n="problem.user.p">Before this project, an application's origin determined how it got tracked. Unifying these into one board was the precondition for everything else — automated triage, role-based queues, and visible AI/human handoff.</p>
+        <div class="source-row">
+          <span class="source-pill">auto.alif.tj</span><span class="source-pill">alifshop.tj</span><span class="source-pill">CRM</span><span class="source-pill">Алиф Партнеры</span><span class="source-pill">Алиф Консультант</span><span class="source-pill">Алиф Онлайн</span><span class="source-pill">Алиф Депозиты</span><span class="source-pill">Сайт Алифа</span><span class="source-pill">АБС</span><span class="source-pill">Салом</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="research.label">Grounding the system</div>
+    <h2 data-i18n="research.title">I mapped four jobs before designing a single screen — three reviewers and the person who configures their queues.</h2>
+    <p class="lead" data-i18n="research.lead">A loan decision isn't one task. It's a relay: someone verifies the documents, someone verifies the identity, and someone reviews the credit case itself — each requiring different judgment. Getting that division of labor right, before touching pixels, shaped everything downstream.</p>
+
+    <div class="grid-3" style="margin-top: 56px;">
+      <div class="card">
+        <div class="badge brand" style="margin-bottom: 16px;" data-i18n="research.m1.tag">Method 01</div>
+        <h4 data-i18n="research.m1.title">Journey mapping, four roles</h4>
+        <p style="margin:0;" data-i18n="research.m1.body">Built a step-by-step journey map for each of the document checker, the identity verifier, the credit reviewer, and the admin — twelve concrete steps per role, from "receives the case" to "hands off to the next stage."</p>
+      </div>
+      <div class="card">
+        <div class="badge brand" style="margin-bottom: 16px;" data-i18n="research.m2.tag">Method 02</div>
+        <h4 data-i18n="research.m2.title">Channel audit</h4>
+        <p style="margin:0;" data-i18n="research.m2.body">Traced applications back through all ten source systems to see exactly where tracking fragmented, and what data each channel actually carried by the time it reached the committee.</p>
+      </div>
+      <div class="card">
+        <div class="badge brand" style="margin-bottom: 16px;" data-i18n="research.m3.tag">Method 03</div>
+        <h4 data-i18n="research.m3.title">Risk-case stress-testing</h4>
+        <p style="margin:0;" data-i18n="research.m3.body">Walked through every risk flag — possible fraud, litigation, a deceased applicant, a flagged extremist match — to confirm none of them could resolve through the automatic path, only through a human decision.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 80px;" data-i18n="research.insights.title">Key insights</h3>
+    <div class="grid-3" style="margin-top: 32px;">
+      <div class="pillar">
+        <div class="num" data-i18n="research.i1.tag">Insight 01</div>
+        <h4 data-i18n="research.i1.title">Automation needs to be legible</h4>
+        <p data-i18n="research.i1.body">If a reviewer can't tell at a glance which cases the model already resolved, "human override" becomes guesswork instead of collaboration.</p>
+      </div>
+      <div class="pillar">
+        <div class="num" data-i18n="research.i2.tag">Insight 02</div>
+        <h4 data-i18n="research.i2.title">One application, three different jobs</h4>
+        <p data-i18n="research.i2.body">Document verification, identity verification, and credit review require different expertise. Forcing one generalist queue to do all three slows everyone down.</p>
+      </div>
+      <div class="pillar">
+        <div class="num" data-i18n="research.i3.tag">Insight 03</div>
+        <h4 data-i18n="research.i3.title">Risk flags are interrupts, not noise</h4>
+        <p data-i18n="research.i3.body">A possible-fraud or litigation flag has to stop automation cold, every time — it can't be one more badge lost in a busy queue.</p>
+      </div>
+    </div>
+
+    <div class="quote" style="margin-top: 64px;">
+      <span data-i18n="research.quote">"The model isn't the reviewer's competitor. It's the first reviewer. The UI's job is to make that handoff visible."</span>
+      <cite data-i18n="research.quote.cite">— The framing I kept coming back to</cite>
+    </div>
+  </div>
+</section>
+
+<!-- DEFINE -->
+<section class="bg-dark">
+  <div class="container">
+    <div class="section-label" data-i18n="define.label">Define</div>
+    <h2 data-i18n="define.title">The brief was "let AI handle most applications." The real problem was making the other ones easy to catch.</h2>
+
+    <div class="grid-2" style="margin-top: 48px; gap: 56px;">
+      <div>
+        <h3 style="color: white;" data-i18n="define.problem.title">Problem statement</h3>
+        <p data-i18n-html="define.problem.p1">The committee needed a single queue where <strong>most applications resolve through scoring</strong>, every human override is fast and fully informed, and certain risk signals <strong>always</strong> interrupt automation — regardless of how confident the model is.</p>
+        <p data-i18n="define.problem.p2">That meant designing for three audiences at once: the model's output, the specialist reviewing a specific stage, and the admin configuring how work gets distributed.</p>
+      </div>
+      <div>
+        <h3 style="color: white;" data-i18n="define.goals.title">Goals</h3>
+        <ul class="bullets" style="margin: 0;">
+          <li data-i18n-html="define.goals.li1"><strong>Make automation visible</strong> — every case tagged as auto-resolved or needing a human, before anyone opens it.</li>
+          <li data-i18n-html="define.goals.li2"><strong>Split the work</strong> into document, identity, and credit review stages, each with its own queue and its own specialist.</li>
+          <li data-i18n-html="define.goals.li3"><strong>Make risk flags non-negotiable</strong> — fraud, litigation, deceased, extremist-match always force a human checkpoint.</li>
+          <li data-i18n-html="define.goals.li4"><strong>Unify all ten channels</strong> into one board with one set of statuses moderators and reviewers already understand.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="color: white; margin-top: 80px;" data-i18n="define.metrics.title">What "done" had to mean</h3>
+    <div class="grid-3" style="margin-top: 24px;">
+      <div class="card dark"><h4 data-i18n="define.m1.title">Origin visible at a glance</h4><p data-i18n-html="define.m1.body">Every card shows <strong>auto vs. manual origin</strong> without opening it — no clicking through to find out who (or what) decided.</p></div>
+      <div class="card dark"><h4 data-i18n="define.m2.title">No silent risk approvals</h4><p data-i18n-html="define.m2.body">Fraud, litigation, deceased and extremist-match flags <strong>always force human review</strong> — never resolved by the automatic path.</p></div>
+      <div class="card dark"><h4 data-i18n="define.m3.title">Context survives every handoff</h4><p data-i18n-html="define.m3.body">A <strong>mandatory comment</strong> travels with the case at every stage transition — document check → identity → credit review.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="process.label">Process</div>
+    <h2 data-i18n="process.title">The decisions that made AI and humans actually collaborate, not just coexist.</h2>
+    <p class="lead" data-i18n="process.lead">None of these were about making the model better. They were about making its work legible enough that a person could trust it, question it, or take over from it in seconds.</p>
+
+    <div style="margin-top: 56px;">
+
+      <div class="process-step done">
+        <div class="step-num">1</div>
+        <div>
+          <h4 data-i18n="process.s1.title">A visible "Auto" tag — the single decision the whole system hangs on</h4>
+          <p data-i18n-html="process.s1.body">Every application card carries an explicit origin badge: scored and cleared automatically, or routed to a human. Without this, "human override" is invisible — a reviewer has no way to know whether they're double-checking the model or making the only real decision. <strong>Making automation visible was the precondition for trusting it.</strong></p>
+        </div>
+      </div>
+
+      <div class="process-step done">
+        <div class="step-num">2</div>
+        <div>
+          <h4 data-i18n="process.s2.title">Three queues instead of one generalist pile</h4>
+          <p data-i18n-html="process.s2.body">Document verification, identity verification, and credit review got their own stages and their own duty assignments, instead of one reviewer doing all three per application. Each stage hands off with a mandatory comment, so context never resets at the boundary.</p>
+        </div>
+      </div>
+
+      <div class="process-step done">
+        <div class="step-num">3</div>
+        <div>
+          <h4 data-i18n="process.s3.title">Risk flags that can't be auto-resolved, by design</h4>
+          <p data-i18n-html="process.s3.body">Possible fraud, active litigation, a deceased applicant, an extremist-list match — these are modeled as interrupts, not statuses. No matter what the scoring engine returns, a case carrying one of these flags routes to a human, every time.</p>
+        </div>
+      </div>
+
+      <div class="process-step done">
+        <div class="step-num">4</div>
+        <div>
+          <h4 data-i18n="process.s4.title">Removed a Telegram bot from the review process — for security, not aesthetics</h4>
+          <p data-i18n-html="process.s4.body">Committee review used to run through a Telegram bot: links and comments sat in every front-office specialist's chat history, and stayed there after they left the bank. I replaced it with an electronic queue inside the CRM itself — oldest-first ordering, a visible color signal for how long a case has waited, and a fixed set of question templates instead of free-form chat messages. <strong>The security fix and the operational fix turned out to be the same redesign.</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN -->
+<section class="bg-grey">
+  <div class="container-wide">
+    <div class="section-label" data-i18n="design.label">Design</div>
+    <h2 data-i18n="design.title">From queue to decision, screen by screen.</h2>
+    <p class="lead" data-i18n-html="design.lead">The system spans four surfaces: the unified application board, the case detail view, the credit-committee decision screen, and the admin panel — color-coded below with <span class="badge auto">Auto</span> marking where the AI's work is visible inline.</p>
+
+    <!-- SCREEN 1 -->
+    <div style="margin-top: 80px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s1.title">01 · The unified board — where "Auto" becomes a visible tag, not a hidden process</h3>
+        <span class="badge brand" data-i18n="design.s1.tag">Reviewer view</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s1.body">Every column is a real status from the pipeline. Every card shows its auto/manual origin and any risk flags before it's even opened — a reviewer scans the board and knows exactly where their attention is actually needed.</p>
+
+      <div class="browser-frame">
+        <div class="bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><div class="url">kk.alif.tj/board</div></div>
+        <div class="content">
+          <div class="kanban-board">
+            <div class="kanban-col">
+              <div class="col-title"><span data-i18n="design.s1.col1">На проверку</span><span class="n">6</span></div>
+              <div class="kanban-card"><div class="id">#A-10422</div><div class="name">Каримов Р.</div><div class="flags"><span class="flag-chip auto" data-i18n="design.s1.flag.auto">Авто</span></div></div>
+              <div class="kanban-card"><div class="id">#A-10431</div><div class="name">Назарова Ф.</div><div class="flags"><span class="flag-chip manual" data-i18n="design.s1.flag.manual">Manual</span></div></div>
+            </div>
+            <div class="kanban-col">
+              <div class="col-title"><span data-i18n="design.s1.col2">Рассматривается</span><span class="n">9</span></div>
+              <div class="kanban-card"><div class="id">#A-10398</div><div class="name">Давлатов С.</div><div class="flags"><span class="flag-chip vip">VIP</span></div></div>
+              <div class="kanban-card"><div class="id">#A-10405</div><div class="name">Юсупова М.</div><div class="flags"><span class="flag-chip auto" data-i18n="design.s1.flag.auto">Авто</span></div></div>
+            </div>
+            <div class="kanban-col">
+              <div class="col-title"><span data-i18n="design.s1.col3">Запрос (КК)</span><span class="n">3</span></div>
+              <div class="kanban-card"><div class="id">#A-10377</div><div class="name">Холов Б.</div><div class="flags"><span class="flag-chip fraud" data-i18n="design.s1.flag.fraud">Возможный фрод</span></div></div>
+            </div>
+            <div class="kanban-col">
+              <div class="col-title"><span data-i18n="design.s1.col4">Одобрено</span><span class="n">214</span></div>
+              <div class="kanban-card"><div class="id">#A-10301</div><div class="name">Раҳимов А.</div><div class="flags"><span class="flag-chip auto" data-i18n="design.s1.flag.auto">Авто</span></div></div>
+            </div>
+            <div class="kanban-col">
+              <div class="col-title"><span data-i18n="design.s1.col5">Отказано</span><span class="n">41</span></div>
+              <div class="kanban-card"><div class="id">#A-10288</div><div class="name">Сафаров Д.</div><div class="flags"><span class="flag-chip lit" data-i18n="design.s1.flag.lit">Судопроизводство</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2 -->
+    <div style="margin-top: 100px;">
+      <h3 data-i18n="design.s2.title">02 · Case detail — the credit history a reviewer actually needs, not everything the system has</h3>
+      <p style="max-width:820px;" data-i18n="design.s2.body">Identity fields, active credit lines, and delinquency metrics (PAR8, PAR30 — payments overdue 8 and 30+ days) sit side by side, so a reviewer never has to leave the case to check a client's real repayment history.</p>
+
+      <div class="browser-frame">
+        <div class="bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><div class="url">kk.alif.tj/case/A-10398</div></div>
+        <div class="content" style="display:grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div>
+            <h4 style="font-size:14px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted); margin-bottom:12px;" data-i18n="design.s2.h1">Профиль клиента</h4>
+            <div class="field-row"><span class="k" data-i18n="design.s2.f1">ФИО</span><span class="v">Давлатов Сино А.</span></div>
+            <div class="field-row"><span class="k" data-i18n="design.s2.f2">ИНН</span><span class="v">010847215</span></div>
+            <div class="field-row"><span class="k" data-i18n="design.s2.f3">Семейное положение</span><span class="v" data-i18n="design.s2.f3v">Женат</span></div>
+            <div class="field-row"><span class="k" data-i18n="design.s2.f4">Прописка</span><span class="v">Душанбе</span></div>
+          </div>
+          <div>
+            <h4 style="font-size:14px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted); margin-bottom:12px;" data-i18n="design.s2.h2">Кредитная история</h4>
+            <div class="field-row"><span class="k" data-i18n="design.s2.f5">Активные траншы</span><span class="v">2</span></div>
+            <div class="field-row"><span class="k" data-i18n="design.s2.f6">Просрочка PAR 8</span><span class="v" style="color:var(--success)">0%</span></div>
+            <div class="field-row"><span class="k" data-i18n="design.s2.f7">Просрочка PAR 30</span><span class="v" style="color:var(--success)">0%</span></div>
+            <div class="field-row"><span class="k" data-i18n="design.s2.f8">Соотношения одобренных</span><span class="v">3/3</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s3.title">03 · Voting — where the score becomes one input among the committee's own votes</h3>
+        <span class="badge auto" data-i18n="design.s3.tag">Auto + human</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s3.body">The decision isn't one button — it's a vote. The scoring engine's read sits in the same list as each committee member's vote, never hidden behind the final outcome. A reviewer can agree with the score, vote against it, or request more information, and every vote requires a comment that travels back to the client's record and the CRM.</p>
+
+      <div class="card" style="margin-top: 32px; background: var(--bg); padding: 0; overflow: hidden;">
+        <div style="padding: 16px 24px; background: var(--bg-surface); font-size:13px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:.05em;" data-i18n="design.s3.h">Голосование</div>
+        <div style="padding: 20px 24px; background: var(--auto-soft); display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-size:13px; font-weight:700; color:var(--auto);" data-i18n="design.s3.model">⚙ Скоринг (авто): Одобрить · уверенность 94%</div>
+          <span class="status-badge active" data-i18n="design.s3.modeltag">Auto</span>
+        </div>
+        <div style="padding: 4px 24px 24px;">
+          <div class="field-row"><span class="k" data-i18n="design.s3.v1">Иванов Б.</span><span class="v" style="color:var(--success)" data-i18n="design.s3.v1v">Одобрить</span></div>
+          <div class="field-row"><span class="k" data-i18n="design.s3.v2">Петрова А.</span><span class="v" style="color:var(--warning)" data-i18n="design.s3.v2v">Запрос доп. инфо</span></div>
+          <div style="display:flex; gap:10px; margin: 16px 0;">
+            <span class="status-badge approved" data-i18n="design.s3.opt1">Одобрено</span>
+            <span class="status-badge rejected" data-i18n="design.s3.opt2">Отказано</span>
+            <span class="status-badge pending" data-i18n="design.s3.opt3">Условно одобрено</span>
+          </div>
+          <div class="field-row"><span class="k" data-i18n="design.s3.f1">Условия</span><span class="v" data-i18n="design.s3.f1v">12 мес · 18%</span></div>
+          <div class="field-row"><span class="k" data-i18n="design.s3.f2">С поручителем</span><span class="v" data-i18n="design.s3.f2v">Да</span></div>
+          <div style="margin-top:16px; padding:12px 16px; background: var(--bg-surface); border-radius: 10px; font-size:13px; color:var(--text-secondary);" data-i18n="design.s3.note">↳ A comment is mandatory on every vote, including the score's — it travels with the case to the next stage and back to CRM.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 4 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s4.title">04 · The queue — what replaced the Telegram bot</h3>
+        <span class="badge brand" data-i18n="design.s4.tag">Security redesign</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s4.body">Offline applications sort oldest-first. The longer a case waits, the redder its marker gets — a reviewer doesn't need a report to see what's been sitting too long. Opening a case from the queue dims its row and shows who's looking at it.</p>
+
+      <div class="card" style="margin-top: 32px; padding: 0; overflow: hidden;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 20px; background:var(--bg-surface);">
+          <span style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted);" data-i18n="design.s4.qtitle">Очередь · офлайн заявки</span>
+          <span class="status-badge active" data-i18n="design.s4.qcount">4 в очереди</span>
+        </div>
+        <div class="queue-row aged-1"><span class="qname">Сафарова М.</span><span class="qmeta" data-i18n="design.s4.q1type">Кредит · 12 мес</span><span class="qwait">2 мин</span></div>
+        <div class="queue-row aged-1"><span class="qname">Назаров Ф.</span><span class="qmeta" data-i18n="design.s4.q2type">Кредит · 6 мес</span><span class="qwait">5 мин</span></div>
+        <div class="queue-row aged-2"><span class="qname">Каримов Р.</span><span class="qmeta" data-i18n="design.s4.q3type">Кредитная линия</span><span class="qwait">11 мин</span></div>
+        <div class="queue-row aged-3"><span class="qname">Холов Б.</span><span class="qmeta" data-i18n="design.s4.q4type">Кредит · 24 мес</span><span class="qwait">19 мин</span></div>
+      </div>
+      <p style="margin-top:16px; font-size: 15px; color: var(--text-muted);" data-i18n="design.s4.caption">↑ Every front-office question comes from a fixed template list — "fill out the questionnaire," "waiting on documents," "waiting on conditions" — not an open chat message. That list is what makes the queue auditable.</p>
+    </div>
+
+    <!-- SCREEN 5 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s5.title">05 · Admin panel — restaffing the committee without waiting on a release</h3>
+        <span class="badge brand" data-i18n="design.s5.tag">Admin view</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s5.body">Duty rotation, Kanban structure, and ToDo templates are all configurable here. When the bank adds reviewers or rebalances who covers which queue, that's a settings change — not an engineering ticket.</p>
+
+      <table class="table-mock">
+        <tr><th data-i18n="design.s5.th1">Сотрудник</th><th data-i18n="design.s5.th2">Дежурство</th><th data-i18n="design.s5.th3">Доступ</th></tr>
+        <tr><td class="name">Шарипова Н.</td><td data-i18n="design.s5.r1">Проверка документов</td><td><span class="tag-pill" style="background:var(--bg-grey); padding:3px 9px; border-radius:999px; font-size:11px;" data-i18n="design.s5.r1a">Документы</span></td></tr>
+        <tr><td class="name">Олимов Ф.</td><td data-i18n="design.s5.r2">Идентификация</td><td><span class="tag-pill" style="background:var(--bg-grey); padding:3px 9px; border-radius:999px; font-size:11px;" data-i18n="design.s5.r2a">Идентификация</span></td></tr>
+        <tr><td class="name">Кодирова З.</td><td data-i18n="design.s5.r3">Кредитное рассмотрение</td><td><span class="tag-pill" style="background:var(--bg-grey); padding:3px 9px; border-radius:999px; font-size:11px;" data-i18n="design.s5.r3a">Кредит</span></td></tr>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<!-- VALIDATION -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="validation.label">Validation</div>
+    <h2 data-i18n="validation.title">For a system this consequential, validation meant compliance sign-off as much as usability.</h2>
+    <p class="lead" data-i18n="validation.lead">Lending decisions carry real regulatory and fairness weight. The review loops here checked not just "can people use this," but "can a risk signal ever slip through," and "does the queue split match how staff actually specialize."</p>
+
+    <div class="grid-3" style="margin-top: 56px;">
+      <div class="card">
+        <div class="badge brand" style="margin-bottom: 16px;" data-i18n="validation.l1.tag">Loop 01</div>
+        <h4 data-i18n="validation.l1.title">Compliance review</h4>
+        <p style="font-size:15px; margin:0;" data-i18n="validation.l1.body">Walked every risk flag with compliance stakeholders to confirm none of them — fraud, litigation, deceased, extremist-match — could resolve through the automatic path under any model output.</p>
+      </div>
+      <div class="card">
+        <div class="badge brand" style="margin-bottom: 16px;" data-i18n="validation.l2.tag">Loop 02</div>
+        <h4 data-i18n="validation.l2.title">Ops walkthrough, three roles</h4>
+        <p style="font-size:15px; margin:0;" data-i18n="validation.l2.body">Validated the document/identity/credit split against how staff actually specialized day to day — not how I'd assumed the work divided on paper.</p>
+      </div>
+      <div class="card">
+        <div class="badge brand" style="margin-bottom: 16px;" data-i18n="validation.l3.tag">Loop 03</div>
+        <h4 data-i18n="validation.l3.title">Admin configurability check</h4>
+        <p style="font-size:15px; margin:0;" data-i18n="validation.l3.body">Confirmed duty rotation and board structure could flex as headcount and volume changed, without requiring a new release for every staffing adjustment.</p>
+      </div>
+    </div>
+
+    <div class="quote" style="margin-top: 80px;">
+      <span data-i18n="validation.quote">"Speed was never the only requirement here. Being able to prove why a decision was made — by the model or by a person — mattered just as much."</span>
+      <cite data-i18n="validation.quote.cite">— My working principle for every screen in this system</cite>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="bg-dark">
+  <div class="container">
+    <div class="section-label" data-i18n="outcomes.label">What shipped</div>
+    <h2 data-i18n="outcomes.title">KK Service is live — one queue, three specialized stages, automation that shows its own work.</h2>
+
+    <div class="grid-3" style="margin-top: 56px;">
+      <div class="card dark">
+        <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o1.tag">PIPELINE</div>
+        <div style="font-size:54px; font-weight:800; letter-spacing:-0.04em; line-height:1; color: white; margin-bottom: 12px;">10 → 1</div>
+        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o1.body">intake channels now land in a single board with one shared set of statuses, instead of ten separately tracked processes.</p>
+      </div>
+      <div class="card dark">
+        <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o2.tag">TRANSPARENCY</div>
+        <div style="font-size:54px; font-weight:800; letter-spacing:-0.04em; line-height:1; color: white; margin-bottom: 12px;">100%</div>
+        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o2.body">of cases carry a visible auto/manual origin tag — no case resolves without a reviewer being able to tell who, or what, decided.</p>
+      </div>
+      <div class="card dark">
+        <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o3.tag">COVERAGE</div>
+        <div style="font-size:54px; font-weight:800; letter-spacing:-0.04em; line-height:1; color: white; margin-bottom: 12px;">0</div>
+        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o3.body">risk-flagged cases (fraud, litigation, deceased, extremist-match) can resolve through the automatic path — every one routes to a human.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 80px;">
+      <h3 style="color: white;" data-i18n="outcomes.strat.title">Strategic outcome</h3>
+      <p style="color: var(--text-on-dark-secondary); max-width: 820px; font-size: 18px;" data-i18n-html="outcomes.strat.body">The credit committee can absorb far more volume because the AI genuinely carries most of the routine load — while every reviewer always knows whether they're double-checking a model or making the only real call on the case in front of them. Risk signals can't get lost in that volume, by construction, not by vigilance alone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LESSONS -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="lessons.label">Lessons</div>
+    <h2 data-i18n="lessons.title">What I'm taking with me into the next project.</h2>
+
+    <div class="grid-2" style="margin-top: 56px;">
+      <div>
+        <h3 data-i18n="lessons.worked.title">What worked</h3>
+        <ul class="bullets">
+          <li data-i18n-html="lessons.w1"><strong>Mapping all four roles before any screen.</strong> The document/identity/credit split came directly from the journey maps, not from an assumption about how the work "should" divide.</li>
+          <li data-i18n-html="lessons.w2"><strong>Making automation visible instead of hiding it.</strong> The single "Auto" tag did more for trust between reviewers and the model than any amount of accuracy messaging could have.</li>
+          <li data-i18n-html="lessons.w3"><strong>Treating risk flags as interrupts, not badges.</strong> Designing them to structurally block automation, rather than just display a warning, meant compliance sign-off was straightforward.</li>
+          <li data-i18n-html="lessons.w4"><strong>Fixing a security problem and an operations problem with the same redesign.</strong> Replacing the Telegram bot wasn't pitched as a UX improvement — it was a data-leakage fix that happened to also remove the spam, lost applications, and untracked wait times the bot caused.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i18n="lessons.diff.title">What I'd do differently</h3>
+        <ul class="bullets">
+          <li data-i18n-html="lessons.d1"><strong>Define the auto/manual tagging convention before any individual screen.</strong> I had to retrofit the badge across cards and detail views once the pattern solidified.</li>
+          <li data-i18n-html="lessons.d2"><strong>Bring compliance in earlier.</strong> The risk-flag review happened after the core flows were drafted, which meant revisiting decision logic that could have been right the first time.</li>
+          <li data-i18n-html="lessons.d3"><strong>Stress-test admin configurability with real headcount numbers from day one.</strong> I designed the duty-rotation screens generically, then had to adjust once actual team size and shift patterns came in.</li>
+          <li data-i18n-html="lessons.d4"><strong>Treat the Service↔CRM sync as core scope, not an integration detail.</strong> QA surfaced a long tail of desync bugs — edited amounts, calculator adjustments, and committee comments not reliably round-tripping back to the system of record. That sync layer needed its own design attention from week one, not a retrofit.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2 data-i18n="cta.title">Want to see the full system?</h2>
+    <p data-i18n="cta.body">Browse the final design, or the user flow and customer journey maps that shaped it.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://www.figma.com/design/N8GRspmDLjU667BYKhB5ks/KK-Service?node-id=497-4952" class="btn"><span data-i18n="cta.final">→ Final design (Figma)</span></a>
+      <a href="https://www.figma.com/design/N8GRspmDLjU667BYKhB5ks/KK-Service?node-id=18-4006" class="btn btn-secondary"><span data-i18n="cta.flow">→ User flow & CJM (Figma)</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="author">
+        <div class="avatar">OM</div>
+        <div>
+          <div class="name">Orion Muhamadiev</div>
+          <div class="role" data-i18n="footer.role">Product Designer · Alif Bank</div>
+        </div>
+      </div>
+      <div class="links">
+        <a href="mailto:nabijon.muhamadiev@alif.tj">nabijon.muhamadiev@alif.tj</a>
+        <a href="https://www.figma.com/design/N8GRspmDLjU667BYKhB5ks/KK-Service?node-id=497-4952">Figma</a>
+      </div>
+    </div>
+    <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border-dark); font-size: 13px; color: var(--text-on-dark-secondary);" data-i18n="footer.disclaimer">
+      Case study · KK Service · 2025–2026. Internal credit-decision tool for Alif Bank, combining AI scoring with human review across three specialized stages. Live and in production.
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  en: {
+    'nav.back': `All work`,
+    'hero.tag': `Case Study · 2025–2026`,
+    'hero.title': `KK Service<br><span class="accent">AI + Human Credit Desk</span>`,
+    'hero.lede': `Designing the internal tool Alif Bank's credit committee uses to process loan applications — an AI scoring engine clears most cases automatically, and a human can step in at any moment to catch what the model missed, or get help making the harder call.`,
+    'hero.role.label': `Role`, 'hero.role.value': `Sole Product Designer`,
+    'hero.duration.label': `Duration`, 'hero.duration.value': `6+ months`,
+    'hero.status.label': `Status`, 'hero.status.value': `Completed & live`,
+    'hero.company.label': `Company`, 'hero.company.value': `Alif Bank (internal tool)`,
+
+    'overview.label': `Project Overview`,
+    'overview.title': `Ten channels fed one credit committee. None of them spoke to each other.`,
+    'overview.p1': `Loan applications reached Alif Bank's credit committee from ten different systems — the online banking app, the partner shop platform, the CRM, the core banking system, and more. An AI scoring engine could resolve most applications automatically. The ones it couldn't — or shouldn't, like a possible-fraud flag — needed a human, fast, with full context.`,
+    'overview.p2': `My job was to design <strong>one queue</strong> that made automated and human-reviewed cases visually distinct at a glance, split the human work across the right specialists, and made sure risk signals could never be silently auto-approved.`,
+    'overview.p3': `I designed the full system end to end: journey mapping across four employee roles, the unified application board, the credit-decision screen, and the admin panel that configures it all.`,
+    'overview.stat.stages': `specialized review stages`,
+    'overview.stat.channels': `intake channels unified into one queue`,
+    'overview.stat.statuses': `Kanban statuses across the pipeline`,
+    'overview.stat.flags': `client risk/status flags surfaced in-queue`,
+
+    'problem.label': `The Problem`,
+    'problem.title': `Automation that hides its own work is automation nobody trusts.`,
+    'problem.business.title': `Business reality`,
+    'problem.business.p': `Applications arrived from ten different source systems, each with its own ad hoc tracking. There was no single queue, no shared vocabulary for status, and no consistent way to tell which cases the scoring engine had already resolved versus which ones a human still needed to touch.`,
+    'problem.business.p2': `Three things had to be true at once:`,
+    'problem.business.li1': `Most applications had to clear automatically, or the committee would drown in volume.`,
+    'problem.business.li2': `A human had to be able to intervene on any case, at any point — to fix a model mistake, or get help on a hard one.`,
+    'problem.business.li3': `Certain signals — possible fraud, litigation, a deceased applicant — could never be silently auto-approved, no matter what the model said.`,
+    'problem.user.title': `Ten channels, one queue (where they landed)`,
+    'problem.user.p': `Before this project, an application's origin determined how it got tracked. Unifying these into one board was the precondition for everything else — automated triage, role-based queues, and visible AI/human handoff.`,
+
+    'research.label': `Grounding the system`,
+    'research.title': `I mapped four jobs before designing a single screen — three reviewers and the person who configures their queues.`,
+    'research.lead': `A loan decision isn't one task. It's a relay: someone verifies the documents, someone verifies the identity, and someone reviews the credit case itself — each requiring different judgment. Getting that division of labor right, before touching pixels, shaped everything downstream.`,
+    'research.m1.tag': `Method 01`, 'research.m1.title': `Journey mapping, four roles`,
+    'research.m1.body': `Built a step-by-step journey map for each of the document checker, the identity verifier, the credit reviewer, and the admin — twelve concrete steps per role, from "receives the case" to "hands off to the next stage."`,
+    'research.m2.tag': `Method 02`, 'research.m2.title': `Channel audit`,
+    'research.m2.body': `Traced applications back through all ten source systems to see exactly where tracking fragmented, and what data each channel actually carried by the time it reached the committee.`,
+    'research.m3.tag': `Method 03`, 'research.m3.title': `Risk-case stress-testing`,
+    'research.m3.body': `Walked through every risk flag — possible fraud, litigation, a deceased applicant, a flagged extremist match — to confirm none of them could resolve through the automatic path, only through a human decision.`,
+    'research.insights.title': `Key insights`,
+    'research.i1.tag': `Insight 01`, 'research.i1.title': `Automation needs to be legible`,
+    'research.i1.body': `If a reviewer can't tell at a glance which cases the model already resolved, "human override" becomes guesswork instead of collaboration.`,
+    'research.i2.tag': `Insight 02`, 'research.i2.title': `One application, three different jobs`,
+    'research.i2.body': `Document verification, identity verification, and credit review require different expertise. Forcing one generalist queue to do all three slows everyone down.`,
+    'research.i3.tag': `Insight 03`, 'research.i3.title': `Risk flags are interrupts, not noise`,
+    'research.i3.body': `A possible-fraud or litigation flag has to stop automation cold, every time — it can't be one more badge lost in a busy queue.`,
+    'research.quote': `"The model isn't the reviewer's competitor. It's the first reviewer. The UI's job is to make that handoff visible."`,
+    'research.quote.cite': `— The framing I kept coming back to`,
+
+    'define.label': `Define`,
+    'define.title': `The brief was "let AI handle most applications." The real problem was making the other ones easy to catch.`,
+    'define.problem.title': `Problem statement`,
+    'define.problem.p1': `The committee needed a single queue where <strong>most applications resolve through scoring</strong>, every human override is fast and fully informed, and certain risk signals <strong>always</strong> interrupt automation — regardless of how confident the model is.`,
+    'define.problem.p2': `That meant designing for three audiences at once: the model's output, the specialist reviewing a specific stage, and the admin configuring how work gets distributed.`,
+    'define.goals.title': `Goals`,
+    'define.goals.li1': `<strong>Make automation visible</strong> — every case tagged as auto-resolved or needing a human, before anyone opens it.`,
+    'define.goals.li2': `<strong>Split the work</strong> into document, identity, and credit review stages, each with its own queue and its own specialist.`,
+    'define.goals.li3': `<strong>Make risk flags non-negotiable</strong> — fraud, litigation, deceased, extremist-match always force a human checkpoint.`,
+    'define.goals.li4': `<strong>Unify all ten channels</strong> into one board with one set of statuses moderators and reviewers already understand.`,
+    'define.metrics.title': `What "done" had to mean`,
+    'define.m1.title': `Origin visible at a glance`, 'define.m1.body': `Every card shows <strong>auto vs. manual origin</strong> without opening it — no clicking through to find out who (or what) decided.`,
+    'define.m2.title': `No silent risk approvals`, 'define.m2.body': `Fraud, litigation, deceased and extremist-match flags <strong>always force human review</strong> — never resolved by the automatic path.`,
+    'define.m3.title': `Context survives every handoff`, 'define.m3.body': `A <strong>mandatory comment</strong> travels with the case at every stage transition — document check → identity → credit review.`,
+
+    'process.label': `Process`,
+    'process.title': `The decisions that made AI and humans actually collaborate, not just coexist.`,
+    'process.lead': `None of these were about making the model better. They were about making its work legible enough that a person could trust it, question it, or take over from it in seconds.`,
+    'process.s1.title': `A visible "Auto" tag — the single decision the whole system hangs on`,
+    'process.s1.body': `Every application card carries an explicit origin badge: scored and cleared automatically, or routed to a human. Without this, "human override" is invisible — a reviewer has no way to know whether they're double-checking the model or making the only real decision. <strong>Making automation visible was the precondition for trusting it.</strong>`,
+    'process.s2.title': `Three queues instead of one generalist pile`,
+    'process.s2.body': `Document verification, identity verification, and credit review got their own stages and their own duty assignments, instead of one reviewer doing all three per application. Each stage hands off with a mandatory comment, so context never resets at the boundary.`,
+    'process.s3.title': `Risk flags that can't be auto-resolved, by design`,
+    'process.s3.body': `Possible fraud, active litigation, a deceased applicant, an extremist-list match — these are modeled as interrupts, not statuses. No matter what the scoring engine returns, a case carrying one of these flags routes to a human, every time.`,
+    'process.s4.title': `Removed a Telegram bot from the review process — for security, not aesthetics`,
+    'process.s4.body': `Committee review used to run through a Telegram bot: links and comments sat in every front-office specialist's chat history, and stayed there after they left the bank. I replaced it with an electronic queue inside the CRM itself — oldest-first ordering, a visible color signal for how long a case has waited, and a fixed set of question templates instead of free-form chat messages. <strong>The security fix and the operational fix turned out to be the same redesign.</strong>`,
+
+    'design.label': `Design`,
+    'design.title': `From queue to decision, screen by screen.`,
+    'design.lead': `The system spans four surfaces: the unified application board, the case detail view, the committee voting screen, and the admin panel — color-coded below with <span class="badge auto">Auto</span> marking where the AI's work is visible inline.`,
+
+    'design.s1.title': `01 · The unified board — where "Auto" becomes a visible tag, not a hidden process`,
+    'design.s1.tag': `Reviewer view`,
+    'design.s1.body': `Every column is a real status from the pipeline. Every card shows its auto/manual origin and any risk flags before it's even opened — a reviewer scans the board and knows exactly where their attention is actually needed.`,
+    'design.s1.col1': `На проверку`, 'design.s1.col2': `Рассматривается`, 'design.s1.col3': `Запрос (КК)`, 'design.s1.col4': `Одобрено`, 'design.s1.col5': `Отказано`,
+    'design.s1.flag.auto': `Авто`, 'design.s1.flag.manual': `Manual`, 'design.s1.flag.fraud': `Возможный фрод`, 'design.s1.flag.lit': `Судопроизводство`,
+
+    'design.s2.title': `02 · Case detail — the credit history a reviewer actually needs, not everything the system has`,
+    'design.s2.body': `Identity fields, active credit lines, and delinquency metrics (PAR8, PAR30 — payments overdue 8 and 30+ days) sit side by side, so a reviewer never has to leave the case to check a client's real repayment history.`,
+    'design.s2.h1': `Профиль клиента`, 'design.s2.h2': `Кредитная история`,
+    'design.s2.f1': `ФИО`, 'design.s2.f2': `ИНН`, 'design.s2.f3': `Семейное положение`, 'design.s2.f3v': `Женат`, 'design.s2.f4': `Прописка`,
+    'design.s2.f5': `Активные траншы`, 'design.s2.f6': `Просрочка PAR 8`, 'design.s2.f7': `Просрочка PAR 30`, 'design.s2.f8': `Соотношения одобренных`,
+
+    'design.s3.title': `03 · Voting — where the score becomes one input among the committee's own votes`,
+    'design.s3.tag': `Auto + human`,
+    'design.s3.body': `The decision isn't one button — it's a vote. The scoring engine's read sits in the same list as each committee member's vote, never hidden behind the final outcome. A reviewer can agree with the score, vote against it, or request more information, and every vote requires a comment that travels back to the client's record and the CRM.`,
+    'design.s3.h': `Голосование`,
+    'design.s3.model': `⚙ Скоринг (авто): Одобрить · уверенность 94%`,
+    'design.s3.modeltag': `Auto`,
+    'design.s3.v1': `Иванов Б.`, 'design.s3.v1v': `Одобрить`,
+    'design.s3.v2': `Петрова А.`, 'design.s3.v2v': `Запрос доп. инфо`,
+    'design.s3.opt1': `Одобрено`, 'design.s3.opt2': `Отказано`, 'design.s3.opt3': `Условно одобрено`,
+    'design.s3.f1': `Условия`, 'design.s3.f1v': `12 мес · 18%`,
+    'design.s3.f2': `С поручителем`, 'design.s3.f2v': `Да`,
+    'design.s3.note': `↳ A comment is mandatory on every vote, including the score's — it travels with the case to the next stage and back to CRM.`,
+
+    'design.s4.title': `04 · The queue — what replaced the Telegram bot`,
+    'design.s4.tag': `Security redesign`,
+    'design.s4.body': `Offline applications sort oldest-first. The longer a case waits, the redder its marker gets — a reviewer doesn't need a report to see what's been sitting too long. Opening a case from the queue dims its row and shows who's looking at it.`,
+    'design.s4.qtitle': `Очередь · офлайн заявки`,
+    'design.s4.qcount': `4 в очереди`,
+    'design.s4.q1type': `Кредит · 12 мес`, 'design.s4.q2type': `Кредит · 6 мес`, 'design.s4.q3type': `Кредитная линия`, 'design.s4.q4type': `Кредит · 24 мес`,
+    'design.s4.caption': `↑ Every front-office question comes from a fixed template list — "fill out the questionnaire," "waiting on documents," "waiting on conditions" — not an open chat message. That list is what makes the queue auditable.`,
+
+    'design.s5.title': `05 · Admin panel — restaffing the committee without waiting on a release`,
+    'design.s5.tag': `Admin view`,
+    'design.s5.body': `Duty rotation, Kanban structure, and ToDo templates are all configurable here. When the bank adds reviewers or rebalances who covers which queue, that's a settings change — not an engineering ticket.`,
+    'design.s5.th1': `Сотрудник`, 'design.s5.th2': `Дежурство`, 'design.s5.th3': `Доступ`,
+    'design.s5.r1': `Проверка документов`, 'design.s5.r1a': `Документы`,
+    'design.s5.r2': `Идентификация`, 'design.s5.r2a': `Идентификация`,
+    'design.s5.r3': `Кредитное рассмотрение`, 'design.s5.r3a': `Кредит`,
+
+    'validation.label': `Validation`,
+    'validation.title': `For a system this consequential, validation meant compliance sign-off as much as usability.`,
+    'validation.lead': `Lending decisions carry real regulatory and fairness weight. The review loops here checked not just "can people use this," but "can a risk signal ever slip through," and "does the queue split match how staff actually specialize."`,
+    'validation.l1.tag': `Loop 01`, 'validation.l1.title': `Compliance review`,
+    'validation.l1.body': `Walked every risk flag with compliance stakeholders to confirm none of them — fraud, litigation, deceased, extremist-match — could resolve through the automatic path under any model output.`,
+    'validation.l2.tag': `Loop 02`, 'validation.l2.title': `Ops walkthrough, three roles`,
+    'validation.l2.body': `Validated the document/identity/credit split against how staff actually specialized day to day — not how I'd assumed the work divided on paper.`,
+    'validation.l3.tag': `Loop 03`, 'validation.l3.title': `Admin configurability check`,
+    'validation.l3.body': `Confirmed duty rotation and board structure could flex as headcount and volume changed, without requiring a new release for every staffing adjustment.`,
+    'validation.quote': `"Speed was never the only requirement here. Being able to prove why a decision was made — by the model or by a person — mattered just as much."`,
+    'validation.quote.cite': `— My working principle for every screen in this system`,
+
+    'outcomes.label': `What shipped`,
+    'outcomes.title': `KK Service is live — one queue, three specialized stages, automation that shows its own work.`,
+    'outcomes.o1.tag': `PIPELINE`, 'outcomes.o1.body': `intake channels now land in a single board with one shared set of statuses, instead of ten separately tracked processes.`,
+    'outcomes.o2.tag': `TRANSPARENCY`, 'outcomes.o2.body': `of cases carry a visible auto/manual origin tag — no case resolves without a reviewer being able to tell who, or what, decided.`,
+    'outcomes.o3.tag': `COVERAGE`, 'outcomes.o3.body': `risk-flagged cases (fraud, litigation, deceased, extremist-match) can resolve through the automatic path — every one routes to a human.`,
+    'outcomes.strat.title': `Strategic outcome`,
+    'outcomes.strat.body': `The credit committee can absorb far more volume because the AI genuinely carries most of the routine load — while every reviewer always knows whether they're double-checking a model or making the only real call on the case in front of them. Risk signals can't get lost in that volume, by construction, not by vigilance alone.`,
+
+    'lessons.label': `Lessons`,
+    'lessons.title': `What I'm taking with me into the next project.`,
+    'lessons.worked.title': `What worked`,
+    'lessons.w1': `<strong>Mapping all four roles before any screen.</strong> The document/identity/credit split came directly from the journey maps, not from an assumption about how the work "should" divide.`,
+    'lessons.w2': `<strong>Making automation visible instead of hiding it.</strong> The single "Auto" tag did more for trust between reviewers and the model than any amount of accuracy messaging could have.`,
+    'lessons.w3': `<strong>Treating risk flags as interrupts, not badges.</strong> Designing them to structurally block automation, rather than just display a warning, meant compliance sign-off was straightforward.`,
+    'lessons.w4': `<strong>Fixing a security problem and an operations problem with the same redesign.</strong> Replacing the Telegram bot wasn't pitched as a UX improvement — it was a data-leakage fix that happened to also remove the spam, lost applications, and untracked wait times the bot caused.`,
+    'lessons.diff.title': `What I'd do differently`,
+    'lessons.d1': `<strong>Define the auto/manual tagging convention before any individual screen.</strong> I had to retrofit the badge across cards and detail views once the pattern solidified.`,
+    'lessons.d2': `<strong>Bring compliance in earlier.</strong> The risk-flag review happened after the core flows were drafted, which meant revisiting decision logic that could have been right the first time.`,
+    'lessons.d3': `<strong>Stress-test admin configurability with real headcount numbers from day one.</strong> I designed the duty-rotation screens generically, then had to adjust once actual team size and shift patterns came in.`,
+    'lessons.d4': `<strong>Treat the Service↔CRM sync as core scope, not an integration detail.</strong> QA surfaced a long tail of desync bugs — edited amounts, calculator adjustments, and committee comments not reliably round-tripping back to the system of record. That sync layer needed its own design attention from week one, not a retrofit.`,
+
+    'cta.title': `Want to see the full system?`,
+    'cta.body': `Browse the final design, or the user flow and customer journey maps that shaped it.`,
+    'cta.final': `→ Final design (Figma)`,
+    'cta.flow': `→ User flow & CJM (Figma)`,
+
+    'footer.role': `Product Designer · Alif Bank`,
+    'footer.disclaimer': `Case study · KK Service · 2025–2026. Internal credit-decision tool for Alif Bank, combining AI scoring with human review across three specialized stages. Live and in production.`,
+  },
+  ru: {
+    'nav.back': `Все проекты`,
+    'hero.tag': `Кейс · 2025–2026`,
+    'hero.title': `KK Service<br><span class="accent">ИИ + человек на кредитном столе</span>`,
+    'hero.lede': `Дизайн внутреннего сервиса, с которым работает кредитный комитет Алиф Банка для обработки заявок на кредит — система ИИ-скоринга закрывает большинство заявок автоматически, а сотрудник может в любой момент вмешаться, чтобы поймать ошибку модели или получить помощь в сложном решении.`,
+    'hero.role.label': `Роль`, 'hero.role.value': `Единственный продакт-дизайнер`,
+    'hero.duration.label': `Длительность`, 'hero.duration.value': `6+ месяцев`,
+    'hero.status.label': `Статус`, 'hero.status.value': `Завершён и работает`,
+    'hero.company.label': `Компания`, 'hero.company.value': `Алиф Банк (внутренний сервис)`,
+
+    'overview.label': `Обзор проекта`,
+    'overview.title': `Десять каналов вели в один кредитный комитет. Между собой они не говорили.`,
+    'overview.p1': `Заявки на кредит в кредитный комитет Алиф Банка поступали из десяти разных систем — мобильного банка, партнёрской торговой платформы, CRM, АБС и других. Система ИИ-скоринга могла закрыть большинство заявок автоматически. Те, что не могла — или не должна была, например, при флаге возможного фрода — требовали человека, быстро и с полным контекстом.`,
+    'overview.p2': `Моя задача была спроектировать <strong>одну очередь</strong>, где автоматически обработанные и требующие проверки человеком заявки визуально отличались с первого взгляда, разделить работу между нужными специалистами, и гарантировать, что рисковые сигналы никогда не будут одобрены автоматически и незаметно.`,
+    'overview.p3': `Я спроектировал систему целиком: карты пути для четырёх ролей сотрудников, единую доску заявок, экран решения кредитного комитета и админ-панель, которая всё это настраивает.`,
+    'overview.stat.stages': `специализированных этапа проверки`,
+    'overview.stat.channels': `каналов поступления объединены в одну очередь`,
+    'overview.stat.statuses': `статусов канбана во всём пайплайне`,
+    'overview.stat.flags': `флага риска/статуса клиента видны прямо в очереди`,
+
+    'problem.label': `Проблема`,
+    'problem.title': `Автоматизация, которая прячет свою работу — это автоматизация, которой никто не доверяет.`,
+    'problem.business.title': `Бизнес-реальность`,
+    'problem.business.p': `Заявки приходили из десяти разных систем-источников, у каждой — свой кустарный учёт. Не было единой очереди, единого словаря статусов, и не было понятного способа узнать, какие заявки уже обработал скоринг, а какие всё ещё ждут человека.`,
+    'problem.business.p2': `Три вещи должны были быть правдой одновременно:`,
+    'problem.business.li1': `Большинство заявок должны закрываться автоматически — иначе комитет утонет в объёме.`,
+    'problem.business.li2': `Человек должен иметь возможность вмешаться в любую заявку в любой момент — чтобы исправить ошибку модели или получить помощь в сложном случае.`,
+    'problem.business.li3': `Определённые сигналы — возможный фрод, судопроизводство, умерший заявитель — никогда не должны одобряться автоматически и незаметно, независимо от того, что говорит модель.`,
+    'problem.user.title': `Десять каналов, одна очередь (куда они попадали)`,
+    'problem.user.p': `До этого проекта источник заявки определял, как она будет учитываться. Объединение всех источников в одну доску было предпосылкой для всего остального — автоматической приоритизации, ролевых очередей и видимой передачи между ИИ и человеком.`,
+
+    'research.label': `Обоснование системы`,
+    'research.title': `Я составил карты четырёх ролей до того, как спроектировал хоть один экран — трёх проверяющих и того, кто настраивает их очереди.`,
+    'research.lead': `Решение по кредиту — это не одна задача. Это передача по цепочке: кто-то проверяет документы, кто-то — личность, кто-то рассматривает сам кредитный кейс — каждый этап требует разной экспертизы. Правильно разделить эту работу до того, как трогать пиксели, определило всё остальное.`,
+    'research.m1.tag': `Метод 01`, 'research.m1.title': `Карты пути для четырёх ролей`,
+    'research.m1.body': `Построил пошаговую карту пути для проверяющего документы, проверяющего личность, рассматривающего кредит и администратора — двенадцать конкретных шагов на каждую роль, от «получает заявку» до «передаёт на следующий этап».`,
+    'research.m2.tag': `Метод 02`, 'research.m2.title': `Аудит каналов`,
+    'research.m2.body': `Проследил заявки через все десять систем-источников, чтобы увидеть, где именно учёт фрагментировался и какие данные каждый канал реально доносил до комитета.`,
+    'research.m3.tag': `Метод 03`, 'research.m3.title': `Стресс-тест рисковых случаев`,
+    'research.m3.body': `Прошёл через каждый флаг риска — возможный фрод, судопроизводство, умерший заявитель, совпадение с экстремистским списком — чтобы убедиться, что ни один из них не может разрешиться автоматически, только через решение человека.`,
+    'research.insights.title': `Ключевые инсайты`,
+    'research.i1.tag': `Инсайт 01`, 'research.i1.title': `Автоматизация должна быть читаемой`,
+    'research.i1.body': `Если проверяющий не может с одного взгляда понять, какие заявки уже обработала модель, «вмешательство человека» становится угадыванием, а не сотрудничеством.`,
+    'research.i2.tag': `Инсайт 02`, 'research.i2.title': `Одна заявка — три разные задачи`,
+    'research.i2.body': `Проверка документов, проверка личности и кредитное рассмотрение требуют разной экспертизы. Заставлять одну универсальную очередь делать все три — замедляет всех.`,
+    'research.i3.tag': `Инсайт 03`, 'research.i3.title': `Флаги риска — это прерывание, а не шум`,
+    'research.i3.body': `Флаг возможного фрода или судопроизводства должен останавливать автоматизацию каждый раз — он не может быть просто ещё одним бейджем, потерянным в загруженной очереди.`,
+    'research.quote': `«Модель — не конкурент проверяющего. Она первый проверяющий. Задача интерфейса — сделать эту передачу видимой».`,
+    'research.quote.cite': `— формулировка, к которой я возвращался снова и снова`,
+
+    'define.label': `Определение`,
+    'define.title': `Бриф звучал как «пусть ИИ обрабатывает большинство заявок». Реальная задача — сделать остальные легко обнаруживаемыми.`,
+    'define.problem.title': `Постановка проблемы`,
+    'define.problem.p1': `Комитету нужна была единая очередь, где <strong>большинство заявок решается скорингом</strong>, любое вмешательство человека быстрое и полностью информированное, а определённые рисковые сигналы <strong>всегда</strong> прерывают автоматизацию — независимо от уверенности модели.`,
+    'define.problem.p2': `Это значило проектировать сразу для трёх аудиторий: вывод модели, специалиста, проверяющего конкретный этап, и администратора, настраивающего распределение работы.`,
+    'define.goals.title': `Цели`,
+    'define.goals.li1': `<strong>Сделать автоматизацию видимой</strong> — каждая заявка помечена как обработанная автоматически или требующая человека, ещё до открытия.`,
+    'define.goals.li2': `<strong>Разделить работу</strong> на этапы документов, идентификации и кредитного рассмотрения, у каждого своя очередь и свой специалист.`,
+    'define.goals.li3': `<strong>Сделать флаги риска неоспоримыми</strong> — фрод, судопроизводство, смерть заявителя, совпадение с экстремистским списком всегда требуют проверки человеком.`,
+    'define.goals.li4': `<strong>Объединить все десять каналов</strong> в одну доску с единым набором статусов, который модераторы и проверяющие уже понимают.`,
+    'define.metrics.title': `Что значило «готово»`,
+    'define.m1.title': `Источник виден с одного взгляда`, 'define.m1.body': `Каждая карточка показывает <strong>авто или ручное происхождение</strong> без открытия — не нужно кликать, чтобы узнать, кто (или что) решило.`,
+    'define.m2.title': `Никаких незаметных рисковых одобрений`, 'define.m2.body': `Флаги фрода, судопроизводства, смерти и совпадения с экстремистским списком <strong>всегда требуют проверки человеком</strong> — никогда не решаются автоматическим путём.`,
+    'define.m3.title': `Контекст переживает каждую передачу`, 'define.m3.body': `<strong>Обязательный комментарий</strong> сопровождает заявку при каждом переходе этапа — документы → идентификация → кредитное рассмотрение.`,
+
+    'process.label': `Процесс`,
+    'process.title': `Решения, которые заставили ИИ и человека реально сотрудничать, а не просто существовать рядом.`,
+    'process.lead': `Ни одно из них не было про то, чтобы сделать модель лучше. Все они были про то, чтобы сделать её работу настолько читаемой, чтобы человек мог ей доверять, сомневаться в ней или перехватить решение за секунды.`,
+    'process.s1.title': `Видимый тег «Авто» — единственное решение, на котором держится вся система`,
+    'process.s1.body': `Каждая карточка заявки несёт явный бейдж происхождения: обработана и закрыта автоматически, или направлена человеку. Без этого «вмешательство человека» невидимо — проверяющий не может понять, перепроверяет ли он модель или принимает единственное реальное решение. <strong>Сделать автоматизацию видимой было предпосылкой для доверия к ней.</strong>`,
+    'process.s2.title': `Три очереди вместо одной общей кучи`,
+    'process.s2.body': `Проверка документов, проверка личности и кредитное рассмотрение получили свои этапы и своё дежурство, вместо того чтобы один проверяющий делал все три на каждой заявке. Каждый этап передаёт дальше с обязательным комментарием, поэтому контекст не сбрасывается на границе.`,
+    'process.s3.title': `Флаги риска, которые невозможно разрешить автоматически, по конструкции`,
+    'process.s3.body': `Возможный фрод, активное судопроизводство, умерший заявитель, совпадение с экстремистским списком — это смоделировано как прерывания, а не статусы. Независимо от того, что вернул скоринг, заявка с одним из этих флагов направляется человеку каждый раз.`,
+    'process.s4.title': `Убрал Telegram-бота из процесса рассмотрения — ради безопасности, не эстетики`,
+    'process.s4.body': `Рассмотрение комитетом раньше шло через Telegram-бота: ссылки и комментарии оставались в истории чата каждого специалиста фронта, и оставались там даже после его увольнения. Я заменил это электронной очередью прямо внутри CRM — сортировка от старых к новым, видимый цветовой сигнал того, сколько заявка уже ждёт, и фиксированный набор шаблонов вопросов вместо свободных сообщений в чате. <strong>Решение проблемы безопасности и операционной проблемы оказалось одним и тем же редизайном.</strong>`,
+
+    'design.label': `Дизайн`,
+    'design.title': `От очереди до решения, экран за экраном.`,
+    'design.lead': `Система охватывает четыре поверхности: единую доску заявок, детали кейса, экран голосования комитета и админ-панель — ниже отмечены тегом <span class="badge auto">Авто</span> там, где работа ИИ видна прямо в интерфейсе.`,
+
+    'design.s1.title': `01 · Единая доска — где «Авто» становится видимым тегом, а не скрытым процессом`,
+    'design.s1.tag': `Вид проверяющего`,
+    'design.s1.body': `Каждая колонка — реальный статус из пайплайна. Каждая карточка показывает своё авто/ручное происхождение и любые флаги риска ещё до открытия — проверяющий сканирует доску и точно знает, где реально нужно его внимание.`,
+    'design.s1.col1': `На проверку`, 'design.s1.col2': `Рассматривается`, 'design.s1.col3': `Запрос (КК)`, 'design.s1.col4': `Одобрено`, 'design.s1.col5': `Отказано`,
+    'design.s1.flag.auto': `Авто`, 'design.s1.flag.manual': `Ручной`, 'design.s1.flag.fraud': `Возможный фрод`, 'design.s1.flag.lit': `Судопроизводство`,
+
+    'design.s2.title': `02 · Детали кейса — та кредитная история, которая реально нужна проверяющему, а не всё, что есть в системе`,
+    'design.s2.body': `Поля личности, активные кредитные линии и метрики просрочки (PAR8, PAR30 — платежи, просроченные на 8 и 30+ дней) расположены рядом, поэтому проверяющему не нужно покидать кейс, чтобы посмотреть реальную платёжную историю клиента.`,
+    'design.s2.h1': `Профиль клиента`, 'design.s2.h2': `Кредитная история`,
+    'design.s2.f1': `ФИО`, 'design.s2.f2': `ИНН`, 'design.s2.f3': `Семейное положение`, 'design.s2.f3v': `Женат`, 'design.s2.f4': `Прописка`,
+    'design.s2.f5': `Активные траншы`, 'design.s2.f6': `Просрочка PAR 8`, 'design.s2.f7': `Просрочка PAR 30`, 'design.s2.f8': `Соотношения одобренных`,
+
+    'design.s3.title': `03 · Голосование — где скоринг становится одним голосом среди голосов комитета`,
+    'design.s3.tag': `Авто + человек`,
+    'design.s3.body': `Решение — это не одна кнопка, это голосование. Вывод скоринга стоит в том же списке, что и голос каждого члена комитета, никогда не скрыт за финальным результатом. Проверяющий может согласиться со скорингом, проголосовать против или запросить больше информации, и каждый голос требует комментарий, который возвращается в карточку клиента и в CRM.`,
+    'design.s3.h': `Голосование`,
+    'design.s3.model': `⚙ Скоринг (авто): Одобрить · уверенность 94%`,
+    'design.s3.modeltag': `Авто`,
+    'design.s3.v1': `Иванов Б.`, 'design.s3.v1v': `Одобрить`,
+    'design.s3.v2': `Петрова А.`, 'design.s3.v2v': `Запрос доп. инфо`,
+    'design.s3.opt1': `Одобрено`, 'design.s3.opt2': `Отказано`, 'design.s3.opt3': `Условно одобрено`,
+    'design.s3.f1': `Условия`, 'design.s3.f1v': `12 мес · 18%`,
+    'design.s3.f2': `С поручителем`, 'design.s3.f2v': `Да`,
+    'design.s3.note': `↳ Комментарий обязателен для каждого голоса, включая голос скоринга — он сопровождает заявку на следующий этап и обратно в CRM.`,
+
+    'design.s4.title': `04 · Очередь — то, что заменило Telegram-бота`,
+    'design.s4.tag': `Редизайн безопасности`,
+    'design.s4.body': `Офлайн-заявки сортируются от старых к новым. Чем дольше заявка ждёт, тем краснее становится её маркер — проверяющему не нужен отчёт, чтобы увидеть, что застряло слишком долго. Открытие заявки из очереди делает её строку тусклее и показывает, кто на неё смотрит.`,
+    'design.s4.qtitle': `Очередь · офлайн заявки`,
+    'design.s4.qcount': `4 в очереди`,
+    'design.s4.q1type': `Кредит · 12 мес`, 'design.s4.q2type': `Кредит · 6 мес`, 'design.s4.q3type': `Кредитная линия`, 'design.s4.q4type': `Кредит · 24 мес`,
+    'design.s4.caption': `↑ Каждый вопрос фронт-офису приходит из фиксированного списка шаблонов — «заполнить анкету», «ожидаем документы», «ждём выполнения условий» — а не из открытого сообщения в чате. Именно этот список делает очередь проверяемой.`,
+
+    'design.s5.title': `05 · Админ-панель — пересменка комитета без ожидания релиза`,
+    'design.s5.tag': `Вид админа`,
+    'design.s5.body': `Дежурство, структура канбана и шаблоны ToDo настраиваются здесь. Когда банк добавляет проверяющих или перераспределяет, кто покрывает какую очередь — это изменение настроек, а не тикет для разработки.`,
+    'design.s5.th1': `Сотрудник`, 'design.s5.th2': `Дежурство`, 'design.s5.th3': `Доступ`,
+    'design.s5.r1': `Проверка документов`, 'design.s5.r1a': `Документы`,
+    'design.s5.r2': `Идентификация`, 'design.s5.r2a': `Идентификация`,
+    'design.s5.r3': `Кредитное рассмотрение`, 'design.s5.r3a': `Кредит`,
+
+    'validation.label': `Валидация`,
+    'validation.title': `Для системы такой важности валидация означала согласование с комплаенсом не меньше, чем юзабилити.`,
+    'validation.lead': `Кредитные решения несут реальный регуляторный вес и вопросы справедливости. Циклы проверки здесь проверяли не только «могут ли люди этим пользоваться», но и «может ли рисковый сигнал проскочить», и «соответствует ли разделение очередей тому, как сотрудники реально специализируются».`,
+    'validation.l1.tag': `Цикл 01`, 'validation.l1.title': `Проверка комплаенсом`,
+    'validation.l1.body': `Прошёл каждый флаг риска со стейкхолдерами комплаенса, чтобы убедиться, что ни один из них — фрод, судопроизводство, смерть, совпадение с экстремистским списком — не может разрешиться автоматическим путём при любом выводе модели.`,
+    'validation.l2.tag': `Цикл 02`, 'validation.l2.title': `Операционный обход, три роли`,
+    'validation.l2.body': `Проверил разделение документы/идентификация/кредит на соответствие тому, как сотрудники реально специализировались день за днём — а не тому, как я предполагал разделение работы на бумаге.`,
+    'validation.l3.tag': `Цикл 03`, 'validation.l3.title': `Проверка настраиваемости админки`,
+    'validation.l3.body': `Подтвердил, что дежурство и структура доски могут гибко меняться вместе с численностью и объёмом, без необходимости нового релиза на каждое кадровое изменение.`,
+    'validation.quote': `«Скорость никогда не была здесь единственным требованием. Возможность доказать, почему было принято решение — моделью или человеком — имела такое же значение».`,
+    'validation.quote.cite': `— моё рабочее правило для каждого экрана в этой системе`,
+
+    'outcomes.label': `Что в релизе`,
+    'outcomes.title': `KK Service работает — одна очередь, три специализированных этапа, автоматизация, которая показывает свою работу.`,
+    'outcomes.o1.tag': `ПАЙПЛАЙН`, 'outcomes.o1.body': `каналов поступления теперь попадают на единую доску с одним общим набором статусов вместо десяти раздельно учитываемых процессов.`,
+    'outcomes.o2.tag': `ПРОЗРАЧНОСТЬ`, 'outcomes.o2.body': `заявок несут видимый тег авто/ручного происхождения — ни одна заявка не разрешается без того, чтобы проверяющий мог понять, кто (или что) решило.`,
+    'outcomes.o3.tag': `ПОКРЫТИЕ`, 'outcomes.o3.body': `рисковых заявок (фрод, судопроизводство, смерть, совпадение с экстремистским списком) могут разрешиться автоматическим путём — каждая направляется человеку.`,
+    'outcomes.strat.title': `Стратегический результат`,
+    'outcomes.strat.body': `Кредитный комитет может выдерживать намного больший объём, потому что ИИ реально несёт основную рутинную нагрузку — при этом каждый проверяющий всегда знает, перепроверяет ли он модель или принимает единственное реальное решение по заявке перед ним. Рисковые сигналы не могут потеряться в этом объёме — по конструкции системы, а не только благодаря бдительности людей.`,
+
+    'lessons.label': `Выводы`,
+    'lessons.title': `Что я забираю с собой в следующий проект.`,
+    'lessons.worked.title': `Что сработало`,
+    'lessons.w1': `<strong>Составить карты всех четырёх ролей до любого экрана.</strong> Разделение документы/идентификация/кредит пришло прямо из карт пути, а не из предположения о том, как «должна» делиться работа.`,
+    'lessons.w2': `<strong>Сделать автоматизацию видимой, а не скрывать её.</strong> Один тег «Авто» сделал больше для доверия между проверяющими и моделью, чем любое количество сообщений о точности.`,
+    'lessons.w3': `<strong>Относиться к флагам риска как к прерываниям, а не бейджам.</strong> Спроектировать их так, чтобы они структурно блокировали автоматизацию, а не просто показывали предупреждение, означало, что согласование с комплаенсом прошло прямолинейно.`,
+    'lessons.w4': `<strong>Решить проблему безопасности и операционную проблему одним и тем же редизайном.</strong> Замена Telegram-бота не подавалась как улучшение UX — это было исправление утечки данных, которое попутно убрало спам, потерянные заявки и неучтённое время ожидания, вызванные ботом.`,
+    'lessons.diff.title': `Что бы сделал иначе`,
+    'lessons.d1': `<strong>Зафиксировать соглашение о теге авто/ручного до любого отдельного экрана.</strong> Мне пришлось переделывать бейдж на карточках и в деталях, когда паттерн уже устоялся.`,
+    'lessons.d2': `<strong>Привлечь комплаенс раньше.</strong> Проверка флагов риска прошла после того, как основные флоу уже были набросаны, что означало пересмотр логики решений, которая могла быть правильной с первого раза.`,
+    'lessons.d3': `<strong>Стресс-тестировать настраиваемость админки с реальными цифрами штата с первого дня.</strong> Я спроектировал экраны дежурства обобщённо, потом пришлось подстраивать их, когда пришли реальные данные о размере команды и сменах.`,
+    'lessons.d4': `<strong>Относиться к синхронизации Сервис↔CRM как к основному скоупу, а не детали интеграции.</strong> QA выявило длинный хвост багов рассинхронизации — изменённые суммы, корректировки калькулятора и комментарии комитета ненадёжно возвращались в систему-источник. Этот слой синхронизации нужно было проектировать с первой недели, а не доделывать постфактум.`,
+
+    'cta.title': `Хотите увидеть всю систему?`,
+    'cta.body': `Посмотрите финальный дизайн, или юзер-флоу и карты пользовательского пути, которые его сформировали.`,
+    'cta.final': `→ Финальный дизайн (Figma)`,
+    'cta.flow': `→ Юзер-флоу и CJM (Figma)`,
+
+    'footer.role': `Продакт-дизайнер · Алиф Банк`,
+    'footer.disclaimer': `Кейс · KK Service · 2025–2026. Внутренний сервис кредитных решений для Алиф Банка, объединяющий ИИ-скоринг с проверкой человеком на трёх специализированных этапах. В релизе и в работе.`,
+  }
+};
+
+let LANG = 'en';
+function setLang(lang) {
+  LANG = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('langEn').classList.toggle('active', lang === 'en');
+  document.getElementById('langRu').classList.toggle('active', lang === 'ru');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (I18N[lang] && I18N[lang][key]) el.textContent = I18N[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
+  });
+  try { localStorage.setItem('kkservice_lang', lang); } catch(e) {}
+}
+try {
+  const saved = localStorage.getItem('kkservice_lang');
+  if (saved === 'ru' || saved === 'en') setLang(saved);
+  else if (navigator.language && navigator.language.startsWith('ru')) setLang('ru');
+} catch(e) {}
+</script>
+
+</body>
+</html>

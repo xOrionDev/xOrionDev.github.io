@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UmedMall — Case Study by Orion Muhamadiev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand: #e53935;
+  --brand-hover: #c62828;
+  --brand-soft: #fdecea;
+
+  --bg: #ffffff;
+  --bg-surface: #f7f8f9;
+  --bg-grey: #f0f2f7;
+  --bg-dark: #0a0a0a;
+
+  --text: #000000;
+  --text-secondary: #363d50;
+  --text-muted: #abacaf;
+  --text-on-dark: #ffffff;
+  --text-on-dark-secondary: #a3a3a3;
+
+  --border: #eceef1;
+  --border-dark: #1f1f1f;
+
+  --success: #00af66;
+  --success-soft: #00af6633;
+  --error: #ec3d45;
+  --error-soft: #e6000033;
+  --warning: #ff9e00;
+  --warning-soft: #ff9e0033;
+  --info: #4f95f4;
+  --info-soft: #4f95f433;
+
+  --sf-client: #2563eb;
+  --sf-admin: #111827;
+  --sf-seller: #d97706;
+
+  --radius-pill: 999px;
+  --radius-card: 16px;
+  --radius-btn: 12px;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.9em; background: var(--bg-grey); padding: 2px 6px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+.container-wide { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+/* === LANGUAGE SWITCHER === */
+.back-fixed {
+  position: fixed;
+  top: 24px; left: 24px;
+  z-index: 100;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 8px 16px 8px 13px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  color: rgba(255,255,255,0.75);
+  font-weight: 600; font-size: 13px; letter-spacing: 0.02em;
+  text-decoration: none; transition: all 0.15s;
+}
+.back-fixed:hover { color: #fff; border-color: rgba(255,255,255,0.35); }
+@media (max-width: 640px) { .back-fixed { top: 16px; left: 16px; padding: 7px 13px 7px 11px; font-size: 12px; } }
+
+.lang-fixed {
+  position: fixed;
+  top: 24px; right: 24px;
+  z-index: 100;
+  display: flex;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.lang-fixed button {
+  background: transparent;
+  border: 0;
+  color: rgba(255,255,255,0.6);
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  transition: all 0.15s;
+}
+.lang-fixed button.active { background: var(--brand); color: white; }
+.lang-fixed button:hover:not(.active) { color: white; }
+
+/* === HERO === */
+.hero { background: var(--bg-dark); color: var(--text-on-dark); padding: 100px 0 100px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(109, 40, 217, 0.55), transparent 70%); filter: blur(60px); }
+.hero::after { content: ''; position: absolute; bottom: -300px; left: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(217, 119, 6, 0.35), transparent 70%); filter: blur(60px); }
+.hero-content { position: relative; z-index: 1; }
+.hero .tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-pill); font-size: 13px; font-weight: 500; color: var(--text-on-dark-secondary); margin-bottom: 24px; }
+.hero .tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
+.hero h1 { font-size: clamp(48px, 8vw, 96px); line-height: 0.95; margin: 0 0 24px; font-weight: 800; letter-spacing: -0.04em; }
+.hero h1 .accent { background: linear-gradient(135deg, #a855f7, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero .lede { font-size: clamp(18px, 2vw, 22px); max-width: 720px; color: var(--text-on-dark-secondary); margin-bottom: 56px; line-height: 1.5; }
+.hero-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border-dark); padding-top: 32px; }
+.hero-meta > div { border-right: 1px solid var(--border-dark); padding: 0 24px; }
+.hero-meta > div:first-child { padding-left: 0; }
+.hero-meta > div:last-child { border-right: 0; padding-right: 0; }
+.hero-meta .label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-on-dark-secondary); margin-bottom: 8px; }
+.hero-meta .value { font-size: 17px; font-weight: 600; color: var(--text-on-dark); }
+
+section { padding: 100px 0; }
+section.bg-grey { background: var(--bg-surface); }
+section.bg-dark { background: var(--bg-dark); color: var(--text-on-dark); }
+section.bg-dark .section-label { color: var(--text-on-dark-secondary); }
+section.bg-dark h2 { color: var(--text-on-dark); }
+section.bg-dark p { color: var(--text-on-dark-secondary); }
+
+.section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brand); margin-bottom: 24px; display: inline-flex; align-items: center; gap: 12px; }
+.section-label::before { content: ''; width: 24px; height: 1px; background: var(--brand); }
+h2 { font-size: clamp(36px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 800; margin: 0 0 32px; max-width: 820px; }
+h3 { font-size: 26px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; margin: 0 0 16px; }
+h4 { font-size: 19px; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.01em; }
+p { font-size: 17px; line-height: 1.7; color: var(--text-secondary); margin: 0 0 20px; max-width: 760px; }
+p.lead { font-size: 21px; line-height: 1.55; color: var(--text); font-weight: 400; }
+strong { color: var(--text); font-weight: 600; }
+section.bg-dark strong { color: white; }
+
+ul.bullets { list-style: none; padding: 0; margin: 24px 0; }
+ul.bullets li { padding: 16px 0; border-bottom: 1px solid var(--border); font-size: 17px; display: flex; gap: 16px; align-items: flex-start; }
+ul.bullets li::before { content: ''; width: 6px; height: 6px; background: var(--brand); border-radius: 50%; margin-top: 12px; flex-shrink: 0; }
+ul.bullets li:last-child { border-bottom: 0; }
+section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+
+.card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 32px; }
+.card.dark { background: #0f0f0f; border-color: var(--border-dark); }
+.card.dark h4 { color: var(--text-on-dark); }
+.card.dark p { color: var(--text-on-dark-secondary); }
+
+.stat-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 28px; }
+.stat-card .icon { width: 44px; height: 44px; border-radius: var(--radius-btn); background: var(--brand-soft); color: var(--brand); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.stat-card .icon svg { width: 22px; height: 22px; }
+.stat-card .big { font-size: 48px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; margin-bottom: 8px; }
+.stat-card .label { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+
+.quote { border-left: 3px solid var(--brand); padding: 8px 0 8px 28px; margin: 40px 0; font-size: 24px; line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; color: var(--text); max-width: 820px; }
+.quote cite { display: block; font-size: 14px; color: var(--text-muted); font-style: normal; font-weight: 500; margin-top: 12px; }
+
+.browser-frame { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-card); overflow: hidden; box-shadow: 0 30px 80px -20px rgba(0,0,0,0.15); margin: 32px 0; }
+.browser-frame .bar { background: var(--bg-surface); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
+.browser-frame .dot { width: 12px; height: 12px; border-radius: 50%; }
+.browser-frame .dot.r { background: #ff5f57; }
+.browser-frame .dot.y { background: #febc2e; }
+.browser-frame .dot.g { background: #28c840; }
+.browser-frame .url { flex: 1; text-align: center; font-size: 13px; color: var(--text-muted); background: var(--bg); border-radius: 6px; padding: 4px 12px; max-width: 360px; margin: 0 auto; }
+
+.dash-mock { display: grid; grid-template-columns: 220px 1fr; background: var(--bg-grey); min-height: 480px; }
+.dash-mock .sidebar { background: var(--bg); padding: 20px 16px; border-right: 1px solid var(--border); }
+.dash-mock .logo { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 16px; margin-bottom: 28px; }
+.dash-mock .logo-mark { width: 28px; height: 28px; background: var(--brand); border-radius: 8px; position: relative; }
+.dash-mock .logo-mark::after { content: ''; position: absolute; width: 14px; height: 14px; background: white; top: 7px; left: 7px; border-radius: 4px; transform: rotate(45deg); }
+.dash-mock .nav-section { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; padding: 0 8px 8px; margin-top: 16px; }
+.dash-mock .nav-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; font-size: 13px; color: var(--text-secondary); border-radius: 8px; margin-bottom: 2px; }
+.dash-mock .nav-item.active { background: var(--bg-grey); color: var(--text); font-weight: 600; }
+.dash-mock .nav-item .count { margin-left: auto; background: var(--error); color: white; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 999px; }
+.dash-mock .main { padding: 20px 24px; }
+.dash-mock .topbar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.dash-mock .search { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 8px 16px; font-size: 13px; color: var(--text-muted); max-width: 340px; margin: 0 auto; }
+.dash-mock .lang-pill { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 2px; font-size: 12px; font-weight: 600; }
+.dash-mock .lang-pill span { padding: 5px 10px; border-radius: 99px; }
+.dash-mock .lang-pill .on { background: var(--brand); color: white; }
+.dash-mock .icon-btn { width: 32px; height: 32px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border); }
+.dash-mock .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.dash-mock .metric { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+.dash-mock .metric.dark { background: var(--bg-dark); color: white; border-color: var(--bg-dark); }
+.dash-mock .metric .lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 6px; }
+.dash-mock .metric.dark .lbl { color: rgba(255,255,255,0.6); }
+.dash-mock .metric .val { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+.dash-mock .chart { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; height: 160px; display: flex; align-items: end; gap: 14px; }
+.dash-mock .chart .bar { flex: 1; background: var(--border); border-radius: 4px 4px 0 0; position: relative; }
+.dash-mock .chart .bar.active { background: var(--bg-dark); }
+
+.sf-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; color: white; }
+.sf-chip.client { background: var(--sf-client); }
+.sf-chip.admin { background: var(--sf-admin); }
+.sf-chip.seller { background: var(--sf-seller); }
+
+.status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; }
+.status-badge.pending { background: var(--warning-soft); color: var(--warning); }
+.status-badge.approved { background: var(--success-soft); color: var(--success); }
+.status-badge.rejected { background: var(--error-soft); color: var(--error); }
+.status-badge.active { background: var(--info-soft); color: #1360c9; }
+
+.tag-pill { display: inline-block; background: var(--bg-grey); color: var(--text-secondary); font-size: 11px; font-weight: 700; letter-spacing: 0.02em; padding: 3px 9px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; }
+
+.table-mock { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--bg); }
+.table-mock th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 700; padding: 10px 14px; border-bottom: 1px solid var(--border); background: var(--bg-surface); }
+.table-mock td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; color: var(--text-secondary); }
+.table-mock tr:last-child td { border-bottom: 0; }
+.table-mock .thumb { width: 36px; height: 36px; border-radius: 8px; background: var(--bg-grey); display: inline-block; }
+.table-mock .name { color: var(--text); font-weight: 600; }
+.table-mock .actions { display: flex; gap: 6px; }
+.table-mock .actions span { width: 26px; height: 26px; border-radius: 7px; border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; }
+
+/* Real design screenshots */
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 32px; }
+.shot { margin: 0; }
+.shot img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(10,10,10,0.07); }
+.shot figcaption { font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.5; }
+.shot.missing img { display: none; }
+.shot.missing::before { content: '🖼 ' attr(data-file); display: flex; align-items: center; justify-content: center; min-height: 220px; border: 2px dashed var(--border); border-radius: 14px; color: var(--text-muted); font-size: 13px; font-family: 'JetBrains Mono', monospace; padding: 16px; }
+
+.bc { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 16px; flex-wrap: wrap; }
+.bc .sep { opacity: 0.5; }
+.bc .current { color: var(--text); font-weight: 600; }
+
+.process-step { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+.process-step:last-child { border-bottom: 0; }
+.process-step .step-num { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--brand-soft); color: var(--brand); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
+.process-step.done .step-num { background: var(--brand); color: white; }
+.process-step h4 { margin: 6px 0 8px; }
+.process-step p { margin: 0; max-width: 720px; }
+
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--border); margin: 24px 0; }
+.compare > div { padding: 32px; }
+.compare .before { background: #fff5f5; }
+.compare .after { background: #f5fff5; border-left: 1px solid var(--border); }
+.compare .label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: var(--radius-pill); margin-bottom: 16px; }
+.compare .before .label { background: rgba(236, 61, 69, 0.12); color: var(--error); }
+.compare .after .label { background: rgba(0, 175, 102, 0.12); color: var(--success); }
+
+.pillar { background: linear-gradient(135deg, #0a0a0a, #241a36); color: white; padding: 36px 28px; border-radius: var(--radius-card); position: relative; overflow: hidden; }
+.pillar::before { content: ''; position: absolute; top: -50px; right: -50px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(109, 40, 217, 0.45), transparent); filter: blur(40px); }
+.pillar .num { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.pillar h4 { color: white; font-size: 22px; margin-bottom: 16px; letter-spacing: -0.01em; }
+.pillar p { color: rgba(255,255,255,0.7); font-size: 15px; margin: 0; }
+
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; }
+.badge.brand { background: var(--brand-soft); color: var(--brand); }
+.badge.client { background: rgba(37,99,235,0.12); color: var(--sf-client); }
+.badge.seller { background: rgba(217,119,6,0.12); color: var(--sf-seller); }
+
+.cta { background: linear-gradient(135deg, #e53935, #d97706); color: white; padding: 80px 0; text-align: center; }
+.cta h2 { color: white; max-width: 720px; margin: 0 auto 24px; font-size: clamp(32px, 4vw, 48px); }
+.cta p { color: rgba(255,255,255,0.85); margin: 0 auto 40px; max-width: 720px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; background: white; color: var(--brand); padding: 16px 32px; border-radius: var(--radius-pill); font-weight: 600; font-size: 16px; text-decoration: none; transition: transform 0.2s; }
+.btn:hover { transform: translateY(-2px); text-decoration: none; }
+.btn-secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+
+footer { background: var(--bg-dark); color: var(--text-on-dark-secondary); padding: 60px 0 40px; }
+footer .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+footer .author { display: flex; align-items: center; gap: 14px; }
+footer .author .avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), #d97706); display: inline-flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
+footer .author .name { color: white; font-weight: 600; font-size: 17px; }
+footer .author .role { font-size: 13px; color: var(--text-on-dark-secondary); }
+footer .links a { color: var(--text-on-dark-secondary); margin-left: 28px; font-size: 14px; }
+footer .links a:hover { color: white; }
+
+@media (max-width: 900px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .hero-meta { grid-template-columns: 1fr 1fr; }
+  .compare { grid-template-columns: 1fr; }
+  .compare .after { border-left: 0; border-top: 1px solid var(--border); }
+  .dash-mock { grid-template-columns: 1fr; }
+  .dash-mock .sidebar { display: none; }
+  section { padding: 60px 0; }
+  .lang-fixed { top: 16px; right: 16px; }
+  .table-mock { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- BACK TO PORTFOLIO -->
+<a class="back-fixed" href="../index.html"><span aria-hidden="true">←</span> <span data-i18n="nav.back">All work</span></a>
+
+<!-- LANGUAGE SWITCHER -->
+<div class="lang-fixed">
+  <button id="langEn" class="active" onclick="setLang('en')">EN</button>
+  <button id="langRu" onclick="setLang('ru')">RU</button>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-content">
+    <div class="tag"><span class="dot"></span> <span data-i18n="hero.tag">Case Study · 2025–2026</span></div>
+    <h1 data-i18n-html="hero.title">UmedMall<br><span class="accent">Marketplace OS</span></h1>
+    <p class="lede" data-i18n="hero.lede">Designing the client storefront, the moderator console, and the seller cabinet of a multi-category marketplace — turning three disconnected specs into one coherent system.</p>
+
+    <div class="hero-meta">
+      <div><div class="label" data-i18n="hero.role.label">Role</div><div class="value" data-i18n="hero.role.value">Sole Product Designer (Client, Admin & Seller)</div></div>
+      <div><div class="label" data-i18n="hero.duration.label">Duration</div><div class="value" data-i18n="hero.duration.value">~5 months</div></div>
+      <div><div class="label" data-i18n="hero.status.label">Status</div><div class="value" data-i18n="hero.status.value">In development · onboarding partners</div></div>
+      <div><div class="label" data-i18n="hero.company.label">Company</div><div class="value" data-i18n="hero.company.value">Independent / client project</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="overview.label">Project Overview</div>
+    <h2 data-i18n="overview.title">One marketplace, three specs, written months apart by different people.</h2>
+    <p class="lead" data-i18n="overview.p1">UmedMall is a multi-category marketplace built for the Tajik market, benchmarked by the client against OZON, Wildberries, Yandex.Market and Etsy. By the time I joined, a client-side spec already existed. The moderator spec arrived next. The seller/partner spec didn't exist at all — "we'll send it later."</p>
+    <p data-i18n-html="overview.p2">My job was to make sure none of the three surfaces contradicted each other: <strong>one taxonomy, one attribute model, one source of truth</strong> — expressed through three different interfaces, for three different people, with three different jobs to do.</p>
+    <p data-i18n="overview.p3">I designed all three: the client storefront, the moderator console, and the seller cabinet — research, information architecture, content modeling, UI, and Figma hand-off.</p>
+
+    <div class="grid-4" style="margin-top: 56px;">
+      <div class="stat-card">
+        <div class="icon" style="background:rgba(37,99,235,0.12); color: var(--sf-client)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+        <div class="big">13</div>
+        <div class="label" data-i18n="overview.stat.client">client storefront sections</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div class="big">19</div>
+        <div class="label" data-i18n="overview.stat.admin">moderator sections, in 7 nav groups</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon" style="background:rgba(217,119,6,0.12); color: var(--sf-seller)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 01-8 0"/></svg></div>
+        <div class="big">7</div>
+        <div class="label" data-i18n="overview.stat.seller">seller cabinet sections</div>
+      </div>
+      <div class="stat-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v6M12 13l-5.5 4M12 13l5.5 4"/></svg></div>
+        <div class="big">3 → 1</div>
+        <div class="label" data-i18n="overview.stat.systems">connected surfaces, one data model</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="bg-grey">
+  <div class="container">
+    <div class="section-label" data-i18n="problem.label">The Problem</div>
+    <h2 data-i18n="problem.title">The brief described a database. It needed to describe a workflow.</h2>
+
+    <div class="grid-2" style="margin-top: 48px;">
+      <div>
+        <h3 data-i18n="problem.business.title">Business reality</h3>
+        <p data-i18n="problem.business.p">The client's three specs were written sequentially, by different people, with no shared vocabulary. The client-facing catalog and the moderator's "Characteristics" page used different words for the same idea. The seller cabinet wasn't specified at all when I started designing the moderator side.</p>
+        <p data-i18n="problem.business.p2">Three things were true at once:</p>
+        <ul class="bullets">
+          <li data-i18n="problem.business.li1">The moderator spec was, almost literally, a list of database tables: Orders, Categories, Characteristics, Banners, Administrators, Stores.</li>
+          <li data-i18n="problem.business.li2">No one had designed how a seller actually lists a product without breaking the catalog for everyone else.</li>
+          <li data-i18n="problem.business.li3">"Improve it however you think best" was the actual brief — a blank check that's easy to under-deliver on.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 data-i18n="problem.user.title">The literal brief, verbatim</h3>
+        <p data-i18n="problem.user.p">This is the entire moderator navigation as originally specified — six flat categories, no grouping, no hierarchy, no mention of units, input types, audit logs, cities, or brands. Sellers were expected to type product attributes as free text.</p>
+
+        <div class="card" style="margin-top: 20px; background: var(--bg);">
+          <p style="font-size:15px; margin-bottom: 8px;"><strong data-i18n="problem.user.heard">The original sidebar, as briefed:</strong></p>
+          <p data-i18n="problem.user.quote" style="font-style: italic; font-size: 16px; margin: 0; color: var(--text);">"Заказы. Категории. Характеристики. Баннеры. Администраторы. Магазины."</p>
+          <p data-i18n="problem.user.cite" style="margin-top: 12px; font-size: 13px; color: var(--text-muted);">— Orders. Categories. Characteristics. Banners. Administrators. Stores. The whole moderator product, in six words.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="research.label">Grounding the rebuild</div>
+    <h2 data-i18n="research.title">No interviews, no usability lab — so I borrowed conviction from competitors and stress-tested the data model instead.</h2>
+    <p class="lead" data-i18n="research.lead">There was no budget or access for primary user research. So I grounded every decision in two things I could control: how mature marketplaces actually structure this problem, and how badly a naive schema would break under real-world data.</p>
+
+    <div class="grid-3" style="margin-top: 56px;">
+      <div class="card">
+        <div class="ch-chip" style="display:inline-flex; background: var(--brand-soft); color: var(--brand); padding:4px 12px; border-radius:999px; font-size:12px; font-weight:600; margin-bottom: 16px;" data-i18n="research.m1.tag">Method 01</div>
+        <h4 data-i18n="research.m1.title">Competitive IA audit</h4>
+        <p style="margin:0;" data-i18n="research.m1.body">Walked the moderator/admin patterns of OZON, Wildberries, Yandex.Market and Etsy — not for visuals, but for how they group catalog management, order processing, and seller onboarding. Reused validated structure instead of inventing one from a flat spec.</p>
+      </div>
+      <div class="card">
+        <div class="ch-chip" style="display:inline-flex; background: var(--brand-soft); color: var(--brand); padding:4px 12px; border-radius:999px; font-size:12px; font-weight:600; margin-bottom: 16px;" data-i18n="research.m2.tag">Method 02</div>
+        <h4 data-i18n="research.m2.title">Cross-spec reconciliation</h4>
+        <p style="margin:0;" data-i18n="research.m2.body">Read the client-side spec, the moderator spec, and (once it arrived) the seller spec against each other, line by line, looking for contradictions before they became dev tickets — e.g. a "verified store" badge the client side referenced that the moderator side never defined.</p>
+      </div>
+      <div class="card">
+        <div class="ch-chip" style="display:inline-flex; background: var(--brand-soft); color: var(--brand); padding:4px 12px; border-radius:999px; font-size:12px; font-weight:600; margin-bottom: 16px;" data-i18n="research.m3.tag">Method 03</div>
+        <h4 data-i18n="research.m3.title">Edge-case stress-testing</h4>
+        <p style="margin:0;" data-i18n="research.m3.body">Before designing the attributes screen, I deliberately pushed it with hard cases: temperature in °C/°F/K, length in cm vs. m vs. inches, a washing machine's "8kg, white, automatic" typed as one free-text string. Each broke something — which told me what the schema actually needed to prevent.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 80px;" data-i18n="research.insights.title">Key insights</h3>
+    <div class="grid-3" style="margin-top: 32px;">
+      <div class="pillar">
+        <div class="num" data-i18n="research.i1.tag">Insight 01</div>
+        <h4 data-i18n-html="research.i1.title">A literal spec is a <em>schema</em>, not an IA</h4>
+        <p data-i18n="research.i1.body">Six flat top-level items copied from table names hide nineteen real sections. No single moderator should face that list ungrouped.</p>
+      </div>
+      <div class="pillar">
+        <div class="num" data-i18n="research.i2.tag">Insight 02</div>
+        <h4 data-i18n="research.i2.title">Free text kills filters before they're built</h4>
+        <p data-i18n="research.i2.body">"Automatic, 8kg, white" typed as one string by one seller can never be filtered, compared, or sorted against the same attributes typed differently by another seller.</p>
+      </div>
+      <div class="pillar">
+        <div class="num" data-i18n="research.i3.tag">Insight 03</div>
+        <h4 data-i18n="research.i3.title">Approval needs state integrity, not just a status field</h4>
+        <p data-i18n="research.i3.body">"Approved" and "store exists" must be the same fact, not two fields that can drift apart. The spec never said this — the data model demanded it.</p>
+      </div>
+    </div>
+
+    <div class="quote" style="margin-top: 64px;">
+      <span data-i18n="research.quote">"What if I stopped operating strictly from the spec, and designed what the product actually needed?"</span>
+      <cite data-i18n="research.quote.cite">— The question I kept asking myself, three weeks in</cite>
+    </div>
+  </div>
+</section>
+
+<!-- DEFINE -->
+<section class="bg-dark">
+  <div class="container">
+    <div class="section-label" data-i18n="define.label">Define</div>
+    <h2 data-i18n="define.title">The brief described three interfaces. The real problem was one trustworthy attribute engine underneath all of them.</h2>
+
+    <div class="grid-2" style="margin-top: 48px; gap: 56px;">
+      <div>
+        <h3 style="color: white;" data-i18n="define.problem.title">Problem statement</h3>
+        <p data-i18n-html="define.problem.p1">The client storefront, the moderator console, and the seller cabinet each needed to <strong>trust the same taxonomy and the same product attributes</strong> — without giving sellers enough freedom to enter data that breaks filtering, comparison, or search downstream.</p>
+        <p data-i18n="define.problem.p2">Solve that once, at the data-model level, and three very different interfaces become straightforward to design on top of it.</p>
+      </div>
+      <div>
+        <h3 style="color: white;" data-i18n="define.goals.title">Goals</h3>
+        <ul class="bullets" style="margin: 0;">
+          <li data-i18n-html="define.goals.li1"><strong>Unify</strong> categories, characteristics and units under one moderator-owned schema that client and seller surfaces simply consume.</li>
+          <li data-i18n-html="define.goals.li2"><strong>Replace</strong> the literal flat sidebar with navigation grouped by how moderators actually triage work, not by table name.</li>
+          <li data-i18n-html="define.goals.li3"><strong>Close every approval loop</strong> with a mandatory, visible reason — not just a status change nobody can audit.</li>
+          <li data-i18n-html="define.goals.li4"><strong>Design the seller cabinet</strong> from near-zero spec, mirroring the moderator's data model so every listing imports cleanly.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="color: white; margin-top: 80px;" data-i18n="define.metrics.title">What "done" had to mean</h3>
+    <div class="grid-3" style="margin-top: 24px;">
+      <div class="card dark"><h4 data-i18n="define.m1.title">No flat lists</h4><p data-i18n-html="define.m1.body">19 moderator sections collapse into <strong>7 task-based groups</strong>, none with more than 4 top-level items.</p></div>
+      <div class="card dark"><h4 data-i18n="define.m2.title">Zero free-text attributes</h4><p data-i18n-html="define.m2.body">Every product attribute is an <strong>enum, a number with a unit, or a boolean</strong> — never an open string a seller can type anything into.</p></div>
+      <div class="card dark"><h4 data-i18n="define.m3.title">Every rejection has a reason</h4><p data-i18n-html="define.m3.body">Store and product rejections require a <strong>mandatory reason, visible to other moderators</strong> — no more "why was this declined?" pings.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="process.label">Process</div>
+    <h2 data-i18n="process.title">The decisions nobody asked for are the ones I'm proudest of.</h2>
+    <p class="lead" data-i18n="process.lead">None of the four decisions below were in the original spec. Each one came from asking "what happens when this breaks at scale" before it actually did.</p>
+
+    <div style="margin-top: 56px;">
+
+      <div class="process-step done">
+        <div class="step-num">1</div>
+        <div>
+          <h4 data-i18n="process.s1.title">A two-level attribute system: moderators define the schema, sellers fill constrained values</h4>
+          <p data-i18n-html="process.s1.body">Sellers don't get a free-text field for "color" or "capacity." A moderator first defines the <strong>characteristic</strong> (its input type, its unit, its validation rules) once, globally. Sellers then pick from that fixed vocabulary when listing a product. This single decision is what makes filtering and comparison possible across thousands of listings from hundreds of independent sellers.</p>
+        </div>
+      </div>
+
+      <div class="process-step done">
+        <div class="step-num">2</div>
+        <div>
+          <h4 data-i18n="process.s2.title">Base units + conversion, even for attributes nobody asked to compare</h4>
+          <p data-i18n-html="process.s2.body">Every unit category (length, mass, volume, power, temperature) stores a single <strong>base unit</strong> internally — Kelvin for temperature, millimeters for length — and converts on display. A seller can enter 25°C or 77°F; the system stores 298.15K either way. Without this, "filter fridges under 90cm wide" silently fails for every seller who typed "0.9m."</p>
+        </div>
+      </div>
+
+      <div class="process-step done">
+        <div class="step-num">3</div>
+        <div>
+          <h4 data-i18n="process.s3.title">Collapsing 19 flat items into 7 named, iconified groups — and showing my work</h4>
+          <p data-i18n-html="process.s3.body">I presented three real alternatives — 6 groups (maximally compact), 7 groups (balanced), and 9 groups (maximally explicit) — with the actual trade-off named out loud: fewer groups for a small moderation team wearing many hats, more groups if responsibilities split by role. The client picked 7, and recognized every group name because it matched their own vocabulary back.</p>
+        </div>
+      </div>
+
+      <div class="process-step done">
+        <div class="step-num">4</div>
+        <div>
+          <h4 data-i18n="process.s4.title">Caught a state-integrity bug before it shipped: "approved" must equal "store exists"</h4>
+          <p data-i18n-html="process.s4.body">The original spec allowed a store application to be marked "Approved" as a status change, separately from actually creating the store record. I flagged that this produces an impossible state — an approved application with no store behind it — and changed the flow so approval <em>is</em> store creation. I also replaced "delete" with "archive" for applications, so rejected history is never lost.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN -->
+<section class="bg-grey">
+  <div class="container-wide">
+    <div class="section-label" data-i18n="design.label">Design</div>
+    <h2 data-i18n="design.title">Three surfaces, one system, screen by screen.</h2>
+    <p class="lead" data-i18n-html="design.lead">One taxonomy and one attribute engine power the client storefront, the moderator console, and the seller cabinet — color-coded below as <span class="badge client">Client</span>, <span class="badge brand">Admin</span> and <span class="badge seller">Seller</span> so it's clear which surface each screen belongs to.</p>
+
+    <!-- SCREEN 1 -->
+    <div style="margin-top: 80px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s1.title">01 · Store applications — review without losing the trail</h3>
+        <span class="badge brand" data-i18n="design.s1.tag">Admin view</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s1.body">One queue, filtered by status, instead of three separate pages for new/approved/rejected. Approving creates the store record in the same action — no separate step to forget. Rejecting requires a reason, stored and visible to every other moderator.</p>
+
+      <div class="browser-frame">
+        <div class="bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><div class="url">umedmall.tj/admin/applications</div></div>
+        <div class="dash-mock">
+          <div class="sidebar">
+            <div class="logo"><div class="logo-mark"></div>UMEDMALL</div>
+            <div class="nav-section" data-i18n="design.s1.nav.g1">Orders & Clients</div>
+            <div class="nav-item" data-i18n="design.s1.nav.orders">🧾 Orders</div>
+            <div class="nav-section" data-i18n="design.s1.nav.g2">Applications</div>
+            <div class="nav-item active" data-i18n="design.s1.nav.apps">📨 Applications <span class="count">3</span></div>
+            <div class="nav-section" data-i18n="design.s1.nav.g3">Catalog</div>
+            <div class="nav-item" data-i18n="design.s1.nav.cats">🗃 Categories</div>
+            <div class="nav-section" data-i18n="design.s1.nav.g4">Attributes</div>
+            <div class="nav-item" data-i18n="design.s1.nav.attrs">⚙️ Attributes</div>
+          </div>
+          <div class="main">
+            <div class="topbar">
+              <div class="search" data-i18n="design.s1.search">🔍 Search by store, owner, TIN...</div>
+              <div class="lang-pill"><span class="on">RU</span><span>EN</span></div>
+              <div class="icon-btn"></div>
+            </div>
+            <div style="font-size:22px; font-weight:800; margin-bottom:4px;" data-i18n="design.s1.h">New applications</div>
+            <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px;" data-i18n="design.s1.sub">3 awaiting review</div>
+            <table class="table-mock">
+              <tr><th data-i18n="design.s1.th1">Store</th><th data-i18n="design.s1.th2">Owner</th><th data-i18n="design.s1.th3">City</th><th data-i18n="design.s1.th4">Status</th><th data-i18n="design.s1.th5">Action</th></tr>
+              <tr><td class="name">SportStore</td><td>Karimov R.</td><td>Dushanbe</td><td><span class="status-badge pending" data-i18n="design.s1.stnew">New</span></td><td class="actions"><span>👁</span><span>✔</span><span>✖</span></td></tr>
+              <tr><td class="name">BagShop</td><td>Nazarova F.</td><td>Khujand</td><td><span class="status-badge approved" data-i18n="design.s1.stok">Approved</span></td><td class="actions"><span>👁</span></td></tr>
+              <tr><td class="name">ElectroPro</td><td>Davlatov S.</td><td>Dushanbe</td><td><span class="status-badge rejected" data-i18n="design.s1.strej">Rejected</span></td><td class="actions"><span>👁</span><span>↩</span></td></tr>
+            </table>
+            <div style="margin-top:16px; padding:12px 16px; background: var(--error-soft); border-radius: 10px; font-size: 12px; color: var(--error);" data-i18n="design.s1.note">↳ Rejection reason for ElectroPro: "TIN document illegible — re-upload requested." Visible to all moderators.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shots">
+        <figure class="shot" data-file="img/admin-applications.png"><img src="img/admin-applications.png" alt="Admin — applications moderation queue" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot1">Shipped UI — the moderation queue, filtered by status, straight from the production Figma file.</figcaption></figure>
+        <figure class="shot" data-file="img/admin-application-detail.png"><img src="img/admin-application-detail.png" alt="Admin — single application review with approve/reject" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot2">A single application: documents, notes, and the approve action that creates the store record in the same step.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- SCREEN 2 -->
+    <div style="margin-top: 100px;">
+      <h3 data-i18n="design.s2.title">02 · From six table names to seven workflows</h3>
+      <p style="max-width:820px;" data-i18n="design.s2.body">The original spec's sidebar is a list of nouns. The shipped sidebar is a list of jobs — each group named the way the client's own team already talked about their work, so sign-off was fast.</p>
+
+      <div class="compare">
+        <div class="before">
+          <div class="label" data-i18n="design.s2.before.tag">As specified · 6 flat items</div>
+          <p style="font-size:14px; color: var(--text-secondary); margin:0; font-family: 'JetBrains Mono', monospace; line-height:1.9;" data-i18n="design.s2.before.body">Orders<br>Categories<br>Characteristics<br>Banners<br>Administrators<br>Stores</p>
+        </div>
+        <div class="after">
+          <div class="label" data-i18n="design.s2.after.tag">As shipped · 7 named groups</div>
+          <p style="font-size:14px; color: var(--text-secondary); margin:0; line-height:1.9;" data-i18n-html="design.s2.after.body">🧾 <strong>Orders & Clients</strong><br>📨 <strong>Applications</strong><br>🗃 <strong>Categories</strong><br>⚙️ <strong>Attributes</strong><br>🏬 <strong>Partners</strong><br>📢 <strong>Marketing</strong><br>🛠 <strong>System</strong></p>
+        </div>
+      </div>
+      <p style="margin-top:16px; font-size: 15px; color: var(--text-muted);" data-i18n="design.s2.caption">↑ Nineteen real sections live inside these seven groups, none deeper than one click, none with more than four items.</p>
+    </div>
+
+    <!-- SCREEN 3 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s3.title">03 · The attribute builder — the engine the rest of the catalog runs on</h3>
+        <span class="badge brand" data-i18n="design.s3.tag">Admin view</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s3.body">Moderators build characteristics from fixed input types (enum, number+unit, boolean) — never free text. The "Кельвин (base)" row is the unglamorous part nobody notices until filters stop working: every unit category stores one base unit and converts everything else to it.</p>
+
+      <div class="card" style="margin-top: 32px; background: var(--bg); padding: 0; overflow: hidden;">
+        <div class="bc" style="padding: 20px 24px 0;">
+          <span data-i18n="design.s3.bc1">Attributes</span><span class="sep">/</span><span data-i18n="design.s3.bc2">Groups</span><span class="sep">/</span><span class="current" data-i18n="design.s3.bc3">General characteristics</span>
+        </div>
+        <table class="table-mock" style="margin-top:12px;">
+          <tr><th data-i18n="design.s3.th1">Characteristic</th><th data-i18n="design.s3.th2">Input type</th><th data-i18n="design.s3.th3">Unit (base)</th><th data-i18n="design.s3.th4">Required</th></tr>
+          <tr><td class="name" data-i18n="design.s3.r1">Color</td><td><span class="tag-pill">enum_single</span></td><td>—</td><td>✓</td></tr>
+          <tr><td class="name" data-i18n="design.s3.r2">Weight</td><td><span class="tag-pill">decimal+unit</span></td><td data-i18n="design.s3.r2u">g (base)</td><td>✓</td></tr>
+          <tr><td class="name" data-i18n="design.s3.r3">Width</td><td><span class="tag-pill">decimal+unit</span></td><td data-i18n="design.s3.r3u">mm (base)</td><td></td></tr>
+          <tr><td class="name" data-i18n="design.s3.r4">Temperature range</td><td><span class="tag-pill">decimal+unit</span></td><td data-i18n="design.s3.r4u">K — Kelvin (base)</td><td></td></tr>
+          <tr><td class="name" data-i18n="design.s3.r5">Smart-home ready</td><td><span class="tag-pill">boolean</span></td><td>—</td><td></td></tr>
+        </table>
+        <div style="padding:16px 24px; background: var(--bg-surface); font-size:13px; color:var(--text-secondary);" data-i18n="design.s3.note">↳ A seller enters 25°C or 77°F — both store as 298.15K. The shopper's filter "under 30°C" works regardless of which unit any seller typed.</div>
+      </div>
+
+      <div class="shots">
+        <figure class="shot" data-file="img/admin-attributes.png"><img src="img/admin-attributes.png" alt="Admin — characteristics table" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot1">The characteristics registry in the shipped admin — input types, units and groups in one moderator-owned table.</figcaption></figure>
+        <figure class="shot" data-file="img/admin-attribute-create.png"><img src="img/admin-attribute-create.png" alt="Admin — create characteristic form" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot2">Creating a characteristic: fixed input types and unit selection — the constraint that keeps free text out of the catalog.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- SCREEN 4 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s4.title">04 · Seller dashboard — a cabinet designed from almost no spec at all</h3>
+        <span class="badge seller" data-i18n="design.s4.tag">Seller view</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s4.body">No brief existed for this surface when I started — only "we'll send it later." I mirrored the moderator's data model so every product a seller lists imports cleanly, and gave the dashboard the same job a moderator's dashboard has: a five-second health check before anything else.</p>
+
+      <div class="browser-frame">
+        <div class="bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><div class="url">umedmall.tj/seller/dashboard</div></div>
+        <div class="dash-mock">
+          <div class="sidebar">
+            <div class="logo"><div class="logo-mark" style="background:var(--sf-seller);"></div>UMEDMALL</div>
+            <div class="nav-item active" data-i18n="design.s4.nav1">▦ Dashboard</div>
+            <div class="nav-item" data-i18n="design.s4.nav2">🛍 Products</div>
+            <div class="nav-item" data-i18n="design.s4.nav3">🧾 Orders</div>
+            <div class="nav-item" data-i18n="design.s4.nav4">📊 Analytics</div>
+            <div class="nav-item" data-i18n="design.s4.nav5">⭐ Reviews</div>
+            <div class="nav-item" data-i18n="design.s4.nav6">⚙️ Store settings</div>
+          </div>
+          <div class="main">
+            <div style="font-size:22px; font-weight:800; margin-bottom:4px;" data-i18n="design.s4.h">Good morning, SportStore</div>
+            <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px;" data-i18n="design.s4.sub">Today, Jan 15, 2026</div>
+            <div class="metrics">
+              <div class="metric dark"><div class="lbl" data-i18n="design.s4.m1.lbl">Orders today</div><div class="val">24</div></div>
+              <div class="metric"><div class="lbl" data-i18n="design.s4.m2.lbl">Active products</div><div class="val">186</div></div>
+              <div class="metric"><div class="lbl" data-i18n="design.s4.m3.lbl">Rating</div><div class="val">4.8</div></div>
+              <div class="metric"><div class="lbl" data-i18n="design.s4.m4.lbl">Pending reviews</div><div class="val">3</div></div>
+            </div>
+            <div class="chart">
+              <div class="bar" style="height: 40%"></div>
+              <div class="bar" style="height: 65%"></div>
+              <div class="bar" style="height: 50%"></div>
+              <div class="bar" style="height: 80%"></div>
+              <div class="bar active" style="height: 92%"></div>
+              <div class="bar" style="height: 70%"></div>
+              <div class="bar" style="height: 58%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shots">
+        <figure class="shot" data-file="img/seller-dashboard.png"><img src="img/seller-dashboard.png" alt="Seller cabinet — dashboard" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s4.shot1">The shipped seller dashboard: key numbers first, actions second — a five-second health check.</figcaption></figure>
+        <figure class="shot" data-file="img/seller-analytics.png"><img src="img/seller-analytics.png" alt="Seller cabinet — analytics with sales chart and low-stock list" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s4.shot2">Analytics: revenue, orders and average check, with a low-stock list that turns a chart into a to-do.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- SCREEN 5 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s5.title">05 · Seller sign-up — copy that survived "I don't like any of these"</h3>
+        <span class="badge seller" data-i18n="design.s5.tag">Seller view</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s5.body">The client rejected every "safe" marketplace slogan I drafted first. The brief that stuck: short, confident, no marketing filler — and it had to read well huge, as background type on the seller sign-up screen.</p>
+
+      <div class="card" style="margin-top: 32px; background: linear-gradient(135deg, #1a1a1a, #3d1f1f); padding: 48px; text-align:center;">
+        <div style="font-size: clamp(28px, 4vw, 40px); font-weight: 800; color: white; letter-spacing: -0.02em; margin-bottom: 16px;" data-i18n="design.s5.headline">Sell simpler.<br>Your store. Our marketplace.</div>
+        <div style="color: rgba(255,255,255,0.7); font-size: 15px; margin-bottom: 28px;" data-i18n="design.s5.sub">Open your store on UmedMall and start selling without the hassle. We bring the customers.</div>
+        <div style="display:inline-block; background: var(--sf-seller); color: white; font-weight: 700; padding: 12px 28px; border-radius: 999px; font-size: 14px;" data-i18n="design.s5.cta">Start selling</div>
+      </div>
+
+      <div class="shots">
+        <figure class="shot" data-file="img/user-become-partner.png"><img src="img/user-become-partner.png" alt="Become a partner page on the client storefront" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s5.shot1">The shipped "Become a partner" page — the copy above, live in the design, as the entry point of the seller funnel.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- SCREEN 6 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s6.title">06 · The client storefront — where the taxonomy pays off</h3>
+        <span class="badge client" data-i18n="design.s6.tag">Client view</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s6.body">Thirteen sections — home, search with live states, catalogue, product page, cart, checkout, favorites, profile, purchases, reviews — all consuming the moderator-owned taxonomy. Every filter a shopper touches works only because no seller was ever allowed to type an attribute by hand.</p>
+
+      <div class="shots">
+        <figure class="shot" data-file="img/user-main.png"><img src="img/user-main.png" alt="Client storefront — main page" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s6.shot1">The storefront home page.</figcaption></figure>
+        <figure class="shot" data-file="img/user-product.png"><img src="img/user-product.png" alt="Client storefront — product page with attributes and reviews" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s6.shot2">A product page: the attribute table a shopper compares by is the same schema moderators built and sellers filled.</figcaption></figure>
+        <figure class="shot" data-file="img/user-checkout.png"><img src="img/user-checkout.png" alt="Client storefront — checkout flow" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s6.shot3">Checkout: address → SMS confirmation → payment method → success, designed as one uninterrupted flow.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- SCREEN 7 -->
+    <div style="margin-top: 100px;">
+      <h3 data-i18n="design.s7.title">07 · Every surface ships in light, dark and mobile</h3>
+      <p style="max-width:820px;" data-i18n="design.s7.body">All three products were delivered with full dark-mode palettes and mobile layouts — not as an afterthought, but drawn screen by screen in the same Figma system, so engineering never had to invent a missing state.</p>
+
+      <div class="shots">
+        <figure class="shot" data-file="img/user-product-dark.png"><img src="img/user-product-dark.png" alt="Product page in dark mode" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s7.shot1">The storefront product page in dark mode.</figcaption></figure>
+        <figure class="shot" data-file="img/seller-dashboard-mobile.png"><img src="img/seller-dashboard-mobile.png" alt="Seller dashboard, mobile layout" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s7.shot2">The seller dashboard rearranged for mobile — same five-second health check, one column.</figcaption></figure>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VALIDATION -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="validation.label">Reconciling two truths</div>
+    <h2 data-i18n="validation.title">There was no usability lab — so every screen got validated against the client's own words instead.</h2>
+    <p class="lead" data-i18n="validation.lead">Without users to test on, the real validation loop was showing the client two honest versions — what I thought was right, and what they'd actually written — and merging them in the open rather than picking a winner silently.</p>
+
+    <div class="grid-3" style="margin-top: 56px;">
+      <div class="card">
+        <div class="ch-chip" style="display:inline-flex; background: var(--brand-soft); color: var(--brand); padding:4px 12px; border-radius:999px; font-size:12px; font-weight:600; margin-bottom: 16px;" data-i18n="validation.l1.tag">Loop 01</div>
+        <h4 data-i18n="validation.l1.title">Categories page</h4>
+        <p style="font-size:15px; margin:0;" data-i18n="validation.l1.body">My version used a hierarchical tree with breadcrumb drill-down. The client's literal spec wanted a flat A–Z list for fast scanning. Shipped both: a flat list for moderators who need to scan everything, with breadcrumb-aware drill-down into subcategories and views underneath.</p>
+      </div>
+      <div class="card">
+        <div class="ch-chip" style="display:inline-flex; background: var(--brand-soft); color: var(--brand); padding:4px 12px; border-radius:999px; font-size:12px; font-weight:600; margin-bottom: 16px;" data-i18n="validation.l2.tag">Loop 02</div>
+        <h4 data-i18n="validation.l2.title">Banners page</h4>
+        <p style="font-size:15px; margin:0;" data-i18n="validation.l2.body">My version prioritized simplicity and reuse across banner types. The client's spec demanded specific fields per banner (name required, URL optional, uncompressed image upload). Final version kept their exact field list, with the simpler interaction model underneath it.</p>
+      </div>
+      <div class="card">
+        <div class="ch-chip" style="display:inline-flex; background: var(--brand-soft); color: var(--brand); padding:4px 12px; border-radius:999px; font-size:12px; font-weight:600; margin-bottom: 16px;" data-i18n="validation.l3.tag">Loop 03</div>
+        <h4 data-i18n="validation.l3.title">Sidebar grouping</h4>
+        <p style="font-size:15px; margin:0;" data-i18n="validation.l3.body">Rather than asserting "this is correct," I presented 6-group, 7-group and 9-group versions side by side with the trade-off named explicitly, and let the client choose with full context — not just a recommendation to accept or reject.</p>
+      </div>
+    </div>
+
+    <div class="quote" style="margin-top: 80px;">
+      <span data-i18n="validation.quote">"Every merged decision got tested against one rule: would the client recognize this in their own words?"</span>
+      <cite data-i18n="validation.quote.cite">— My working rule throughout the project</cite>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="bg-dark">
+  <div class="container">
+    <div class="section-label" data-i18n="outcomes.label">What shipped</div>
+    <h2 data-i18n="outcomes.title">Design shipped: three connected products running on one taxonomy.</h2>
+
+    <div class="grid-3" style="margin-top: 56px;">
+      <div class="card dark">
+        <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o1.tag">NAVIGATION</div>
+        <div style="font-size:54px; font-weight:800; letter-spacing:-0.04em; line-height:1; color: white; margin-bottom: 12px;">19 → 7</div>
+        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o1.body">moderator sections, collapsed from 6 flat literal-spec items into 7 named, task-based groups — none deeper than one click.</p>
+      </div>
+      <div class="card dark">
+        <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o2.tag">DATA INTEGRITY</div>
+        <div style="font-size:54px; font-weight:800; letter-spacing:-0.04em; line-height:1; color: white; margin-bottom: 12px;">0</div>
+        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o2.body">free-text product attributes in the final schema — every value is an enum, a number with a unit, or a boolean.</p>
+      </div>
+      <div class="card dark">
+        <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o3.tag">SURFACES</div>
+        <div style="font-size:54px; font-weight:800; letter-spacing:-0.04em; line-height:1; color: white; margin-bottom: 12px;">3 → 1</div>
+        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o3.body">interfaces — client, moderator, seller — sharing a single attribute and taxonomy engine instead of three independent data models.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 80px;">
+      <h3 style="color: white;" data-i18n="outcomes.strat.title">Strategic outcome</h3>
+      <p style="color: var(--text-on-dark-secondary); max-width: 820px; font-size: 18px;" data-i18n-html="outcomes.strat.body">A shopper can filter consistently no matter which of hundreds of sellers listed a product. A seller fills predictable, constrained forms instead of guessing what a moderator will accept. A moderator works from navigation that matches how they actually triage — not how a database happened to be named.</p>
+      <p style="color: var(--text-on-dark-secondary); max-width: 820px; font-size: 15px; margin-top: 16px;" data-i18n-html="outcomes.strat.note">The marketplace is in active development at <a href="http://umedmall.tj" style="color: white;">umedmall.tj</a> — currently onboarding partner stores ahead of public launch. Business metrics will be added once real traffic exists; I'd rather show none than invent them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LESSONS -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="lessons.label">Lessons</div>
+    <h2 data-i18n="lessons.title">What I'm taking with me into the next project.</h2>
+
+    <div class="grid-2" style="margin-top: 56px;">
+      <div>
+        <h3 data-i18n="lessons.worked.title">What worked</h3>
+        <ul class="bullets">
+          <li data-i18n-html="lessons.w1"><strong>Designing the attribute engine before the navigation.</strong> Once the data model was solid, the sidebar groupings followed almost on their own.</li>
+          <li data-i18n-html="lessons.w2"><strong>Showing trade-offs explicitly, not just a final answer.</strong> Presenting 6 vs. 7 vs. 9 sidebar groups made client sign-off faster because they felt ownership of the decision.</li>
+          <li data-i18n-html="lessons.w3"><strong>Treating "what's missing from the spec" as part of the deliverable.</strong> Units, input types, audit logs, cities and brands were never asked for — I added them because the product needed them, not because scope allowed it.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i18n="lessons.diff.title">What I'd do differently</h3>
+        <ul class="bullets">
+          <li data-i18n-html="lessons.d1"><strong>Get all three specs on day one.</strong> Receiving client, moderator and seller requirements in sequence meant revisiting IA decisions each time a new document arrived.</li>
+          <li data-i18n-html="lessons.d2"><strong>Lock the attribute/unit taxonomy before touching any screen.</strong> I designed individual pages first and had to retrofit the data model once edge cases like temperature surfaced.</li>
+          <li data-i18n-html="lessons.d3"><strong>Write the terminology glossary earlier.</strong> "Заявки" vs. "Заказы" vs. "Магазины" got renamed and re-grouped for weeks before the names settled — a glossary in week one would have saved that churn.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2 data-i18n="cta.title">Want to see how the three pieces fit together?</h2>
+    <p data-i18n="cta.body">Browse the full Figma files — client storefront, moderator console, and seller cabinet — all built on the same taxonomy.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://www.figma.com/design/b6pgsauH0viNpErNEH4S22/Marketplace?node-id=0-1" class="btn"><span data-i18n="cta.client">→ Client storefront (Figma)</span></a>
+      <a href="https://www.figma.com/design/b6pgsauH0viNpErNEH4S22/Marketplace?node-id=1-280364" class="btn btn-secondary"><span data-i18n="cta.admin">→ Moderator console (Figma)</span></a>
+      <a href="https://www.figma.com/design/b6pgsauH0viNpErNEH4S22/Marketplace?node-id=1-178186" class="btn btn-secondary"><span data-i18n="cta.seller">→ Seller cabinet (Figma)</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="author">
+        <div class="avatar">OM</div>
+        <div>
+          <div class="name">Orion Muhamadiev</div>
+          <div class="role" data-i18n="footer.role">Product Designer</div>
+        </div>
+      </div>
+      <div class="links">
+        <a href="mailto:nabijon.muhamadiev@alif.tj">nabijon.muhamadiev@alif.tj</a>
+        <a href="http://umedmall.tj">umedmall.tj</a>
+        <a href="https://www.figma.com/design/b6pgsauH0viNpErNEH4S22/Marketplace?node-id=0-1">Figma</a>
+      </div>
+    </div>
+    <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border-dark); font-size: 13px; color: var(--text-on-dark-secondary);" data-i18n="footer.disclaimer">
+      Case study · UmedMall · 2025–2026. Three connected systems — client storefront, moderator console, seller cabinet — covering 13 / 19 / 7 sections. In active development at umedmall.tj.
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  en: {
+    'nav.back': `All work`,
+    'hero.tag': `Case Study · 2025–2026`,
+    'hero.title': `UmedMall<br><span class="accent">Marketplace OS</span>`,
+    'hero.lede': `Designing the client storefront, the moderator console, and the seller cabinet of a multi-category marketplace — turning three disconnected specs into one coherent system.`,
+    'hero.role.label': `Role`, 'hero.role.value': `Sole Product Designer (Client, Admin & Seller)`,
+    'hero.duration.label': `Duration`, 'hero.duration.value': `~5 months`,
+    'hero.status.label': `Status`, 'hero.status.value': `In development · onboarding partners`,
+    'hero.company.label': `Company`, 'hero.company.value': `Independent / client project`,
+
+    'overview.label': `Project Overview`,
+    'overview.title': `One marketplace, three specs, written months apart by different people.`,
+    'overview.p1': `UmedMall is a multi-category marketplace built for the Tajik market, benchmarked by the client against OZON, Wildberries, Yandex.Market and Etsy. By the time I joined, a client-side spec already existed. The moderator spec arrived next. The seller/partner spec didn't exist at all — "we'll send it later."`,
+    'overview.p2': `My job was to make sure none of the three surfaces contradicted each other: <strong>one taxonomy, one attribute model, one source of truth</strong> — expressed through three different interfaces, for three different people, with three different jobs to do.`,
+    'overview.p3': `I designed all three: the client storefront, the moderator console, and the seller cabinet — research, information architecture, content modeling, UI, and Figma hand-off.`,
+    'overview.stat.client': `client storefront sections`,
+    'overview.stat.admin': `moderator sections, in 7 nav groups`,
+    'overview.stat.seller': `seller cabinet sections`,
+    'overview.stat.systems': `connected surfaces, one data model`,
+
+    'problem.label': `The Problem`,
+    'problem.title': `The brief described a database. It needed to describe a workflow.`,
+    'problem.business.title': `Business reality`,
+    'problem.business.p': `The client's three specs were written sequentially, by different people, with no shared vocabulary. The client-facing catalog and the moderator's "Characteristics" page used different words for the same idea. The seller cabinet wasn't specified at all when I started designing the moderator side.`,
+    'problem.business.p2': `Three things were true at once:`,
+    'problem.business.li1': `The moderator spec was, almost literally, a list of database tables: Orders, Categories, Characteristics, Banners, Administrators, Stores.`,
+    'problem.business.li2': `No one had designed how a seller actually lists a product without breaking the catalog for everyone else.`,
+    'problem.business.li3': `"Improve it however you think best" was the actual brief — a blank check that's easy to under-deliver on.`,
+    'problem.user.title': `The literal brief, verbatim`,
+    'problem.user.p': `This is the entire moderator navigation as originally specified — six flat categories, no grouping, no hierarchy, no mention of units, input types, audit logs, cities, or brands. Sellers were expected to type product attributes as free text.`,
+    'problem.user.heard': `The original sidebar, as briefed:`,
+    'problem.user.quote': `"Заказы. Категории. Характеристики. Баннеры. Администраторы. Магазины."`,
+    'problem.user.cite': `— Orders. Categories. Characteristics. Banners. Administrators. Stores. The whole moderator product, in six words.`,
+
+    'research.label': `Grounding the rebuild`,
+    'research.title': `No interviews, no usability lab — so I borrowed conviction from competitors and stress-tested the data model instead.`,
+    'research.lead': `There was no budget or access for primary user research. So I grounded every decision in two things I could control: how mature marketplaces actually structure this problem, and how badly a naive schema would break under real-world data.`,
+    'research.m1.tag': `Method 01`, 'research.m1.title': `Competitive IA audit`,
+    'research.m1.body': `Walked the moderator/admin patterns of OZON, Wildberries, Yandex.Market and Etsy — not for visuals, but for how they group catalog management, order processing, and seller onboarding. Reused validated structure instead of inventing one from a flat spec.`,
+    'research.m2.tag': `Method 02`, 'research.m2.title': `Cross-spec reconciliation`,
+    'research.m2.body': `Read the client-side spec, the moderator spec, and (once it arrived) the seller spec against each other, line by line, looking for contradictions before they became dev tickets — e.g. a "verified store" badge the client side referenced that the moderator side never defined.`,
+    'research.m3.tag': `Method 03`, 'research.m3.title': `Edge-case stress-testing`,
+    'research.m3.body': `Before designing the attributes screen, I deliberately pushed it with hard cases: temperature in °C/°F/K, length in cm vs. m vs. inches, a washing machine's "8kg, white, automatic" typed as one free-text string. Each broke something — which told me what the schema actually needed to prevent.`,
+    'research.insights.title': `Key insights`,
+    'research.i1.tag': `Insight 01`, 'research.i1.title': `A literal spec is a <em>schema</em>, not an IA`,
+    'research.i1.body': `Six flat top-level items copied from table names hide nineteen real sections. No single moderator should face that list ungrouped.`,
+    'research.i2.tag': `Insight 02`, 'research.i2.title': `Free text kills filters before they're built`,
+    'research.i2.body': `"Automatic, 8kg, white" typed as one string by one seller can never be filtered, compared, or sorted against the same attributes typed differently by another seller.`,
+    'research.i3.tag': `Insight 03`, 'research.i3.title': `Approval needs state integrity, not just a status field`,
+    'research.i3.body': `"Approved" and "store exists" must be the same fact, not two fields that can drift apart. The spec never said this — the data model demanded it.`,
+    'research.quote': `"What if I stopped operating strictly from the spec, and designed what the product actually needed?"`,
+    'research.quote.cite': `— The question I kept asking myself, three weeks in`,
+
+    'define.label': `Define`,
+    'define.title': `The brief described three interfaces. The real problem was one trustworthy attribute engine underneath all of them.`,
+    'define.problem.title': `Problem statement`,
+    'define.problem.p1': `The client storefront, the moderator console, and the seller cabinet each needed to <strong>trust the same taxonomy and the same product attributes</strong> — without giving sellers enough freedom to enter data that breaks filtering, comparison, or search downstream.`,
+    'define.problem.p2': `Solve that once, at the data-model level, and three very different interfaces become straightforward to design on top of it.`,
+    'define.goals.title': `Goals`,
+    'define.goals.li1': `<strong>Unify</strong> categories, characteristics and units under one moderator-owned schema that client and seller surfaces simply consume.`,
+    'define.goals.li2': `<strong>Replace</strong> the literal flat sidebar with navigation grouped by how moderators actually triage work, not by table name.`,
+    'define.goals.li3': `<strong>Close every approval loop</strong> with a mandatory, visible reason — not just a status change nobody can audit.`,
+    'define.goals.li4': `<strong>Design the seller cabinet</strong> from near-zero spec, mirroring the moderator's data model so every listing imports cleanly.`,
+    'define.metrics.title': `What "done" had to mean`,
+    'define.m1.title': `No flat lists`, 'define.m1.body': `19 moderator sections collapse into <strong>7 task-based groups</strong>, none with more than 4 top-level items.`,
+    'define.m2.title': `Zero free-text attributes`, 'define.m2.body': `Every product attribute is an <strong>enum, a number with a unit, or a boolean</strong> — never an open string a seller can type anything into.`,
+    'define.m3.title': `Every rejection has a reason`, 'define.m3.body': `Store and product rejections require a <strong>mandatory reason, visible to other moderators</strong> — no more "why was this declined?" pings.`,
+
+    'process.label': `Process`,
+    'process.title': `The decisions nobody asked for are the ones I'm proudest of.`,
+    'process.lead': `None of the four decisions below were in the original spec. Each one came from asking "what happens when this breaks at scale" before it actually did.`,
+    'process.s1.title': `A two-level attribute system: moderators define the schema, sellers fill constrained values`,
+    'process.s1.body': `Sellers don't get a free-text field for "color" or "capacity." A moderator first defines the <strong>characteristic</strong> (its input type, its unit, its validation rules) once, globally. Sellers then pick from that fixed vocabulary when listing a product. This single decision is what makes filtering and comparison possible across thousands of listings from hundreds of independent sellers.`,
+    'process.s2.title': `Base units + conversion, even for attributes nobody asked to compare`,
+    'process.s2.body': `Every unit category (length, mass, volume, power, temperature) stores a single <strong>base unit</strong> internally — Kelvin for temperature, millimeters for length — and converts on display. A seller can enter 25°C or 77°F; the system stores 298.15K either way. Without this, "filter fridges under 90cm wide" silently fails for every seller who typed "0.9m."`,
+    'process.s3.title': `Collapsing 19 flat items into 7 named, iconified groups — and showing my work`,
+    'process.s3.body': `I presented three real alternatives — 6 groups (maximally compact), 7 groups (balanced), and 9 groups (maximally explicit) — with the actual trade-off named out loud: fewer groups for a small moderation team wearing many hats, more groups if responsibilities split by role. The client picked 7, and recognized every group name because it matched their own vocabulary back.`,
+    'process.s4.title': `Caught a state-integrity bug before it shipped: "approved" must equal "store exists"`,
+    'process.s4.body': `The original spec allowed a store application to be marked "Approved" as a status change, separately from actually creating the store record. I flagged that this produces an impossible state — an approved application with no store behind it — and changed the flow so approval <em>is</em> store creation. I also replaced "delete" with "archive" for applications, so rejected history is never lost.`,
+
+    'design.label': `Design`,
+    'design.title': `Three surfaces, one system, screen by screen.`,
+    'design.lead': `One taxonomy and one attribute engine power the client storefront, the moderator console, and the seller cabinet — color-coded below as <span class="badge client">Client</span>, <span class="badge brand">Admin</span> and <span class="badge seller">Seller</span> so it's clear which surface each screen belongs to.`,
+
+    'design.s1.title': `01 · Store applications — review without losing the trail`,
+    'design.s1.tag': `Admin view`,
+    'design.s1.body': `One queue, filtered by status, instead of three separate pages for new/approved/rejected. Approving creates the store record in the same action — no separate step to forget. Rejecting requires a reason, stored and visible to every other moderator.`,
+    'design.s1.nav.g1': `Orders & Clients`, 'design.s1.nav.orders': `🧾 Orders`,
+    'design.s1.nav.g2': `Applications`, 'design.s1.nav.apps': `📨 Applications`,
+    'design.s1.nav.g3': `Catalog`, 'design.s1.nav.cats': `🗃 Categories`,
+    'design.s1.nav.g4': `Attributes`, 'design.s1.nav.attrs': `⚙️ Attributes`,
+    'design.s1.search': `🔍 Search by store, owner, TIN...`,
+    'design.s1.h': `New applications`, 'design.s1.sub': `3 awaiting review`,
+    'design.s1.th1': `Store`, 'design.s1.th2': `Owner`, 'design.s1.th3': `City`, 'design.s1.th4': `Status`, 'design.s1.th5': `Action`,
+    'design.s1.stnew': `New`, 'design.s1.stok': `Approved`, 'design.s1.strej': `Rejected`,
+    'design.s1.note': `↳ Rejection reason for ElectroPro: "TIN document illegible — re-upload requested." Visible to all moderators.`,
+
+    'design.s2.title': `02 · From six table names to seven workflows`,
+    'design.s2.body': `The original spec's sidebar is a list of nouns. The shipped sidebar is a list of jobs — each group named the way the client's own team already talked about their work, so sign-off was fast.`,
+    'design.s2.before.tag': `As specified · 6 flat items`,
+    'design.s2.before.body': `Orders<br>Categories<br>Characteristics<br>Banners<br>Administrators<br>Stores`,
+    'design.s2.after.tag': `As shipped · 7 named groups`,
+    'design.s2.after.body': `🧾 <strong>Orders & Clients</strong><br>📨 <strong>Applications</strong><br>🗃 <strong>Categories</strong><br>⚙️ <strong>Attributes</strong><br>🏬 <strong>Partners</strong><br>📢 <strong>Marketing</strong><br>🛠 <strong>System</strong>`,
+    'design.s2.caption': `↑ Nineteen real sections live inside these seven groups, none deeper than one click, none with more than four items.`,
+
+    'design.s3.title': `03 · The attribute builder — the engine the rest of the catalog runs on`,
+    'design.s3.tag': `Admin view`,
+    'design.s3.body': `Moderators build characteristics from fixed input types (enum, number+unit, boolean) — never free text. The "Кельвин (base)" row is the unglamorous part nobody notices until filters stop working: every unit category stores one base unit and converts everything else to it.`,
+    'design.s3.bc1': `Attributes`, 'design.s3.bc2': `Groups`, 'design.s3.bc3': `General characteristics`,
+    'design.s3.th1': `Characteristic`, 'design.s3.th2': `Input type`, 'design.s3.th3': `Unit (base)`, 'design.s3.th4': `Required`,
+    'design.s3.r1': `Color`, 'design.s3.r2': `Weight`, 'design.s3.r2u': `g (base)`,
+    'design.s3.r3': `Width`, 'design.s3.r3u': `mm (base)`,
+    'design.s3.r4': `Temperature range`, 'design.s3.r4u': `K — Kelvin (base)`,
+    'design.s3.r5': `Smart-home ready`,
+    'design.s3.note': `↳ A seller enters 25°C or 77°F — both store as 298.15K. The shopper's filter "under 30°C" works regardless of which unit any seller typed.`,
+
+    'design.s4.title': `04 · Seller dashboard — a cabinet designed from almost no spec at all`,
+    'design.s4.tag': `Seller view`,
+    'design.s4.body': `No brief existed for this surface when I started — only "we'll send it later." I mirrored the moderator's data model so every product a seller lists imports cleanly, and gave the dashboard the same job a moderator's dashboard has: a five-second health check before anything else.`,
+    'design.s4.nav1': `▦ Dashboard`, 'design.s4.nav2': `🛍 Products`, 'design.s4.nav3': `🧾 Orders`, 'design.s4.nav4': `📊 Analytics`, 'design.s4.nav5': `⭐ Reviews`, 'design.s4.nav6': `⚙️ Store settings`,
+    'design.s4.h': `Good morning, SportStore`, 'design.s4.sub': `Today, Jan 15, 2026`,
+    'design.s4.m1.lbl': `Orders today`, 'design.s4.m2.lbl': `Active products`, 'design.s4.m3.lbl': `Rating`, 'design.s4.m4.lbl': `Pending reviews`,
+
+    'design.s5.title': `05 · Seller sign-up — copy that survived "I don't like any of these"`,
+    'design.s5.tag': `Seller view`,
+    'design.s5.body': `The client rejected every "safe" marketplace slogan I drafted first. The brief that stuck: short, confident, no marketing filler — and it had to read well huge, as background type on the seller sign-up screen.`,
+    'design.s5.headline': `Sell simpler.<br>Your store. Our marketplace.`,
+    'design.s5.sub': `Open your store on UmedMall and start selling without the hassle. We bring the customers.`,
+    'design.s5.cta': `Start selling`,
+
+    'validation.label': `Reconciling two truths`,
+    'validation.title': `There was no usability lab — so every screen got validated against the client's own words instead.`,
+    'validation.lead': `Without users to test on, the real validation loop was showing the client two honest versions — what I thought was right, and what they'd actually written — and merging them in the open rather than picking a winner silently.`,
+    'validation.l1.tag': `Loop 01`, 'validation.l1.title': `Categories page`,
+    'validation.l1.body': `My version used a hierarchical tree with breadcrumb drill-down. The client's literal spec wanted a flat A–Z list for fast scanning. Shipped both: a flat list for moderators who need to scan everything, with breadcrumb-aware drill-down into subcategories and views underneath.`,
+    'validation.l2.tag': `Loop 02`, 'validation.l2.title': `Banners page`,
+    'validation.l2.body': `My version prioritized simplicity and reuse across banner types. The client's spec demanded specific fields per banner (name required, URL optional, uncompressed image upload). Final version kept their exact field list, with the simpler interaction model underneath it.`,
+    'validation.l3.tag': `Loop 03`, 'validation.l3.title': `Sidebar grouping`,
+    'validation.l3.body': `Rather than asserting "this is correct," I presented 6-group, 7-group and 9-group versions side by side with the trade-off named explicitly, and let the client choose with full context — not just a recommendation to accept or reject.`,
+    'validation.quote': `"Every merged decision got tested against one rule: would the client recognize this in their own words?"`,
+    'validation.quote.cite': `— My working rule throughout the project`,
+
+    'outcomes.label': `What shipped`,
+    'outcomes.title': `Design shipped: three connected products running on one taxonomy.`,
+    'outcomes.o1.tag': `NAVIGATION`, 'outcomes.o1.body': `moderator sections, collapsed from 6 flat literal-spec items into 7 named, task-based groups — none deeper than one click.`,
+    'outcomes.o2.tag': `DATA INTEGRITY`, 'outcomes.o2.body': `free-text product attributes in the final schema — every value is an enum, a number with a unit, or a boolean.`,
+    'outcomes.o3.tag': `SURFACES`, 'outcomes.o3.body': `interfaces — client, moderator, seller — sharing a single attribute and taxonomy engine instead of three independent data models.`,
+    'outcomes.strat.title': `Strategic outcome`,
+    'outcomes.strat.body': `A shopper can filter consistently no matter which of hundreds of sellers listed a product. A seller fills predictable, constrained forms instead of guessing what a moderator will accept. A moderator works from navigation that matches how they actually triage — not how a database happened to be named.`,
+
+    'lessons.label': `Lessons`,
+    'lessons.title': `What I'm taking with me into the next project.`,
+    'lessons.worked.title': `What worked`,
+    'lessons.w1': `<strong>Designing the attribute engine before the navigation.</strong> Once the data model was solid, the sidebar groupings followed almost on their own.`,
+    'lessons.w2': `<strong>Showing trade-offs explicitly, not just a final answer.</strong> Presenting 6 vs. 7 vs. 9 sidebar groups made client sign-off faster because they felt ownership of the decision.`,
+    'lessons.w3': `<strong>Treating "what's missing from the spec" as part of the deliverable.</strong> Units, input types, audit logs, cities and brands were never asked for — I added them because the product needed them, not because scope allowed it.`,
+    'lessons.diff.title': `What I'd do differently`,
+    'lessons.d1': `<strong>Get all three specs on day one.</strong> Receiving client, moderator and seller requirements in sequence meant revisiting IA decisions each time a new document arrived.`,
+    'lessons.d2': `<strong>Lock the attribute/unit taxonomy before touching any screen.</strong> I designed individual pages first and had to retrofit the data model once edge cases like temperature surfaced.`,
+    'lessons.d3': `<strong>Write the terminology glossary earlier.</strong> "Заявки" vs. "Заказы" vs. "Магазины" got renamed and re-grouped for weeks before the names settled — a glossary in week one would have saved that churn.`,
+
+    'cta.title': `Want to see how the three pieces fit together?`,
+    'cta.body': `Browse the full Figma files — client storefront, moderator console, and seller cabinet — all built on the same taxonomy.`,
+    'cta.client': `→ Client storefront (Figma)`,
+    'cta.admin': `→ Moderator console (Figma)`,
+    'cta.seller': `→ Seller cabinet (Figma)`,
+
+    'footer.role': `Product Designer`,
+    'footer.disclaimer': `Case study · UmedMall · 2025–2026. Three connected systems — client storefront, moderator console, seller cabinet — covering 13 / 19 / 7 sections. In active development at umedmall.tj.`,
+    'design.s1.shot1': `Shipped UI — the moderation queue, filtered by status, straight from the production Figma file.`,
+    'design.s1.shot2': `A single application: documents, notes, and the approve action that creates the store record in the same step.`,
+    'design.s3.shot1': `The characteristics registry in the shipped admin — input types, units and groups in one moderator-owned table.`,
+    'design.s3.shot2': `Creating a characteristic: fixed input types and unit selection — the constraint that keeps free text out of the catalog.`,
+    'design.s4.shot1': `The shipped seller dashboard: key numbers first, actions second — a five-second health check.`,
+    'design.s4.shot2': `Analytics: revenue, orders and average check, with a low-stock list that turns a chart into a to-do.`,
+    'design.s5.shot1': `The shipped "Become a partner" page — the copy above, live in the design, as the entry point of the seller funnel.`,
+    'design.s6.title': `06 · The client storefront — where the taxonomy pays off`,
+    'design.s6.tag': `Client view`,
+    'design.s6.body': `Thirteen sections — home, search with live states, catalogue, product page, cart, checkout, favorites, profile, purchases, reviews — all consuming the moderator-owned taxonomy. Every filter a shopper touches works only because no seller was ever allowed to type an attribute by hand.`,
+    'design.s6.shot1': `The storefront home page.`,
+    'design.s6.shot2': `A product page: the attribute table a shopper compares by is the same schema moderators built and sellers filled.`,
+    'design.s6.shot3': `Checkout: address → SMS confirmation → payment method → success, designed as one uninterrupted flow.`,
+    'design.s7.title': `07 · Every surface ships in light, dark and mobile`,
+    'design.s7.body': `All three products were delivered with full dark-mode palettes and mobile layouts — not as an afterthought, but drawn screen by screen in the same Figma system, so engineering never had to invent a missing state.`,
+    'design.s7.shot1': `The storefront product page in dark mode.`,
+    'design.s7.shot2': `The seller dashboard rearranged for mobile — same five-second health check, one column.`,
+    'outcomes.strat.note': `The marketplace is in active development at <a href="http://umedmall.tj" style="color: white;">umedmall.tj</a> — currently onboarding partner stores ahead of public launch. Business metrics will be added once real traffic exists; I'd rather show none than invent them.`,
+  },
+  ru: {
+    'nav.back': `Все проекты`,
+    'hero.tag': `Кейс · 2025–2026`,
+    'hero.title': `UmedMall<br><span class="accent">Marketplace OS</span>`,
+    'hero.lede': `Дизайн клиентской части, модераторской панели и кабинета продавца мультикатегорийного маркетплейса — превращение трёх несвязанных ТЗ в одну целостную систему.`,
+    'hero.role.label': `Роль`, 'hero.role.value': `Единственный продакт-дизайнер (клиент, админка и продавцы)`,
+    'hero.duration.label': `Длительность`, 'hero.duration.value': `~5 месяцев`,
+    'hero.status.label': `Статус`, 'hero.status.value': `В разработке · подключение партнёров`,
+    'hero.company.label': `Компания`, 'hero.company.value': `Независимый / клиентский проект`,
+
+    'overview.label': `Обзор проекта`,
+    'overview.title': `Один маркетплейс, три ТЗ, написанные в разное время разными людьми.`,
+    'overview.p1': `UmedMall — мультикатегорийный маркетплейс для таджикского рынка, который заказчик сравнивал с OZON, Wildberries, Яндекс.Маркетом и Etsy. К моменту, когда я подключился, ТЗ на клиентскую часть уже существовало. Следом пришло ТЗ на модераторскую часть. ТЗ на кабинет продавца не существовало вовсе — «скинем позже».`,
+    'overview.p2': `Моя задача была в том, чтобы все три части не противоречили друг другу: <strong>одна таксономия, одна модель атрибутов, один источник правды</strong> — выраженные через три разных интерфейса, для трёх разных людей, с тремя разными задачами.`,
+    'overview.p3': `Я спроектировал все три части: клиентскую витрину, модераторскую панель и кабинет продавца — исследование, информационную архитектуру, моделирование контента, UI и передачу в Figma.`,
+    'overview.stat.client': `разделов клиентской части`,
+    'overview.stat.admin': `модераторских разделов в 7 группах навигации`,
+    'overview.stat.seller': `разделов кабинета продавца`,
+    'overview.stat.systems': `связанные системы, одна модель данных`,
+
+    'problem.label': `Проблема`,
+    'problem.title': `ТЗ описывало базу данных. Нужно было описать рабочий процесс.`,
+    'problem.business.title': `Бизнес-реальность`,
+    'problem.business.p': `Три ТЗ заказчика были написаны последовательно, разными людьми, без единого словаря терминов. Каталог на клиентской части и страница «Характеристики» у модератора называли одно и то же разными словами. Кабинета продавца не существовало в спецификациях вовсе, когда я начал проектировать модераторскую часть.`,
+    'problem.business.p2': `Три вещи были правдой одновременно:`,
+    'problem.business.li1': `ТЗ модераторской части почти буквально было списком таблиц базы данных: Заказы, Категории, Характеристики, Баннеры, Администраторы, Магазины.`,
+    'problem.business.li2': `Никто не спроектировал, как продавец на самом деле выставляет товар без того, чтобы поломать каталог для всех остальных.`,
+    'problem.business.li3': `«Сделай так, как сам считаешь нужным» — реальная формулировка задачи, карт-бланш, который легко недоделать.`,
+    'problem.user.title': `Исходное ТЗ, как оно есть`,
+    'problem.user.p': `Это весь сайдбар модератора в исходном виде — шесть плоских разделов, без группировки, без иерархии, без единиц измерения, типов ввода, логов, городов и брендов. Продавцы должны были вводить характеристики товара в свободном текстовом поле.`,
+    'problem.user.heard': `Исходный сайдбар, по ТЗ:`,
+    'problem.user.quote': `«Заказы. Категории. Характеристики. Баннеры. Администраторы. Магазины.»`,
+    'problem.user.cite': `— весь модераторский продукт в шести словах`,
+
+    'research.label': `Обоснование редизайна`,
+    'research.title': `Без интервью и юзабилити-лаборатории — поэтому я брал убедительность у конкурентов и стресс-тестировал модель данных.`,
+    'research.lead': `Бюджета и доступа для первичных пользовательских исследований не было. Поэтому каждое решение я обосновывал двумя вещами, которые мог контролировать: как эту задачу решают зрелые маркетплейсы, и насколько сильно наивная схема данных ломается на реальных данных.`,
+    'research.m1.tag': `Метод 01`, 'research.m1.title': `Аудит IA конкурентов`,
+    'research.m1.body': `Прошёлся по модераторским/админским паттернам OZON, Wildberries, Яндекс.Маркета и Etsy — не за визуалом, а за тем, как они группируют управление каталогом, обработку заказов и онбординг продавцов. Использовал проверенную структуру вместо изобретения новой из плоского ТЗ.`,
+    'research.m2.tag': `Метод 02`, 'research.m2.title': `Сверка трёх ТЗ между собой`,
+    'research.m2.body': `Читал ТЗ клиентской части, модераторской части и (когда оно появилось) партнёрской части построчно друг против друга, искал противоречия до того, как они стали бы тикетами разработчикам — например, бейдж «проверенный магазин», на который ссылалась клиентская часть, но который не был определён в модераторской.`,
+    'research.m3.tag': `Метод 03`, 'research.m3.title': `Стресс-тест на граничных случаях`,
+    'research.m3.body': `Перед проектированием страницы характеристик я специально проверял её на сложных случаях: температура в °C/°F/K, длина в см vs. м vs. дюймах, «8кг, белый, автомат» стиральной машины, введённое одной строкой свободного текста. Каждый случай что-то ломал — это и показало, что на самом деле должна предотвращать схема данных.`,
+    'research.insights.title': `Ключевые инсайты`,
+    'research.i1.tag': `Инсайт 01`, 'research.i1.title': `Буквальное ТЗ — это <em>схема данных</em>, а не IA`,
+    'research.i1.body': `Шесть плоских пунктов, скопированных из названий таблиц, прячут девятнадцать реальных разделов. Ни один модератор не должен видеть этот список без группировки.`,
+    'research.i2.tag': `Инсайт 02`, 'research.i2.title': `Свободный текст убивает фильтры ещё до того, как их построят`,
+    'research.i2.body': `«Автомат, 8кг, белый», введённое одной строкой одним продавцом, никогда не сможет фильтроваться, сравниваться или сортироваться с теми же характеристиками, введёнными по-другому другим продавцом.`,
+    'research.i3.tag': `Инсайт 03`, 'research.i3.title': `Одобрению нужна целостность состояния, а не просто поле статуса`,
+    'research.i3.body': `«Одобрено» и «магазин создан» должны быть одним и тем же фактом, а не двумя полями, которые могут разойтись. В ТЗ этого не было сказано — это требование диктовала сама модель данных.`,
+    'research.quote': `«А что, если перестать буквально оперировать ТЗ и спроектировать то, что продукту реально нужно?»`,
+    'research.quote.cite': `— вопрос, который я задавал себе на третьей неделе`,
+
+    'define.label': `Определение`,
+    'define.title': `ТЗ описывало три интерфейса. Реальная задача была одна — построить надёжный движок атрибутов под всеми тремя.`,
+    'define.problem.title': `Постановка проблемы`,
+    'define.problem.p1': `Клиентская витрина, модераторская панель и кабинет продавца — каждой части нужно было <strong>доверять одной таксономии и одним атрибутам товара</strong> — не давая при этом продавцам слишком много свободы вводить данные, которые ломают фильтрацию, сравнение или поиск на стороне клиента.`,
+    'define.problem.p2': `Решить это один раз, на уровне модели данных — и три совершенно разных интерфейса становится просто проектировать сверху.`,
+    'define.goals.title': `Цели`,
+    'define.goals.li1': `<strong>Объединить</strong> категории, характеристики и единицы измерения в одну схему, которой владеет модератор, а клиент и продавец просто пользуются.`,
+    'define.goals.li2': `<strong>Заменить</strong> буквальный плоский сайдбар навигацией, сгруппированной по тому, как модераторы реально приоритизируют работу, а не по названиям таблиц.`,
+    'define.goals.li3': `<strong>Закрыть каждый цикл одобрения</strong> обязательной, видимой причиной — а не просто сменой статуса, которую никто не может проверить.`,
+    'define.goals.li4': `<strong>Спроектировать кабинет продавца</strong> почти без ТЗ, отражая модель данных модератора, чтобы каждое объявление импортировалось чисто.`,
+    'define.metrics.title': `Что значило «готово»`,
+    'define.m1.title': `Никаких плоских списков`, 'define.m1.body': `19 модераторских разделов сворачиваются в <strong>7 групп по задачам</strong>, ни в одной не больше 4 верхнеуровневых пунктов.`,
+    'define.m2.title': `Ноль свободнотекстовых атрибутов`, 'define.m2.body': `Каждый атрибут товара — это <strong>enum, число с единицей измерения или булево значение</strong> — никогда открытая строка, в которую продавец может ввести что угодно.`,
+    'define.m3.title': `У каждого отказа есть причина`, 'define.m3.body': `Отказ магазину или товару требует <strong>обязательную причину, видимую другим модераторам</strong> — больше никаких «а почему отклонили?».`,
+
+    'process.label': `Процесс`,
+    'process.title': `Решения, которые никто не просил — те, которыми я горжусь больше всего.`,
+    'process.lead': `Ни одно из четырёх решений ниже не было в исходном ТЗ. Каждое появилось из вопроса «что будет, когда это сломается в масштабе», заданного до того, как это случилось.`,
+    'process.s1.title': `Двухуровневая система атрибутов: модератор определяет схему, продавец заполняет ограниченными значениями`,
+    'process.s1.body': `У продавца нет свободного текстового поля для «цвета» или «объёма». Модератор сначала один раз, глобально, определяет <strong>характеристику</strong> (тип ввода, единицу измерения, правила валидации). Продавец затем выбирает из этого фиксированного словаря при выставлении товара. Именно это решение делает возможной фильтрацию и сравнение тысяч объявлений от сотен независимых продавцов.`,
+    'process.s2.title': `Базовые единицы измерения и конверсия — даже для атрибутов, которые никто не просил сравнивать`,
+    'process.s2.body': `Каждая категория единиц измерения (длина, масса, объём, мощность, температура) хранит внутри одну <strong>базовую единицу</strong> — Кельвин для температуры, миллиметры для длины — и конвертирует при отображении. Продавец может ввести 25°C или 77°F — система в обоих случаях сохранит 298.15K. Без этого фильтр «холодильники шириной до 90см» молча не сработает для каждого продавца, который ввёл «0.9м».`,
+    'process.s3.title': `Свёртка 19 плоских пунктов в 7 названных групп с иконками — и демонстрация альтернатив`,
+    'process.s3.body': `Я представил три реальные альтернативы — 6 групп (максимально компактно), 7 групп (баланс) и 9 групп (максимально явно) — с явно названным трейд-оффом: меньше групп для небольшой команды модераторов, которые совмещают роли, больше групп — если обязанности разделены по ролям. Заказчик выбрал 7 и узнал каждое название группы, потому что оно отражало их собственный словарь.`,
+    'process.s4.title': `Поймал баг целостности состояния до релиза: «одобрено» должно равняться «магазин создан»`,
+    'process.s4.body': `Исходное ТЗ позволяло отмечать заявку магазина как «Одобрено» сменой статуса отдельно от фактического создания записи магазина. Я указал, что это создаёт невозможное состояние — одобренную заявку без магазина за ней — и изменил флоу так, чтобы одобрение <em>было</em> созданием магазина. Также заменил «удаление» на «архивирование» заявок, чтобы история отказов никогда не терялась.`,
+
+    'design.label': `Дизайн`,
+    'design.title': `Три поверхности, одна система, экран за экраном.`,
+    'design.lead': `Одна таксономия и один движок атрибутов питают клиентскую витрину, модераторскую панель и кабинет продавца — ниже они отмечены цветом как <span class="badge client">Клиент</span>, <span class="badge brand">Админка</span> и <span class="badge seller">Продавец</span>, чтобы было понятно, какой поверхности принадлежит экран.`,
+
+    'design.s1.title': `01 · Заявки магазинов — проверка без потери истории`,
+    'design.s1.tag': `Вид админки`,
+    'design.s1.body': `Одна очередь, фильтруемая по статусу, вместо трёх отдельных страниц для новых/одобренных/отклонённых. Одобрение создаёт запись магазина тем же действием — не отдельный шаг, который можно забыть. Отказ требует причину, которая сохраняется и видна всем остальным модераторам.`,
+    'design.s1.nav.g1': `Заказы и клиенты`, 'design.s1.nav.orders': `🧾 Заказы`,
+    'design.s1.nav.g2': `Заявки`, 'design.s1.nav.apps': `📨 Заявки`,
+    'design.s1.nav.g3': `Каталог`, 'design.s1.nav.cats': `🗃 Категории`,
+    'design.s1.nav.g4': `Атрибуты`, 'design.s1.nav.attrs': `⚙️ Атрибуты`,
+    'design.s1.search': `🔍 Поиск по магазину, владельцу, ИНН...`,
+    'design.s1.h': `Новые заявки`, 'design.s1.sub': `3 на проверке`,
+    'design.s1.th1': `Магазин`, 'design.s1.th2': `Владелец`, 'design.s1.th3': `Город`, 'design.s1.th4': `Статус`, 'design.s1.th5': `Действие`,
+    'design.s1.stnew': `Новая`, 'design.s1.stok': `Одобрена`, 'design.s1.strej': `Отклонена`,
+    'design.s1.note': `↳ Причина отказа для ElectroPro: «ИНН-документ нечитаем — запрошена повторная загрузка». Видна всем модераторам.`,
+
+    'design.s2.title': `02 · От шести названий таблиц к семи рабочим процессам`,
+    'design.s2.body': `Сайдбар по исходному ТЗ — это список существительных. Сайдбар, который пошёл в релиз — это список задач: каждая группа названа так, как сама команда заказчика уже называла свою работу, поэтому согласование прошло быстро.`,
+    'design.s2.before.tag': `По ТЗ · 6 плоских пунктов`,
+    'design.s2.before.body': `Заказы<br>Категории<br>Характеристики<br>Баннеры<br>Администраторы<br>Магазины`,
+    'design.s2.after.tag': `В релизе · 7 названных групп`,
+    'design.s2.after.body': `🧾 <strong>Заказы и клиенты</strong><br>📨 <strong>Заявки</strong><br>🗃 <strong>Категории</strong><br>⚙️ <strong>Атрибуты</strong><br>🏬 <strong>Партнёры</strong><br>📢 <strong>Маркетинг</strong><br>🛠 <strong>Система</strong>`,
+    'design.s2.caption': `↑ Девятнадцать реальных разделов живут внутри этих семи групп, не глубже одного клика, не больше четырёх пунктов в каждой.`,
+
+    'design.s3.title': `03 · Конструктор атрибутов — движок, на котором работает весь каталог`,
+    'design.s3.tag': `Вид админки`,
+    'design.s3.body': `Модераторы собирают характеристики из фиксированных типов ввода (enum, число+единица, булево) — никогда свободным текстом. Строка «Кельвин (base)» — неприметная деталь, которую никто не замечает, пока не перестают работать фильтры: каждая категория единиц хранит одну базовую единицу и конвертирует всё остальное в неё.`,
+    'design.s3.bc1': `Атрибуты`, 'design.s3.bc2': `Группы`, 'design.s3.bc3': `Общая характеристика`,
+    'design.s3.th1': `Характеристика`, 'design.s3.th2': `Тип ввода`, 'design.s3.th3': `Единица (база)`, 'design.s3.th4': `Обязательно`,
+    'design.s3.r1': `Цвет`, 'design.s3.r2': `Вес`, 'design.s3.r2u': `г (база)`,
+    'design.s3.r3': `Ширина`, 'design.s3.r3u': `мм (база)`,
+    'design.s3.r4': `Диапазон температур`, 'design.s3.r4u': `K — Кельвин (база)`,
+    'design.s3.r5': `Поддержка умного дома`,
+    'design.s3.note': `↳ Продавец вводит 25°C или 77°F — оба значения сохраняются как 298.15K. Фильтр покупателя «до 30°C» работает независимо от того, в какой единице ввёл значение продавец.`,
+
+    'design.s4.title': `04 · Дашборд продавца — кабинет, спроектированный почти без ТЗ`,
+    'design.s4.tag': `Вид продавца`,
+    'design.s4.body': `Когда я начал, брифа на эту часть не существовало вовсе — только «скинем позже». Я отразил модель данных модератора, чтобы каждый товар продавца импортировался чисто, и дал дашборду ту же задачу, что и у дашборда модератора: пятисекундная проверка состояния перед всем остальным.`,
+    'design.s4.nav1': `▦ Дашборд`, 'design.s4.nav2': `🛍 Товары`, 'design.s4.nav3': `🧾 Заказы`, 'design.s4.nav4': `📊 Аналитика`, 'design.s4.nav5': `⭐ Отзывы`, 'design.s4.nav6': `⚙️ Настройки магазина`,
+    'design.s4.h': `Доброе утро, SportStore`, 'design.s4.sub': `Сегодня, 15 января 2026`,
+    'design.s4.m1.lbl': `Заказов сегодня`, 'design.s4.m2.lbl': `Активных товаров`, 'design.s4.m3.lbl': `Рейтинг`, 'design.s4.m4.lbl': `Отзывов на проверке`,
+
+    'design.s5.title': `05 · Регистрация продавца — текст, который выжил после «мне ни один не нравится»`,
+    'design.s5.tag': `Вид продавца`,
+    'design.s5.body': `Заказчик отклонил все «безопасные» слоганы маркетплейса, которые я предложил первыми. Бриф, который в итоге сработал: коротко, уверенно, без маркетинговой воды — и должно хорошо читаться крупным шрифтом фоном на экране регистрации продавца.`,
+    'design.s5.headline': `Продавайте проще.<br>Ваш магазин. Наш маркетплейс.`,
+    'design.s5.sub': `Откройте свой магазин на UmedMall и начните продавать без лишних сложностей. Мы приведём покупателей.`,
+    'design.s5.cta': `Начать продажи`,
+
+    'validation.label': `Сверка двух правд`,
+    'validation.title': `Юзабилити-лаборатории не было — поэтому каждый экран проверялся на словах самого заказчика.`,
+    'validation.lead': `Без пользователей для тестирования настоящим циклом валидации стало показывать заказчику две честные версии — то, что я считал правильным, и то, что они сами написали — и открыто их объединять, а не молча выбирать победителя.`,
+    'validation.l1.tag': `Цикл 01`, 'validation.l1.title': `Страница категорий`,
+    'validation.l1.body': `Моя версия — иерархическое дерево с переходами по хлебным крошкам. Буквальное ТЗ заказчика хотело плоский список A–Z для быстрого сканирования. В релизе — оба варианта: плоский список для модераторов, которым нужно всё просмотреть, с переходом по хлебным крошкам в подкатегории и виды.`,
+    'validation.l2.tag': `Цикл 02`, 'validation.l2.title': `Страница баннеров`,
+    'validation.l2.body': `Моя версия делала упор на простоту и переиспользование между типами баннеров. ТЗ заказчика требовало конкретные поля для каждого баннера (название обязательно, URL опционально, загрузка изображения без сжатия). Финальная версия сохранила их точный список полей с более простой моделью взаимодействия внутри.`,
+    'validation.l3.tag': `Цикл 03`, 'validation.l3.title': `Группировка сайдбара`,
+    'validation.l3.body': `Вместо утверждения «это правильно», я представил версии с 6, 7 и 9 группами рядом друг с другом, явно назвав трейд-офф, и дал заказчику выбрать с полным контекстом — а не просто рекомендацию принять или отклонить.`,
+    'validation.quote': `«Каждое объединённое решение проверялось одним правилом: узнает ли заказчик это в своих собственных словах?»`,
+    'validation.quote.cite': `— моё рабочее правило на протяжении всего проекта`,
+
+    'outcomes.label': `Что в релизе`,
+    'outcomes.title': `Дизайн сдан: три связанных продукта на одной таксономии.`,
+    'outcomes.o1.tag': `НАВИГАЦИЯ`, 'outcomes.o1.body': `модераторских разделов, свёрнутых из 6 плоских пунктов буквального ТЗ в 7 названных групп по задачам — не глубже одного клика.`,
+    'outcomes.o2.tag': `ЦЕЛОСТНОСТЬ ДАННЫХ`, 'outcomes.o2.body': `свободнотекстовых атрибутов товара в финальной схеме — каждое значение это enum, число с единицей измерения или булево значение.`,
+    'outcomes.o3.tag': `ПОВЕРХНОСТИ`, 'outcomes.o3.body': `интерфейса — клиент, модератор, продавец — использующих один движок атрибутов и таксономии вместо трёх независимых моделей данных.`,
+    'outcomes.strat.title': `Стратегический результат`,
+    'outcomes.strat.body': `Покупатель может фильтровать товары стабильно, независимо от того, какой из сотен продавцов выставил товар. Продавец заполняет предсказуемые, ограниченные формы вместо того, чтобы гадать, что примет модератор. Модератор работает с навигацией, которая отражает, как он реально приоритизирует работу — а не то, как случайно назвали таблицы в базе данных.`,
+
+    'lessons.label': `Выводы`,
+    'lessons.title': `Что я забираю с собой в следующий проект.`,
+    'lessons.worked.title': `Что сработало`,
+    'lessons.w1': `<strong>Спроектировать движок атрибутов раньше навигации.</strong> Когда модель данных была устойчивой, группировка сайдбара сложилась почти сама.`,
+    'lessons.w2': `<strong>Показывать трейд-оффы явно, а не только финальный ответ.</strong> Представление вариантов из 6, 7 и 9 групп сайдбара ускорило согласование с заказчиком, потому что они ощущали свою причастность к решению.`,
+    'lessons.w3': `<strong>Считать «чего не хватает в ТЗ» частью результата.</strong> Единицы измерения, типы ввода, логи, города и бренды никто не просил — я добавил их, потому что продукту они были нужны, а не потому, что это позволял скоуп.`,
+    'lessons.diff.title': `Что бы сделал иначе`,
+    'lessons.d1': `<strong>Получить все три ТЗ в первый день.</strong> Получение требований клиента, модератора и продавца по очереди означало пересмотр решений по IA каждый раз, когда приходил новый документ.`,
+    'lessons.d2': `<strong>Зафиксировать таксономию атрибутов/единиц до того, как трогать любой экран.</strong> Я сначала спроектировал отдельные страницы и потом пришлось переделывать модель данных, когда всплыли граничные случаи вроде температуры.`,
+    'lessons.d3': `<strong>Написать глоссарий терминов раньше.</strong> «Заявки» vs. «Заказы» vs. «Магазины» переименовывались и перегруппировывались неделями, прежде чем названия устоялись — глоссарий на первой неделе сэкономил бы это время.`,
+
+    'cta.title': `Хочется увидеть, как три части сходятся вместе?`,
+    'cta.body': `Посмотрите полные файлы Figma — клиентская витрина, модераторская панель и кабинет продавца — все построены на одной таксономии.`,
+    'cta.client': `→ Клиентская витрина (Figma)`,
+    'cta.admin': `→ Модераторская панель (Figma)`,
+    'cta.seller': `→ Кабинет продавца (Figma)`,
+
+    'footer.role': `Продакт-дизайнер`,
+    'footer.disclaimer': `Кейс · UmedMall · 2025–2026. Три связанные системы — клиентская витрина, модераторская панель, кабинет продавца — 13 / 19 / 7 разделов. В активной разработке на umedmall.tj.`,
+    'design.s1.shot1': `Финальный UI — очередь модерации с фильтром по статусу, напрямую из рабочего Figma-файла.`,
+    'design.s1.shot2': `Карточка заявки: документы, заметки и кнопка одобрения, которая создаёт запись магазина тем же действием.`,
+    'design.s3.shot1': `Реестр характеристик в финальной админке — типы ввода, единицы и группы в одной таблице, принадлежащей модератору.`,
+    'design.s3.shot2': `Создание характеристики: фиксированные типы ввода и выбор единицы — то ограничение, что не пускает свободный текст в каталог.`,
+    'design.s4.shot1': `Финальный дашборд продавца: сначала ключевые цифры, потом действия — проверка здоровья магазина за пять секунд.`,
+    'design.s4.shot2': `Аналитика: доход, заказы и средний чек, плюс список «осталось мало», который превращает график в список дел.`,
+    'design.s5.shot1': `Финальная страница «Стать партнёром» — тот самый текст выше, вживую, как вход в воронку продавца.`,
+    'design.s6.title': `06 · Клиентская витрина — где таксономия окупается`,
+    'design.s6.tag': `Клиент`,
+    'design.s6.body': `Тринадцать разделов — главная, поиск с живыми состояниями, каталог, карточка товара, корзина, оформление заказа, избранное, профиль, покупки, отзывы — все работают на таксономии, которой владеет модератор. Каждый фильтр, который трогает покупатель, работает лишь потому, что ни одному продавцу не дали ввести атрибут руками.`,
+    'design.s6.shot1': `Главная страница витрины.`,
+    'design.s6.shot2': `Карточка товара: таблица атрибутов, по которой сравнивает покупатель, — та же схема, что построили модераторы и заполнили продавцы.`,
+    'design.s6.shot3': `Оформление заказа: адрес → SMS-подтверждение → способ оплаты → успех, спроектировано как один непрерывный поток.`,
+    'design.s7.title': `07 · Каждая поверхность — в светлой, тёмной и мобильной версии`,
+    'design.s7.body': `Все три продукта сданы с полными палитрами тёмной темы и мобильными макетами — не как довесок, а отрисованные экран за экраном в той же Figma-системе, чтобы разработке не пришлось выдумывать недостающие состояния.`,
+    'design.s7.shot1': `Карточка товара витрины в тёмной теме.`,
+    'design.s7.shot2': `Дашборд продавца, пересобранный под мобильный — та же пятисекундная проверка, одна колонка.`,
+    'outcomes.strat.note': `Маркетплейс в активной разработке на <a href="http://umedmall.tj" style="color: white;">umedmall.tj</a> — сейчас идёт подключение партнёрских магазинов перед публичным запуском. Бизнес-метрики появятся, когда появится реальный трафик; лучше не показать ничего, чем выдумать.`,
+  }
+};
+
+let LANG = 'en';
+function setLang(lang) {
+  LANG = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('langEn').classList.toggle('active', lang === 'en');
+  document.getElementById('langRu').classList.toggle('active', lang === 'ru');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (I18N[lang] && I18N[lang][key]) el.textContent = I18N[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (I18N[lang] && I18N[lang][key]) el.innerHTML = I18N[lang][key];
+  });
+  try { localStorage.setItem('umedmall_lang', lang); } catch(e) {}
+}
+try {
+  const saved = localStorage.getItem('umedmall_lang');
+  if (saved === 'ru' || saved === 'en') setLang(saved);
+  else if (navigator.language && navigator.language.startsWith('ru')) setLang('ru');
+} catch(e) {}
+</script>
+
+</body>
+</html>

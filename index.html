@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orion Muhamadiev — Product Designer · fintech, marketplaces, B2B systems</title>
+<meta name="description" content="Product / UX-UI designer, 7+ years. Complex digital products: fintech, marketplaces, admin panels, internal B2B platforms and mobile apps. Dushanbe, Tajikistan.">
+<meta property="og:title" content="Orion Muhamadiev — Product Designer">
+<meta property="og:description" content="7+ years designing fintech, marketplaces and internal B2B systems. Selected case studies.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand: #e53935;
+  --brand-hover: #c62828;
+
+  --bg: #ffffff;
+  --bg-surface: #f7f8f9;
+  --bg-grey: #f0f2f7;
+  --bg-dark: #0a0a0a;
+
+  --text: #000000;
+  --text-secondary: #363d50;
+  --text-muted: #8b8d96;
+  --text-on-dark: #ffffff;
+  --text-on-dark-secondary: #a3a3a3;
+
+  --border: #eceef1;
+  --border-dark: #1f1f1f;
+
+  --c-umedmall: #e53935;
+  --c-kk: #0d9488;
+  --c-sms: #0046fd;
+  --c-payvand: #1e3a8a;
+
+  --radius: 16px;
+  --radius-pill: 999px;
+  --maxw: 1160px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { letter-spacing: -0.03em; line-height: 1.12; margin: 0 0 20px; font-weight: 800; }
+h1 { font-size: clamp(42px, 7vw, 82px); }
+h2 { font-size: clamp(28px, 4vw, 42px); }
+h3 { font-size: clamp(21px, 2.4vw, 27px); }
+p { margin: 0 0 18px; color: var(--text-secondary); }
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+section { padding: 96px 0; }
+@media (max-width: 720px) { section { padding: 64px 0; } .container { padding: 0 20px; } }
+
+.section-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--brand); margin-bottom: 22px; display: inline-flex; align-items: center; gap: 12px;
+}
+.section-label::before { content: ''; width: 24px; height: 1px; background: var(--brand); }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; gap: 20px; }
+.nav .brand { font-weight: 800; letter-spacing: -0.02em; font-size: 16px; margin-right: auto; }
+.nav .links { display: flex; align-items: center; gap: 22px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+.nav .links a:hover { color: var(--brand); }
+.nav .cv { background: var(--text); color: #fff; padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; }
+.nav .cv:hover { background: var(--brand); color: #fff; }
+.lang { display: inline-flex; border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 3px; }
+.lang button {
+  background: transparent; border: 0; color: var(--text-muted); padding: 5px 11px;
+  border-radius: var(--radius-pill); font-weight: 700; font-size: 12px; cursor: pointer;
+  font-family: inherit; letter-spacing: 0.04em; transition: 0.15s;
+}
+.lang button.active { background: var(--brand); color: #fff; }
+@media (max-width: 860px) { .nav .links a[data-nav] { display: none; } .nav-inner { padding: 12px 20px; } }
+
+/* HERO */
+.hero { padding: 168px 0 84px; }
+.status-pill {
+  display: inline-flex; align-items: center; gap: 9px; background: var(--bg-grey);
+  padding: 7px 16px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600;
+  color: var(--text-secondary); margin-bottom: 30px;
+}
+.status-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: #00af66; box-shadow: 0 0 0 4px rgba(0,175,102,.16); }
+.hero h1 .accent { color: var(--brand); }
+.hero .lede { font-size: clamp(19px, 2.2vw, 23px); max-width: 720px; color: var(--text-secondary); margin-top: 26px; }
+.hero-facts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+.fact { border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 9px 18px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+.fact strong { color: var(--text); }
+
+.companies { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; gap: 14px 34px; }
+.companies .cap { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); }
+.companies .co { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+.companies .co span { font-weight: 500; color: var(--text-muted); font-size: 14px; }
+
+/* WORK */
+.work-grid { display: grid; gap: 28px; margin-top: 52px; }
+.case {
+  display: grid; grid-template-columns: 1.15fr 1fr; gap: 0;
+  border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
+  transition: transform .2s, box-shadow .2s, border-color .2s; background: var(--bg);
+}
+.case:hover { transform: translateY(-3px); box-shadow: 0 18px 48px rgba(10,10,10,.09); border-color: #dfe2e8; }
+.case .body { padding: 40px; display: flex; flex-direction: column; }
+.case .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent, var(--brand)); margin-bottom: 14px; }
+.case h3 { margin-bottom: 12px; }
+.case p { font-size: 16px; margin-bottom: 22px; }
+.case .metrics { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+.case .metric { background: var(--bg-surface); border-radius: 10px; padding: 9px 14px; font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+.case .metric b { color: var(--text); }
+.case .cta { margin-top: 24px; font-weight: 700; font-size: 15px; color: var(--accent, var(--brand)); display: inline-flex; align-items: center; gap: 8px; }
+.case:hover .cta span.arr { transform: translateX(4px); }
+.case .cta span.arr { transition: transform .2s; display: inline-block; }
+.case .visual {
+  background: var(--accent, var(--brand)); position: relative; min-height: 280px;
+  display: flex; align-items: center; justify-content: center; padding: 36px; overflow: hidden;
+}
+.case .visual::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(120% 90% at 80% 10%, rgba(255,255,255,.28), transparent 60%);
+}
+.case .visual .mark { position: relative; z-index: 1; color: #fff; text-align: center; }
+.case .visual .mark .big { font-size: clamp(38px, 5vw, 58px); font-weight: 800; letter-spacing: -0.045em; line-height: 1; }
+.case .visual .mark .cap { font-size: 13px; font-weight: 600; opacity: .82; margin-top: 12px; letter-spacing: .01em; }
+.case .visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; z-index: 2; }
+@media (max-width: 860px) {
+  .case { grid-template-columns: 1fr; }
+  .case .visual { min-height: 180px; order: -1; }
+  .case .body { padding: 28px; }
+}
+
+/* EXPERIENCE */
+.exp { display: grid; grid-template-columns: 200px 1fr; gap: 28px; padding: 30px 0; border-top: 1px solid var(--border); }
+.exp:last-of-type { border-bottom: 1px solid var(--border); }
+.exp .when { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--text-muted); font-weight: 600; padding-top: 4px; }
+.exp h4 { margin: 0 0 6px; font-size: 19px; }
+.exp .co { font-size: 14px; font-weight: 700; color: var(--brand); letter-spacing: .02em; margin-bottom: 10px; }
+.exp p { font-size: 16px; margin: 0; }
+.exp ul { margin: 10px 0 0; padding-left: 18px; color: var(--text-secondary); font-size: 15px; }
+.exp li { margin-bottom: 4px; }
+@media (max-width: 720px) { .exp { grid-template-columns: 1fr; gap: 8px; } }
+
+/* CONTACT */
+.contact { background: var(--bg-dark); color: var(--text-on-dark); }
+.contact h2 { color: #fff; }
+.contact p { color: var(--text-on-dark-secondary); font-size: 19px; max-width: 640px; }
+.contact .links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+.contact .btn {
+  background: #fff; color: var(--bg-dark); font-weight: 700; font-size: 15px;
+  padding: 14px 26px; border-radius: var(--radius-pill); transition: .15s;
+}
+.contact .btn:hover { background: var(--brand); color: #fff; }
+.contact .btn.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.25); }
+.contact .btn.ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.5); }
+
+footer { background: var(--bg-dark); color: var(--text-on-dark-secondary); padding: 0 0 44px; font-size: 13px; }
+footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">Orion Muhamadiev</a>
+    <div class="links">
+      <a data-nav href="#work" data-i18n="nav.work">Work</a>
+      <a data-nav href="#about" data-i18n="nav.about">About</a>
+      <a data-nav href="#contact" data-i18n="nav.contact">Contact</a>
+      <a class="cv" href="cv.pdf" data-i18n="nav.cv">CV</a>
+      <div class="lang">
+        <button id="langEn" class="active" onclick="setLang('en')">EN</button>
+        <button id="langRu" onclick="setLang('ru')">RU</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="status-pill"><span class="dot"></span><span data-i18n="hero.status">Open to product design roles · Dushanbe / remote</span></div>
+    <h1 data-i18n-html="hero.title">Product designer for<br>systems that <span class="accent">get complicated.</span></h1>
+    <p class="lede" data-i18n="hero.lede">Seven years turning tangled business logic into interfaces people can actually work in — fintech, marketplaces, admin consoles and mobile banking used by over a million people.</p>
+
+    <div class="hero-facts">
+      <div class="fact"><strong>7+</strong> <span data-i18n="hero.f1">years in product design</span></div>
+      <div class="fact"><strong>1.7M+</strong> <span data-i18n="hero.f2">users on shipped products</span></div>
+      <div class="fact" data-i18n="hero.f3">Fintech · Marketplaces · B2B systems</div>
+      <div class="fact" data-i18n="hero.f4">RU native · EN B1 · TJ</div>
+    </div>
+
+    <div class="companies">
+      <span class="cap" data-i18n="hero.co.cap">Worked at</span>
+      <span class="co">Alif Bank <span>2024 — now</span></span>
+      <span class="co">Dushanbe City Bank <span>2021 — 2022</span></span>
+      <span class="co">Hilton Dushanbe <span>2018 — 2020</span></span>
+    </div>
+  </div>
+</header>
+
+<!-- WORK -->
+<section id="work">
+  <div class="container">
+    <div class="section-label" data-i18n="work.label">Selected work</div>
+    <h2 data-i18n="work.title">Four systems, each with a decision I'd defend in a room.</h2>
+    <p style="max-width: 720px; font-size: 19px;" data-i18n="work.lede">Every case study below covers the same ground: what the business needed, what I found, what I chose, and what I'd do differently. All bilingual — EN and RU.</p>
+
+    <div class="work-grid">
+
+      <a class="case" href="cases/umedmall.html" style="--accent: var(--c-umedmall);">
+        <div class="body">
+          <div class="kicker" data-i18n="case.umedmall.kicker">Marketplace · Client, Admin & Seller</div>
+          <h3>UmedMall Marketplace OS</h3>
+          <p data-i18n="case.umedmall.body">Three specs written months apart by different people, for three interfaces that had to agree on one taxonomy. I designed the storefront, the moderator console and the seller cabinet — and the attribute engine underneath all three.</p>
+          <div class="metrics">
+            <div class="metric"><b>3 → 1</b> <span data-i18n="case.umedmall.m1">surfaces, one data model</span></div>
+            <div class="metric"><b>0</b> <span data-i18n="case.umedmall.m2">free-text attributes</span></div>
+            <div class="metric"><b>19 → 7</b> <span data-i18n="case.umedmall.m3">nav groups</span></div>
+          </div>
+          <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
+        </div>
+        <div class="visual"><div class="mark"><div class="big">UmedMall</div><div class="cap" data-i18n="case.umedmall.cap">2025–2026 · in development</div></div></div>
+      </a>
+
+      <a class="case" href="cases/kk-service.html" style="--accent: var(--c-kk);">
+        <div class="body">
+          <div class="kicker" data-i18n="case.kk.kicker">Internal B2B · Alif Bank</div>
+          <h3>KK Service — AI + Human Credit Desk</h3>
+          <p data-i18n="case.kk.body">Loan applications arrived from ten disconnected systems. An AI engine could clear most of them; the rest needed a human, fast, with full context. One queue where automated and human-reviewed cases are distinct at a glance — and risk flags can never be silently auto-approved.</p>
+          <div class="metrics">
+            <div class="metric"><b>10 → 1</b> <span data-i18n="case.kk.m1">intake channels unified</span></div>
+            <div class="metric"><b>13</b> <span data-i18n="case.kk.m2">Kanban statuses</span></div>
+            <div class="metric"><b>4</b> <span data-i18n="case.kk.m3">employee roles mapped</span></div>
+          </div>
+          <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
+        </div>
+        <div class="visual"><div class="mark"><div class="big">KK Service</div><div class="cap" data-i18n="case.kk.cap">2025–2026 · completed & live</div></div></div>
+      </a>
+
+      <a class="case" href="cases/sms-gate.html" style="--accent: var(--c-sms);">
+        <div class="body">
+          <div class="kicker" data-i18n="case.sms.kicker">Platform redesign · Alif Tech</div>
+          <h3>SMS-Gate Redesign 3.0</h3>
+          <p data-i18n="case.sms.body">The largest SMS platform in Tajikistan, built when SMS was the only channel that mattered. I turned it into multichannel communication infrastructure — Email and Telegram now, WhatsApp and Push reserved at the token level — ready to sell outside Tajikistan.</p>
+          <div class="metrics">
+            <div class="metric"><b>3 → 5</b> <span data-i18n="case.sms.m1">channels, architecture-ready</span></div>
+            <div class="metric"><b>2.4M+</b> <span data-i18n="case.sms.m2">messages / month</span></div>
+            <div class="metric"><b>~110</b> <span data-i18n="case.sms.m3">Figma frames shipped</span></div>
+          </div>
+          <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
+        </div>
+        <div class="visual"><div class="mark"><div class="big">SMS-Gate</div><div class="cap" data-i18n="case.sms.cap">2026 · in development</div></div></div>
+      </a>
+
+      <a class="case" href="cases/payvand.html" style="--accent: var(--c-payvand);">
+        <div class="body">
+          <div class="kicker" data-i18n="case.payvand.kicker">Mobile · concept, 2022</div>
+          <h3>Payvand — Payments & Transfer</h3>
+          <p data-i18n="case.payvand.body">The brief asked for one app. Research said there were two problems: everyday domestic banking for registered users, and frictionless remittances from Russia for people who won't register at all. Two apps, one design system.</p>
+          <div class="metrics">
+            <div class="metric"><b>2</b> <span data-i18n="case.payvand.m1">apps, one system</span></div>
+            <div class="metric"><b>iOS + Android</b></div>
+            <div class="metric" data-i18n="case.payvand.m3">Marked as concept</div>
+          </div>
+          <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
+        </div>
+        <div class="visual"><div class="mark"><div class="big">Payvand</div><div class="cap" data-i18n="case.payvand.cap">2022 · concept</div></div></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--bg-surface);">
+  <div class="container">
+    <div class="section-label" data-i18n="about.label">About</div>
+    <h2 data-i18n="about.title">I design the part of the product nobody screenshots.</h2>
+    <p style="max-width: 760px; font-size: 19px;" data-i18n="about.lede">Attribute models, role permissions, moderation queues, state machines — the layer that decides whether the pretty screen on top actually works at scale. I like specs that contradict each other, because reconciling them is the job.</p>
+
+    <div style="margin-top: 56px;">
+      <div class="exp">
+        <div class="when">2024 — now</div>
+        <div>
+          <h4 data-i18n="exp.alif.role">Product Designer</h4>
+          <div class="co">Alif Bank</div>
+          <p data-i18n="exp.alif.body">Seven large-scale products and 20+ independent functional modules across fintech, marketplaces, admin systems and warehouse systems.</p>
+          <ul>
+            <li data-i18n="exp.alif.l1">Alif Mobi — mobile banking app</li>
+            <li data-i18n="exp.alif.l2">KK Service — internal credit decision platform</li>
+            <li data-i18n="exp.alif.l3">UmedMall — marketplace moderator console</li>
+            <li data-i18n="exp.alif.l4">Qline — online queue &amp; booking system</li>
+            <li data-i18n="exp.alif.l5">Teams &amp; Managers — internal operations platforms</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="when">2021 — 2022</div>
+        <div>
+          <h4 data-i18n="exp.dc.role">UX/UI Designer</h4>
+          <div class="co">Dushanbe City Bank</div>
+          <p data-i18n="exp.dc.body">Designed DC Next end to end — the mobile banking and city services app that replaced the legacy DC Wallet and became the bank's main digital product.</p>
+          <ul>
+            <li data-i18n="exp.dc.l1">~1.7M registered users, ~810K monthly active</li>
+            <li data-i18n="exp.dc.l2">300+ services: utilities, transport, Express Pay terminals</li>
+            <li data-i18n="exp.dc.l3">QR and NFC transport payments replacing cash</li>
+            <li data-i18n="exp.dc.l4">International transfers to 50+ countries</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp">
+        <div class="when">2018 — 2020</div>
+        <div>
+          <h4 data-i18n="exp.hilton.role">Brand Designer</h4>
+          <div class="co">Hilton Dushanbe</div>
+          <p data-i18n="exp.hilton.body">Branding and marketing assets; rebranding of the Inasia restaurant.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 42px; font-size: 15px; color: var(--text-muted); max-width: 760px;" data-i18n="about.edu">Education: Saint Petersburg Electrotechnical University "LETI" — Applied Mathematics &amp; Computer Science (2015–2017). Russian-Tajik Slavic University — Applied Informatics in Economics (2011–2015).</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-label" data-i18n="contact.label">Contact</div>
+    <h2 data-i18n="contact.title">Have a system that's outgrown its first design?</h2>
+    <p data-i18n="contact.body">I'm open to product design roles and selected freelance work. The fastest way to reach me is email or Telegram.</p>
+    <div class="links">
+      <a class="btn" href="mailto:nabijon.muhamadiev@alif.tj">nabijon.muhamadiev@alif.tj</a>
+      <a class="btn ghost" href="#" data-i18n="contact.tg">Telegram — add link</a>
+      <a class="btn ghost" href="#" data-i18n="contact.li">LinkedIn — add link</a>
+      <a class="btn ghost" href="cv.pdf" data-i18n="contact.cv">Download CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="inner">
+      <div>© 2026 Orion Muhamadiev · Dushanbe, Tajikistan</div>
+      <div data-i18n="footer.note">Built as a static site — no tracking, no cookies.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  en: {
+    'nav.work': `Work`, 'nav.about': `About`, 'nav.contact': `Contact`, 'nav.cv': `CV`,
+
+    'hero.status': `Open to product design roles · Dushanbe / remote`,
+    'hero.title': `Product designer for<br>systems that <span class="accent">get complicated.</span>`,
+    'hero.lede': `Seven years turning tangled business logic into interfaces people can actually work in — fintech, marketplaces, admin consoles and mobile banking used by over a million people.`,
+    'hero.f1': `years in product design`,
+    'hero.f2': `users on shipped products`,
+    'hero.f3': `Fintech · Marketplaces · B2B systems`,
+    'hero.f4': `RU native · EN B1 · TJ`,
+    'hero.co.cap': `Worked at`,
+
+    'work.label': `Selected work`,
+    'work.title': `Four systems, each with a decision I'd defend in a room.`,
+    'work.lede': `Every case study below covers the same ground: what the business needed, what I found, what I chose, and what I'd do differently. All bilingual — EN and RU.`,
+    'case.read': `Read the case study`,
+
+    'case.umedmall.kicker': `Marketplace · Client, Admin & Seller`,
+    'case.umedmall.body': `Three specs written months apart by different people, for three interfaces that had to agree on one taxonomy. I designed the storefront, the moderator console and the seller cabinet — and the attribute engine underneath all three.`,
+    'case.umedmall.m1': `surfaces, one data model`, 'case.umedmall.m2': `free-text attributes`, 'case.umedmall.m3': `nav groups`,
+    'case.umedmall.cap': `2025–2026 · in development`,
+
+    'case.kk.kicker': `Internal B2B · Alif Bank`,
+    'case.kk.body': `Loan applications arrived from ten disconnected systems. An AI engine could clear most of them; the rest needed a human, fast, with full context. One queue where automated and human-reviewed cases are distinct at a glance — and risk flags can never be silently auto-approved.`,
+    'case.kk.m1': `intake channels unified`, 'case.kk.m2': `Kanban statuses`, 'case.kk.m3': `employee roles mapped`,
+    'case.kk.cap': `2025–2026 · completed & live`,
+
+    'case.sms.kicker': `Platform redesign · Alif Tech`,
+    'case.sms.body': `The largest SMS platform in Tajikistan, built when SMS was the only channel that mattered. I turned it into multichannel communication infrastructure — Email and Telegram now, WhatsApp and Push reserved at the token level — ready to sell outside Tajikistan.`,
+    'case.sms.m1': `channels, architecture-ready`, 'case.sms.m2': `messages / month`, 'case.sms.m3': `Figma frames shipped`,
+    'case.sms.cap': `2026 · in development`,
+
+    'case.payvand.kicker': `Mobile · concept, 2022`,
+    'case.payvand.body': `The brief asked for one app. Research said there were two problems: everyday domestic banking for registered users, and frictionless remittances from Russia for people who won't register at all. Two apps, one design system.`,
+    'case.payvand.m1': `apps, one system`, 'case.payvand.m3': `Marked as concept`,
+    'case.payvand.cap': `2022 · concept`,
+
+    'about.label': `About`,
+    'about.title': `I design the part of the product nobody screenshots.`,
+    'about.lede': `Attribute models, role permissions, moderation queues, state machines — the layer that decides whether the pretty screen on top actually works at scale. I like specs that contradict each other, because reconciling them is the job.`,
+    'exp.alif.role': `Product Designer`,
+    'exp.alif.body': `Seven large-scale products and 20+ independent functional modules across fintech, marketplaces, admin systems and warehouse systems.`,
+    'exp.alif.l1': `Alif Mobi — mobile banking app`,
+    'exp.alif.l2': `KK Service — internal credit decision platform`,
+    'exp.alif.l3': `UmedMall — marketplace moderator console`,
+    'exp.alif.l4': `Qline — online queue & booking system`,
+    'exp.alif.l5': `Teams & Managers — internal operations platforms`,
+    'exp.dc.role': `UX/UI Designer`,
+    'exp.dc.body': `Designed DC Next end to end — the mobile banking and city services app that replaced the legacy DC Wallet and became the bank's main digital product.`,
+    'exp.dc.l1': `~1.7M registered users, ~810K monthly active`,
+    'exp.dc.l2': `300+ services: utilities, transport, Express Pay terminals`,
+    'exp.dc.l3': `QR and NFC transport payments replacing cash`,
+    'exp.dc.l4': `International transfers to 50+ countries`,
+    'exp.hilton.role': `Brand Designer`,
+    'exp.hilton.body': `Branding and marketing assets; rebranding of the Inasia restaurant.`,
+    'about.edu': `Education: Saint Petersburg Electrotechnical University "LETI" — Applied Mathematics & Computer Science (2015–2017). Russian-Tajik Slavic University — Applied Informatics in Economics (2011–2015).`,
+
+    'contact.label': `Contact`,
+    'contact.title': `Have a system that's outgrown its first design?`,
+    'contact.body': `I'm open to product design roles and selected freelance work. The fastest way to reach me is email or Telegram.`,
+    'contact.tg': `Telegram — add link`, 'contact.li': `LinkedIn — add link`, 'contact.cv': `Download CV (PDF)`,
+    'footer.note': `Built as a static site — no tracking, no cookies.`
+  },
+  ru: {
+    'nav.work': `Проекты`, 'nav.about': `Обо мне`, 'nav.contact': `Контакты`, 'nav.cv': `Резюме`,
+
+    'hero.status': `Открыт к предложениям · Душанбе / удалённо`,
+    'hero.title': `Продуктовый дизайнер<br>систем, которые <span class="accent">усложняются.</span>`,
+    'hero.lede': `Семь лет превращаю запутанную бизнес-логику в интерфейсы, в которых реально можно работать — финтех, маркетплейсы, админки и мобильный банк, которым пользуется больше миллиона человек.`,
+    'hero.f1': `лет в продуктовом дизайне`,
+    'hero.f2': `пользователей у выпущенных продуктов`,
+    'hero.f3': `Финтех · Маркетплейсы · B2B-системы`,
+    'hero.f4': `RU родной · EN B1 · TJ`,
+    'hero.co.cap': `Работал в`,
+
+    'work.label': `Избранные проекты`,
+    'work.title': `Четыре системы — и в каждой решение, которое я готов защищать.`,
+    'work.lede': `Каждый кейс ниже построен одинаково: что нужно было бизнесу, что я выяснил, что выбрал и что сделал бы иначе. Все двуязычные — EN и RU.`,
+    'case.read': `Читать кейс`,
+
+    'case.umedmall.kicker': `Маркетплейс · Клиент, Админка, Продавец`,
+    'case.umedmall.body': `Три ТЗ, написанные разными людьми с разницей в месяцы, для трёх интерфейсов, которые обязаны договориться об одной таксономии. Я спроектировал витрину, модераторскую панель и кабинет продавца — и движок атрибутов под всеми тремя.`,
+    'case.umedmall.m1': `поверхности, одна модель данных`, 'case.umedmall.m2': `свободных текстовых атрибутов`, 'case.umedmall.m3': `групп навигации`,
+    'case.umedmall.cap': `2025–2026 · в разработке`,
+
+    'case.kk.kicker': `Внутренний B2B · Alif Bank`,
+    'case.kk.body': `Заявки на кредит приходили из десяти несвязанных систем. AI-движок закрывает большинство; остальным нужен человек — быстро и с полным контекстом. Одна очередь, где автоматические и ручные кейсы различимы с первого взгляда, а рисковые флаги невозможно тихо одобрить.`,
+    'case.kk.m1': `каналов заявок объединено`, 'case.kk.m2': `статусов в Kanban`, 'case.kk.m3': `роли сотрудников описаны`,
+    'case.kk.cap': `2025–2026 · завершён и работает`,
+
+    'case.sms.kicker': `Редизайн платформы · Alif Tech`,
+    'case.sms.body': `Крупнейшая SMS-платформа Таджикистана, построенная тогда, когда SMS были единственным каналом. Я превратил её в многоканальную инфраструктуру — Email и Telegram сейчас, WhatsApp и Push зарезервированы на уровне токенов — готовую к продаже за пределами страны.`,
+    'case.sms.m1': `каналов, архитектура готова`, 'case.sms.m2': `сообщений в месяц`, 'case.sms.m3': `фреймов сдано в Figma`,
+    'case.sms.cap': `2026 · в разработке`,
+
+    'case.payvand.kicker': `Мобильное · концепт, 2022`,
+    'case.payvand.body': `В брифе было одно приложение. Исследование показало две разные задачи: повседневный банкинг для зарегистрированных и переводы из России без трения для тех, кто регистрироваться не станет. Два приложения, одна дизайн-система.`,
+    'case.payvand.m1': `приложения, одна система`, 'case.payvand.m3': `Помечено как концепт`,
+    'case.payvand.cap': `2022 · концепт`,
+
+    'about.label': `Обо мне`,
+    'about.title': `Я проектирую ту часть продукта, которую никто не скриншотит.`,
+    'about.lede': `Модели атрибутов, права ролей, очереди модерации, машины состояний — слой, от которого зависит, будет ли работать красивый экран сверху. Люблю противоречащие друг другу ТЗ: свести их — и есть работа.`,
+    'exp.alif.role': `Продуктовый дизайнер`,
+    'exp.alif.body': `Семь крупных продуктов и 20+ самостоятельных функциональных модулей: финтех, маркетплейсы, админ-системы, складские системы.`,
+    'exp.alif.l1': `Alif Mobi — мобильный банк`,
+    'exp.alif.l2': `KK Service — внутренняя платформа кредитных решений`,
+    'exp.alif.l3': `UmedMall — модераторская панель маркетплейса`,
+    'exp.alif.l4': `Qline — система онлайн-очереди и записи`,
+    'exp.alif.l5': `Teams и Managers — внутренние операционные платформы`,
+    'exp.dc.role': `UX/UI-дизайнер`,
+    'exp.dc.body': `Спроектировал DC Next от и до — мобильный банк и городские сервисы, заменившие устаревший DC Wallet и ставшие главным цифровым продуктом банка.`,
+    'exp.dc.l1': `~1,7 млн зарегистрированных, ~810 тыс. активных в месяц`,
+    'exp.dc.l2': `300+ сервисов: коммуналка, транспорт, терминалы Express Pay`,
+    'exp.dc.l3': `Оплата транспорта по QR и NFC вместо наличных`,
+    'exp.dc.l4': `Международные переводы в 50+ стран`,
+    'exp.hilton.role': `Бренд-дизайнер`,
+    'exp.hilton.body': `Брендинг и маркетинговые материалы; ребрендинг ресторана Inasia.`,
+    'about.edu': `Образование: СПбГЭТУ «ЛЭТИ» — прикладная математика и информатика (2015–2017). Российско-Таджикский (Славянский) университет — прикладная информатика в экономике (2011–2015).`,
+
+    'contact.label': `Контакты`,
+    'contact.title': `Есть система, которая переросла свой первый дизайн?`,
+    'contact.body': `Открыт к предложениям по продуктовому дизайну и отдельным фриланс-проектам. Быстрее всего — почта или Telegram.`,
+    'contact.tg': `Telegram — добавить ссылку`, 'contact.li': `LinkedIn — добавить ссылку`, 'contact.cv': `Скачать резюме (PDF)`,
+    'footer.note': `Статический сайт — без трекинга и куки.`
+  }
+};
+
+function setLang(lang) {
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = dict[el.getAttribute('data-i18n')];
+    if (v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const v = dict[el.getAttribute('data-i18n-html')];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  document.getElementById('langEn').classList.toggle('active', lang === 'en');
+  document.getElementById('langRu').classList.toggle('active', lang === 'ru');
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+}
+
+(function () {
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  const lang = saved || ((navigator.language || '').toLowerCase().startsWith('ru') ? 'ru' : 'en');
+  if (lang === 'ru') setLang('ru');
+})();
+</script>
+
+</body>
+</html>
