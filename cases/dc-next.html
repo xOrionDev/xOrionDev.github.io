@@ -323,7 +323,7 @@ footer .links a:hover { color: white; }
     <div class="grid-4" style="margin-top: 56px;">
       <div><div class="stat-num">300+</div><div class="stat-cap" data-i18n="overview.s1">services under one navigation model</div></div>
       <div><div class="stat-num">50+</div><div class="stat-cap" data-i18n="overview.s2">countries reachable for transfers</div></div>
-      <div><div class="stat-num">11 → 9</div><div class="stat-cap" data-i18n="overview.s3">home tiles, re-ranked by real usage</div></div>
+      <div><div class="stat-num">11 → 4</div><div class="stat-cap" data-i18n="overview.s3">equal tiles became four primary actions</div></div>
       <div><div class="stat-num">1 QR</div><div class="stat-cap" data-i18n="overview.s4">primitive covering three different jobs</div></div>
     </div>
   </div>
@@ -353,7 +353,7 @@ footer .links a:hover { color: white; }
         <div class="ba-body">
           <ul>
             <li data-i18n="ba.a1">Balance and bonuses sit at the top of the home screen, above everything else.</li>
-            <li data-i18n="ba.a2">Nine tiles, ordered by measured usage — the rest moved into a searchable catalogue.</li>
+            <li data-i18n="ba.a2">Four primary actions instead of eleven equal tiles; the rest moved into sections and a searchable catalogue.</li>
             <li data-i18n="ba.a3">A permanent five-tab bar with the QR scanner as its centre action, reachable from any screen.</li>
             <li data-i18n="ba.a4">Favourites fill themselves from what you actually use, and stay editable by hand.</li>
           </ul>
@@ -361,9 +361,9 @@ footer .links a:hover { color: white; }
       </div>
     </div>
 
-    <div class="shots wide">
+    <div class="shots wide" style="max-width: 700px;">
       <figure class="shot missing" data-label="img/dcwallet-home.png — DC Wallet: главный экран старого приложения"><img src="img/dcwallet-home.png" alt="DC Wallet legacy home screen" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="ba.shot1">DC Wallet — the legacy home screen: a grid of equals, no balance in sight.</figcaption></figure>
-      <figure class="shot missing" data-label="img/dcnext-home.png — DC Next: главный экран"><img src="img/dcnext-home.png" alt="DC Next home screen" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="ba.shot2">DC Next — balance first, nine ranked tiles, scanner permanently within reach.</figcaption></figure>
+      <figure class="shot missing" data-label="img/dcnext-home.png — DC Next: главный экран"><img src="img/dcnext-home.png" alt="DC Next home screen" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="ba.shot2">DC Next — the balance is the largest element on the screen; four actions, favourites and recent recipients follow.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -402,12 +402,12 @@ footer .links a:hover { color: white; }
 
       <div class="card" style="margin-bottom: 24px;">
         <h3 data-i18n="dec.d1.title">01 · Balance above everything</h3>
-        <p data-i18n="dec.d1.body">The card balance, the currency and the bonus total moved to the top of the home screen as a single block. It sounds obvious written down; it was the largest structural change in the redesign, because it demoted the service grid from "the home screen" to "one part of the home screen" — and that demotion is what made ranking the tiles possible at all.</p>
+        <p data-i18n="dec.d1.body">The card balance, the currency and the bonus total moved to the top of the home screen as a single block. It sounds obvious written down; it was the largest structural change in the redesign, because it demoted the service grid from "the home screen" to "one part of the home screen" — and that demotion is what made it possible to cut eleven equal tiles down to four primary actions.</p>
       </div>
 
       <div class="card" style="margin-bottom: 24px;">
         <h3 data-i18n="dec.d2.title">02 · One scanner, three different jobs</h3>
-        <p data-i18n="dec.d2.body">Paying a merchant, topping up a wallet by QR and paying a bus fare are three different mental tasks — but technically they are the same act: scan a unique code, confirm an amount. Rather than build three entry points, the scanner became the centre button of the navigation bar, present on every screen, and the flow after the scan adapts to whatever the code turns out to be.</p>
+        <p data-i18n="dec.d2.body">Paying a merchant, topping up a wallet by QR and paying a bus fare are three different mental tasks — but technically they are the same act: scan a unique code, confirm an amount. Rather than build three entry points there is one scanner — one tap from the home screen, later promoted to the centre of the tab bar — and the flow after the scan adapts to whatever the code turns out to be.</p>
         <div class="flow">
           <div class="step"><div class="n">01</div><div class="t" data-i18n="dec.flow.s1.t">Scan</div><div class="d" data-i18n="dec.flow.s1.d">One button, always in the same place — no need to know in advance what kind of payment this is.</div></div>
           <div class="arrow">→</div>
@@ -442,12 +442,16 @@ footer .links a:hover { color: white; }
     <p class="lead" data-i18n="screens.lead">Everything below shipped and is still in production as the foundation of the app — later generations of the product added new layers on top, but the navigation model and these flows are the ones I designed.</p>
 
     <div class="shots">
-      <figure class="shot missing" data-label="img/dcnext-home.png — Главная"><img src="img/dcnext-home.png" alt="DC Next — home" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s1">Home — balance, bonuses, nine ranked services.</figcaption></figure>
+      <figure class="shot missing" data-label="img/dcnext-home.png — Главная"><img src="img/dcnext-home.png" alt="DC Next — home" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s1">Home — balance first, four primary actions, auto-filled favourites.</figcaption></figure>
       <figure class="shot missing" data-label="img/dcnext-transfers.png — Переводы"><img src="img/dcnext-transfers.png" alt="DC Next — transfers" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s2">Transfers — by phone number, by card, and abroad to 50+ countries.</figcaption></figure>
       <figure class="shot missing" data-label="img/dcnext-payments.png — Платежи"><img src="img/dcnext-payments.png" alt="DC Next — payments" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s3">Payments — the catalogue that absorbed 300+ services, with search first.</figcaption></figure>
       <figure class="shot missing" data-label="img/dcnext-services.png — Услуги / оплата услуги"><img src="img/dcnext-services.png" alt="DC Next — service payment" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s4">A single service payment — the same three-step shape for every provider.</figcaption></figure>
       <figure class="shot missing" data-label="img/dcnext-credits.png — Кредиты"><img src="img/dcnext-credits.png" alt="DC Next — credits" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s5">Credits — my loans, payment schedule and credit rating in one place.</figcaption></figure>
       <figure class="shot missing" data-label="img/dcnext-cards.png — Мои карты"><img src="img/dcnext-cards.png" alt="DC Next — my cards" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s6">My cards — physical and virtual, with top-up and limits.</figcaption></figure>
+      <figure class="shot missing" data-label="img/dcnext-flow-1.png — Перевод: шаг 1"><img src="img/dcnext-flow-1.png" alt="DC Next — transfer step 1" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s7">Transfer, step one — choosing the recipient.</figcaption></figure>
+      <figure class="shot missing" data-label="img/dcnext-flow-2.png — Перевод: шаг 2"><img src="img/dcnext-flow-2.png" alt="DC Next — transfer step 2" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s8">Transfer, step two — amount, source card, confirmation.</figcaption></figure>
+      <figure class="shot missing" data-label="img/dcnext-flow-3.png — Оплата услуги: шаг 1"><img src="img/dcnext-flow-3.png" alt="DC Next — service payment step 1" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s9">Service payment, step one — provider and account details.</figcaption></figure>
+      <figure class="shot missing" data-label="img/dcnext-flow-4.png — Оплата услуги: шаг 2 / чек"><img src="img/dcnext-flow-4.png" alt="DC Next — service payment receipt" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="screens.s10">The receipt — saved to history, repeatable in one tap.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -460,7 +464,7 @@ footer .links a:hover { color: white; }
     <p class="lead" data-i18n="unship.lead">A peer-to-peer lending flow: send money to someone you know with an agreed return date, tracked by the app instead of by memory. It was designed in full and never shipped — priorities moved elsewhere.</p>
     <p data-i18n="unship.body">I'm including it because a portfolio of nothing but wins is a portfolio that hides how the work actually goes. The flow is sound; the decision not to build it was the bank's, and it was a reasonable one at the time.</p>
 
-    <div class="shots wide" style="max-width: 720px;">
+    <div class="shots" style="max-width: 260px;">
       <figure class="shot missing" data-label="img/dcnext-lend.png — «Одолжить другу»"><img src="img/dcnext-lend.png" alt="Lend to a friend flow" onerror="this.parentElement.classList.add('missing')"><figcaption><span class="note-unshipped" data-i18n="unship.badge">Designed · not shipped</span></figcaption></figure>
     </div>
   </div>
@@ -582,7 +586,7 @@ const I18N = {
     'overview.p3': `I led the design end to end: information architecture, all core flows, the visual system and handoff. We were two designers; roughly 90% of the screens and the structural decisions were mine.`,
     'overview.s1': `services under one navigation model`,
     'overview.s2': `countries reachable for transfers`,
-    'overview.s3': `home tiles, re-ranked by real usage`,
+    'overview.s3': `equal tiles became four primary actions`,
     'overview.s4': `primitive covering three different jobs`,
 
     'ba.label': `Before & after`,
@@ -595,11 +599,11 @@ const I18N = {
     'ba.b4': `Services opened as a flat alphabetical list, the same for everyone.`,
     'ba.after.tag': `DC Next · shipped 2022`,
     'ba.a1': `Balance and bonuses sit at the top of the home screen, above everything else.`,
-    'ba.a2': `Nine tiles, ordered by measured usage — the rest moved into a searchable catalogue.`,
+    'ba.a2': `Four primary actions instead of eleven equal tiles; the rest moved into sections and a searchable catalogue.`,
     'ba.a3': `A permanent five-tab bar with the QR scanner as its centre action, reachable from any screen.`,
     'ba.a4': `Favourites fill themselves from what you actually use, and stay editable by hand.`,
     'ba.shot1': `DC Wallet — the legacy home screen: a grid of equals, no balance in sight.`,
-    'ba.shot2': `DC Next — balance first, nine ranked tiles, scanner permanently within reach.`,
+    'ba.shot2': `DC Next — the balance is the largest element on the screen; four actions, favourites and recent recipients follow.`,
 
     'research.label': `What informed the decisions`,
     'research.title': `No usability lab — but there was four years of real usage data.`,
@@ -614,9 +618,9 @@ const I18N = {
     'dec.label': `Key decisions`,
     'dec.title': `Four decisions that shaped the rest of the app.`,
     'dec.d1.title': `01 · Balance above everything`,
-    'dec.d1.body': `The card balance, the currency and the bonus total moved to the top of the home screen as a single block. It sounds obvious written down; it was the largest structural change in the redesign, because it demoted the service grid from "the home screen" to "one part of the home screen" — and that demotion is what made ranking the tiles possible at all.`,
+    'dec.d1.body': `The card balance, the currency and the bonus total moved to the top of the home screen as a single block. It sounds obvious written down; it was the largest structural change in the redesign, because it demoted the service grid from "the home screen" to "one part of the home screen" — and that demotion is what made it possible to cut eleven equal tiles down to four primary actions.`,
     'dec.d2.title': `02 · One scanner, three different jobs`,
-    'dec.d2.body': `Paying a merchant, topping up a wallet by QR and paying a bus fare are three different mental tasks — but technically they are the same act: scan a unique code, confirm an amount. Rather than build three entry points, the scanner became the centre button of the navigation bar, present on every screen, and the flow after the scan adapts to whatever the code turns out to be.`,
+    'dec.d2.body': `Paying a merchant, topping up a wallet by QR and paying a bus fare are three different mental tasks — but technically they are the same act: scan a unique code, confirm an amount. Rather than build three entry points there is one scanner — one tap from the home screen, later promoted to the centre of the tab bar — and the flow after the scan adapts to whatever the code turns out to be.`,
     'dec.flow.s1.t': `Scan`, 'dec.flow.s1.d': `One button, always in the same place — no need to know in advance what kind of payment this is.`,
     'dec.flow.s2.t': `Recognise`, 'dec.flow.s2.d': `The code identifies itself: merchant, wallet, transport or terminal.`,
     'dec.flow.s3.t': `Confirm`, 'dec.flow.s3.d': `Amount, source card and recipient in one view — the same layout in all four cases.`,
@@ -630,12 +634,17 @@ const I18N = {
     'screens.label': `The shipped app`,
     'screens.title': `Six surfaces that carry the product.`,
     'screens.lead': `Everything below shipped and is still in production as the foundation of the app — later generations of the product added new layers on top, but the navigation model and these flows are the ones I designed.`,
-    'screens.s1': `Home — balance, bonuses, nine ranked services.`,
+    'screens.s1': `Home — balance first, four primary actions, auto-filled favourites.`,
     'screens.s2': `Transfers — by phone number, by card, and abroad to 50+ countries.`,
     'screens.s3': `Payments — the catalogue that absorbed 300+ services, with search first.`,
     'screens.s4': `A single service payment — the same three-step shape for every provider.`,
     'screens.s5': `Credits — my loans, payment schedule and credit rating in one place.`,
     'screens.s6': `My cards — physical and virtual, with top-up and limits.`,
+
+    'screens.s7': `Transfer, step one — choosing the recipient.`,
+    'screens.s8': `Transfer, step two — amount, source card, confirmation.`,
+    'screens.s9': `Service payment, step one — provider and account details.`,
+    'screens.s10': `The receipt — saved to history, repeatable in one tap.`,
 
     'unship.label': `Designed, not shipped`,
     'unship.title': `"Lend to a friend" — the feature that didn't make it.`,
@@ -688,7 +697,7 @@ const I18N = {
     'overview.p3': `Я вёл дизайн от начала до конца: информационная архитектура, все ключевые флоу, визуальная система и передача в разработку. Дизайнеров было двое; примерно 90% экранов и структурных решений — мои.`,
     'overview.s1': `сервисов в одной модели навигации`,
     'overview.s2': `стран доступны для переводов`,
-    'overview.s3': `плиток на главной, пересобранных по реальному использованию`,
+    'overview.s3': `равнозначных плитки стали четырьмя главными действиями`,
     'overview.s4': `примитив, закрывающий три разные задачи`,
 
     'ba.label': `До и после`,
@@ -701,11 +710,11 @@ const I18N = {
     'ba.b4': `Сервисы открываются плоским алфавитным списком, одинаковым для всех.`,
     'ba.after.tag': `DC Next · релиз 2022`,
     'ba.a1': `Баланс и бонусы — вверху главного экрана, выше всего остального.`,
-    'ba.a2': `Девять плиток, отсортированных по измеренному использованию — остальное ушло в каталог с поиском.`,
+    'ba.a2': `Четыре главных действия вместо одиннадцати равнозначных плиток; остальное ушло в разделы и каталог с поиском.`,
     'ba.a3': `Постоянная панель из пяти вкладок со сканером QR в центре, доступна с любого экрана.`,
     'ba.a4': `Избранное наполняется само тем, чем вы реально пользуетесь, и остаётся редактируемым вручную.`,
     'ba.shot1': `DC Wallet — старая главная: сетка равнозначных плиток, баланса не видно.`,
-    'ba.shot2': `DC Next — сначала баланс, девять отранжированных плиток, сканер всегда под рукой.`,
+    'ba.shot2': `DC Next — баланс здесь самый крупный элемент; дальше четыре действия, избранное и последние получатели.`,
 
     'research.label': `На чём основаны решения`,
     'research.title': `Юзабилити-лаборатории не было — были четыре года реальных данных использования.`,
@@ -720,9 +729,9 @@ const I18N = {
     'dec.label': `Ключевые решения`,
     'dec.title': `Четыре решения, определившие всё остальное.`,
     'dec.d1.title': `01 · Баланс выше всего`,
-    'dec.d1.body': `Баланс карты, валюта и бонусы переехали наверх главного экрана одним блоком. Написанное словами звучит очевидно; на деле это было самое крупное структурное изменение редизайна, потому что оно понизило сетку сервисов с «главного экрана» до «части главного экрана» — и только это сделало возможным ранжирование плиток.`,
+    'dec.d1.body': `Баланс карты, валюта и бонусы переехали наверх главного экрана одним блоком. Написанное словами звучит очевидно; на деле это было самое крупное структурное изменение редизайна, потому что оно понизило сетку сервисов с «главного экрана» до «части главного экрана» — и только это позволило сжать одиннадцать равнозначных плиток до четырёх главных действий.`,
     'dec.d2.title': `02 · Один сканер, три разные задачи`,
-    'dec.d2.body': `Оплатить продавцу, пополнить кошелёк по QR и заплатить за проезд — три разные задачи в голове человека, но технически это одно действие: считать уникальный код, подтвердить сумму. Вместо трёх точек входа сканер стал центральной кнопкой навигации, присутствующей на каждом экране, а сценарий после считывания подстраивается под то, чем код окажется.`,
+    'dec.d2.body': `Оплатить продавцу, пополнить кошелёк по QR и заплатить за проезд — три разные задачи в голове человека, но технически это одно действие: считать уникальный код, подтвердить сумму. Вместо трёх точек входа — один сканер, в одном тапе от главной, позже поднятый в центр таб-бара, а сценарий после считывания подстраивается под то, чем код окажется.`,
     'dec.flow.s1.t': `Сканировать`, 'dec.flow.s1.d': `Одна кнопка, всегда на одном месте — не нужно заранее знать, что это за платёж.`,
     'dec.flow.s2.t': `Распознать`, 'dec.flow.s2.d': `Код сам сообщает, что он: продавец, кошелёк, транспорт или терминал.`,
     'dec.flow.s3.t': `Подтвердить`, 'dec.flow.s3.d': `Сумма, карта списания и получатель на одном экране — одинаковая раскладка во всех четырёх случаях.`,
@@ -736,12 +745,17 @@ const I18N = {
     'screens.label': `Что вышло в релиз`,
     'screens.title': `Шесть поверхностей, на которых держится продукт.`,
     'screens.lead': `Всё ниже вышло в прод и до сих пор работает как фундамент приложения — более поздние поколения продукта добавили новые слои сверху, но модель навигации и эти сценарии спроектировал я.`,
-    'screens.s1': `Главная — баланс, бонусы, девять отранжированных сервисов.`,
+    'screens.s1': `Главная — сначала баланс, четыре главных действия, самозаполняющееся избранное.`,
     'screens.s2': `Переводы — по номеру телефона, по карте и за рубеж в 50+ стран.`,
     'screens.s3': `Платежи — каталог, вобравший 300+ сервисов, с поиском на первом месте.`,
     'screens.s4': `Оплата одной услуги — одинаковая форма из трёх шагов для любого поставщика.`,
     'screens.s5': `Кредиты — мои кредиты, график платежей и кредитный рейтинг в одном месте.`,
     'screens.s6': `Мои карты — физические и виртуальные, с пополнением и лимитами.`,
+
+    'screens.s7': `Перевод, шаг первый — выбор получателя.`,
+    'screens.s8': `Перевод, шаг второй — сумма, карта списания, подтверждение.`,
+    'screens.s9': `Оплата услуги, шаг первый — поставщик и реквизиты.`,
+    'screens.s10': `Чек — сохраняется в историю, повторяется одним тапом.`,
 
     'unship.label': `Спроектировано, но не выпущено`,
     'unship.title': `«Одолжить другу» — функция, которая не дошла до прода.`,
