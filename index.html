@@ -34,6 +34,7 @@
   --c-kk: #0d9488;
   --c-sms: #0046fd;
   --c-payvand: #1e3a8a;
+  --c-dcnext: #1b5fd9;
 
   --radius: 16px;
   --radius-pill: 999px;
@@ -269,6 +270,21 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
         <div class="visual"><div class="mark"><div class="big">SMS-Gate</div><div class="cap" data-i18n="case.sms.cap">2026 · in development</div></div></div>
       </a>
 
+      <a class="case" href="cases/dc-next.html" style="--accent: var(--c-dcnext);">
+        <div class="body">
+          <div class="kicker" data-i18n="case.dc.kicker">Mobile banking · Dushanbe City Bank</div>
+          <h3>DC Next — a bank and a city in one app</h3>
+          <p data-i18n="case.dc.body">The legacy app hid the two things people open a banking app for — the balance and paying — in a grid where everything weighed the same. I put the balance on top, the scanner in the centre of navigation, and ranked the home screen by what people measurably used.</p>
+          <div class="metrics">
+            <div class="metric"><b>~1.7M</b> <span data-i18n="case.dc.m1">registered users</span></div>
+            <div class="metric"><b>~810K</b> <span data-i18n="case.dc.m2">monthly active</span></div>
+            <div class="metric"><b>300+</b> <span data-i18n="case.dc.m3">services in one model</span></div>
+          </div>
+          <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
+        </div>
+        <div class="visual"><div class="mark"><div class="big">DC Next</div><div class="cap" data-i18n="case.dc.cap">2021–2022 · shipped, still live</div></div></div>
+      </a>
+
       <a class="case" href="cases/payvand.html" style="--accent: var(--c-payvand);">
         <div class="body">
           <div class="kicker" data-i18n="case.payvand.kicker">Mobile · concept, 2022</div>
@@ -412,6 +428,11 @@ const I18N = {
     'case.sms.m1': `channels, architecture-ready`, 'case.sms.m2': `messages / month`, 'case.sms.m3': `Figma frames shipped`,
     'case.sms.cap': `2026 · in development`,
 
+    'case.dc.kicker': `Mobile banking · Dushanbe City Bank`,
+    'case.dc.body': `The legacy app hid the two things people open a banking app for — the balance and paying — in a grid where everything weighed the same. I put the balance on top, the scanner in the centre of navigation, and ranked the home screen by what people measurably used.`,
+    'case.dc.m1': `registered users`, 'case.dc.m2': `monthly active`, 'case.dc.m3': `services in one model`,
+    'case.dc.cap': `2021–2022 · shipped, still live`,
+
     'case.payvand.kicker': `Mobile · concept, 2022`,
     'case.payvand.body': `The brief asked for one app. Research said there were two problems: everyday domestic banking for registered users, and frictionless remittances from Russia for people who won't register at all. Two apps, one design system.`,
     'case.payvand.m1': `apps, one system`, 'case.payvand.m3': `Marked as concept`,
@@ -478,6 +499,11 @@ const I18N = {
     'case.sms.body': `Крупнейшая SMS-платформа Таджикистана, построенная тогда, когда SMS были единственным каналом. Я превратил её в многоканальную инфраструктуру — Email и Telegram сейчас, WhatsApp и Push зарезервированы на уровне токенов — готовую к продаже за пределами страны.`,
     'case.sms.m1': `каналов, архитектура готова`, 'case.sms.m2': `сообщений в месяц`, 'case.sms.m3': `фреймов сдано в Figma`,
     'case.sms.cap': `2026 · в разработке`,
+
+    'case.dc.kicker': `Мобильный банк · Душанбе Сити Банк`,
+    'case.dc.body': `Старое приложение прятало две вещи, ради которых банковское приложение открывают — баланс и оплату — в сетке, где всё весило одинаково. Я вынес баланс наверх, сканер поставил в центр навигации, а главную отранжировал по тому, чем люди измеримо пользуются.`,
+    'case.dc.m1': `зарегистрированных`, 'case.dc.m2': `активных в месяц`, 'case.dc.m3': `сервисов в одной модели`,
+    'case.dc.cap': `2021–2022 · в релизе, работает`,
 
     'case.payvand.kicker': `Мобильное · концепт, 2022`,
     'case.payvand.body': `В брифе было одно приложение. Исследование показало две разные задачи: повседневный банкинг для зарегистрированных и переводы из России без трения для тех, кто регистрироваться не станет. Два приложения, одна дизайн-система.`,
