@@ -310,8 +310,8 @@ footer .links a:hover { color: white; }
 <header class="hero">
   <div class="container hero-content">
     <div class="tag"><span class="dot"></span> <span data-i18n="hero.tag">Case Study · 2025–2026 · Alif Bank</span></div>
-    <h1 data-i18n-html="hero.title">KK Service<br><span class="accent">Credit decisions,<br>off the messenger</span></h1>
-    <p class="lede" data-i18n="hero.lede">Alif Bank's credit committee reviewed loan applications through a Telegram bot. Every link and every comment stayed in the chat history of every front-office employee — including the ones who had already left. This is the system that replaced it.</p>
+    <h1 data-i18n-html="hero.title">KK Service<br><span class="accent">A queue for the<br>credit committee</span></h1>
+    <p class="lede" data-i18n="hero.lede">Loan applications reached Alif Bank's credit committee from eight different systems, and once they arrived there was no single place where they waited. This is the review tool that gave the committee one queue, two clocks and a client profile worth deciding from.</p>
 
     <div class="hero-meta">
       <div><div class="label" data-i18n="hero.role.label">Role</div><div class="value" data-i18n="hero.role.value">Sole Product Designer</div></div>
@@ -326,10 +326,10 @@ footer .links a:hover { color: white; }
 <section>
   <div class="container">
     <div class="section-label" data-i18n="overview.label">Project Overview</div>
-    <h2 data-i18n="overview.title">A bank was deciding who gets credit inside a consumer messenger.</h2>
-    <p class="lead" data-i18n="overview.p1">When a front-office specialist needed the credit committee to look at an application, they sent it to a Telegram bot. The committee answered there too. It worked — and it meant that the link to every application, along with whatever the committee said about the client, sat permanently in the personal chat history of every employee who had ever touched it.</p>
-    <p data-i18n-html="overview.p2">Including the ones who no longer worked at the bank. <strong>Nobody could take that data back.</strong> On top of it: when Telegram had an outage, credit review stopped; the time an application spent waiting could not be measured; requests got buried under spam; applications went missing.</p>
-    <p data-i18n="overview.p3">The brief was to move the whole exchange inside the bank's own systems. I designed the queue that replaced the bot, the templated question system that replaced free-form chat, and the client profile the committee decides from — across four employee roles.</p>
+    <h2 data-i18n="overview.title">Eight ways in, and no line to stand in.</h2>
+    <p class="lead" data-i18n="overview.p1">An application's route through review depended on where it had come from. A request handed to the committee could sit for an hour or for two days, and nobody could say which — there was no page that listed everything currently waiting, in the order it had arrived.</p>
+    <p data-i18n-html="overview.p2">The consequences were ordinary and expensive. <strong>Time-to-decision for walk-in applications could not be measured at all.</strong> A specialist who had sent an application had no way to tell whether anyone had picked it up. Requests were repeated because the first one might have been missed. Some applications were simply lost.</p>
+    <p data-i18n="overview.p3">I designed the queue that fixed the order of work, the templated question system that replaced free-form requests, and the client profile the committee decides from — across four employee roles.</p>
 
     <div class="grid-4" style="margin-top: 56px;">
       <div class="stat-card">
@@ -342,11 +342,11 @@ footer .links a:hover { color: white; }
       </div>
       <div class="stat-card">
         <div class="big">20</div>
-        <div class="label" data-i18n="overview.stat.templates">question templates replacing free-form chat</div>
+        <div class="label" data-i18n="overview.stat.templates">question templates replacing free-form requests</div>
       </div>
       <div class="stat-card">
         <div class="big">0</div>
-        <div class="label" data-i18n="overview.stat.telegram">committee messages left outside the bank</div>
+        <div class="label" data-i18n="overview.stat.timers">timers in every row: the client's and ours</div>
       </div>
     </div>
   </div>
@@ -356,27 +356,27 @@ footer .links a:hover { color: white; }
 <section class="bg-grey">
   <div class="container">
     <div class="section-label" data-i18n="problem.label">The problem</div>
-    <h2 data-i18n="problem.title">The leak wasn't a breach. It was the process working as designed.</h2>
+    <h2 data-i18n="problem.title">The committee had no line, and no clock.</h2>
 
     <div class="grid-2" style="margin-top: 48px;">
       <div class="card">
-        <h3 data-i18n="problem.sec.title">What leaving an employee actually meant</h3>
-        <p data-i18n="problem.sec.body">A specialist resigns. Their laptop goes back to IT, their accounts are disabled, their badge stops working. And on their personal phone stays a Telegram chat containing links to hundreds of credit applications and the committee's written assessments of the people behind them. There is no button that undoes that.</p>
+        <h3 data-i18n="problem.sec.title">Nobody could answer "who is waiting longest"</h3>
+        <p data-i18n="problem.sec.body">Applications arrived from eight systems and were worked on as they surfaced, not in the order they came. That is fine at ten a day and impossible at a hundred: the person whose application slipped past everyone's attention waits exactly as long as it takes for someone to notice, and the bank finds out about it from the customer.</p>
       </div>
       <div class="card">
         <h3 data-i18n="problem.ops.title">And four everyday costs on top</h3>
         <ul class="bullets" style="margin-top:14px;">
-          <li data-i18n="problem.ops.l1">A Telegram outage stopped credit review entirely — a third-party service was in the critical path of a banking process.</li>
-          <li data-i18n="problem.ops.l2">Time-to-decision for walk-in applications couldn't be measured, because the clock lived in a chat.</li>
-          <li data-i18n="problem.ops.l3">Requests drowned in message spam.</li>
-          <li data-i18n="problem.ops.l4">Applications were simply lost — a message scrolled past is a customer waiting for nothing.</li>
+          <li data-i18n="problem.ops.l1">A specialist who sent an application for review had no way to tell whether it had been opened.</li>
+          <li data-i18n="problem.ops.l2">Time-to-decision for walk-in applications couldn't be measured, so the slowest part of the process was invisible.</li>
+          <li data-i18n="problem.ops.l3">Requests were repeated in case the first had been missed, which made the pile worse.</li>
+          <li data-i18n="problem.ops.l4">Applications went missing — and a lost application is a customer waiting for nothing.</li>
         </ul>
       </div>
     </div>
 
     <div class="quote" style="margin-top: 56px;">
-      <span data-i18n="problem.quote">"Links and comments from the committee are saved by every front-office specialist, and after they leave, that data stays with them."</span>
-      <cite data-i18n="problem.quote.cite">— from the brief, verbatim</cite>
+      <span data-i18n="problem.quote">"The specialist who sent it could not tell whether anyone was looking, so they sent it again."</span>
+      <cite data-i18n="problem.quote.cite">— the loop the queue was built to break</cite>
     </div>
   </div>
 </section>
@@ -386,7 +386,7 @@ footer .links a:hover { color: white; }
   <div class="container">
     <div class="section-label" data-i18n="process.label">Key decisions</div>
     <h2 data-i18n="process.title">Five decisions that moved a conversation into a system.</h2>
-    <p class="lead" data-i18n="process.lead">Removing the bot was the easy half. The hard half was replacing what the bot was quietly good at: everyone saw everything, instantly, in one place.</p>
+    <p class="lead" data-i18n="process.lead">Building the page was the easy half. The hard half was making it stay accurate without anyone maintaining it, and making the order of work visible enough that fairness stops depending on attention.</p>
 
     <div style="margin-top: 56px;">
 
@@ -408,7 +408,7 @@ footer .links a:hover { color: white; }
         <div class="step-num">2</div>
         <div>
           <h4 data-i18n="process.s2.title">A bar that reddens with age — and goes out the moment someone looks</h4>
-          <p data-i18n-html="process.s2.body">Under every row runs a thin bar that shifts from white to red as the application waits. When a reviewer opens it, three things happen at once: the bar disappears, the row dims, and the reviewer's avatar appears in the participants column. <strong>The queue answers "what is nobody looking at right now" without anybody asking.</strong> In the bot, that question had no answer at all — you scrolled and hoped.</p>
+          <p data-i18n-html="process.s2.body">Under every row runs a thin bar that shifts from white to red as the application waits. When a reviewer opens it, three things happen at once: the bar disappears, the row dims, and the reviewer's avatar appears in the participants column. <strong>The queue answers "what is nobody looking at right now" without anybody asking.</strong> Before, that question had no answer — you asked a colleague, or you guessed.</p>
           <div style="max-width:420px; margin-top:18px;">
             <div style="font-size:13px; color:var(--text-muted); margin-bottom:6px;" data-i18n="process.s2.demo1">Waiting, nobody has opened it</div>
             <div class="heatbar"></div>
@@ -430,7 +430,7 @@ footer .links a:hover { color: white; }
         <div class="step-num">4</div>
         <div>
           <h4 data-i18n="process.s4.title">Twenty templates instead of a text field</h4>
-          <p data-i18n-html="process.s4.body">The committee almost never asks something new — it asks the same twenty things. So the reply is a dropdown, not a message: four categories, twenty templates. Picking one <strong>changes the application's main status automatically</strong>, because the category already says what state the application is really in. And a validation rule that the bot could never enforce: while a mandatory to-do is open, the application cannot come back to the committee. No more "we sent it again, have another look."</p>
+          <p data-i18n-html="process.s4.body">The committee almost never asks something new — it asks the same twenty things. So the reply is a dropdown, not free text: four categories, twenty templates. Picking one <strong>changes the application's main status automatically</strong>, because the category already says what state the application is really in. And a validation rule that nothing before could enforce: while a mandatory to-do is open, the application cannot come back to the committee. That alone ended the habit of re-sending the same case.</p>
         </div>
       </div>
 
@@ -469,7 +469,7 @@ footer .links a:hover { color: white; }
   <div class="container-wide">
     <div class="section-label" data-i18n="design.label">Design</div>
     <h2 data-i18n="design.title">The system, screen by screen.</h2>
-    <p class="lead" data-i18n="design.lead">Four surfaces: the queue that replaced the bot, the application list it feeds from, the client profile a decision is built on, and the credit history that carries the most weight in that decision.</p>
+    <p class="lead" data-i18n="design.lead">Four surfaces: the queue that sets the order of work, the application list it feeds from, the client profile a decision is built on, and the credit history that carries the most weight in that decision.</p>
 
     <div style="margin-top: 64px;">
       <h3 data-i18n="design.s1.title">01 · The queue — a person, an amount and two clocks in every row</h3>
@@ -558,9 +558,9 @@ footer .links a:hover { color: white; }
 
     <div class="grid-3" style="margin-top: 48px;">
       <div class="card dark">
-        <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o1.tag">MESSENGER</div>
+        <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o1.tag">ORDER OF WORK</div>
         <div style="font-size:54px; font-weight:800; letter-spacing:-0.04em; line-height:1; color: white; margin-bottom: 12px;">0</div>
-        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o1.body">committee messages now live outside the bank's own systems. Nothing follows an employee out of the door.</p>
+        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o1.body">applications can now be skipped by accident — the queue is ordered by arrival and the oldest sits at the top.</p>
       </div>
       <div class="card dark">
         <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o2.tag">AUTOMATED SHARE</div>
@@ -593,7 +593,7 @@ footer .links a:hover { color: white; }
       <div>
         <h3 data-i18n="lessons.w.title">What worked</h3>
         <ul class="bullets">
-          <li data-i18n-html="lessons.w1"><strong>Replacing a chat with a queue, not with another chat.</strong> The temptation was to build an internal messenger. A queue with self-managing statuses does the same job and leaves a record nobody has to maintain.</li>
+          <li data-i18n-html="lessons.w1"><strong>A queue, not a faster way to ask.</strong> The temptation was to speed up the requests themselves. Fixing the order of work made the requests matter less, and left a record nobody has to maintain.</li>
           <li data-i18n-html="lessons.w2"><strong>Turning questions into a dropdown.</strong> Twenty templates cover almost everything the committee asks, and because each one carries a status, the process moves itself forward.</li>
           <li data-i18n-html="lessons.w3"><strong>Putting the collections team's notes next to the numbers.</strong> The sentence a colleague typed about a client two years ago is often worth more than the payment table beside it.</li>
         </ul>
@@ -602,7 +602,7 @@ footer .links a:hover { color: white; }
         <h3 data-i18n="lessons.d.title">What I'd do differently</h3>
         <ul class="bullets">
           <li data-i18n-html="lessons.d1"><strong>Design the empty queue first.</strong> An empty page is the state reviewers see most often on a good day, and it was the last thing anyone thought about.</li>
-          <li data-i18n-html="lessons.d2"><strong>Ask for the bot's statistics before designing the replacement.</strong> We knew the process was slow; we never measured exactly how slow, so the "before" number is weaker than it could have been.</li>
+          <li data-i18n-html="lessons.d2"><strong>Measure the old process before designing the new one.</strong> We knew review was slow; we never measured exactly how slow, so the "before" number is weaker than it could have been.</li>
           <li data-i18n-html="lessons.d3"><strong>Write down which claims came from where.</strong> Parts of this project were described to me second-hand, and separating what I saw from what I was told took far longer afterwards than it would have taken at the time.</li>
         </ul>
       </div>
@@ -648,8 +648,8 @@ const I18N = {
   en: {
     'nav.back': `All work`,
     'hero.tag': `Case Study · 2025–2026 · Alif Bank`,
-    'hero.title': `KK Service<br><span class="accent">Credit decisions,<br>off the messenger`,
-    'hero.lede': `Alif Bank's credit committee reviewed loan applications through a Telegram bot. Every link and every comment stayed in the chat history of every front-office employee — including the ones who had already left. This is the system that replaced it.`,
+    'hero.title': `KK Service<br><span class="accent">A queue for the<br>credit committee</span>`,
+    'hero.lede': `Loan applications reached Alif Bank's credit committee from eight different systems, and once they arrived there was no single place where they waited. This is the review tool that gave the committee one queue, two clocks and a client profile worth deciding from.`,
     'hero.role.label': `Role`,
     'hero.role.value': `Sole Product Designer`,
     'hero.duration.label': `Duration`,
@@ -659,28 +659,28 @@ const I18N = {
     'hero.company.label': `Company`,
     'hero.company.value': `Alif Bank (internal tool)`,
     'overview.label': `Project Overview`,
-    'overview.title': `A bank was deciding who gets credit inside a consumer messenger.`,
-    'overview.p1': `When a front-office specialist needed the credit committee to look at an application, they sent it to a Telegram bot. The committee answered there too. It worked — and it meant that the link to every application, along with whatever the committee said about the client, sat permanently in the personal chat history of every employee who had ever touched it.`,
-    'overview.p2': `Including the ones who no longer worked at the bank. <strong>Nobody could take that data back.`,
-    'overview.p3': `The brief was to move the whole exchange inside the bank's own systems. I designed the queue that replaced the bot, the templated question system that replaced free-form chat, and the client profile the committee decides from — across four employee roles.`,
+    'overview.title': `Eight ways in, and no line to stand in.`,
+    'overview.p1': `An application's route through review depended on where it had come from. A request handed to the committee could sit for an hour or for two days, and nobody could say which — there was no page that listed everything currently waiting, in the order it had arrived.`,
+    'overview.p2': `The consequences were ordinary and expensive. <strong>Time-to-decision for walk-in applications could not be measured at all.</strong> A specialist who had sent an application had no way to tell whether anyone had picked it up. Requests were repeated because the first one might have been missed. Some applications were simply lost.`,
+    'overview.p3': `I designed the queue that fixed the order of work, the templated question system that replaced free-form requests, and the client profile the committee decides from — across four employee roles.`,
     'overview.stat.channels': `intake channels landing in one queue`,
     'overview.stat.substatuses': `queue sub-statuses, switching on their own`,
-    'overview.stat.templates': `question templates replacing free-form chat`,
-    'overview.stat.telegram': `committee messages left outside the bank`,
+    'overview.stat.templates': `question templates replacing free-form requests`,
+    'overview.stat.timers': `timers in every row: the client's and ours`,
     'problem.label': `The problem`,
-    'problem.title': `The leak wasn't a breach. It was the process working as designed.`,
-    'problem.sec.title': `What leaving an employee actually meant`,
-    'problem.sec.body': `A specialist resigns. Their laptop goes back to IT, their accounts are disabled, their badge stops working. And on their personal phone stays a Telegram chat containing links to hundreds of credit applications and the committee's written assessments of the people behind them. There is no button that undoes that.`,
+    'problem.title': `The committee had no line, and no clock.`,
+    'problem.sec.title': `Nobody could answer "who is waiting longest"`,
+    'problem.sec.body': `Applications arrived from eight systems and were worked on as they surfaced, not in the order they came. That is fine at ten a day and impossible at a hundred: the person whose application slipped past everyone's attention waits exactly as long as it takes for someone to notice, and the bank finds out about it from the customer.`,
     'problem.ops.title': `And four everyday costs on top`,
-    'problem.ops.l1': `A Telegram outage stopped credit review entirely — a third-party service was in the critical path of a banking process.`,
-    'problem.ops.l2': `Time-to-decision for walk-in applications couldn't be measured, because the clock lived in a chat.`,
-    'problem.ops.l3': `Requests drowned in message spam.`,
-    'problem.ops.l4': `Applications were simply lost — a message scrolled past is a customer waiting for nothing.`,
-    'problem.quote': `"Links and comments from the committee are saved by every front-office specialist, and after they leave, that data stays with them."`,
-    'problem.quote.cite': `— from the brief, verbatim`,
+    'problem.ops.l1': `A specialist who sent an application for review had no way to tell whether it had been opened.`,
+    'problem.ops.l2': `Time-to-decision for walk-in applications couldn't be measured, so the slowest part of the process was invisible.`,
+    'problem.ops.l3': `Requests were repeated in case the first had been missed, which made the pile worse.`,
+    'problem.ops.l4': `Applications went missing — and a lost application is a customer waiting for nothing.`,
+    'problem.quote': `"The specialist who sent it could not tell whether anyone was looking, so they sent it again."`,
+    'problem.quote.cite': `— the loop the queue was built to break`,
     'process.label': `Key decisions`,
     'process.title': `Five decisions that moved a conversation into a system.`,
-    'process.lead': `Removing the bot was the easy half. The hard half was replacing what the bot was quietly good at: everyone saw everything, instantly, in one place.`,
+    'process.lead': `Building the page was the easy half. The hard half was making it stay accurate without anyone maintaining it, and making the order of work visible enough that fairness stops depending on attention.`,
     'process.s1.title': `A queue with four sub-statuses that nobody has to set`,
     'process.s1.body': `Not in queue → In queue → Under review → Reviewed. Every transition fires off an action someone was already taking: sending the application, opening it, changing the decision status. <strong>No one maintains the queue, which is exactly why it stays true.`,
     'process.s1.st1': `Not in queue`,
@@ -688,22 +688,22 @@ const I18N = {
     'process.s1.st3': `Under review`,
     'process.s1.st4': `Reviewed`,
     'process.s2.title': `A bar that reddens with age — and goes out the moment someone looks`,
-    'process.s2.body': `Under every row runs a thin bar that shifts from white to red as the application waits. When a reviewer opens it, three things happen at once: the bar disappears, the row dims, and the reviewer's avatar appears in the participants column. <strong>The queue answers "what is nobody looking at right now" without anybody asking.`,
+    'process.s2.body': `Under every row runs a thin bar that shifts from white to red as the application waits. When a reviewer opens it, three things happen at once: the bar disappears, the row dims, and the reviewer's avatar appears in the participants column. <strong>The queue answers "what is nobody looking at right now" without anybody asking.</strong> Before, that question had no answer — you asked a colleague, or you guessed.`,
     'process.s2.demo1': `Waiting, nobody has opened it`,
     'process.s2.demo2': `Opened — the bar goes out, an avatar appears`,
     'process.s3.title': `Two clocks, because they measure different things`,
     'process.s3.body': `Each row carries <strong>«Under review: 16 min»`,
     'process.s4.title': `Twenty templates instead of a text field`,
-    'process.s4.body': `The committee almost never asks something new — it asks the same twenty things. So the reply is a dropdown, not a message: four categories, twenty templates. Picking one <strong>changes the application's main status automatically`,
+    'process.s4.body': `The committee almost never asks something new — it asks the same twenty things. So the reply is a dropdown, not free text: four categories, twenty templates. Picking one <strong>changes the application's main status automatically</strong>, because the category already says what state the application is really in. And a validation rule that nothing before could enforce: while a mandatory to-do is open, the application cannot come back to the committee. That alone ended the habit of re-sending the same case.`,
     'process.s5.title': `The answer goes under its own question — and the comment stops pretending to be a task`,
     'process.s5.body': `The brief offered two ways to collect the front office's replies: a field under each to-do, or one shared field where answers are numbered. I took the first — at six open items, numbered answers get mismatched with their questions, and a credit decision is a bad place to find out. The second option didn't disappear, it got demoted: it became <strong>a plain comment field`,
     'score.label': `About the scoring engine`,
     'score.title': `The engine decides most cases. I designed everything around it, not it.`,
     'score.lead': `Being precise about this matters, because it is the part of the project most easily overstated. The scoring model lives on the backend and I had no hand in it. What reaches the interface is a single block:`,
-    'score.body': `Four lines. My decision was where to put them: <strong>inside the voting, as one entry alongside the committee members' own votes`,
+    'score.body': `Four lines. My decision was where to put them: <strong>inside the voting, as one entry alongside the committee members' own votes</strong> — not above the vote as a verdict to ratify, and not hidden behind the final outcome. A reviewer can agree with the engine or vote against it, and either way the disagreement is recorded. The rest of my work exists so that a human who wants to disagree has grounds to: the credit history, the documents, the property, the guarantors, the client's own record.`,
     'design.label': `Design`,
     'design.title': `The system, screen by screen.`,
-    'design.lead': `Four surfaces: the queue that replaced the bot, the application list it feeds from, the client profile a decision is built on, and the credit history that carries the most weight in that decision.`,
+    'design.lead': `Four surfaces: the queue that sets the order of work, the application list it feeds from, the client profile a decision is built on, and the credit history that carries the most weight in that decision.`,
     'design.s1.title': `01 · The queue — a person, an amount and two clocks in every row`,
     'design.s1.body': `Rows, not a board. Oldest at the top, newest at the bottom, so working top-down is the same as working fairly. Each row carries the client and their standing, the amount and term, who sent it, the region, both timers, and the avatars of everyone who has opened it.`,
     'design.s1.shot': `The queue with its filters: client status, application status, amount, type, city, source, date.`,
@@ -715,7 +715,7 @@ const I18N = {
     'design.s3.body': `The vertical axis is what the client owed that month, the horizontal one is the calendar. Months with missed payments are bigger and red, so a bad year is visible before anything is read. The source switches between Alif, the national bureau, or both — and the bureau view deliberately excludes Alif's own loans, because duplicating them would make a client look twice as indebted as they are.`,
     'design.s3.shot1': `Years toggle on and off; overdue months are enlarged and red.`,
     'design.s3.shot2': `A tranche opened up: the payment schedule on the left, the collections team's notes on the right.`,
-    'design.s3.extra': `The timeline is the part I'd defend hardest. On the left, each due date with a tick, or a delay written out as its period, its length in days and the amount short. On the right, <strong>what the collections team actually wrote about this person`,
+    'design.s3.extra': `The timeline is the part I'd defend hardest. On the left, each due date with a tick, or a delay written out as its period, its length in days and the amount short. On the right, <strong>what the collections team actually wrote about this person</strong>, newest first. Numbers say a client was 13 days late; the note next to it says they called to say they would pay in the morning. Only one of those two tells you whether to lend again.`,
     'design.s4.title': `04 · Templates — the twenty things the committee actually asks`,
     'design.s4.body': `Four categories. Choosing a template writes the to-do and moves the application into the matching status in the same action.`,
     'design.s4.c1.t': `Fill in the form`,
@@ -743,8 +743,8 @@ const I18N = {
     'design.s4.shot2': `The committee page, where the engine's result sits as one entry among the votes.`,
     'outcomes.label': `Outcome`,
     'outcomes.title': `The committee now decides the hard 10%. The engine handles the rest.`,
-    'outcomes.o1.tag': `MESSENGER`,
-    'outcomes.o1.body': `committee messages now live outside the bank's own systems. Nothing follows an employee out of the door.`,
+    'outcomes.o1.tag': `ORDER OF WORK`,
+    'outcomes.o1.body': `applications can now be skipped by accident — the queue is ordered by arrival and the oldest sits at the top.`,
     'outcomes.o2.tag': `AUTOMATED SHARE`,
     'outcomes.o2.body': `of credit decisions are resolved by the scoring engine, leaving the committee the cases that need judgement.`,
     'outcomes.o3.tag': `WALK-IN APPLICATIONS`,
@@ -755,12 +755,12 @@ const I18N = {
     'lessons.label': `Lessons`,
     'lessons.title': `What I'm taking with me into the next project.`,
     'lessons.w.title': `What worked`,
-    'lessons.w1': `<strong>Replacing a chat with a queue, not with another chat.`,
+    'lessons.w1': `<strong>A queue, not a faster way to ask.</strong> The temptation was to speed up the requests themselves. Fixing the order of work made the requests matter less, and left a record nobody has to maintain.`,
     'lessons.w2': `<strong>Turning questions into a dropdown.`,
     'lessons.w3': `<strong>Putting the collections team's notes next to the numbers.`,
     'lessons.d.title': `What I'd do differently`,
     'lessons.d1': `<strong>Design the empty queue first.`,
-    'lessons.d2': `<strong>Ask for the bot's statistics before designing the replacement.`,
+    'lessons.d2': `<strong>Measure the old process before designing the new one.</strong> We knew review was slow; we never measured exactly how slow, so the "before" number is weaker than it could have been.`,
     'lessons.d3': `<strong>Write down which claims came from where.`,
     'cta.title': `Want to see the rest of the system?`,
     'cta.body': `The full Figma file covers the queue, the committee page, the client profile and the admin panel — in light and dark themes.`,
@@ -771,8 +771,8 @@ const I18N = {
   ru: {
     'nav.back': `Все проекты`,
     'hero.tag': `Кейс · 2025–2026 · Алиф Банк`,
-    'hero.title': `KK Service<br><span class="accent">Кредитные решения<br>без мессенджера</span>`,
-    'hero.lede': `Кредитный комитет Алиф Банка рассматривал заявки через Telegram-бота. Каждая ссылка и каждый комментарий оставались в переписке у каждого сотрудника фронт-офиса — включая тех, кто уже уволился. Это система, которая его заменила.`,
+    'hero.title': `KK Service<br><span class="accent">Очередь для<br>кредитного комитета</span>`,
+    'hero.lede': `Заявки приходили в кредитный комитет Алиф Банка из восьми разных систем, и, дойдя туда, оказывались нигде: единого места, где они ждут, не существовало. Это инструмент рассмотрения, который дал комитету одну очередь, двое часов и профиль клиента, по которому можно решать.`,
     'hero.role.label': `Роль`,
     'hero.role.value': `Единственный продуктовый дизайнер`,
     'hero.duration.label': `Срок`,
@@ -782,28 +782,28 @@ const I18N = {
     'hero.company.label': `Компания`,
     'hero.company.value': `Алиф Банк (внутренний сервис)`,
     'overview.label': `О проекте`,
-    'overview.title': `Банк решал, кому выдать кредит, внутри обычного мессенджера.`,
-    'overview.p1': `Когда специалисту фронт-офиса нужно было, чтобы кредитный комитет посмотрел заявку, он отправлял её Telegram-боту. Комитет отвечал там же. Это работало — и означало, что ссылка на каждую заявку вместе с тем, что комитет сказал о клиенте, навсегда оставалась в личной переписке каждого, кто её касался.`,
-    'overview.p2': `Включая тех, кто в банке больше не работает. <strong>Забрать эти данные обратно невозможно.</strong> Сверху к этому: при сбое Telegram рассмотрение останавливалось; время ожидания заявки нельзя было измерить; запросы тонули в спаме; заявки терялись.`,
-    'overview.p3': `Задача была перенести весь обмен внутрь собственных систем банка. Я спроектировал очередь, заменившую бота, систему шаблонных вопросов вместо свободной переписки и профиль клиента, из которого комитет принимает решение — для четырёх ролей сотрудников.`,
+    'overview.title': `Восемь входов и ни одной очереди, в которой стоять.`,
+    'overview.p1': `Путь заявки через рассмотрение зависел от того, откуда она пришла. Переданная комитету заявка могла пролежать час, а могла два дня, и сказать, сколько именно, было некому — не существовало страницы, где перечислено всё, что сейчас ждёт, в порядке поступления.`,
+    'overview.p2': `Последствия были обычные и дорогие. <strong>Время до решения по офисным заявкам нельзя было измерить вообще.</strong> Специалист, отправивший заявку, не мог понять, взял ли её кто-нибудь. Запросы повторяли на случай, если первый не заметили. Часть заявок просто терялась.`,
+    'overview.p3': `Я спроектировал очередь, которая закрепила порядок работы, систему шаблонных вопросов вместо свободных запросов и профиль клиента, из которого комитет принимает решение — для четырёх ролей сотрудников.`,
     'overview.stat.channels': `каналов поступления сходятся в одну очередь`,
     'overview.stat.substatuses': `подстатуса очереди, переключаются сами`,
-    'overview.stat.templates': `шаблонов вопросов вместо свободной переписки`,
-    'overview.stat.telegram': `сообщений комитета осталось за пределами банка`,
+    'overview.stat.templates': `шаблонов вопросов вместо свободных запросов`,
+    'overview.stat.timers': `таймера в каждой строке: клиента и наш`,
     'problem.label': `Проблема`,
-    'problem.title': `Утечки не было. Был процесс, работавший ровно так, как задуман.`,
-    'problem.sec.title': `Что на самом деле означало увольнение`,
-    'problem.sec.body': `Специалист увольняется. Ноутбук возвращается в IT, учётные записи отключают, пропуск перестаёт работать. А в его личном телефоне остаётся переписка со ссылками на сотни кредитных заявок и письменными оценками людей, которые за ними стоят. Кнопки, которая это отменяет, не существует.`,
+    'problem.title': `У комитета не было ни очереди, ни часов.`,
+    'problem.sec.title': `Никто не мог ответить, кто ждёт дольше всех`,
+    'problem.sec.body': `Заявки приходили из восьми систем и разбирались по мере того, как попадались на глаза, а не по порядку. При десяти в день это нормально, при сотне — невозможно: человек, чья заявка проскочила мимо общего внимания, ждёт ровно столько, сколько нужно, чтобы её кто-то заметил, и банк узнаёт об этом от самого клиента.`,
     'problem.ops.title': `И четыре бытовые беды сверху`,
-    'problem.ops.l1': `Сбой Telegram полностью останавливал рассмотрение — сторонний сервис оказался в критическом пути банковского процесса.`,
-    'problem.ops.l2': `Время до решения по офлайн-заявкам нельзя было измерить, потому что часы жили в чате.`,
-    'problem.ops.l3': `Запросы тонули в спаме сообщений.`,
-    'problem.ops.l4': `Заявки просто терялись — пролистанное сообщение означает клиента, который ждёт впустую.`,
-    'problem.quote': `«Ссылки и комменты со стороны КК сохраняются у всех специалистов фронта и после увольнения эти данные остаются»`,
-    'problem.quote.cite': `— из технического задания, дословно`,
+    'problem.ops.l1': `Специалист, отправивший заявку на рассмотрение, не мог понять, открыл ли её кто-нибудь.`,
+    'problem.ops.l2': `Время до решения по офисным заявкам не измерялось, поэтому самое медленное место процесса было невидимым.`,
+    'problem.ops.l3': `Запросы повторяли на случай, если первый пропустили, и куча от этого росла.`,
+    'problem.ops.l4': `Заявки терялись — а потерянная заявка означает клиента, который ждёт впустую.`,
+    'problem.quote': `«Отправивший не мог понять, смотрит ли кто-нибудь, поэтому отправлял ещё раз»`,
+    'problem.quote.cite': `— петля, ради разрыва которой строилась очередь`,
     'process.label': `Ключевые решения`,
     'process.title': `Пять решений, которые перенесли разговор в систему.`,
-    'process.lead': `Убрать бота было простой половиной. Сложной было заменить то, в чём бот был незаметно хорош: все видели всё, сразу и в одном месте.`,
+    'process.lead': `Собрать страницу было простой половиной. Сложной — сделать так, чтобы она оставалась правдивой без чьего-либо участия, и чтобы порядок работы был виден настолько, что справедливость перестаёт зависеть от внимательности.`,
     'process.s1.title': `Очередь с четырьмя подстатусами, которые никто не ставит руками`,
     'process.s1.body': `Не в очереди → В очереди → Рассматривается → Рассмотрено. Каждый переход цепляется за действие, которое человек и так совершал: отправил заявку, открыл её, сменил статус решения. <strong>Очередь никто не ведёт — именно поэтому она остаётся правдивой.</strong> Рассмотренная заявка удаляется со страницы сама, и всё, что ниже, поднимается на позицию вверх.`,
     'process.s1.st1': `Не в очереди`,
@@ -811,13 +811,13 @@ const I18N = {
     'process.s1.st3': `Рассматривается`,
     'process.s1.st4': `Рассмотрено`,
     'process.s2.title': `Полоса, которая краснеет от ожидания — и гаснет, как только кто-то посмотрел`,
-    'process.s2.body': `Под каждой строкой идёт тонкая полоса, уходящая от белого к красному по мере ожидания. Когда проверяющий открывает заявку, происходит три вещи сразу: полоса исчезает, строка тускнеет, а в столбце участников появляется его аватарка. <strong>Очередь отвечает на вопрос «на что сейчас никто не смотрит», пока его никто не задал.</strong> В боте у этого вопроса не было ответа вообще — ты листал и надеялся.`,
+    'process.s2.body': `Под каждой строкой идёт тонкая полоса, уходящая от белого к красному по мере ожидания. Когда проверяющий открывает заявку, происходит три вещи сразу: полоса исчезает, строка тускнеет, а в столбце участников появляется его аватарка. <strong>Очередь отвечает на вопрос «на что сейчас никто не смотрит», пока его никто не задал.</strong> Раньше у этого вопроса ответа не было — спрашивали коллегу или угадывали.`,
     'process.s2.demo1': `Ждёт, никто не открывал`,
     'process.s2.demo2': `Открыли — полоса гаснет, появляется аватарка`,
     'process.s3.title': `Двое часов, потому что они меряют разное`,
     'process.s3.body': `В каждой строке стоит <strong>«Рассматривается: 16 мин.»</strong> и <strong>«Ожидание клиента: 27 мин.»</strong> Вторые — это человек, сидящий в отделении. Первые — сколько времени его заявка у нас открыта. Форма, отправленная ночью через сайт, и мужчина в кресле в трёх метрах в базе данных выглядят одинаково; эти два числа и делают их разными на экране, и из-за них офлайн-заявки разбирают первыми.`,
     'process.s4.title': `Двадцать шаблонов вместо текстового поля`,
-    'process.s4.body': `Комитет почти никогда не спрашивает новое — он спрашивает одни и те же двадцать вещей. Поэтому ответ стал выпадающим списком, а не сообщением: четыре категории, двадцать шаблонов. Выбор шаблона <strong>автоматически меняет основной статус заявки</strong>, потому что категория уже говорит, в каком состоянии заявка на самом деле. И правило валидации, которое бот не мог обеспечить: пока обязательное туду открыто, заявка не может вернуться в комитет. Никаких больше «отправили ещё раз, посмотрите».`,
+    'process.s4.body': `Комитет почти никогда не спрашивает новое — он спрашивает одни и те же двадцать вещей. Поэтому ответ стал выпадающим списком, а не свободным текстом: четыре категории, двадцать шаблонов. Выбор шаблона <strong>автоматически меняет основной статус заявки</strong>, потому что категория уже говорит, в каком состоянии заявка на самом деле. И правило валидации, которого раньше обеспечить было нечем: пока обязательное туду открыто, заявка не может вернуться в комитет. Одно это прекратило привычку отправлять то же самое по второму разу.`,
     'process.s5.title': `Ответ стоит под своим вопросом — а комментарий перестаёт притворяться задачей`,
     'process.s5.body': `В задании предложили два способа собирать ответы фронта: поле под каждым туду или одно общее поле с нумерацией ответов. Я взял первый — на шести открытых пунктах пронумерованные ответы начинают путаться со своими вопросами, а кредитное решение плохое место, чтобы это обнаружить. Второй вариант не исчез, а понизился в звании: он стал <strong>обычным полем комментария</strong>, намеренно не задачей, чтобы никто не читал его как ещё один пункт к закрытию.`,
     'score.label': `О скоринге`,
@@ -826,12 +826,12 @@ const I18N = {
     'score.body': `Четыре строки. Моим решением было, куда их поставить: <strong>внутрь голосования, одной записью наравне с голосами членов комитета</strong> — не над голосованием как вердикт, который надо утвердить, и не спрятанным за итоговым решением. Проверяющий может согласиться с движком или проголосовать против, и в обоих случаях расхождение остаётся в записи. Вся остальная моя работа существует ради того, чтобы человеку, который хочет не согласиться, было на что опереться: кредитная история, документы, имущество, поручители, собственная история клиента.`,
     'design.label': `Дизайн`,
     'design.title': `Система, экран за экраном.`,
-    'design.lead': `Четыре поверхности: очередь, заменившая бота, список заявок, который её питает, профиль клиента, на котором строится решение, и кредитная история, весящая в этом решении больше всего.`,
+    'design.lead': `Четыре поверхности: очередь, задающая порядок работы, список заявок, который её питает, профиль клиента, на котором строится решение, и кредитная история, весящая в этом решении больше всего.`,
     'design.s1.title': `01 · Очередь — человек, сумма и двое часов в каждой строке`,
     'design.s1.body': `Строки, а не доска. Старые сверху, новые снизу, поэтому работать сверху вниз — то же самое, что работать честно. В строке клиент и его репутация, сумма и срок, кто отправил, регион, оба таймера и аватарки всех, кто заявку открывал.`,
     'design.s1.shot': `Очередь с фильтрами: статус клиента, статус заявки, сумма, вид, город, источник, дата.`,
     'design.s2.title': `02 · Профиль клиента — шесть вкладок, превращающих разные системы в одного человека`,
-    'design.s2.body': `Комитет, анализ, кредитная история, выписки по картам, документы, скоринг. Под ними лежат CRM, республиканское кредитное бюро, суперапп Алифа иосновная банковская система — ни одна не создавалась, чтобы отвечать на кредитный вопрос. Вкладки и есть ответ на то, что проверяющий видит из этой груды и в каком порядке.`,
+    'design.s2.body': `Комитет, анализ, кредитная история, выписки по картам, документы, скоринг. Под ними лежат CRM, республиканское кредитное бюро, суперапп Алифа и основная банковская система — ни одна не создавалась, чтобы отвечать на кредитный вопрос. Вкладки и есть ответ на то, что проверяющий видит из этой груды и в каком порядке.`,
     'design.s2.shot1': `Анализ: активность по месяцам, категории товаров и статистика по просрочкам.`,
     'design.s2.shot2': `У документов своя история: проверен, новый или старый — и кем.`,
     'design.s3.title': `03 · Кредитная история — пять лет, все банки страны, один график`,
@@ -866,8 +866,8 @@ const I18N = {
     'design.s4.shot2': `Страница комитета, где результат движка стоит одной записью среди голосов.`,
     'outcomes.label': `Результат`,
     'outcomes.title': `Комитет теперь решает сложные 10%. Остальное закрывает движок.`,
-    'outcomes.o1.tag': `МЕССЕНДЖЕР`,
-    'outcomes.o1.body': `сообщений комитета живёт за пределами собственных систем банка. Ничего не уходит вместе с уволившимся.`,
+    'outcomes.o1.tag': `ПОРЯДОК РАБОТЫ`,
+    'outcomes.o1.body': `заявок можно пропустить по случайности — очередь выстроена по времени поступления, и самая старая стоит сверху.`,
     'outcomes.o2.tag': `ДОЛЯ АВТОМАТИКИ`,
     'outcomes.o2.body': `кредитных решений закрывает скоринговый движок, оставляя комитету случаи, где нужно суждение.`,
     'outcomes.o3.tag': `ЗАЯВКИ В ОФИСЕ`,
@@ -878,12 +878,12 @@ const I18N = {
     'lessons.label': `Выводы`,
     'lessons.title': `Что я забираю с собой в следующий проект.`,
     'lessons.w.title': `Что сработало`,
-    'lessons.w1': `<strong>Заменить чат очередью, а не другим чатом.</strong> Соблазн был построить внутренний мессенджер. Очередь с самопереключающимися статусами делает ту же работу и оставляет запись, которую никому не нужно вести.`,
+    'lessons.w1': `<strong>Очередь, а не более быстрый способ спросить.</strong> Соблазн был ускорить сами запросы. Закрепление порядка работы сделало запросы менее важными и оставило запись, которую никому не нужно вести.`,
     'lessons.w2': `<strong>Превратить вопросы в выпадающий список.</strong> Двадцать шаблонов покрывают почти всё, что спрашивает комитет, а поскольку каждый несёт статус, процесс двигает себя сам.`,
     'lessons.w3': `<strong>Поставить заметки отдела проблемных кредитов рядом с цифрами.</strong> Фраза, которую коллега написал о клиенте два года назад, часто стоит больше, чем таблица платежей рядом.`,
     'lessons.d.title': `Что сделал бы иначе`,
     'lessons.d1': `<strong>Спроектировал бы пустую очередь первой.</strong> Пустая страница — то состояние, которое проверяющие в хороший день видят чаще всего, и о нём подумали последним.`,
-    'lessons.d2': `<strong>Запросил бы статистику бота до проектирования замены.</strong> Мы знали, что процесс медленный; насколько именно — не померили, поэтому цифра «до» слабее, чем могла быть.`,
+    'lessons.d2': `<strong>Померить старый процесс до проектирования нового.</strong> Мы знали, что рассмотрение медленное; насколько именно — не померили, поэтому цифра «до» слабее, чем могла быть.`,
     'lessons.d3': `<strong>Записывал бы, какое утверждение откуда взялось.</strong> Часть проекта описывали мне с чужих слов, и отделить увиденное от услышанного потом заняло куда больше времени, чем заняло бы сразу.`,
     'cta.title': `Хотите посмотреть остальную систему?`,
     'cta.body': `Полный Figma-файл включает очередь, страницу комитета, профиль клиента и админ-панель — в светлой и тёмной темах.`,
