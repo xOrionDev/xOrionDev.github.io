@@ -314,8 +314,8 @@ footer .links a:hover { color: white; }
     <div class="hero-meta">
       <div><div class="label" data-i18n="hero.role.label">Role</div><div class="value" data-i18n="hero.role.value">Sole Product Designer (Client, Admin & Seller)</div></div>
       <div><div class="label" data-i18n="hero.duration.label">Duration</div><div class="value" data-i18n="hero.duration.value">~5 months</div></div>
-      <div><div class="label" data-i18n="hero.status.label">Status</div><div class="value" data-i18n="hero.status.value">In development · onboarding partners</div></div>
-      <div><div class="label" data-i18n="hero.company.label">Company</div><div class="value" data-i18n="hero.company.value">Alif Technology</div></div>
+      <div><div class="label" data-i18n="hero.status.label">Status</div><div class="value" data-i18n="hero.status.value">Live · official launch in preparation</div></div>
+      <div><div class="label" data-i18n="hero.company.label">Company</div><div class="value" data-i18n="hero.company.value">Alif Technology · for an external client</div></div>
     </div>
   </div>
 </header>
@@ -521,6 +521,74 @@ footer .links a:hover { color: white; }
     <h2 data-i18n="design.title">Three surfaces, one system, screen by screen.</h2>
     <p class="lead" data-i18n-html="design.lead">One taxonomy and one attribute engine power the client storefront, the moderator console, and the seller cabinet — color-coded below as <span class="badge client">Client</span>, <span class="badge brand">Admin</span> and <span class="badge seller">Seller</span> so it's clear which surface each screen belongs to.</p>
 
+    <!-- ── ЧАСТЬ I · КЛИЕНТСКАЯ ВИТРИНА ───────────────────── -->
+    <div style="margin-top: 72px; padding-top: 40px; border-top: 2px solid var(--border);">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:10px; flex-wrap:wrap;">
+        <h3 style="margin:0; font-size: clamp(24px, 3vw, 34px);" data-i18n="um.part1.title">Part I · The storefront, where the back office pays off</h3>
+        <span class="badge client" data-i18n="um.part1.tag">Client view</span>
+      </div>
+      <p class="lead" style="max-width:860px;" data-i18n="um.part1.lead">Thirteen sections, each drawn twice — desktop and mobile, light and dark. Nothing here is decorative: every filter, every breadcrumb and every colour swatch is the visible end of a decision made in the moderator console.</p>
+
+      <div class="shots">
+        <figure class="shot" data-label="img/um-home.png — Главная витрины (1600 px)"><img src="../img/um-home.png" alt="UmedMall storefront home" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s1.shot">The home page: banner slider, category tiles and product widgets — all of it assembled by a moderator, not a developer.</figcaption></figure>
+      </div>
+    </div>
+
+    <div style="margin-top: 72px;">
+      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s2.title">Three levels of catalogue, against the brief's own instruction</h4>
+      <p style="max-width:860px;" data-i18n-html="um.s2.body">The client-side brief asked for <strong>two levels of nesting, maximum</strong>. The admin section of the same brief described three: category → subcategory → type. <strong>I followed the data, not the sentence</strong> — because a type belongs to exactly one subcategory, and breaking that link is what makes a seller's products vanish from the storefront entirely. So the catalogue drills three levels deep, with breadcrumbs that never lose the path.</p>
+      <div class="shots">
+        <figure class="shot" data-label="img/um-catalogue.png — Каталог, три уровня (1600 px)"><img src="../img/um-catalogue.png" alt="Catalogue with three levels" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s2.shot1">Catalogue → category → subcategory, with the path kept visible in the breadcrumb.</figcaption></figure>
+        <figure class="shot" data-label="img/um-category.png — Страница категории с фильтрами (1600 px)"><img src="../img/um-category.png" alt="Category page with filters" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s2.shot2">A category page: price slider first, then filters built from the attribute engine.</figcaption></figure>
+      </div>
+    </div>
+
+    <div style="margin-top: 72px;">
+      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s3.title">The colour swatch is the whole system in one control</h4>
+      <p style="max-width:860px;" data-i18n-html="um.s3.body">A shopper filtering by colour clicks a coloured dot. That dot exists because a moderator entered a <strong>HEX code</strong> with a name, and because an administrator then approved that name before it could appear on the marketplace at all — a two-step check on a single swatch. The seller never types "reddish". <strong>Every filter on this page is somebody's constrained input upstream</strong>: memory in GB, colour in HEX, dimensions in a unit that converts to a base.</p>
+      <div class="shots">
+        <figure class="shot" data-label="img/um-filters.png — Фильтры: цвет, память, рассрочка (1600 px)"><img src="../img/um-filters.png" alt="Storefront filters" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s3.shot">Colour, storage, instalments, free delivery — the filters a shopper reaches for, and the schema that makes them possible.</figcaption></figure>
+      </div>
+    </div>
+
+    <div style="margin-top: 72px;">
+      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s4.title">From product page to paid, without a detour</h4>
+      <p style="max-width:860px;" data-i18n="um.s4.body">The product page carries the gallery, the attribute table a shopper compares by, delivery terms and reviews with seller replies. Checkout runs address → confirmation → payment method → done, with the quantity validated against real stock rather than accepted and rejected later.</p>
+      <div class="shots">
+        <figure class="shot" data-label="img/um-product.png — Карточка товара (1600 px)"><img src="../img/um-product.png" alt="Product page" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s4.shot1">The product page — the same attribute schema the moderator defined, read by a shopper.</figcaption></figure>
+        <figure class="shot" data-label="img/um-cart.png — Корзина (1600 px)"><img src="../img/um-cart.png" alt="Cart" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s4.shot2">The cart, grouped by seller, because one order can cross several stores.</figcaption></figure>
+        <figure class="shot" data-label="img/um-checkout.png — Оформление заказа (1600 px)"><img src="../img/um-checkout.png" alt="Checkout" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s4.shot3">Checkout as one uninterrupted flow.</figcaption></figure>
+      </div>
+    </div>
+
+    <div style="margin-top: 72px;">
+      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s5.title">Dark mode is a token swap, not a second palette</h4>
+      <p style="max-width:860px;" data-i18n-html="um.s5.body">Colours are named for what they mean, not what they are. <code>modeSolid-red-0</code> resolves to <code>solid-red-0</code> in the light theme and to <code>solid-red-100</code> in the dark one — <strong>one semantic name, two substitutions</strong>. Switching themes repaints nothing by hand, and a new screen inherits both themes the moment it is drawn. None of this was in the brief.</p>
+      <div class="shots">
+        <figure class="shot" data-label="img/um-tokens.png — Таблица токенов (1600 px)"><img src="../img/um-tokens.png" alt="Design tokens table" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s5.shot1">The token table: semantic name on the left, its light and dark resolutions on the right.</figcaption></figure>
+        <figure class="shot" data-label="img/um-dark.png — Витрина в тёмной теме (1600 px)"><img src="../img/um-dark.png" alt="Storefront in dark mode" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s5.shot2">The same catalogue in dark mode — no separate file, no second design.</figcaption></figure>
+      </div>
+    </div>
+
+    <div style="margin-top: 72px;">
+      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s6.title">A raccoon for the moments when there's nothing to show</h4>
+      <p style="max-width:860px;" data-i18n-html="um.s6.body">An empty cart, a 404, a 500 — the three screens no brief ever mentions and every user eventually meets. I drew a mascot for them: a raccoon in a cardboard box, in eight variations, and error pages in four versions each (desktop and mobile, light and dark). <strong>The brief said nothing about any of it.</strong> A marketplace that only looks finished when it has products in it isn't finished.</p>
+      <div class="shots">
+        <figure class="shot" data-label="img/um-mascot.png — Маскот, варианты (1600 px)"><img src="../img/um-mascot.png" alt="Mascot variations" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s6.shot1">The mascot in its variations — empty cart, empty search, error pages.</figcaption></figure>
+        <figure class="shot" data-label="img/um-errors.png — Страницы 404 и 500 (1600 px)"><img src="../img/um-errors.png" alt="404 and 500 pages" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s6.shot2">404 and 500, each in four versions: desktop and mobile, light and dark.</figcaption></figure>
+      </div>
+    </div>
+
+    <div style="margin-top: 72px;">
+      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s7.title">Every section exists twice</h4>
+      <p style="max-width:860px;" data-i18n="um.s7.body">All thirteen storefront sections were delivered as desktop and mobile pairs, in both themes. Not "responsive behaviour described in a comment" — drawn, so engineering never had to invent a state that wasn't there.</p>
+      <div class="shots">
+        <figure class="shot" data-label="img/um-mobile.png — Мобильные экраны витрины (1600 px)"><img src="../img/um-mobile.png" alt="Mobile storefront screens" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s7.shot">The storefront on mobile — filters, catalogue and product page rebuilt for one column.</figcaption></figure>
+      </div>
+    </div>
+
+
+    <!-- ── ЧАСТЬ II · АДМИНКА (переписывается следующей) ── -->
     <!-- SCREEN 1 -->
     <div style="margin-top: 80px;">
       <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
@@ -682,32 +750,6 @@ footer .links a:hover { color: white; }
       </div>
     </div>
 
-    <!-- SCREEN 6 -->
-    <div style="margin-top: 100px;">
-      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
-        <h3 style="margin:0;" data-i18n="design.s6.title">06 · The client storefront — where the taxonomy pays off</h3>
-        <span class="badge client" data-i18n="design.s6.tag">Client view</span>
-      </div>
-      <p style="max-width:820px;" data-i18n="design.s6.body">Thirteen sections — home, search with live states, catalogue, product page, cart, checkout, favorites, profile, purchases, reviews — all consuming the moderator-owned taxonomy. Every filter a shopper touches works only because no seller was ever allowed to type an attribute by hand.</p>
-
-      <div class="shots">
-        <figure class="shot" data-file="img/user-main.png"><img src="../img/user-main.png" alt="Client storefront — main page" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s6.shot1">The storefront home page.</figcaption></figure>
-        <figure class="shot" data-file="img/user-product.png"><img src="../img/user-product.png" alt="Client storefront — product page with attributes and reviews" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s6.shot2">A product page: the attribute table a shopper compares by is the same schema moderators built and sellers filled.</figcaption></figure>
-        <figure class="shot" data-file="img/user-checkout.png"><img src="../img/user-checkout.png" alt="Client storefront — checkout flow" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s6.shot3">Checkout: address → SMS confirmation → payment method → success, designed as one uninterrupted flow.</figcaption></figure>
-      </div>
-    </div>
-
-    <!-- SCREEN 7 -->
-    <div style="margin-top: 100px;">
-      <h3 data-i18n="design.s7.title">07 · Every surface ships in light, dark and mobile</h3>
-      <p style="max-width:820px;" data-i18n="design.s7.body">All three products were delivered with full dark-mode palettes and mobile layouts — not as an afterthought, but drawn screen by screen in the same Figma system, so engineering never had to invent a missing state.</p>
-
-      <div class="shots">
-        <figure class="shot" data-file="img/user-product-dark.png"><img src="../img/user-product-dark.png" alt="Product page in dark mode" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s7.shot1">The storefront product page in dark mode.</figcaption></figure>
-        <figure class="shot" data-file="img/seller-dashboard-mobile.png"><img src="../img/seller-dashboard-mobile.png" alt="Seller dashboard, mobile layout" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s7.shot2">The seller dashboard rearranged for mobile — same five-second health check, one column.</figcaption></figure>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -770,7 +812,7 @@ footer .links a:hover { color: white; }
     <div style="margin-top: 80px;">
       <h3 style="color: white;" data-i18n="outcomes.strat.title">Strategic outcome</h3>
       <p style="color: var(--text-on-dark-secondary); max-width: 820px; font-size: 18px;" data-i18n-html="outcomes.strat.body">A shopper can filter consistently no matter which of hundreds of sellers listed a product. A seller fills predictable, constrained forms instead of guessing what a moderator will accept. A moderator works from navigation that matches how they actually triage — not how a database happened to be named.</p>
-      <p style="color: var(--text-on-dark-secondary); max-width: 820px; font-size: 15px; margin-top: 16px;" data-i18n-html="outcomes.strat.note">The marketplace is in active development at <a href="http://umedmall.tj" style="color: white;">umedmall.tj</a> — currently onboarding partner stores ahead of public launch. Business metrics will be added once real traffic exists; I'd rather show none than invent them.</p>
+      <p style="color: var(--text-on-dark-secondary); max-width: 820px; font-size: 15px; margin-top: 16px;" data-i18n-html="outcomes.strat.note">The marketplace is live at <a href="https://umedmall.tj" style="color: white;">umedmall.tj</a> — real stores, real listings, real orders — with the official launch still being prepared. Business metrics will be added when the client shares them; I'd rather show none than invent them.</p>
     </div>
   </div>
 </section>
@@ -805,12 +847,11 @@ footer .links a:hover { color: white; }
 <!-- CTA -->
 <section class="cta">
   <div class="container">
-    <h2 data-i18n="cta.title">Want to see how the three pieces fit together?</h2>
-    <p data-i18n="cta.body">Browse the full Figma files — client storefront, moderator console, and seller cabinet — all built on the same taxonomy.</p>
+    <h2 data-i18n="cta.title">See it running, or open the file</h2>
+    <p data-i18n="cta.body">The marketplace is live, and the complete Figma file — storefront, moderator console and seller cabinet on one taxonomy — is open to view.</p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-      <a href="https://www.figma.com/design/b6pgsauH0viNpErNEH4S22/Marketplace?node-id=0-1" class="btn"><span data-i18n="cta.client">→ Client storefront (Figma)</span></a>
-      <a href="https://www.figma.com/design/b6pgsauH0viNpErNEH4S22/Marketplace?node-id=1-280364" class="btn btn-secondary"><span data-i18n="cta.admin">→ Moderator console (Figma)</span></a>
-      <a href="https://www.figma.com/design/b6pgsauH0viNpErNEH4S22/Marketplace?node-id=1-178186" class="btn btn-secondary"><span data-i18n="cta.seller">→ Seller cabinet (Figma)</span></a>
+      <a href="https://umedmall.tj" class="btn" target="_blank" rel="noopener"><span data-i18n="cta.live">→ Open the live marketplace</span></a>
+      <a href="https://www.figma.com/design/b6pgsauH0viNpErNEH4S22/Marketplace?node-id=0-1" class="btn btn-secondary" target="_blank" rel="noopener"><span data-i18n="cta.figma">→ The full Figma file (all three surfaces)</span></a>
     </div>
   </div>
 </section>
@@ -827,13 +868,13 @@ footer .links a:hover { color: white; }
         </div>
       </div>
       <div class="links">
-        <a href="mailto:nabijon.muhamadiev@alif.tj">nabijon.muhamadiev@alif.tj</a>
+        <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>
         <a href="http://umedmall.tj">umedmall.tj</a>
         <a href="https://www.figma.com/design/b6pgsauH0viNpErNEH4S22/Marketplace?node-id=0-1">Figma</a>
       </div>
     </div>
     <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border-dark); font-size: 13px; color: var(--text-on-dark-secondary);" data-i18n="footer.disclaimer">
-      Case study · UmedMall · 2025–2026. Three connected systems — client storefront, moderator console, seller cabinet — covering 13 / 19 / 7 sections. In active development at umedmall.tj.
+      Case study · UmedMall · 2025–2026. Three connected systems — client storefront, moderator console, seller cabinet — covering 13 / 19 / 7 sections. Live at umedmall.tj.
     </div>
   </div>
 </footer>
@@ -847,8 +888,8 @@ const I18N = {
     'hero.lede': `Designing the client storefront, the moderator console, and the seller cabinet of a multi-category marketplace — turning three disconnected specs into one coherent system.`,
     'hero.role.label': `Role`, 'hero.role.value': `Sole Product Designer (Client, Admin & Seller)`,
     'hero.duration.label': `Duration`, 'hero.duration.value': `~5 months`,
-    'hero.status.label': `Status`, 'hero.status.value': `In development · onboarding partners`,
-    'hero.company.label': `Company`, 'hero.company.value': `Alif Technology`,
+    'hero.status.label': `Status`, 'hero.status.value': `Live · official launch in preparation`,
+    'hero.company.label': `Company`, 'hero.company.value': `Alif Technology · for an external client`,
 
     'overview.label': `Project Overview`,
     'overview.title': `One marketplace, three specs, written months apart by different people.`,
@@ -924,6 +965,33 @@ const I18N = {
     'design.title': `Three surfaces, one system, screen by screen.`,
     'design.lead': `One taxonomy and one attribute engine power the client storefront, the moderator console, and the seller cabinet — color-coded below as <span class="badge client">Client</span>, <span class="badge brand">Admin</span> and <span class="badge seller">Seller</span> so it's clear which surface each screen belongs to.`,
 
+    'um.part1.title': `Part I · The storefront, where the back office pays off`,
+    'um.part1.tag': `Client view`,
+    'um.part1.lead': `Thirteen sections, each drawn twice — desktop and mobile, light and dark. Nothing here is decorative: every filter, every breadcrumb and every colour swatch is the visible end of a decision made in the moderator console.`,
+    'um.s1.shot': `The home page: banner slider, category tiles and product widgets — all of it assembled by a moderator, not a developer.`,
+    'um.s2.title': `Three levels of catalogue, against the brief's own instruction`,
+    'um.s2.body': `The client-side brief asked for <strong>two levels of nesting, maximum</strong>. The admin section of the same brief described three: category → subcategory → type. <strong>I followed the data, not the sentence</strong> — because a type belongs to exactly one subcategory, and breaking that link is what makes a seller's products vanish from the storefront entirely. So the catalogue drills three levels deep, with breadcrumbs that never lose the path.`,
+    'um.s2.shot1': `Catalogue → category → subcategory, with the path kept visible in the breadcrumb.`,
+    'um.s2.shot2': `A category page: price slider first, then filters built from the attribute engine.`,
+    'um.s3.title': `The colour swatch is the whole system in one control`,
+    'um.s3.body': `A shopper filtering by colour clicks a coloured dot. That dot exists because a moderator entered a <strong>HEX code</strong> with a name, and because an administrator then approved that name before it could appear on the marketplace at all — a two-step check on a single swatch. The seller never types "reddish". <strong>Every filter on this page is somebody's constrained input upstream</strong>: memory in GB, colour in HEX, dimensions in a unit that converts to a base.`,
+    'um.s3.shot': `Colour, storage, instalments, free delivery — the filters a shopper reaches for, and the schema that makes them possible.`,
+    'um.s4.title': `From product page to paid, without a detour`,
+    'um.s4.body': `The product page carries the gallery, the attribute table a shopper compares by, delivery terms and reviews with seller replies. Checkout runs address → confirmation → payment method → done, with the quantity validated against real stock rather than accepted and rejected later.`,
+    'um.s4.shot1': `The product page — the same attribute schema the moderator defined, read by a shopper.`,
+    'um.s4.shot2': `The cart, grouped by seller, because one order can cross several stores.`,
+    'um.s4.shot3': `Checkout as one uninterrupted flow.`,
+    'um.s5.title': `Dark mode is a token swap, not a second palette`,
+    'um.s5.body': `Colours are named for what they mean, not what they are. <code>modeSolid-red-0</code> resolves to <code>solid-red-0</code> in the light theme and to <code>solid-red-100</code> in the dark one — <strong>one semantic name, two substitutions</strong>. Switching themes repaints nothing by hand, and a new screen inherits both themes the moment it is drawn. None of this was in the brief.`,
+    'um.s5.shot1': `The token table: semantic name on the left, its light and dark resolutions on the right.`,
+    'um.s5.shot2': `The same catalogue in dark mode — no separate file, no second design.`,
+    'um.s6.title': `A raccoon for the moments when there's nothing to show`,
+    'um.s6.body': `An empty cart, a 404, a 500 — the three screens no brief ever mentions and every user eventually meets. I drew a mascot for them: a raccoon in a cardboard box, in eight variations, and error pages in four versions each (desktop and mobile, light and dark). <strong>The brief said nothing about any of it.</strong> A marketplace that only looks finished when it has products in it isn't finished.`,
+    'um.s6.shot1': `The mascot in its variations — empty cart, empty search, error pages.`,
+    'um.s6.shot2': `404 and 500, each in four versions: desktop and mobile, light and dark.`,
+    'um.s7.title': `Every section exists twice`,
+    'um.s7.body': `All thirteen storefront sections were delivered as desktop and mobile pairs, in both themes. Not "responsive behaviour described in a comment" — drawn, so engineering never had to invent a state that wasn't there.`,
+    'um.s7.shot': `The storefront on mobile — filters, catalogue and product page rebuilt for one column.`,
     'design.s1.title': `01 · Store applications — review without losing the trail`,
     'design.s1.tag': `Admin view`,
     'design.s1.body': `One queue, filtered by status, instead of three separate pages for new/approved/rejected. Approving creates the store record in the same action — no separate step to forget. Rejecting requires a reason, stored and visible to every other moderator.`,
@@ -1001,14 +1069,13 @@ const I18N = {
     'lessons.d2': `<strong>Lock the attribute/unit taxonomy before touching any screen.</strong> I designed individual pages first and had to retrofit the data model once edge cases like temperature surfaced.`,
     'lessons.d3': `<strong>Write the terminology glossary earlier.</strong> "Заявки" vs. "Заказы" vs. "Магазины" got renamed and re-grouped for weeks before the names settled — a glossary in week one would have saved that churn.`,
 
-    'cta.title': `Want to see how the three pieces fit together?`,
-    'cta.body': `Browse the full Figma files — client storefront, moderator console, and seller cabinet — all built on the same taxonomy.`,
-    'cta.client': `→ Client storefront (Figma)`,
-    'cta.admin': `→ Moderator console (Figma)`,
-    'cta.seller': `→ Seller cabinet (Figma)`,
-
+    'cta.live': `→ Open the live marketplace`,
+    'cta.figma': `→ The full Figma file (all three surfaces)`,
+    'cta.title': `See it running, or open the file`,
+    'cta.body': `The marketplace is live, and the complete Figma file — storefront, moderator console and seller cabinet on one taxonomy — is open to view.`,
+            
     'footer.role': `Product Designer`,
-    'footer.disclaimer': `Case study · UmedMall · 2025–2026. Three connected systems — client storefront, moderator console, seller cabinet — covering 13 / 19 / 7 sections. In active development at umedmall.tj.`,
+    'footer.disclaimer': `Case study · UmedMall · 2025–2026. Three connected systems — client storefront, moderator console, seller cabinet — covering 13 / 19 / 7 sections. Live at umedmall.tj.`,
     'design.s1.shot1': `Shipped UI — the moderation queue, filtered by status, straight from the production Figma file.`,
     'design.s1.shot2': `A single application: documents, notes, and the approve action that creates the store record in the same step.`,
     'design.s3.shot1': `The characteristics registry in the shipped admin — input types, units and groups in one moderator-owned table.`,
@@ -1026,7 +1093,7 @@ const I18N = {
     'design.s7.body': `All three products were delivered with full dark-mode palettes and mobile layouts — not as an afterthought, but drawn screen by screen in the same Figma system, so engineering never had to invent a missing state.`,
     'design.s7.shot1': `The storefront product page in dark mode.`,
     'design.s7.shot2': `The seller dashboard rearranged for mobile — same five-second health check, one column.`,
-    'outcomes.strat.note': `The marketplace is in active development at <a href="http://umedmall.tj" style="color: white;">umedmall.tj</a> — currently onboarding partner stores ahead of public launch. Business metrics will be added once real traffic exists; I'd rather show none than invent them.`,
+    'outcomes.strat.note': `The marketplace is live at <a href="https://umedmall.tj" style="color: white;">umedmall.tj</a> — real stores, real listings, real orders — with the official launch still being prepared. Business metrics will be added when the client shares them; I'd rather show none than invent them.`,
   },
   ru: {
     'nav.back': `Все проекты`,
@@ -1035,8 +1102,8 @@ const I18N = {
     'hero.lede': `Дизайн клиентской части, модераторской панели и кабинета продавца мультикатегорийного маркетплейса — превращение трёх несвязанных ТЗ в одну целостную систему.`,
     'hero.role.label': `Роль`, 'hero.role.value': `Единственный продакт-дизайнер (клиент, админка и продавцы)`,
     'hero.duration.label': `Длительность`, 'hero.duration.value': `~5 месяцев`,
-    'hero.status.label': `Статус`, 'hero.status.value': `В разработке · подключение партнёров`,
-    'hero.company.label': `Компания`, 'hero.company.value': `Alif Technology`,
+    'hero.status.label': `Статус`, 'hero.status.value': `Работает · готовится официальный запуск`,
+    'hero.company.label': `Компания`, 'hero.company.value': `Alif Technology · for an external client`,
 
     'overview.label': `Обзор проекта`,
     'overview.title': `Один маркетплейс, три ТЗ, написанные в разное время разными людьми.`,
@@ -1112,6 +1179,33 @@ const I18N = {
     'design.title': `Три поверхности, одна система, экран за экраном.`,
     'design.lead': `Одна таксономия и один движок атрибутов питают клиентскую витрину, модераторскую панель и кабинет продавца — ниже они отмечены цветом как <span class="badge client">Клиент</span>, <span class="badge brand">Админка</span> и <span class="badge seller">Продавец</span>, чтобы было понятно, какой поверхности принадлежит экран.`,
 
+    'um.part1.title': `Часть I · Витрина, где окупается бэк-офис`,
+    'um.part1.tag': `Клиент`,
+    'um.part1.lead': `Тринадцать разделов, каждый нарисован дважды — десктоп и мобильный, светлая тема и тёмная. Здесь нет украшений: любой фильтр, любая хлебная крошка и любой цветной кружок — это видимый конец решения, принятого в модераторской панели.`,
+    'um.s1.shot': `Главная: слайдер баннеров, плитки категорий и виджеты товаров — всё это собирает модератор, а не разработчик.`,
+    'um.s2.title': `Три уровня каталога — вопреки прямому указанию в задании`,
+    'um.s2.body': `Клиентская часть задания требовала <strong>максимум двух уровней вложенности</strong>. Админская часть того же задания описывала три: категория → подкатегория → вид. <strong>Я пошёл за данными, а не за фразой</strong> — потому что вид принадлежит ровно одной подкатегории, и разрыв этой связи означает, что товары продавца просто исчезнут с витрины. Поэтому каталог раскрывается на три уровня, а хлебные крошки не теряют путь.`,
+    'um.s2.shot1': `Каталог → категория → подкатегория, путь остаётся виден в хлебных крошках.`,
+    'um.s2.shot2': `Страница категории: сначала цена ползунком, дальше фильтры, собранные из движка атрибутов.`,
+    'um.s3.title': `Цветной кружок — это вся система в одном контроле`,
+    'um.s3.body': `Покупатель, фильтрующий по цвету, кликает цветную точку. Эта точка существует потому, что модератор ввёл <strong>HEX-код</strong> с названием, а администратор затем это название утвердил — и только после утверждения цвет вообще появляется на маркетплейсе. Двухступенчатая проверка ради одного кружка. Продавец никогда не пишет «красноватый». <strong>Каждый фильтр на этой странице — чьё-то ограниченное поле выше по течению</strong>: память в ГБ, цвет в HEX, габариты в единице, которая приводится к базовой.`,
+    'um.s3.shot': `Цвет, память, рассрочка, бесплатная доставка — фильтры, которыми пользуется покупатель, и схема, которая делает их возможными.`,
+    'um.s4.title': `От карточки до оплаты без крюка`,
+    'um.s4.body': `На карточке товара галерея, таблица характеристик, по которой покупатель сравнивает, условия доставки и отзывы с ответами продавца. Оформление идёт адрес → подтверждение → способ оплаты → готово, а количество проверяется по реальному остатку, а не принимается, чтобы потом отклониться.`,
+    'um.s4.shot1': `Карточка товара — та же схема характеристик, которую задал модератор, прочитанная покупателем.`,
+    'um.s4.shot2': `Корзина, сгруппированная по продавцам, потому что один заказ может пересекать несколько магазинов.`,
+    'um.s4.shot3': `Оформление заказа одним непрерывным потоком.`,
+    'um.s5.title': `Тёмная тема — это подмена токена, а не вторая палитра`,
+    'um.s5.body': `Цвета названы по смыслу, а не по значению. <code>modeSolid-red-0</code> разрешается в <code>solid-red-0</code> в светлой теме и в <code>solid-red-100</code> в тёмной — <strong>одно семантическое имя, две подстановки</strong>. Переключение тем не перекрашивает ничего вручную, а новый экран наследует обе темы в момент отрисовки. Ничего из этого в задании не было.`,
+    'um.s5.shot1': `Таблица токенов: семантическое имя слева, его светлое и тёмное разрешение справа.`,
+    'um.s5.shot2': `Тот же каталог в тёмной теме — без отдельного файла и второго дизайна.`,
+    'um.s6.title': `Енот для моментов, когда показывать нечего`,
+    'um.s6.body': `Пустая корзина, 404, 500 — три экрана, которых не упоминает ни одно задание и с которыми рано или поздно встречается каждый. Я нарисовал для них маскота: енота в картонной коробке, в восьми вариациях, и страницы ошибок в четырёх версиях каждая — десктоп и мобильный, светлая и тёмная. <strong>В задании об этом не было ни слова.</strong> Маркетплейс, который выглядит законченным только когда в нём есть товары, не закончен.`,
+    'um.s6.shot1': `Маскот в вариациях — пустая корзина, пустой поиск, страницы ошибок.`,
+    'um.s6.shot2': `404 и 500, каждая в четырёх версиях: десктоп и мобильный, светлая и тёмная.`,
+    'um.s7.title': `Каждый раздел существует дважды`,
+    'um.s7.body': `Все тринадцать разделов витрины сданы парами десктоп и мобильный, в обеих темах. Не «адаптивное поведение описано в комментарии», а нарисовано — чтобы разработке не пришлось выдумывать состояние, которого нет.`,
+    'um.s7.shot': `Витрина на мобильном — фильтры, каталог и карточка товара, пересобранные в одну колонку.`,
     'design.s1.title': `01 · Заявки магазинов — проверка без потери истории`,
     'design.s1.tag': `Вид админки`,
     'design.s1.body': `Одна очередь, фильтруемая по статусу, вместо трёх отдельных страниц для новых/одобренных/отклонённых. Одобрение создаёт запись магазина тем же действием — не отдельный шаг, который можно забыть. Отказ требует причину, которая сохраняется и видна всем остальным модераторам.`,
@@ -1189,14 +1283,13 @@ const I18N = {
     'lessons.d2': `<strong>Зафиксировать таксономию атрибутов/единиц до того, как трогать любой экран.</strong> Я сначала спроектировал отдельные страницы и потом пришлось переделывать модель данных, когда всплыли граничные случаи вроде температуры.`,
     'lessons.d3': `<strong>Написать глоссарий терминов раньше.</strong> «Заявки» vs. «Заказы» vs. «Магазины» переименовывались и перегруппировывались неделями, прежде чем названия устоялись — глоссарий на первой неделе сэкономил бы это время.`,
 
+    'cta.live': `→ Открыть работающий маркетплейс`,
+    'cta.figma': `→ Полный файл Figma (все три поверхности)`,
     'cta.title': `Хочется увидеть, как три части сходятся вместе?`,
     'cta.body': `Посмотрите полные файлы Figma — клиентская витрина, модераторская панель и кабинет продавца — все построены на одной таксономии.`,
-    'cta.client': `→ Клиентская витрина (Figma)`,
-    'cta.admin': `→ Модераторская панель (Figma)`,
-    'cta.seller': `→ Кабинет продавца (Figma)`,
-
+            
     'footer.role': `Продакт-дизайнер`,
-    'footer.disclaimer': `Кейс · UmedMall · 2025–2026. Три связанные системы — клиентская витрина, модераторская панель, кабинет продавца — 13 / 19 / 7 разделов. В активной разработке на umedmall.tj.`,
+    'footer.disclaimer': `Кейс · UmedMall · 2025–2026. Три связанные системы — клиентская витрина, модераторская панель, кабинет продавца — 13 / 19 / 7 разделов. Работает на umedmall.tj.`,
     'design.s1.shot1': `Финальный UI — очередь модерации с фильтром по статусу, напрямую из рабочего Figma-файла.`,
     'design.s1.shot2': `Карточка заявки: документы, заметки и кнопка одобрения, которая создаёт запись магазина тем же действием.`,
     'design.s3.shot1': `Реестр характеристик в финальной админке — типы ввода, единицы и группы в одной таблице, принадлежащей модератору.`,
@@ -1214,7 +1307,7 @@ const I18N = {
     'design.s7.body': `Все три продукта сданы с полными палитрами тёмной темы и мобильными макетами — не как довесок, а отрисованные экран за экраном в той же Figma-системе, чтобы разработке не пришлось выдумывать недостающие состояния.`,
     'design.s7.shot1': `Карточка товара витрины в тёмной теме.`,
     'design.s7.shot2': `Дашборд продавца, пересобранный под мобильный — та же пятисекундная проверка, одна колонка.`,
-    'outcomes.strat.note': `Маркетплейс в активной разработке на <a href="http://umedmall.tj" style="color: white;">umedmall.tj</a> — сейчас идёт подключение партнёрских магазинов перед публичным запуском. Бизнес-метрики появятся, когда появится реальный трафик; лучше не показать ничего, чем выдумать.`,
+    'outcomes.strat.note': `Маркетплейс работает на <a href="https://umedmall.tj" style="color: white;">umedmall.tj</a> — реальные магазины, реальные товары, реальные заказы, — а официальный запуск ещё готовится. Бизнес-метрики появятся, когда заказчик ими поделится; лучше не показать ничего, чем выдумать.`,
   }
 };
 
