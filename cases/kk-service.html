@@ -460,7 +460,7 @@ footer .links a:hover { color: white; }
       <div><span class="k">result:</span> <span class="v good">98%</span></div>
     </div>
 
-    <p style="margin-top: 28px; max-width: 820px;" data-i18n-html="score.body">Four lines. My decision was where to put them: <strong>inside the voting, as one entry alongside the committee members' own votes</strong> — not above the vote as a verdict to ratify, and not hidden behind the final outcome. A reviewer can agree with the engine or vote against it, and either way the disagreement is recorded. The rest of my work exists so that a human who wants to disagree has grounds to: the credit history, the documents, the property, the guarantors, the client's own record.</p>
+    <p style="margin-top: 28px; max-width: 820px;" data-i18n-html="score.body">Four lines. My decision was where to put them: <strong>on the committee page, directly under the approve and decline buttons</strong> — beside the human decision rather than above it as a verdict to ratify, and never hidden behind the final outcome. A reviewer can agree with the engine or vote against it, and either way the disagreement is recorded. The rest of my work exists so that a human who wants to disagree has grounds to: the credit history, the documents, the property, the guarantors, the client's own record.</p>
   </div>
 </section>
 
@@ -469,13 +469,13 @@ footer .links a:hover { color: white; }
   <div class="container-wide">
     <div class="section-label" data-i18n="design.label">Design</div>
     <h2 data-i18n="design.title">The system, screen by screen.</h2>
-    <p class="lead" data-i18n="design.lead">Four surfaces: the queue that sets the order of work, the application list it feeds from, the client profile a decision is built on, and the credit history that carries the most weight in that decision.</p>
+    <p class="lead" data-i18n="design.lead">The queue sets the order of work; the client profile holds everything a decision is built from; the committee page is where that decision gets made and recorded.</p>
 
     <div style="margin-top: 64px;">
       <h3 data-i18n="design.s1.title">01 · The queue — a person, an amount and two clocks in every row</h3>
-      <p style="max-width:820px;" data-i18n="design.s1.body">Rows, not a board. Oldest at the top, newest at the bottom, so working top-down is the same as working fairly. Each row carries the client and their standing, the amount and term, who sent it, the region, both timers, and the avatars of everyone who has opened it.</p>
+      <p style="max-width:820px;" data-i18n="design.s1.body">Rows, not a board. Oldest at the top, newest at the bottom, so working top-down is the same as working fairly. Each row carries the client and their standing, the amount and product, who sent it, the date, both timers, and the avatar of whoever has the case open. The sidebar splits the work by how the client arrived — walk-in, online, returning — with waiting and archived cases kept apart from all three.</p>
       <div class="shots">
-        <figure class="shot" data-label="img/kk-list.png — Список заявок с фильтрами (1440 px)"><img src="../img/kk-list.png" alt="KK Service — application queue" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot">The queue with its filters: client status, application status, amount, type, city, source, date.</figcaption></figure>
+        <figure class="shot" data-label="img/kk-list.png — Очередь заявок"><img src="../img/kk-list.png" alt="KK Service — application queue" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot">Filters above the list: client status, application status, amount, product, city, source, date.</figcaption></figure>
       </div>
     </div>
 
@@ -483,68 +483,93 @@ footer .links a:hover { color: white; }
       <h3 data-i18n="design.s2.title">02 · Client profile — six tabs that turn separate systems into one person</h3>
       <p style="max-width:820px;" data-i18n="design.s2.body">Committee, analysis, credit history, card statements, documents, scoring. Underneath sit the CRM, the national credit bureau, the Alif super-app and the bank's core system — none of which was built to answer a credit question. The tabs are the answer to what a reviewer sees of that pile, and in what order.</p>
       <div class="shots">
-        <figure class="shot" data-label="img/kk-profile-analysis.png — Профиль → Анализ (1440 px)"><img src="../img/kk-profile-analysis.png" alt="Client profile — analysis" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot1">Analysis: activity by month, product categories, and the overdue-payment record.</figcaption></figure>
-        <figure class="shot" data-label="img/kk-profile-docs.png — Профиль → Документы (1440 px)"><img src="../img/kk-profile-docs.png" alt="Client profile — documents" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot2">Documents carry their own history: checked, new or outdated, and by whom.</figcaption></figure>
+        <figure class="shot" data-label="img/kk-profile-analysis.png — Профиль → Анализ"><img src="../img/kk-profile-analysis.png" alt="Client profile — analysis" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot1">Analysis: a year of activity, product mix and the overdue record, with the summary column pinned to the right.</figcaption></figure>
+        <figure class="shot" data-label="img/kk-profile-detail.png — Свёрнутый аккордеон"><img src="../img/kk-profile-detail.png" alt="Profile accordion" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot2">Below the charts, a summary line: largest loan, largest repayment, longest delay, loans with collateral.</figcaption></figure>
+      </div>
+
+      <p style="max-width:820px; margin-top:32px;" data-i18n-html="design.s2.acc">A client profile has no natural length — every section could reasonably be expanded. So the page ends in an accordion where <strong>exactly one section is open at a time</strong>: opening the next closes the last. The summary stays readable at a glance, and the full breakdown appears only where a reviewer deliberately asked for it.</p>
+
+      <div class="shots">
+        <figure class="shot" data-label="img/kk-accounts.png — Счета клиента, раскрыто"><img src="../img/kk-accounts.png" alt="Client accounts expanded" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot3">Spending, opened up: online and in-store purchases, utilities and transfers abroad — 30, 90 and 365 days side by side.</figcaption></figure>
+        <figure class="shot" data-label="img/kk-docs.png — Документы + паспорт"><img src="../img/kk-docs.png" alt="Documents" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot4">Documents carry their own history — checked, new or outdated, and by whom — with the parsed passport beside them.</figcaption></figure>
       </div>
     </div>
 
     <div style="margin-top: 88px;">
       <h3 data-i18n="design.s3.title">03 · Credit history — five years, every bank in the country, one chart</h3>
-      <p style="max-width:820px;" data-i18n="design.s3.body">The vertical axis is what the client owed that month, the horizontal one is the calendar. Months with missed payments are bigger and red, so a bad year is visible before anything is read. The source switches between Alif, the national bureau, or both — and the bureau view deliberately excludes Alif's own loans, because duplicating them would make a client look twice as indebted as they are.</p>
+      <p style="max-width:820px;" data-i18n="design.s3.body">The vertical axis is what the client owed that month, the horizontal one is the calendar. Months with missed payments are enlarged and red, so a bad year is visible before anything is read. The source switches between Alif, the national bureau, or both — and the bureau view deliberately excludes Alif's own loans, because duplicating them would make a client look twice as indebted as they are.</p>
       <div class="shots">
-        <figure class="shot" data-label="img/kk-profile-history.png — Кредитная история, график + таблица (1440 px)"><img src="../img/kk-profile-history.png" alt="Credit history chart" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot1">Years toggle on and off; overdue months are enlarged and red.</figcaption></figure>
-        <figure class="shot" data-label="img/kk-timeline.png — Хронология транша + комменты АБС (1440 px)"><img src="../img/kk-timeline.png" alt="Tranche timeline" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot2">A tranche opened up: the payment schedule on the left, the collections team's notes on the right.</figcaption></figure>
+        <figure class="shot" data-label="img/kk-profile-history.png — График Алиф / БКИТ"><img src="../img/kk-profile-history.png" alt="Credit history chart" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot1">Two databases on one chart; hovering a red point gives the loan number, the days late and the amount paid.</figcaption></figure>
+        <figure class="shot" data-label="img/kk-history-table.png — Фильтры и таблица кредитов"><img src="../img/kk-history-table.png" alt="Credit history table" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot2">Below the chart, the loans themselves: role, amount, balance, dates, misses, status, monthly payment.</figcaption></figure>
       </div>
-      <p style="max-width:820px; margin-top:24px;" data-i18n-html="design.s3.extra">The timeline is the part I'd defend hardest. On the left, each due date with a tick, or a delay written out as its period, its length in days and the amount short. On the right, <strong>what the collections team actually wrote about this person</strong>, newest first. Numbers say a client was 13 days late; the note next to it says they called to say they would pay in the morning. Only one of those two tells you whether to lend again.</p>
+
+      <p style="max-width:820px; margin-top:32px;" data-i18n-html="design.s3.extra">Opening a loan is the part I'd defend hardest. On the left, each due date with a tick, or a delay written out as its period, its length in days and the amount short. On the right, <strong>what the collections team actually wrote about this person</strong>. Numbers say a client was 13 days late; the note next to it says they called to say they would pay in the morning. Only one of those two tells you whether to lend again.</p>
+
+      <div class="shots">
+        <figure class="shot" data-label="img/kk-timeline.png — Раскрытый транш и хронология"><img src="../img/kk-timeline.png" alt="Tranche timeline" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot3">The missed month is highlighted in the row itself — 13 days late, 180 somoni short.</figcaption></figure>
+        <figure class="shot" data-label="img/kk-dppk.png — ДППК, выписки по картам"><img src="../img/kk-dppk.png" alt="Card statements" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot4">Card statements, counted per type so a reviewer knows what exists before opening anything.</figcaption></figure>
+      </div>
     </div>
 
     <div style="margin-top: 88px;">
-      <h3 data-i18n="design.s4.title">04 · Templates — the twenty things the committee actually asks</h3>
-      <p style="max-width:820px;" data-i18n="design.s4.body">Four categories. Choosing a template writes the to-do and moves the application into the matching status in the same action.</p>
+      <h3 data-i18n="design.s4.title">04 · The committee page — where the decision is actually taken</h3>
+      <p style="max-width:820px;" data-i18n="design.s4.body">One screen holds the client's own words on the left — income, job, dependents, car, housing — and the money on the right: the invoice, the credit calculation, approve and decline. Everything the reviewer needs to argue with themselves is in the same field of view.</p>
+      <div class="shots">
+        <figure class="shot" data-label="img/kk-committee.png — Комитет: анкета и расчёт"><img src="../img/kk-committee.png" alt="Committee page" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s4.shot1">The form and the money, side by side: what the client said, and what the bank is being asked for.</figcaption></figure>
+        <figure class="shot" data-label="img/kk-scoring.png — Скоринг и ToDo"><img src="../img/kk-scoring.png" alt="Scoring block and todos" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s4.shot2">The engine's four lines sit under the decision buttons — beside the human decision, not above it. Below them, the to-dos.</figcaption></figure>
+      </div>
+    </div>
+
+    <div style="margin-top: 88px;">
+      <h3 data-i18n="design.s5.title">05 · Voting — where "yes, but" becomes a structured thing</h3>
+      <p style="max-width:820px;" data-i18n-html="design.s5.body">Three options: <strong>approve, approve with conditions, decline</strong>. The middle one is the interesting one, because it is where most real credit decisions live — and where a free-text comment would normally swallow them. Instead each condition is a field: a document type, or extra collateral with an amount, plus the reason in words. <strong>A conditional yes is therefore a checklist, not a sentence someone has to interpret later.</strong> Each member's vote appears above with their conditions numbered, and declining requires a written reason.</p>
+      <div class="shots">
+        <figure class="shot" data-label="img/kk-voting.png — Голосование с условиями"><img src="../img/kk-voting.png" alt="Committee voting" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s5.shot">Two members have voted "approve with conditions"; their conditions are already listed above as numbered items.</figcaption></figure>
+      </div>
+    </div>
+
+    <div style="margin-top: 88px;">
+      <h3 data-i18n="design.s6.title">06 · Templates — the twenty things the committee actually asks</h3>
+      <p style="max-width:820px;" data-i18n="design.s6.body">Four categories. Choosing a template writes the to-do and moves the application into the matching status in the same action.</p>
 
       <div class="grid-4" style="margin-top: 32px;">
         <div class="tpl-cat">
-          <h5 data-i18n="design.s4.c1.t">Fill in the form</h5>
-          <div class="n" data-i18n="design.s4.c1.n">5 templates</div>
+          <h5 data-i18n="design.s6.c1.t">Fill in the form</h5>
+          <div class="n" data-i18n="design.s6.c1.n">5 templates</div>
           <ul>
-            <li data-i18n="design.s4.c1.l1">Stated income doesn't cover the requested amount — add secondary income</li>
-            <li data-i18n="design.s4.c1.l2">Job title in the form and in the statement don't match</li>
+            <li data-i18n="design.s6.c1.l1">Stated income doesn't cover the requested amount — add secondary income</li>
+            <li data-i18n="design.s6.c1.l2">Job title in the form and in the statement don't match</li>
           </ul>
-          <div class="becomes" data-i18n-html="design.s4.c1.b">Status becomes <b>Fill in the form</b></div>
+          <div class="becomes" data-i18n-html="design.s6.c1.b">Status becomes <b>Fill in the form</b></div>
         </div>
         <div class="tpl-cat">
-          <h5 data-i18n="design.s4.c2.t">Awaiting documents</h5>
-          <div class="n" data-i18n="design.s4.c2.n">2 templates</div>
+          <h5 data-i18n="design.s6.c2.t">Awaiting documents</h5>
+          <div class="n" data-i18n="design.s6.c2.n">2 templates</div>
           <ul>
-            <li data-i18n="design.s4.c2.l1">Residence registration expired</li>
-            <li data-i18n="design.s4.c2.l2">Add a photo of the invoice to the folder</li>
+            <li data-i18n="design.s6.c2.l1">Residence registration expired</li>
+            <li data-i18n="design.s6.c2.l2">Add a photo of the invoice to the folder</li>
           </ul>
-          <div class="becomes" data-i18n-html="design.s4.c2.b">Status becomes <b>Awaiting docs</b></div>
+          <div class="becomes" data-i18n-html="design.s6.c2.b">Status becomes <b>Awaiting docs</b></div>
         </div>
         <div class="tpl-cat">
-          <h5 data-i18n="design.s4.c3.t">Awaiting conditions</h5>
-          <div class="n" data-i18n="design.s4.c3.n">10 templates</div>
+          <h5 data-i18n="design.s6.c3.t">Awaiting conditions</h5>
+          <div class="n" data-i18n="design.s6.c3.n">10 templates</div>
           <ul>
-            <li data-i18n="design.s4.c3.l1">Who exactly are the "possible acquaintances"?</li>
-            <li data-i18n="design.s4.c3.l2">Large past loans, modest job — who helped repay them?</li>
-            <li data-i18n="design.s4.c3.l3">Can they offer a guarantor, a prepayment, collateral?</li>
+            <li data-i18n="design.s6.c3.l1">Who exactly are the "possible acquaintances"?</li>
+            <li data-i18n="design.s6.c3.l2">Large past loans, modest job — who helped repay them?</li>
+            <li data-i18n="design.s6.c3.l3">Can they offer a guarantor, a prepayment, collateral?</li>
           </ul>
-          <div class="becomes" data-i18n-html="design.s4.c3.b">Status becomes <b>Awaiting committee conditions</b></div>
+          <div class="becomes" data-i18n-html="design.s6.c3.b">Status becomes <b>Awaiting committee conditions</b></div>
         </div>
         <div class="tpl-cat">
-          <h5 data-i18n="design.s4.c4.t">Send for checking</h5>
-          <div class="n" data-i18n="design.s4.c4.n">3 templates</div>
+          <h5 data-i18n="design.s6.c4.t">Send for checking</h5>
+          <div class="n" data-i18n="design.s6.c4.n">3 templates</div>
           <ul>
-            <li data-i18n="design.s4.c4.l1">There's a card statement in the folder — send it for checking</li>
-            <li data-i18n="design.s4.c4.l2">There's a new passport in the folder</li>
+            <li data-i18n="design.s6.c4.l1">There's a card statement in the folder — send it for checking</li>
+            <li data-i18n="design.s6.c4.l2">There's a new passport in the folder</li>
           </ul>
-          <div class="becomes" data-i18n-html="design.s4.c4.b">Status becomes <b>For checking</b></div>
+          <div class="becomes" data-i18n-html="design.s6.c4.b">Status becomes <b>For checking</b></div>
         </div>
-      </div>
-
-      <div class="shots" style="margin-top: 32px;">
-        <figure class="shot" data-label="img/kk-todo.png — Блок ToDo с шаблонами и полем ответа (1440 px)"><img src="../img/kk-todo.png" alt="ToDo templates" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s4.shot">The to-do block: template, the mandatory reply field under it, and the plain comment below.</figcaption></figure>
-        <figure class="shot" data-label="img/kk-committee.png — Страница комитета и голосование (1440 px)"><img src="../img/kk-committee.png" alt="Committee page" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s4.shot2">The committee page, where the engine's result sits as one entry among the votes.</figcaption></figure>
       </div>
     </div>
   </div>
@@ -697,50 +722,60 @@ const I18N = {
     'process.s4.body': `The committee almost never asks something new — it asks the same twenty things. So the reply is a dropdown, not free text: four categories, twenty templates. Picking one <strong>changes the application's main status automatically</strong>, because the category already says what state the application is really in. And a validation rule that nothing before could enforce: while a mandatory to-do is open, the application cannot come back to the committee. That alone ended the habit of re-sending the same case.`,
     'process.s5.title': `The answer goes under its own question — and the comment stops pretending to be a task`,
     'process.s5.body': `The brief offered two ways to collect the front office's replies: a field under each to-do, or one shared field where answers are numbered. I took the first — at six open items, numbered answers get mismatched with their questions, and a credit decision is a bad place to find out. The second option didn't disappear, it got demoted: it became <strong>a plain comment field`,
+    'design.label': `Design`,
+    'design.title': `The system, screen by screen.`,
+    'design.lead': `The queue sets the order of work; the client profile holds everything a decision is built from; the committee page is where that decision gets made and recorded.`,
+    'design.s1.title': `01 · The queue — a person, an amount and two clocks in every row`,
+    'design.s1.body': `Rows, not a board. Oldest at the top, newest at the bottom, so working top-down is the same as working fairly. Each row carries the client and their standing, the amount and product, who sent it, the date, both timers, and the avatar of whoever has the case open. The sidebar splits the work by how the client arrived — walk-in, online, returning — with waiting and archived cases kept apart from all three.`,
+    'design.s1.shot': `Filters above the list: client status, application status, amount, product, city, source, date.`,
+    'design.s2.title': `02 · Client profile — six tabs that turn separate systems into one person`,
+    'design.s2.body': `Committee, analysis, credit history, card statements, documents, scoring. Underneath sit the CRM, the national credit bureau, the Alif super-app and the bank's core system — none of which was built to answer a credit question. The tabs are the answer to what a reviewer sees of that pile, and in what order.`,
+    'design.s2.shot1': `Analysis: a year of activity, product mix and the overdue record, with the summary column pinned to the right.`,
+    'design.s2.shot2': `Below the charts, a summary line: largest loan, largest repayment, longest delay, loans with collateral.`,
+    'design.s2.acc': `A client profile has no natural length — every section could reasonably be expanded. So the page ends in an accordion where <strong>exactly one section is open at a time`,
+    'design.s2.shot3': `Spending, opened up: online and in-store purchases, utilities and transfers abroad — 30, 90 and 365 days side by side.`,
+    'design.s2.shot4': `Documents carry their own history — checked, new or outdated, and by whom — with the parsed passport beside them.`,
+    'design.s3.title': `03 · Credit history — five years, every bank in the country, one chart`,
+    'design.s3.body': `The vertical axis is what the client owed that month, the horizontal one is the calendar. Months with missed payments are enlarged and red, so a bad year is visible before anything is read. The source switches between Alif, the national bureau, or both — and the bureau view deliberately excludes Alif's own loans, because duplicating them would make a client look twice as indebted as they are.`,
+    'design.s3.shot1': `Two databases on one chart; hovering a red point gives the loan number, the days late and the amount paid.`,
+    'design.s3.shot2': `Below the chart, the loans themselves: role, amount, balance, dates, misses, status, monthly payment.`,
+    'design.s3.extra': `Opening a loan is the part I'd defend hardest. On the left, each due date with a tick, or a delay written out as its period, its length in days and the amount short. On the right, <strong>what the collections team actually wrote about this person`,
+    'design.s3.shot3': `The missed month is highlighted in the row itself — 13 days late, 180 somoni short.`,
+    'design.s3.shot4': `Card statements, counted per type so a reviewer knows what exists before opening anything.`,
+    'design.s4.title': `04 · The committee page — where the decision is actually taken`,
+    'design.s4.body': `One screen holds the client's own words on the left — income, job, dependents, car, housing — and the money on the right: the invoice, the credit calculation, approve and decline. Everything the reviewer needs to argue with themselves is in the same field of view.`,
+    'design.s4.shot1': `The form and the money, side by side: what the client said, and what the bank is being asked for.`,
+    'design.s4.shot2': `The engine's four lines sit under the decision buttons — beside the human decision, not above it. Below them, the to-dos.`,
+    'design.s5.title': `05 · Voting — where "yes, but" becomes a structured thing`,
+    'design.s5.body': `Three options: <strong>approve, approve with conditions, decline`,
+    'design.s5.shot': `Two members have voted "approve with conditions"; their conditions are already listed above as numbered items.`,
+    'design.s6.title': `06 · Templates — the twenty things the committee actually asks`,
+    'design.s6.body': `Four categories. Choosing a template writes the to-do and moves the application into the matching status in the same action.`,
+    'design.s6.c1.t': `Fill in the form`,
+    'design.s6.c1.n': `5 templates`,
+    'design.s6.c1.l1': `Stated income doesn't cover the requested amount — add secondary income`,
+    'design.s6.c1.l2': `Job title in the form and in the statement don't match`,
+    'design.s6.c1.b': `Status becomes <b>Fill in the form`,
+    'design.s6.c2.t': `Awaiting documents`,
+    'design.s6.c2.n': `2 templates`,
+    'design.s6.c2.l1': `Residence registration expired`,
+    'design.s6.c2.l2': `Add a photo of the invoice to the folder`,
+    'design.s6.c2.b': `Status becomes <b>Awaiting docs`,
+    'design.s6.c3.t': `Awaiting conditions`,
+    'design.s6.c3.n': `10 templates`,
+    'design.s6.c3.l1': `Who exactly are the "possible acquaintances"?`,
+    'design.s6.c3.l2': `Large past loans, modest job — who helped repay them?`,
+    'design.s6.c3.l3': `Can they offer a guarantor, a prepayment, collateral?`,
+    'design.s6.c3.b': `Status becomes <b>Awaiting committee conditions`,
+    'design.s6.c4.t': `Send for checking`,
+    'design.s6.c4.n': `3 templates`,
+    'design.s6.c4.l1': `There's a card statement in the folder — send it for checking`,
+    'design.s6.c4.l2': `There's a new passport in the folder`,
+    'design.s6.c4.b': `Status becomes <b>For checking`,
     'score.label': `About the scoring engine`,
     'score.title': `The engine decides most cases. I designed everything around it, not it.`,
     'score.lead': `Being precise about this matters, because it is the part of the project most easily overstated. The scoring model lives on the backend and I had no hand in it. What reaches the interface is a single block:`,
-    'score.body': `Four lines. My decision was where to put them: <strong>inside the voting, as one entry alongside the committee members' own votes</strong> — not above the vote as a verdict to ratify, and not hidden behind the final outcome. A reviewer can agree with the engine or vote against it, and either way the disagreement is recorded. The rest of my work exists so that a human who wants to disagree has grounds to: the credit history, the documents, the property, the guarantors, the client's own record.`,
-    'design.label': `Design`,
-    'design.title': `The system, screen by screen.`,
-    'design.lead': `Four surfaces: the queue that sets the order of work, the application list it feeds from, the client profile a decision is built on, and the credit history that carries the most weight in that decision.`,
-    'design.s1.title': `01 · The queue — a person, an amount and two clocks in every row`,
-    'design.s1.body': `Rows, not a board. Oldest at the top, newest at the bottom, so working top-down is the same as working fairly. Each row carries the client and their standing, the amount and term, who sent it, the region, both timers, and the avatars of everyone who has opened it.`,
-    'design.s1.shot': `The queue with its filters: client status, application status, amount, type, city, source, date.`,
-    'design.s2.title': `02 · Client profile — six tabs that turn separate systems into one person`,
-    'design.s2.body': `Committee, analysis, credit history, card statements, documents, scoring. Underneath sit the CRM, the national credit bureau, the Alif super-app and the bank's core system — none of which was built to answer a credit question. The tabs are the answer to what a reviewer sees of that pile, and in what order.`,
-    'design.s2.shot1': `Analysis: activity by month, product categories, and the overdue-payment record.`,
-    'design.s2.shot2': `Documents carry their own history: checked, new or outdated, and by whom.`,
-    'design.s3.title': `03 · Credit history — five years, every bank in the country, one chart`,
-    'design.s3.body': `The vertical axis is what the client owed that month, the horizontal one is the calendar. Months with missed payments are bigger and red, so a bad year is visible before anything is read. The source switches between Alif, the national bureau, or both — and the bureau view deliberately excludes Alif's own loans, because duplicating them would make a client look twice as indebted as they are.`,
-    'design.s3.shot1': `Years toggle on and off; overdue months are enlarged and red.`,
-    'design.s3.shot2': `A tranche opened up: the payment schedule on the left, the collections team's notes on the right.`,
-    'design.s3.extra': `The timeline is the part I'd defend hardest. On the left, each due date with a tick, or a delay written out as its period, its length in days and the amount short. On the right, <strong>what the collections team actually wrote about this person</strong>, newest first. Numbers say a client was 13 days late; the note next to it says they called to say they would pay in the morning. Only one of those two tells you whether to lend again.`,
-    'design.s4.title': `04 · Templates — the twenty things the committee actually asks`,
-    'design.s4.body': `Four categories. Choosing a template writes the to-do and moves the application into the matching status in the same action.`,
-    'design.s4.c1.t': `Fill in the form`,
-    'design.s4.c1.n': `5 templates`,
-    'design.s4.c1.l1': `Stated income doesn't cover the requested amount — add secondary income`,
-    'design.s4.c1.l2': `Job title in the form and in the statement don't match`,
-    'design.s4.c1.b': `Status becomes <b>Fill in the form`,
-    'design.s4.c2.t': `Awaiting documents`,
-    'design.s4.c2.n': `2 templates`,
-    'design.s4.c2.l1': `Residence registration expired`,
-    'design.s4.c2.l2': `Add a photo of the invoice to the folder`,
-    'design.s4.c2.b': `Status becomes <b>Awaiting docs`,
-    'design.s4.c3.t': `Awaiting conditions`,
-    'design.s4.c3.n': `10 templates`,
-    'design.s4.c3.l1': `Who exactly are the "possible acquaintances"?`,
-    'design.s4.c3.l2': `Large past loans, modest job — who helped repay them?`,
-    'design.s4.c3.l3': `Can they offer a guarantor, a prepayment, collateral?`,
-    'design.s4.c3.b': `Status becomes <b>Awaiting committee conditions`,
-    'design.s4.c4.t': `Send for checking`,
-    'design.s4.c4.n': `3 templates`,
-    'design.s4.c4.l1': `There's a card statement in the folder — send it for checking`,
-    'design.s4.c4.l2': `There's a new passport in the folder`,
-    'design.s4.c4.b': `Status becomes <b>For checking`,
-    'design.s4.shot': `The to-do block: template, the mandatory reply field under it, and the plain comment below.`,
-    'design.s4.shot2': `The committee page, where the engine's result sits as one entry among the votes.`,
+    'score.body': `Four lines. My decision was where to put them: <strong>on the committee page, directly under the approve and decline buttons</strong> — beside the human decision rather than above it as a verdict to ratify, and never hidden behind the final outcome. A reviewer can agree with the engine or vote against it, and either way the disagreement is recorded. The rest of my work exists so that a human who wants to disagree has grounds to: the credit history, the documents, the property, the guarantors, the client's own record.`,
     'outcomes.label': `Outcome`,
     'outcomes.title': `The committee now decides the hard 10%. The engine handles the rest.`,
     'outcomes.o1.tag': `ORDER OF WORK`,
@@ -820,50 +855,60 @@ const I18N = {
     'process.s4.body': `Комитет почти никогда не спрашивает новое — он спрашивает одни и те же двадцать вещей. Поэтому ответ стал выпадающим списком, а не свободным текстом: четыре категории, двадцать шаблонов. Выбор шаблона <strong>автоматически меняет основной статус заявки</strong>, потому что категория уже говорит, в каком состоянии заявка на самом деле. И правило валидации, которого раньше обеспечить было нечем: пока обязательное туду открыто, заявка не может вернуться в комитет. Одно это прекратило привычку отправлять то же самое по второму разу.`,
     'process.s5.title': `Ответ стоит под своим вопросом — а комментарий перестаёт притворяться задачей`,
     'process.s5.body': `В задании предложили два способа собирать ответы фронта: поле под каждым туду или одно общее поле с нумерацией ответов. Я взял первый — на шести открытых пунктах пронумерованные ответы начинают путаться со своими вопросами, а кредитное решение плохое место, чтобы это обнаружить. Второй вариант не исчез, а понизился в звании: он стал <strong>обычным полем комментария</strong>, намеренно не задачей, чтобы никто не читал его как ещё один пункт к закрытию.`,
+    'design.label': `Дизайн`,
+    'design.title': `Система, экран за экраном.`,
+    'design.lead': `Очередь задаёт порядок работы; профиль клиента держит всё, из чего строится решение; страница комитета — место, где решение принимается и фиксируется.`,
+    'design.s1.title': `01 · Очередь — человек, сумма и двое часов в каждой строке`,
+    'design.s1.body': `Строки, а не доска. Старые сверху, новые снизу, поэтому работать сверху вниз — то же самое, что работать честно. В строке клиент и его репутация, сумма и продукт, кто отправил, дата, оба таймера и аватарка того, у кого заявка открыта. Сайдбар делит работу по способу обращения — офлайн, онлайн, повторный клиент, — а ожидающие и архивные держатся отдельно от всех трёх.`,
+    'design.s1.shot': `Фильтры над списком: статус клиента, статус заявки, сумма, продукт, город, источник, дата.`,
+    'design.s2.title': `02 · Профиль клиента — шесть вкладок, превращающих разные системы в одного человека`,
+    'design.s2.body': `Комитет, анализ, кредитная история, выписки по картам, документы, скоринг. Под ними лежат CRM, республиканское кредитное бюро, суперапп Алифа и основная банковская система — ни одна не создавалась, чтобы отвечать на кредитный вопрос. Вкладки и есть ответ на то, что проверяющий видит из этой груды и в каком порядке.`,
+    'design.s2.shot1': `Анализ: год активности, структура покупок и картина просрочек, со сводкой, закреплённой справа.`,
+    'design.s2.shot2': `Под графиками — сводка: самый крупный кредит, самое большое погашение, самая долгая просрочка, кредиты с залогом.`,
+    'design.s2.acc': `У профиля клиента нет естественной длины — любой раздел можно с полным правом развернуть. Поэтому страница заканчивается аккордеоном, в котором <strong>открыт ровно один раздел</strong>: открытие следующего закрывает предыдущий. Сводка остаётся читаемой одним взглядом, а подробности появляются только там, где проверяющий сам их запросил.`,
+    'design.s2.shot3': `Траты в раскрытом виде: онлайн- и офлайн-покупки, коммуналка и переводы за рубеж — 30, 90 и 365 дней рядом.`,
+    'design.s2.shot4': `У документов своя история — проверен, новый или старый, и кем, — а рядом распарсенный паспорт.`,
+    'design.s3.title': `03 · Кредитная история — пять лет, все банки страны, один график`,
+    'design.s3.body': `По вертикали — сколько клиент должен был погасить в этом месяце, по горизонтали — календарь. Месяцы с просрочками увеличены и красные, поэтому плохой год виден раньше, чем прочитан. Источник переключается между Алифом, республиканским бюро и обоими сразу — причём в режиме бюро кредиты самого Алифа намеренно исключены, иначе клиент выглядел бы вдвое более закредитованным, чем он есть.`,
+    'design.s3.shot1': `Две базы на одном графике; наведение на красную точку даёт номер кредита, дни просрочки и сумму погашения.`,
+    'design.s3.shot2': `Под графиком — сами кредиты: роль, сумма, остаток, даты, просрочки, статус, ежемесячный платёж.`,
+    'design.s3.extra': `Раскрытый кредит — то, что я буду защищать упорнее всего. Слева каждая дата платежа с галочкой или просрочка, расписанная периодом, числом дней и суммой недостачи. Справа — <strong>что о человеке на самом деле написал отдел по работе с проблемными кредитами</strong>. Цифры говорят, что клиент опоздал на 13 дней; заметка рядом говорит, что он позвонил и предупредил, что заплатит утром. Только одно из этих двух подсказывает, давать ли снова.`,
+    'design.s3.shot3': `Пропущенный месяц подсвечен прямо в строке — 13 дней просрочки, 180 сомони недостачи.`,
+    'design.s3.shot4': `Выписки по картам с подсчётом по типам: проверяющий видит, что вообще есть, ещё до открытия.`,
+    'design.s4.title': `04 · Страница комитета — где решение и принимается`,
+    'design.s4.body': `Один экран держит слева слова самого клиента — доход, работа, иждивенцы, машина, жильё, — а справа деньги: накладную, кредитный расчёт, «одобрить» и «отказать». Всё, чем проверяющий спорит сам с собой, попадает в одно поле зрения.`,
+    'design.s4.shot1': `Анкета и деньги рядом: что сказал клиент и что у банка просят.`,
+    'design.s4.shot2': `Четыре строки движка стоят под кнопками решения — рядом с человеческим выбором, а не над ним. Ниже — туду.`,
+    'design.s5.title': `05 · Голосование — где «да, но» становится структурой`,
+    'design.s5.body': `Три варианта: <strong>добро, условно за, против</strong>. Интересен средний, потому что именно в нём живёт большинство настоящих кредитных решений — и именно его обычно проглатывает свободный комментарий. Здесь каждое условие это поле: тип документа или дополнительное обеспечение с суммой, плюс причина словами. <strong>Условное «да» оказывается чек-листом, а не фразой, которую кому-то потом предстоит толковать.</strong> Голос каждого участника появляется выше с пронумерованными условиями, а отказ требует письменной причины.`,
+    'design.s5.shot': `Двое проголосовали «условно за»; их условия уже перечислены выше пронумерованными пунктами.`,
+    'design.s6.title': `06 · Шаблоны — двадцать вещей, которые комитет спрашивает на самом деле`,
+    'design.s6.body': `Четыре категории. Выбор шаблона одним действием создаёт туду и переводит заявку в соответствующий статус.`,
+    'design.s6.c1.t': `Заполнить анкету`,
+    'design.s6.c1.n': `5 шаблонов`,
+    'design.s6.c1.l1': `Указанный доход не покрывает сумму заявки — укажите доп. доход`,
+    'design.s6.c1.l2': `Должность в анкете и в выписке не совпадают`,
+    'design.s6.c1.b': `Статус становится <b>Заполнить анкету</b>`,
+    'design.s6.c2.t': `Ожидаем документы`,
+    'design.s6.c2.n': `2 шаблона`,
+    'design.s6.c2.l1': `Прописка просрочена`,
+    'design.s6.c2.l2': `Добавьте фото накладной в папку`,
+    'design.s6.c2.b': `Статус становится <b>Ожид. доки</b>`,
+    'design.s6.c3.t': `Ждём выполнения`,
+    'design.s6.c3.n': `10 шаблонов`,
+    'design.s6.c3.l1': `Кем реально приходятся «возможные знакомые»?`,
+    'design.s6.c3.l2': `Большие прошлые кредиты при скромной должности — кто помогал погашать?`,
+    'design.s6.c3.l3': `Могут ли дать поручителя, предоплату, залог?`,
+    'design.s6.c3.b': `Статус становится <b>Ждём выполнения условий КК</b>`,
+    'design.s6.c4.t': `На проверку`,
+    'design.s6.c4.n': `3 шаблона`,
+    'design.s6.c4.l1': `В папке есть ДППК — отправьте на проверку`,
+    'design.s6.c4.l2': `В папке есть новый паспорт`,
+    'design.s6.c4.b': `Статус становится <b>На проверку</b>`,
     'score.label': `О скоринге`,
     'score.title': `Движок решает большинство случаев. Я проектировал всё вокруг него, а не его.`,
     'score.lead': `Здесь важно быть точным, потому что это та часть проекта, которую проще всего преувеличить. Скоринговая модель живёт на бэкенде, и к ней я отношения не имею. До интерфейса доходит один блок:`,
-    'score.body': `Четыре строки. Моим решением было, куда их поставить: <strong>внутрь голосования, одной записью наравне с голосами членов комитета</strong> — не над голосованием как вердикт, который надо утвердить, и не спрятанным за итоговым решением. Проверяющий может согласиться с движком или проголосовать против, и в обоих случаях расхождение остаётся в записи. Вся остальная моя работа существует ради того, чтобы человеку, который хочет не согласиться, было на что опереться: кредитная история, документы, имущество, поручители, собственная история клиента.`,
-    'design.label': `Дизайн`,
-    'design.title': `Система, экран за экраном.`,
-    'design.lead': `Четыре поверхности: очередь, задающая порядок работы, список заявок, который её питает, профиль клиента, на котором строится решение, и кредитная история, весящая в этом решении больше всего.`,
-    'design.s1.title': `01 · Очередь — человек, сумма и двое часов в каждой строке`,
-    'design.s1.body': `Строки, а не доска. Старые сверху, новые снизу, поэтому работать сверху вниз — то же самое, что работать честно. В строке клиент и его репутация, сумма и срок, кто отправил, регион, оба таймера и аватарки всех, кто заявку открывал.`,
-    'design.s1.shot': `Очередь с фильтрами: статус клиента, статус заявки, сумма, вид, город, источник, дата.`,
-    'design.s2.title': `02 · Профиль клиента — шесть вкладок, превращающих разные системы в одного человека`,
-    'design.s2.body': `Комитет, анализ, кредитная история, выписки по картам, документы, скоринг. Под ними лежат CRM, республиканское кредитное бюро, суперапп Алифа и основная банковская система — ни одна не создавалась, чтобы отвечать на кредитный вопрос. Вкладки и есть ответ на то, что проверяющий видит из этой груды и в каком порядке.`,
-    'design.s2.shot1': `Анализ: активность по месяцам, категории товаров и статистика по просрочкам.`,
-    'design.s2.shot2': `У документов своя история: проверен, новый или старый — и кем.`,
-    'design.s3.title': `03 · Кредитная история — пять лет, все банки страны, один график`,
-    'design.s3.body': `По вертикали — сколько клиент должен был погасить в этом месяце, по горизонтали — календарь. Месяцы с просрочками крупнее и красные, поэтому плохой год виден раньше, чем прочитан. Источник переключается между Алифом, республиканским бюро и обоими сразу — причём в режиме бюро кредиты самого Алифа намеренно исключены, иначе клиент выглядел бы вдвое более закредитованным, чем он есть.`,
-    'design.s3.shot1': `Годы включаются и выключаются; месяцы с просрочками увеличены и окрашены красным.`,
-    'design.s3.shot2': `Раскрытый транш: график погашений слева, заметки отдела проблемных кредитов справа.`,
-    'design.s3.extra': `Хронология — то, что я буду защищать упорнее всего. Слева каждая дата платежа с галочкой или просрочка, расписанная периодом, числом дней и суммой недостачи. Справа — <strong>что о человеке на самом деле написал отдел по работе с проблемными кредитами</strong>, от новых к старым. Цифры говорят, что клиент опоздал на 13 дней; заметка рядом говорит, что он позвонил и предупредил, что заплатит утром. Только одно из этих двух подсказывает, давать ли снова.`,
-    'design.s4.title': `04 · Шаблоны — двадцать вещей, которые комитет спрашивает на самом деле`,
-    'design.s4.body': `Четыре категории. Выбор шаблона одним действием создаёт туду и переводит заявку в соответствующий статус.`,
-    'design.s4.c1.t': `Заполнить анкету`,
-    'design.s4.c1.n': `5 шаблонов`,
-    'design.s4.c1.l1': `Указанный доход не покрывает сумму заявки — укажите доп. доход`,
-    'design.s4.c1.l2': `Должность в анкете и в выписке не совпадают`,
-    'design.s4.c1.b': `Статус становится <b>Заполнить анкету</b>`,
-    'design.s4.c2.t': `Ожидаем документы`,
-    'design.s4.c2.n': `2 шаблона`,
-    'design.s4.c2.l1': `Прописка просрочена`,
-    'design.s4.c2.l2': `Добавьте фото накладной в папку`,
-    'design.s4.c2.b': `Статус становится <b>Ожид. доки</b>`,
-    'design.s4.c3.t': `Ждём выполнения`,
-    'design.s4.c3.n': `10 шаблонов`,
-    'design.s4.c3.l1': `Кем реально приходятся «возможные знакомые»?`,
-    'design.s4.c3.l2': `Большие прошлые кредиты при скромной должности — кто помогал погашать?`,
-    'design.s4.c3.l3': `Могут ли дать поручителя, предоплату, залог?`,
-    'design.s4.c3.b': `Статус становится <b>Ждём выполнения условий КК</b>`,
-    'design.s4.c4.t': `На проверку`,
-    'design.s4.c4.n': `3 шаблона`,
-    'design.s4.c4.l1': `В папке есть ДППК — отправьте на проверку`,
-    'design.s4.c4.l2': `В папке есть новый паспорт`,
-    'design.s4.c4.b': `Статус становится <b>На проверку</b>`,
-    'design.s4.shot': `Блок туду: шаблон, обязательное поле ответа под ним и обычный комментарий ниже.`,
-    'design.s4.shot2': `Страница комитета, где результат движка стоит одной записью среди голосов.`,
+    'score.body': `Четыре строки. Моим решением было, куда их поставить: <strong>на страницу комитета, прямо под кнопками «одобрить» и «отказать»</strong> — рядом с человеческим выбором, а не над ним как вердикт, который надо утвердить, и никогда не спрятанным за итоговым решением. Проверяющий может согласиться с движком или проголосовать против, и в обоих случаях расхождение остаётся в записи. Вся остальная моя работа существует ради того, чтобы человеку, который хочет не согласиться, было на что опереться: кредитная история, документы, имущество, поручители, собственная история клиента.`,
     'outcomes.label': `Результат`,
     'outcomes.title': `Комитет теперь решает сложные 10%. Остальное закрывает движок.`,
     'outcomes.o1.tag': `ПОРЯДОК РАБОТЫ`,
