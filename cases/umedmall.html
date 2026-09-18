@@ -539,25 +539,25 @@ footer .links a:hover { color: white; }
       <p style="max-width:860px;" data-i18n-html="um.s2.body">The client-side brief asked for <strong>two levels of nesting, maximum</strong>. The admin section of the same brief described three: category → subcategory → type. <strong>I followed the data, not the sentence</strong> — because a type belongs to exactly one subcategory, and breaking that link is what makes a seller's products vanish from the storefront entirely. So the catalogue drills three levels deep, with breadcrumbs that never lose the path.</p>
       <div class="shots">
         <figure class="shot" data-label="img/um-catalogue.png — Каталог, три уровня (1600 px)"><img src="../img/um-catalogue.png" alt="Catalogue with three levels" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s2.shot1">Catalogue → category → subcategory, with the path kept visible in the breadcrumb.</figcaption></figure>
-        <figure class="shot" data-label="img/um-category.png — Страница категории с фильтрами (1600 px)"><img src="../img/um-category.png" alt="Category page with filters" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s2.shot2">A category page: price slider first, then filters built from the attribute engine.</figcaption></figure>
+        <figure class="shot" data-label="img/um-category.png — Страница категории с фильтрами (1600 px)"><img src="../img/um-category.png" alt="Category page with filters" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s2.shot2">A category page: price slider, filters built from the attribute engine, and tiles that carry the monthly payment, the seller and their rating.</figcaption></figure>
       </div>
     </div>
 
     <div style="margin-top: 72px;">
-      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s3.title">The colour swatch is the whole system in one control</h4>
-      <p style="max-width:860px;" data-i18n-html="um.s3.body">A shopper filtering by colour clicks a coloured dot. That dot exists because a moderator entered a <strong>HEX code</strong> with a name, and because an administrator then approved that name before it could appear on the marketplace at all — a two-step check on a single swatch. The seller never types "reddish". <strong>Every filter on this page is somebody's constrained input upstream</strong>: memory in GB, colour in HEX, dimensions in a unit that converts to a base.</p>
+      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s3.title">Instalments are not a payment option here — they are the price</h4>
+      <p style="max-width:860px;" data-i18n-html="um.s3.body">Under every price in the catalogue sits a second line: <strong>639 c. × 6 months</strong>. Not on the product page, not at checkout — in the tile, before anything is clicked. In this market a large purchase is normally split into monthly payments, so a price without its instalment is only half a price. At checkout the same logic continues: seven ways to pay, most of them local banks, and <strong>«pay after delivery»</strong> for people who want to see the box first.</p>
       <div class="shots">
-        <figure class="shot" data-label="img/um-filters.png — Фильтры: цвет, память, рассрочка (1600 px)"><img src="../img/um-filters.png" alt="Storefront filters" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s3.shot">Colour, storage, instalments, free delivery — the filters a shopper reaches for, and the schema that makes them possible.</figcaption></figure>
+        <figure class="shot" data-label="img/um-payment.png — Способы оплаты (1600 px)"><img src="../img/um-payment.png" alt="Payment methods" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s3.shot">Seven payment methods, four of them local banks, plus cash on delivery.</figcaption></figure>
       </div>
     </div>
 
     <div style="margin-top: 72px;">
-      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s4.title">From product page to paid, without a detour</h4>
-      <p style="max-width:860px;" data-i18n="um.s4.body">The product page carries the gallery, the attribute table a shopper compares by, delivery terms and reviews with seller replies. Checkout runs address → confirmation → payment method → done, with the quantity validated against real stock rather than accepted and rejected later.</p>
+      <h4 style="font-size: clamp(19px, 2.2vw, 24px);" data-i18n="um.s4.title">The cart tells the truth before it tells the total</h4>
+      <p style="max-width:860px;" data-i18n="um.s4.body">One order can cross several stores, so the cart is grouped by seller, each with its own delivery cost. Two states matter more than the happy path: <strong>«the price has changed»</strong> marked on the item rather than silently applied, and <strong>«unavailable to order»</strong> pulled into its own block with a replace button instead of quietly disappearing. Checkout then runs address → payment → done, and the continue button stays disabled until the address is real.</p>
       <div class="shots">
-        <figure class="shot" data-label="img/um-product.png — Карточка товара (1600 px)"><img src="../img/um-product.png" alt="Product page" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s4.shot1">The product page — the same attribute schema the moderator defined, read by a shopper.</figcaption></figure>
-        <figure class="shot" data-label="img/um-cart.png — Корзина (1600 px)"><img src="../img/um-cart.png" alt="Cart" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s4.shot2">The cart, grouped by seller, because one order can cross several stores.</figcaption></figure>
-        <figure class="shot" data-label="img/um-checkout.png — Оформление заказа (1600 px)"><img src="../img/um-checkout.png" alt="Checkout" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s4.shot3">Checkout as one uninterrupted flow.</figcaption></figure>
+        <figure class="shot" data-label="img/um-product.png — Карточка товара (1600 px)"><img src="../img/um-product.png" alt="Product page" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s4.shot1">The product page: instalment terms, seller rating, badges and the attribute table a shopper compares by.</figcaption></figure>
+        <figure class="shot" data-label="img/um-cart.png — Корзина (1600 px)"><img src="../img/um-cart.png" alt="Cart" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s4.shot2">The cart: grouped by seller, with a price-change warning and unavailable items separated out.</figcaption></figure>
+        <figure class="shot" data-label="img/um-checkout.png — Оформление заказа (1600 px)"><img src="../img/um-checkout.png" alt="Checkout" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="um.s4.shot3">Address and delivery: the continue button unlocks only when the form is genuinely complete.</figcaption></figure>
       </div>
     </div>
 
@@ -972,15 +972,15 @@ const I18N = {
     'um.s2.title': `Three levels of catalogue, against the brief's own instruction`,
     'um.s2.body': `The client-side brief asked for <strong>two levels of nesting, maximum</strong>. The admin section of the same brief described three: category → subcategory → type. <strong>I followed the data, not the sentence</strong> — because a type belongs to exactly one subcategory, and breaking that link is what makes a seller's products vanish from the storefront entirely. So the catalogue drills three levels deep, with breadcrumbs that never lose the path.`,
     'um.s2.shot1': `Catalogue → category → subcategory, with the path kept visible in the breadcrumb.`,
-    'um.s2.shot2': `A category page: price slider first, then filters built from the attribute engine.`,
-    'um.s3.title': `The colour swatch is the whole system in one control`,
-    'um.s3.body': `A shopper filtering by colour clicks a coloured dot. That dot exists because a moderator entered a <strong>HEX code</strong> with a name, and because an administrator then approved that name before it could appear on the marketplace at all — a two-step check on a single swatch. The seller never types "reddish". <strong>Every filter on this page is somebody's constrained input upstream</strong>: memory in GB, colour in HEX, dimensions in a unit that converts to a base.`,
-    'um.s3.shot': `Colour, storage, instalments, free delivery — the filters a shopper reaches for, and the schema that makes them possible.`,
-    'um.s4.title': `From product page to paid, without a detour`,
-    'um.s4.body': `The product page carries the gallery, the attribute table a shopper compares by, delivery terms and reviews with seller replies. Checkout runs address → confirmation → payment method → done, with the quantity validated against real stock rather than accepted and rejected later.`,
-    'um.s4.shot1': `The product page — the same attribute schema the moderator defined, read by a shopper.`,
-    'um.s4.shot2': `The cart, grouped by seller, because one order can cross several stores.`,
-    'um.s4.shot3': `Checkout as one uninterrupted flow.`,
+    'um.s2.shot2': `A category page: price slider, filters built from the attribute engine, and tiles that carry the monthly payment, the seller and their rating.`,
+    'um.s3.title': `Instalments are not a payment option here — they are the price`,
+    'um.s3.body': `Under every price in the catalogue sits a second line: <strong>639 c. × 6 months</strong>. Not on the product page, not at checkout — in the tile, before anything is clicked. In this market a large purchase is normally split into monthly payments, so a price without its instalment is only half a price. At checkout the same logic continues: seven ways to pay, most of them local banks, and <strong>«pay after delivery»</strong> for people who want to see the box first.`,
+    'um.s3.shot': `Seven payment methods, four of them local banks, plus cash on delivery.`,
+    'um.s4.title': `The cart tells the truth before it tells the total`,
+    'um.s4.body': `One order can cross several stores, so the cart is grouped by seller, each with its own delivery cost. Two states matter more than the happy path: <strong>«the price has changed»</strong> marked on the item rather than silently applied, and <strong>«unavailable to order»</strong> pulled into its own block with a replace button instead of quietly disappearing. Checkout then runs address → payment → done, and the continue button stays disabled until the address is real.`,
+    'um.s4.shot1': `The product page: instalment terms, seller rating, badges and the attribute table a shopper compares by.`,
+    'um.s4.shot2': `The cart: grouped by seller, with a price-change warning and unavailable items separated out.`,
+    'um.s4.shot3': `Address and delivery: the continue button unlocks only when the form is genuinely complete.`,
     'um.s5.title': `Dark mode is a token swap, not a second palette`,
     'um.s5.body': `Colours are named for what they mean, not what they are. <code>modeSolid-red-0</code> resolves to <code>solid-red-0</code> in the light theme and to <code>solid-red-100</code> in the dark one — <strong>one semantic name, two substitutions</strong>. Switching themes repaints nothing by hand, and a new screen inherits both themes the moment it is drawn. None of this was in the brief.`,
     'um.s5.shot1': `The token table: semantic name on the left, its light and dark resolutions on the right.`,
@@ -1187,14 +1187,14 @@ const I18N = {
     'um.s2.body': `Клиентская часть задания требовала <strong>максимум двух уровней вложенности</strong>. Админская часть того же задания описывала три: категория → подкатегория → вид. <strong>Я пошёл за данными, а не за фразой</strong> — потому что вид принадлежит ровно одной подкатегории, и разрыв этой связи означает, что товары продавца просто исчезнут с витрины. Поэтому каталог раскрывается на три уровня, а хлебные крошки не теряют путь.`,
     'um.s2.shot1': `Каталог → категория → подкатегория, путь остаётся виден в хлебных крошках.`,
     'um.s2.shot2': `Страница категории: сначала цена ползунком, дальше фильтры, собранные из движка атрибутов.`,
-    'um.s3.title': `Цветной кружок — это вся система в одном контроле`,
-    'um.s3.body': `Покупатель, фильтрующий по цвету, кликает цветную точку. Эта точка существует потому, что модератор ввёл <strong>HEX-код</strong> с названием, а администратор затем это название утвердил — и только после утверждения цвет вообще появляется на маркетплейсе. Двухступенчатая проверка ради одного кружка. Продавец никогда не пишет «красноватый». <strong>Каждый фильтр на этой странице — чьё-то ограниченное поле выше по течению</strong>: память в ГБ, цвет в HEX, габариты в единице, которая приводится к базовой.`,
-    'um.s3.shot': `Цвет, память, рассрочка, бесплатная доставка — фильтры, которыми пользуется покупатель, и схема, которая делает их возможными.`,
-    'um.s4.title': `От карточки до оплаты без крюка`,
-    'um.s4.body': `На карточке товара галерея, таблица характеристик, по которой покупатель сравнивает, условия доставки и отзывы с ответами продавца. Оформление идёт адрес → подтверждение → способ оплаты → готово, а количество проверяется по реальному остатку, а не принимается, чтобы потом отклониться.`,
-    'um.s4.shot1': `Карточка товара — та же схема характеристик, которую задал модератор, прочитанная покупателем.`,
-    'um.s4.shot2': `Корзина, сгруппированная по продавцам, потому что один заказ может пересекать несколько магазинов.`,
-    'um.s4.shot3': `Оформление заказа одним непрерывным потоком.`,
+    'um.s3.title': `Рассрочка здесь не способ оплаты, а сама цена`,
+    'um.s3.body': `Под каждой ценой в каталоге стоит вторая строка: <strong>639 с. x 6 мес.</strong> Не на карточке товара, не на оформлении — в плитке, до первого клика. На этом рынке крупную покупку обычно разбивают на ежемесячные платежи, поэтому цена без рассрочки — половина цены. На оплате та же логика продолжается: семь способов, большинство из них местные банки, и <strong>«оплата после доставки»</strong> для тех, кто хочет сначала увидеть коробку.`,
+    'um.s3.shot': `Семь способов оплаты, четыре из них — местные банки, плюс оплата после доставки.`,
+    'um.s4.title': `Корзина сначала говорит правду, потом сумму`,
+    'um.s4.body': `Один заказ может пересекать несколько магазинов, поэтому корзина сгруппирована по продавцам, у каждого своя стоимость доставки. Важнее счастливого пути два состояния: <strong>«цена изменилась»</strong> — помечено на товаре, а не применено молча, и <strong>«недоступно для заказа»</strong> — вынесено в отдельный блок с кнопкой «заменить», а не исчезает тихо. Дальше оформление идёт адрес → оплата → готово, и кнопка продолжения остаётся выключенной, пока адрес не заполнен.`,
+    'um.s4.shot1': `Карточка товара: условия рассрочки, рейтинг продавца, бейджи и таблица характеристик для сравнения.`,
+    'um.s4.shot2': `Корзина: сгруппирована по продавцам, с предупреждением об изменении цены и отдельным блоком недоступного.`,
+    'um.s4.shot3': `Адрес и доставка: кнопка продолжения разблокируется, только когда форма действительно заполнена.`,
     'um.s5.title': `Тёмная тема — это подмена токена, а не вторая палитра`,
     'um.s5.body': `Цвета названы по смыслу, а не по значению. <code>modeSolid-red-0</code> разрешается в <code>solid-red-0</code> в светлой теме и в <code>solid-red-100</code> в тёмной — <strong>одно семантическое имя, две подстановки</strong>. Переключение тем не перекрашивает ничего вручную, а новый экран наследует обе темы в момент отрисовки. Ничего из этого в задании не было.`,
     'um.s5.shot1': `Таблица токенов: семантическое имя слева, его светлое и тёмное разрешение справа.`,
