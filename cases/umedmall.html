@@ -592,47 +592,15 @@ footer .links a:hover { color: white; }
     <!-- SCREEN 1 -->
     <div style="margin-top: 80px;">
       <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
-        <h3 style="margin:0;" data-i18n="design.s1.title">01 · Store applications — review without losing the trail</h3>
+        <h3 style="margin:0;" data-i18n="design.s1.title">01 · Applications: three states, three destinations</h3>
         <span class="badge brand" data-i18n="design.s1.tag">Admin view</span>
       </div>
-      <p style="max-width:820px;" data-i18n="design.s1.body">One queue, filtered by status, instead of three separate pages for new/approved/rejected. Approving creates the store record in the same action — no separate step to forget. Rejecting requires a reason, stored and visible to every other moderator.</p>
-
-      <div class="browser-frame">
-        <div class="bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><div class="url">umedmall.tj/admin/applications</div></div>
-        <div class="dash-mock">
-          <div class="sidebar">
-            <div class="logo"><div class="logo-mark"></div>UMEDMALL</div>
-            <div class="nav-section" data-i18n="design.s1.nav.g1">Orders & Clients</div>
-            <div class="nav-item" data-i18n="design.s1.nav.orders">🧾 Orders</div>
-            <div class="nav-section" data-i18n="design.s1.nav.g2">Applications</div>
-            <div class="nav-item active" data-i18n="design.s1.nav.apps">📨 Applications <span class="count">3</span></div>
-            <div class="nav-section" data-i18n="design.s1.nav.g3">Catalog</div>
-            <div class="nav-item" data-i18n="design.s1.nav.cats">🗃 Categories</div>
-            <div class="nav-section" data-i18n="design.s1.nav.g4">Attributes</div>
-            <div class="nav-item" data-i18n="design.s1.nav.attrs">⚙️ Attributes</div>
-          </div>
-          <div class="main">
-            <div class="topbar">
-              <div class="search" data-i18n="design.s1.search">🔍 Search by store, owner, TIN...</div>
-              <div class="lang-pill"><span class="on">RU</span><span>EN</span></div>
-              <div class="icon-btn"></div>
-            </div>
-            <div style="font-size:22px; font-weight:800; margin-bottom:4px;" data-i18n="design.s1.h">New applications</div>
-            <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px;" data-i18n="design.s1.sub">3 awaiting review</div>
-            <table class="table-mock">
-              <tr><th data-i18n="design.s1.th1">Store</th><th data-i18n="design.s1.th2">Owner</th><th data-i18n="design.s1.th3">City</th><th data-i18n="design.s1.th4">Status</th><th data-i18n="design.s1.th5">Action</th></tr>
-              <tr><td class="name">SportStore</td><td>Karimov R.</td><td>Dushanbe</td><td><span class="status-badge pending" data-i18n="design.s1.stnew">New</span></td><td class="actions"><span>👁</span><span>✔</span><span>✖</span></td></tr>
-              <tr><td class="name">BagShop</td><td>Nazarova F.</td><td>Khujand</td><td><span class="status-badge approved" data-i18n="design.s1.stok">Approved</span></td><td class="actions"><span>👁</span></td></tr>
-              <tr><td class="name">ElectroPro</td><td>Davlatov S.</td><td>Dushanbe</td><td><span class="status-badge rejected" data-i18n="design.s1.strej">Rejected</span></td><td class="actions"><span>👁</span><span>↩</span></td></tr>
-            </table>
-            <div style="margin-top:16px; padding:12px 16px; background: var(--error-soft); border-radius: 10px; font-size: 12px; color: var(--error);" data-i18n="design.s1.note">↳ Rejection reason for ElectroPro: "TIN document illegible — re-upload requested." Visible to all moderators.</div>
-          </div>
-        </div>
-      </div>
+      <p style="max-width:820px;" data-i18n-html="design.s1.body">An application is a store asking for a product that is not in the shared catalogue yet. New, approved and rejected live at three separate addresses in the sidebar rather than behind a status filter on one list — a moderator spends the day inside «New», and everything on that screen is waiting on them. The decision itself is never made from the list. Opening an application shows the product exactly as a shopper would meet it — gallery, the discounted price next to the old one, the wholesale price, the seller with their rating and badges, the attribute set, the description. At the bottom sits a notes field and three ready-made reasons — <strong>photo does not match</strong>, <strong>wrong category</strong>, <strong>attribute</strong> — so a rejection rarely leaves without an explanation, and the explanation does not have to be written from scratch every time.</p>
 
       <div class="shots">
-        <figure class="shot" data-file="img/admin-applications.png"><img src="../img/admin-applications.png" alt="Admin — applications moderation queue" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot1">Shipped UI — the moderation queue, filtered by status, straight from the production Figma file.</figcaption></figure>
-        <figure class="shot" data-file="img/admin-application-detail.png"><img src="../img/admin-application-detail.png" alt="Admin — single application review with approve/reject" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot2">A single application: documents, notes, and the approve action that creates the store record in the same step.</figcaption></figure>
+        <figure class="shot" data-label="img/admin-applications.png — Заявки на модерации (1600 px)"><img src="../img/admin-applications.png" alt="Admin — applications on moderation" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot1">«New» is open: the list of what needs a decision right now. «Approved» and «Rejected» are neighbouring items, not a filter somebody has to remember to clear.</figcaption></figure>
+        <figure class="shot" data-label="img/admin-application-detail.png — Карточка заявки (1600 px)"><img src="../img/admin-application-detail.png" alt="Admin — application detail" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot2">The application opened: the product as a shopper would meet it — gallery, discount, wholesale price, seller with rating and badges.</figcaption></figure>
+        <figure class="shot" data-label="img/admin-application-actions.png — Заметка и решение (1600 px)"><img src="../img/admin-application-actions.png" alt="Admin — notes and decision buttons" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot3">The bottom of the card: a notes field, three ready-made rejection reasons, and the two buttons that close the case.</figcaption></figure>
       </div>
     </div>
 
@@ -992,18 +960,9 @@ const I18N = {
     'um.s7.title': `Every section exists twice`,
     'um.s7.body': `All thirteen storefront sections were delivered as desktop and mobile pairs, in both themes. Not "responsive behaviour described in a comment" — drawn, so engineering never had to invent a state that wasn't there.`,
     'um.s7.shot': `The client account on mobile, laid out twice: lightMode on the left, darkMode on the right — sign-in, code entry, profile, delivery addresses, city, each screen drawn in both.`,
-    'design.s1.title': `01 · Store applications — review without losing the trail`,
+    'design.s1.title': `01 · Applications: three states, three destinations`,
     'design.s1.tag': `Admin view`,
-    'design.s1.body': `One queue, filtered by status, instead of three separate pages for new/approved/rejected. Approving creates the store record in the same action — no separate step to forget. Rejecting requires a reason, stored and visible to every other moderator.`,
-    'design.s1.nav.g1': `Orders & Clients`, 'design.s1.nav.orders': `🧾 Orders`,
-    'design.s1.nav.g2': `Applications`, 'design.s1.nav.apps': `📨 Applications`,
-    'design.s1.nav.g3': `Catalog`, 'design.s1.nav.cats': `🗃 Categories`,
-    'design.s1.nav.g4': `Attributes`, 'design.s1.nav.attrs': `⚙️ Attributes`,
-    'design.s1.search': `🔍 Search by store, owner, TIN...`,
-    'design.s1.h': `New applications`, 'design.s1.sub': `3 awaiting review`,
-    'design.s1.th1': `Store`, 'design.s1.th2': `Owner`, 'design.s1.th3': `City`, 'design.s1.th4': `Status`, 'design.s1.th5': `Action`,
-    'design.s1.stnew': `New`, 'design.s1.stok': `Approved`, 'design.s1.strej': `Rejected`,
-    'design.s1.note': `↳ Rejection reason for ElectroPro: "TIN document illegible — re-upload requested." Visible to all moderators.`,
+    'design.s1.body': `An application is a store asking for a product that is not in the shared catalogue yet. New, approved and rejected live at three separate addresses in the sidebar rather than behind a status filter on one list — a moderator spends the day inside «New», and everything on that screen is waiting on them. The decision itself is never made from the list. Opening an application shows the product exactly as a shopper would meet it — gallery, the discounted price next to the old one, the wholesale price, the seller with their rating and badges, the attribute set, the description. At the bottom sits a notes field and three ready-made reasons — <strong>photo does not match</strong>, <strong>wrong category</strong>, <strong>attribute</strong> — so a rejection rarely leaves without an explanation, and the explanation does not have to be written from scratch every time.`,
 
     'design.s2.title': `02 · From six table names to seven workflows`,
     'design.s2.body': `The original spec's sidebar is a list of nouns. The shipped sidebar is a list of jobs — each group named the way the client's own team already talked about their work, so sign-off was fast.`,
@@ -1076,8 +1035,9 @@ const I18N = {
             
     'footer.role': `Product Designer`,
     'footer.disclaimer': `Case study · UmedMall · 2025–2026. Three connected systems — client storefront, moderator console, seller cabinet — covering 13 / 19 / 7 sections. Live at umedmall.tj.`,
-    'design.s1.shot1': `Shipped UI — the moderation queue, filtered by status, straight from the production Figma file.`,
-    'design.s1.shot2': `A single application: documents, notes, and the approve action that creates the store record in the same step.`,
+    'design.s1.shot1': `«New» is open: the list of what needs a decision right now. «Approved» and «Rejected» are neighbouring items, not a filter somebody has to remember to clear.`,
+    'design.s1.shot2': `The application opened: the product as a shopper would meet it — gallery, discount, wholesale price, seller with rating and badges.`,
+    'design.s1.shot3': `The bottom of the card: a notes field, three ready-made rejection reasons, and the two buttons that close the case.`,
     'design.s3.shot1': `The characteristics registry in the shipped admin — input types, units and groups in one moderator-owned table.`,
     'design.s3.shot2': `Creating a characteristic: fixed input types and unit selection — the constraint that keeps free text out of the catalog.`,
     'design.s4.shot1': `The shipped seller dashboard: key numbers first, actions second — a five-second health check.`,
@@ -1206,18 +1166,9 @@ const I18N = {
     'um.s7.title': `Каждый раздел существует дважды`,
     'um.s7.body': `Все тринадцать разделов витрины сданы парами десктоп и мобильный, в обеих темах. Не «адаптивное поведение описано в комментарии», а нарисовано — чтобы разработке не пришлось выдумывать состояние, которого нет.`,
     'um.s7.shot': `Аккаунт клиента на мобильном, разложенный дважды: слева lightMode, справа darkMode — вход, ввод кода, профиль, адреса доставки, город, каждый экран нарисован в обеих.`,
-    'design.s1.title': `01 · Заявки магазинов — проверка без потери истории`,
+    'design.s1.title': `01 · Заявки: три состояния — три адреса`,
     'design.s1.tag': `Вид админки`,
-    'design.s1.body': `Одна очередь, фильтруемая по статусу, вместо трёх отдельных страниц для новых/одобренных/отклонённых. Одобрение создаёт запись магазина тем же действием — не отдельный шаг, который можно забыть. Отказ требует причину, которая сохраняется и видна всем остальным модераторам.`,
-    'design.s1.nav.g1': `Заказы и клиенты`, 'design.s1.nav.orders': `🧾 Заказы`,
-    'design.s1.nav.g2': `Заявки`, 'design.s1.nav.apps': `📨 Заявки`,
-    'design.s1.nav.g3': `Каталог`, 'design.s1.nav.cats': `🗃 Категории`,
-    'design.s1.nav.g4': `Атрибуты`, 'design.s1.nav.attrs': `⚙️ Атрибуты`,
-    'design.s1.search': `🔍 Поиск по магазину, владельцу, ИНН...`,
-    'design.s1.h': `Новые заявки`, 'design.s1.sub': `3 на проверке`,
-    'design.s1.th1': `Магазин`, 'design.s1.th2': `Владелец`, 'design.s1.th3': `Город`, 'design.s1.th4': `Статус`, 'design.s1.th5': `Действие`,
-    'design.s1.stnew': `Новая`, 'design.s1.stok': `Одобрена`, 'design.s1.strej': `Отклонена`,
-    'design.s1.note': `↳ Причина отказа для ElectroPro: «ИНН-документ нечитаем — запрошена повторная загрузка». Видна всем модераторам.`,
+    'design.s1.body': `Заявка — это просьба магазина добавить в общий каталог товар, которого там ещё нет. Новые, одобренные и отклонённые разведены по трём отдельным разделам, а не спрятаны за фильтром статуса в одном списке: модератор весь день живёт в «Новых», и всё, что он там видит, ждёт решения. Само решение из списка не принимается. Заявка раскрывается в карточку, где товар показан ровно так, как его встретит покупатель, — галерея, цена со скидкой рядом со старой, оптовая цена, продавец с рейтингом и бейджами, набор характеристик, описание. Внизу — поле заметки и три готовые причины: <strong>фотография не соответствует</strong>, <strong>категория неверна</strong>, <strong>характеристика</strong>. Отказ почти никогда не уходит без объяснения, а объяснение не приходится сочинять заново каждый раз.`,
 
     'design.s2.title': `02 · От шести названий таблиц к семи рабочим процессам`,
     'design.s2.body': `Сайдбар по исходному ТЗ — это список существительных. Сайдбар, который пошёл в релиз — это список задач: каждая группа названа так, как сама команда заказчика уже называла свою работу, поэтому согласование прошло быстро.`,
@@ -1290,8 +1241,9 @@ const I18N = {
             
     'footer.role': `Продакт-дизайнер`,
     'footer.disclaimer': `Кейс · UmedMall · 2025–2026. Три связанные системы — клиентская витрина, модераторская панель, кабинет продавца — 13 / 19 / 7 разделов. Работает на umedmall.tj.`,
-    'design.s1.shot1': `Финальный UI — очередь модерации с фильтром по статусу, напрямую из рабочего Figma-файла.`,
-    'design.s1.shot2': `Карточка заявки: документы, заметки и кнопка одобрения, которая создаёт запись магазина тем же действием.`,
+    'design.s1.shot1': `«Новые» открыты: список того, что ждёт решения прямо сейчас. «Одобренные» и «Отклонённые» — соседние пункты, а не фильтр, который надо не забыть снять.`,
+    'design.s1.shot2': `Заявка раскрыта: товар показан так, как его встретит покупатель, — галерея, скидка, оптовая цена, продавец с рейтингом и бейджами.`,
+    'design.s1.shot3': `Низ карточки: поле заметки, три готовые причины отказа и две кнопки, которые закрывают вопрос.`,
     'design.s3.shot1': `Реестр характеристик в финальной админке — типы ввода, единицы и группы в одной таблице, принадлежащей модератору.`,
     'design.s3.shot2': `Создание характеристики: фиксированные типы ввода и выбор единицы — то ограничение, что не пускает свободный текст в каталог.`,
     'design.s4.shot1': `Финальный дашборд продавца: сначала ключевые цифры, потом действия — проверка здоровья магазина за пять секунд.`,
