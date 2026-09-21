@@ -243,13 +243,13 @@ footer .links a:hover { color: white; }
 .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px; margin-top: 32px; }
 .shots.wide { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .shot { margin: 0; }
-.shot img { width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 10px 34px rgba(6,10,30,0.09); }
+.shot img { width: 100%; height: auto; display: block; border-radius: 32px; border: 1px solid var(--border); box-shadow: 0 10px 34px rgba(6,10,30,0.09); }
 .shot figcaption { font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.5; }
 .shot.missing img { display: none; }
 .shot.missing::before {
   content: '⬚  ' attr(data-label);
   display: flex; align-items: center; justify-content: center; text-align: center;
-  min-height: 300px; border: 2px dashed var(--border); border-radius: 14px;
+  min-height: 300px; border: 2px dashed var(--border); border-radius: 32px;
   color: var(--text-muted); font-size: 13px; font-weight: 600; padding: 18px; line-height: 1.5;
   background: var(--bg-surface);
 }
