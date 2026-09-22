@@ -23,7 +23,7 @@
 
   --text: #000000;
   --text-secondary: #363d50;
-  --text-muted: #9ca3b0;
+  --text-muted: #6b7280;
   --text-on-dark: #ffffff;
   --text-on-dark-secondary: #9babc8;
 
@@ -43,7 +43,7 @@
 html, body { margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; letter-spacing: -0.005em; }
 a { color: var(--pay); text-decoration: none; }
 a:hover { text-decoration: underline; }
-code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: var(--bg-grey); padding: 2px 6px; border-radius: 4px; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 0.9em; background: var(--bg-grey); color: #111827; padding: 2px 6px; border-radius: 4px; }
 
 .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
 .container-wide { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
@@ -154,6 +154,13 @@ ul.bullets li { padding: 14px 0; border-bottom: 1px solid var(--border); font-si
 ul.bullets li::before { content: ''; width: 5px; height: 5px; background: var(--pay); border-radius: 50%; margin-top: 12px; flex-shrink: 0; }
 ul.bullets li:last-child { border-bottom: 0; }
 section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.82); }
+/* светлые карточки внутри тёмной секции: текст обратно тёмный */
+section.bg-dark .cbefore, section.bg-dark .cafter { color: var(--text); }
+section.bg-dark .cbefore ul.bullets li, section.bg-dark .cafter ul.bullets li { color: var(--text); border-color: var(--border); }
+section.bg-dark .cbefore h4, section.bg-dark .cafter h4, section.bg-dark .cbefore h3, section.bg-dark .cafter h3 { color: var(--text); }
+section.bg-dark .cbefore p, section.bg-dark .cafter p { color: var(--text-secondary); }
+.compare .cbefore ul.bullets li::before { background: var(--transfer); }
+
 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
@@ -178,8 +185,8 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.08); color: rgb
 .pillar p { color: rgba(255,255,255,0.68); font-size: 15px; margin: 0; }
 
 .badge { display: inline-flex; align-items: center; padding: 4px 11px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 700; }
-.badge.pay { background: var(--pay-soft); color: var(--pay); }
-.badge.transfer { background: var(--transfer-soft); color: var(--transfer); }
+.badge.pay { background: var(--pay-soft); color: #1d4ed8; }
+.badge.transfer { background: var(--transfer-soft); color: #9a4004; }
 
 .step-flow { display: flex; gap: 0; margin: 32px 0; flex-wrap: wrap; }
 .step-item { flex: 1; min-width: 100px; display: flex; flex-direction: column; align-items: center; position: relative; }
@@ -191,8 +198,8 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.08); color: rgb
 .compare .cbefore { background: #fff8f3; padding: 32px; }
 .compare .cafter { background: #eff6ff; padding: 32px; border-left: 1px solid var(--border); }
 .compare .clabel { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: var(--radius-pill); margin-bottom: 16px; }
-.compare .cbefore .clabel { background: rgba(247,103,7,0.15); color: var(--transfer); }
-.compare .cafter .clabel { background: var(--pay-soft); color: var(--pay); }
+.compare .cbefore .clabel { background: rgba(247,103,7,0.16); color: #9a4004; }
+.compare .cafter .clabel { background: var(--pay-soft); color: #1d4ed8; }
 
 .process-step { display: flex; gap: 20px; padding: 26px 0; border-bottom: 1px solid var(--border); }
 .process-step:last-child { border-bottom: 0; }
@@ -238,6 +245,16 @@ footer .links a:hover { color: white; }
   .step-flow { gap: 12px; }
   .step-item::after { display: none; }
 }
+
+/* screenshots */
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; margin-top: 32px; }
+.shots.wide { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.shot { margin: 0; }
+.shot img { width: 100%; height: auto; display: block; border-radius: 32px; border: 1px solid var(--border); box-shadow: 0 10px 34px rgba(6,10,30,0.08); }
+.shot figcaption { font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.5; }
+.shot.missing img { display: none; }
+.shot.missing::before { content: '\2B1A  ' attr(data-label); display: flex; align-items: center; justify-content: center; text-align: center; min-height: 260px; border: 2px dashed var(--border); border-radius: 32px; color: var(--text-muted); font-size: 12px; font-weight: 600; padding: 18px; background: var(--bg-grey); }
+.appmark { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px; }
 </style>
 </head>
 <body>
@@ -253,14 +270,14 @@ footer .links a:hover { color: white; }
 <!-- HERO -->
 <header class="hero">
   <div class="container hero-content">
-    <div class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">UX/UI Design Concept · 2022 · Orion Muhamadiev</span></div>
+    <div class="eyebrow"><span class="dot"></span><span data-i18n="hero.eyebrow">UX/UI · 2022 → live on Google Play · Orion Muhamadiev</span></div>
     <h1 data-i18n-html="hero.title"><span class="pay-word">Pay</span><span class="or-word">vand</span><br>App</h1>
     <p class="lede" data-i18n="hero.lede">Two products that solved two different problems in Tajikistan's money transfer economy — one for domestic payments, one for frictionless remittances from Russia — tied together by a single design system.</p>
     <div class="hero-meta">
       <div><div class="mlabel" data-i18n="hero.m1.label">Role</div><div class="mvalue" data-i18n="hero.m1.value">UX/UI Designer</div></div>
       <div><div class="mlabel" data-i18n="hero.m2.label">Year</div><div class="mvalue">2022</div></div>
-      <div><div class="mlabel" data-i18n="hero.m3.label">Type</div><div class="mvalue" data-i18n="hero.m3.value">Concept · iOS & Android</div></div>
-      <div><div class="mlabel" data-i18n="hero.m4.label">Apps</div><div class="mvalue" data-i18n="hero.m4.value">Payvand Payments + Transfer</div></div>
+      <div><div class="mlabel" data-i18n="hero.m3.label">Type</div><div class="mvalue" data-i18n="hero.m3.value">Shipped · iOS &amp; Android</div></div>
+      <div><div class="mlabel" data-i18n="hero.m4.label">Apps</div><div class="mvalue" data-i18n="hero.m4.value">Payvand Wallet + Payvand Transfers</div></div>
     </div>
   </div>
 
@@ -364,14 +381,14 @@ footer .links a:hover { color: white; }
   <div class="container">
     <div class="section-label" data-i18n="overview.label">Project Overview</div>
     <h2 data-i18n="overview.title">One design system. Two apps built for two completely different people.</h2>
-    <p class="lead" data-i18n="overview.p1">Payvand MDO is a microfinance organization in Tajikistan building toward full digital banking. The brief was to design a mobile app. The research said there were actually two separate problems — and combining them in one app would have solved neither well.</p>
+    <p class="lead" data-i18n="overview.p1">Payvand Group MDO is a micro-deposit organization in Tajikistan — licensed by the National Bank in October 2021, already running more than 3,000 payment terminals and 7,000 collection points, and moving from that cash network toward digital banking. The brief was &laquo;design a mobile app&raquo;. The market said there were two separate problems, and one app would have solved neither.</p>
     <p data-i18n-html="overview.p2">The result: <strong>Payvand Payments</strong> for registered users doing everyday domestic banking, and <strong>Payvand Transfer</strong> for migrant workers in Russia who just need to send money home quickly — no account required. One Payvand UI library ties the visual language together.</p>
 
     <div class="grid-4" style="margin-top: 56px;">
-      <div class="stat-card"><div class="big blue">23%</div><div class="slabel" data-i18n="overview.st1">of Tajikistan's GDP is migrant remittances</div></div>
-      <div class="stat-card"><div class="big dark">$1.79B</div><div class="slabel" data-i18n="overview.st2">transferred from Russia to Tajikistan in 2021</div></div>
-      <div class="stat-card"><div class="big dark">$160</div><div class="slabel" data-i18n="overview.st3">average transfer value at the time</div></div>
-      <div class="stat-card"><div class="big orange">49%</div><div class="slabel" data-i18n="overview.st4">of Russia→Tajikistan transfers via Favri (Kommertsbank)</div></div>
+      <div class="stat-card"><div class="big blue">27,8%</div><div class="slabel" data-i18n="overview.st1">of Tajikistan&rsquo;s GDP came from remittances in 2021 — World Bank</div></div>
+      <div class="stat-card"><div class="big dark">$1,79 млрд</div><div class="slabel" data-i18n="overview.st2">sent from Russia to Tajikistan in 2021 — Central Bank of Russia</div></div>
+      <div class="stat-card"><div class="big dark">$128</div><div class="slabel" data-i18n="overview.st3">average transfer in 2021 — Central Bank of Russia</div></div>
+      <div class="stat-card"><div class="big orange">3 000+</div><div class="slabel" data-i18n="overview.st4">payment terminals Payvand already ran across the country</div></div>
     </div>
   </div>
 </section>
@@ -380,18 +397,18 @@ footer .links a:hover { color: white; }
 <section class="bg-grey">
   <div class="container">
     <div class="section-label" data-i18n="problem.label">The Problem</div>
-    <h2 data-i18n="problem.title">Favri won 49% of the remittance market with one feature: not asking questions.</h2>
+    <h2 data-i18n="problem.title">The competitor had already split its products. We had to answer that, not out-feature it.</h2>
 
     <div class="grid-2" style="margin-top: 48px;">
       <div>
         <h3 data-i18n="problem.remit.title">The remittance gap</h3>
-        <p data-i18n="problem.remit.p">Labour migrants from Tajikistan working in Russia needed to send money home regularly. Most were not tech-savvy. The app they chose, Favri by Kommertsbank, dominated not because it was feature-rich — but because it demanded almost nothing from them.</p>
-        <p data-i18n="problem.remit.p2">Our data showed 49% of all Russia→Tajikistan transfers went through Favri, with over 40% of those through Komdmertsbank Tajikistan's system. Meanwhile the competition — apps that required account creation, ID verification, and multi-step onboarding — watched those transfers go elsewhere.</p>
-        <div class="quote" style="font-size:18px;" data-i18n="problem.quote">"Non-tech-savvy users chose Favri for one reason: simplicity. Simplicity was the product."<cite data-i18n="problem.quote.cite">— Research finding, competitive analysis 2022</cite></div>
+        <p data-i18n="problem.remit.p">Labour migrants from Tajikistan working in Russia needed to send money home regularly. Most were not tech-savvy. The app they chose — Favri Intiqol, Kommertsbank Tajikistan&rsquo;s remittance-only app, separate from its Favri mobile bank — won not by being feature-rich, but by asking almost nothing of them.</p>
+        <p data-i18n="problem.remit.p2">Kommertsbank Tajikistan did not try to serve them from its main banking app. It shipped <strong>Favri Intiqol</strong> as a separate product doing one job: money from a Russian card to a phone number or a Korti Milli card, zero commission, nothing else on screen. Everyone else — apps asking for an account, an ID check, a multi-step onboarding — watched those transfers go elsewhere.</p>
+        <div class="quote" style="font-size:18px;" data-i18n="problem.quote">&laquo;A competitor who ships a second, emptier app is telling you what the job actually is.&raquo;<cite data-i18n="problem.quote.cite">— My read of the competitive teardown, 2022</cite></div>
       </div>
       <div>
         <h3 data-i18n="problem.pay.title">The domestic payments problem</h3>
-        <p data-i18n="problem.pay.p">Inside Tajikistan, NFC payment infrastructure was essentially nonexistent. A survey of banking apps found the same complexity users already struggled with. Alif Bank had established the standard with Alif mobi — so strong that "Алифнуть" (to Alif) became a verb meaning "to transfer money."</p>
+        <p data-i18n="problem.pay.p">Inside Tajikistan, NFC acceptance was barely deployed. Going through the local banking apps turned up the same complexity people already struggled with, and Alif mobi had set the habit everyone else was measured against.</p>
         <p data-i18n="problem.pay.p2">Payvand needed to compete with that habit without just copying it. The insight: go where Alif hasn't — introduce QR payment as the country's primary cashless alternative to NFC, and build favorites/templates for the recurring bills people pay every month.</p>
         <div class="card" style="margin-top: 20px; background: white;">
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -419,18 +436,28 @@ footer .links a:hover { color: white; }
       <div class="card">
         <div class="badge pay" style="margin-bottom:16px;" data-i18n="research.m1.tag">Method 01</div>
         <h4 data-i18n="research.m1.title">Competitive teardown</h4>
-        <p style="margin:0;" data-i18n="research.m1.body">Mapped Alif mobi feature-by-feature — what worked, what had friction, what "Алифнуть" actually meant in practice. Layered Favri on top to understand why it was winning the remittance market: fewer screens, no required account, card-in card-out.</p>
+        <p style="margin:0;" data-i18n="research.m1.body">Mapped Alif mobi feature by feature — what worked, where the friction sat, which habits users had already formed. Then laid Favri Intiqol over it to see why it was winning remittances: fewer screens, no account required, card in, card out.</p>
       </div>
       <div class="card">
         <div class="badge pay" style="margin-bottom:16px;" data-i18n="research.m2.tag">Method 02</div>
         <h4 data-i18n="research.m2.title">Market data analysis</h4>
-        <p style="margin:0;" data-i18n="research.m2.body">Central Bank of Russia and TKB/PSB (TransCapitalBank, Promsvyazbank) transfer data confirmed the scale: $1.794B sent, $160 average, and Favri's 49% share. That share was only possible because migrant workers, not tech enthusiasts, were Favri's core users.</p>
+        <p style="margin:0;" data-i18n="research.m2.body">Central Bank of Russia figures set the scale: <strong>$1.79B</strong> sent from Russia to Tajikistan in 2021, at an average of <strong>$128</strong> per transfer. The World Bank put remittances at <strong>27.8% of Tajikistan&rsquo;s GDP</strong> that year. Numbers this size make the case on their own — a market this large, served by apps this hard to use.</p>
       </div>
       <div class="card">
         <div class="badge pay" style="margin-bottom:16px;" data-i18n="research.m3.tag">Method 03</div>
-        <h4 data-i18n="research.m3.title">User interviews</h4>
-        <p style="margin:0;" data-i18n="research.m3.body">Interviews and surveys with users of both Alif mobi and competitor apps. Key finding: domestic users wanted familiarity and breadth; migrant senders wanted speed and as few barriers as possible. These were genuinely incompatible needs in one app.</p>
+        <h4 data-i18n="research.m3.title">A Telegram room that grew by one owner at a time</h4>
+        <p style="margin:0;" data-i18n="research.m3.body">Not user research — I want to be precise about that. When the project started we opened a Telegram group and added people to it only as questions came up: whoever owned the answer got pulled in. Over time the room became the project&rsquo;s institutional memory, and polls inside it settled the questions no single person could. It is the closest thing to a spec this project ever had.</p>
       </div>
+    </div>
+
+
+    <div class="card" style="margin-top:56px; border-left:3px solid var(--brand);">
+      <div class="ch-chip" style="display:inline-flex; background: var(--brand-soft); color: var(--brand); padding:4px 12px; border-radius:999px; font-size:12px; font-weight:600; margin-bottom:16px;" data-i18n="data.tag">A note on data</div>
+      <h4 style="margin-top:0;" data-i18n="data.title">The number that wanted to be the headline — and why it isn&rsquo;t</h4>
+      <p style="font-size:15px;" data-i18n-html="data.p1">Payvand&rsquo;s team ran their own research and shared it with everyone working on the app. A market share for Favri Intiqol appeared in it: roughly <strong>49% of Russia→Tajikistan transfers</strong>. It is not in this case study, and the reason matters more than the number.</p>
+      <p style="font-size:15px;" data-i18n="data.p2">Tajikistan publishes almost nothing. Companies do not disclose turnover — partly so the tax authority has less to ask about — and per-app industry statistics do not exist in any open form. So an internal figure here is unverifiable by construction: not because anyone lied, but because there is nothing to check it against.</p>
+      <p style="font-size:15px;" data-i18n-html="data.p3">Hence the rule this case is built on. <strong>Only numbers you can open in a link sit in the headlines</strong> — Central Bank of Russia, World Bank, the app stores. Internal estimates informed the work; they are not presented as fact.</p>
+      <p style="font-size:15px; margin-bottom:0;" data-i18n-html="data.p4">And the two-app decision never rested on that 49% anyway. It rested on something anyone can still see: <strong>Kommertsbank had already moved remittances into an app of their own.</strong> An argument that needs a number you cannot show is a weak argument.</p>
     </div>
 
     <h3 style="margin-top:80px;" data-i18n="research.insights.title">Key insights</h3>
@@ -438,12 +465,12 @@ footer .links a:hover { color: white; }
       <div class="pillar">
         <div class="num" data-i18n="research.i1.tag">Insight 01</div>
         <h4 data-i18n="research.i1.title">Simplicity is a feature, not an absence of features</h4>
-        <p data-i18n="research.i1.body">Favri's users weren't choosing it over richer apps. They were choosing it over apps they couldn't navigate. Simplicity was the entire product.</p>
+        <p data-i18n="research.i1.body">Favri Intiqol was not being chosen over richer apps. It was being chosen over apps people could not get through. Simplicity was the entire product.</p>
       </div>
       <div class="pillar">
         <div class="num" data-i18n="research.i2.tag">Insight 02</div>
         <h4 data-i18n="research.i2.title">Registration is a conversion killer for remittances</h4>
-        <p data-i18n="research.i2.body">A migrant worker sending $160 home doesn't want to create an account. They want to type a card number, verify the amount, and be done. Every extra step loses them.</p>
+        <p data-i18n="research.i2.body">A migrant worker sending $128 home doesn&rsquo;t want to create an account. They want to type a card number, verify the amount, and be done. Every extra step loses them.</p>
       </div>
       <div class="pillar">
         <div class="num" data-i18n="research.i3.tag">Insight 03</div>
@@ -473,7 +500,7 @@ footer .links a:hover { color: white; }
             <div class="clabel" data-i18n="define.c1.label">Payvand Transfer</div>
             <ul class="bullets" style="margin:0;">
               <li data-i18n="define.c1.li1">Zero-registration path</li>
-              <li data-i18n="define.c1.li2">Card-in, card-out (6 steps max)</li>
+              <li data-i18n="define.c1.li2">Card in, card out — 6 steps, no account</li>
               <li data-i18n="define.c1.li3">Russia → Tajikistan, Uzbekistan</li>
               <li data-i18n="define.c1.li4">No feature noise</li>
             </ul>
@@ -484,7 +511,7 @@ footer .links a:hover { color: white; }
               <li data-i18n="define.c2.li1">Full account features</li>
               <li data-i18n="define.c2.li2">QR, utilities, transfers, cards</li>
               <li data-i18n="define.c2.li3">Favorites & templates</li>
-              <li data-i18n="define.c2.li4">Friends & family mode</li>
+              <li data-i18n="define.c2.li4">Favorites and saved recipients</li>
             </ul>
           </div>
         </div>
@@ -493,7 +520,7 @@ footer .links a:hover { color: white; }
 
     <h3 style="color:white; margin-top:80px;" data-i18n="define.goals.title">Design goals</h3>
     <div class="grid-3" style="margin-top:24px;">
-      <div class="card dark"><h4 data-i18n="define.g1.title">6 steps, no account</h4><p data-i18n-html="define.g1.body">Payvand Transfer: recipient card → sender card → amount → CVV → confirm → SMS. <strong>Never ask for registration</strong> on the critical path.</p></div>
+      <div class="card dark"><h4 data-i18n="define.g1.title">6 steps, no account</h4><p data-i18n-html="define.g1.body">Payvand Transfer: direction → recipient and amount → confirm → card → SMS → done. <strong>Never ask for registration</strong> on the critical path.</p></div>
       <div class="card dark"><h4 data-i18n="define.g2.title">QR as the cashless habit</h4><p data-i18n-html="define.g2.body">Establish QR payment as Tajikistan's primary cashless method — <strong>build the habit</strong> before the infrastructure catches up.</p></div>
       <div class="card dark"><h4 data-i18n="define.g3.title">One UI library, two apps</h4><p data-i18n-html="define.g3.body">Payvand UI — cards, buttons, icons, type — applied consistently so both apps <strong>feel like Payvand</strong>, even though they serve different users.</p></div>
     </div>
@@ -513,7 +540,7 @@ footer .links a:hover { color: white; }
         <div class="step-circle">1</div>
         <div>
           <h4 data-i18n="process.s1.title">Six steps, no account — and registration as a feature, not a gate</h4>
-          <p data-i18n-html="process.s1.body">Payvand Transfer's transfer flow was designed to be completable without ever creating an account. Recipient card number → sender card → amount → CVV/CVV → confirm → SMS verification. Six steps, then done. <strong>Registration unlocks history and repeat-transfer features</strong> — a positive pull, not a mandatory barrier. This was the direct design response to why Favri was winning.</p>
+          <p data-i18n-html="process.s1.body">Payvand Transfer&rsquo;s flow was designed to be completable without ever creating an account. Direction → recipient and amount → confirm → the card being charged → SMS code → delivered. Six steps, then done. <strong>Registration unlocks history and repeat-transfer features</strong> — a positive pull, not a mandatory barrier. This was the direct design response to why Favri was winning.</p>
         </div>
       </div>
 
@@ -528,15 +555,7 @@ footer .links a:hover { color: white; }
       <div class="process-step done">
         <div class="step-circle">3</div>
         <div>
-          <h4 data-i18n="process.s3.title">"Friends & Family" mode — solving social finance, not just utility finance</h4>
-          <p data-i18n-html="process.s3.body">Payvand Payments included a social finance layer that competitive apps didn't have: debt tracking between contacts, group shared accounts, split-bill requests, and savings goals with automatic transfers. <strong>This was the long-term retention layer</strong> — features that make switching costly because your financial social graph lives in the app.</p>
-        </div>
-      </div>
-
-      <div class="process-step done">
-        <div class="step-circle">4</div>
-        <div>
-          <h4 data-i18n="process.s4.title">Payvand UI — a shared design system that made two products feel like one brand</h4>
+          <h4 data-i18n="process.s4.title">A shared component library, because there was nothing to inherit</h4>
           <p data-i18n-html="process.s4.body">Cards, typography, icon set, color tokens, button hierarchy — all built once and applied to both apps. A user who installs both apps recognizes the family instantly. <strong>The design system also solved the handoff problem</strong>: developers got one source of truth for both products, reducing inconsistency in implementation.</p>
         </div>
       </div>
@@ -546,102 +565,108 @@ footer .links a:hover { color: white; }
 </section>
 
 <!-- DESIGN SCREENS -->
-<section class="bg-grey">
-  <div class="container-wide">
+<section>
+  <div class="container">
     <div class="section-label" data-i18n="design.label">Design</div>
     <h2 data-i18n="design.title">Key screens and the reasoning behind each.</h2>
 
-    <!-- 01 TRANSFER FLOW -->
-    <div style="margin-top: 80px;">
+    <!-- 01 -->
+    <div style="margin-top: 56px;">
       <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
-        <h3 style="margin:0;" data-i18n="design.s1.title">01 · The 6-step transfer flow — designed to beat Favri</h3>
+        <h3 style="margin:0;" data-i18n="design.s1.title">01 · Six steps — parity, not victory</h3>
         <span class="badge transfer" data-i18n="design.s1.tag">Payvand Transfer</span>
       </div>
-      <p style="max-width:820px;" data-i18n="design.s1.body">The entire transfer completes in six steps. Registration is never asked for on the critical path. Every step is a single, clear action — no optional fields, no information banners, no cross-sell moments until after the money has moved.</p>
-      <div class="step-flow">
-        <div class="step-item"><div class="step-num">1</div><div class="step-text" data-i18n="design.s1.st1">Recipient card number</div></div>
-        <div class="step-item"><div class="step-num">2</div><div class="step-text" data-i18n="design.s1.st2">Sender card number</div></div>
-        <div class="step-item"><div class="step-num">3</div><div class="step-text" data-i18n="design.s1.st3">Transfer amount</div></div>
-        <div class="step-item"><div class="step-num">4</div><div class="step-text" data-i18n="design.s1.st4">CVC/CVV</div></div>
-        <div class="step-item"><div class="step-num">5</div><div class="step-text" data-i18n="design.s1.st5">Confirm details</div></div>
-        <div class="step-item"><div class="step-num">6</div><div class="step-text" data-i18n="design.s1.st6">SMS verification</div></div>
+      <p style="max-width:820px;" data-i18n-html="design.s1.body">Corridor, recipient and amount, confirmation, the card being charged, the SMS code, done. <strong>Six steps, and registration is never asked for on the critical path.</strong> To be straight about it: this does not beat Favri Intiqol — it draws level with it. That was the point. On a flow this short there is nothing to win on cleverness; you either clear the same bar or you lose the person at step three. Being worse was the only outcome we could not afford.</p>
+      <div class="steps-flow">
+        <div class="step-item"><div class="step-num">1</div><div class="step-text" data-i18n="design.s1.st1">Direction</div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-text" data-i18n="design.s1.st2">Recipient and amount</div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-text" data-i18n="design.s1.st3">Confirm the details</div></div>
+        <div class="step-item"><div class="step-num">6</div><div class="step-text" data-i18n="design.s1.st4">The card being charged</div></div>
+        <div class="step-item"><div class="step-num">5</div><div class="step-text" data-i18n="design.s1.st5">SMS code</div></div>
+        <div class="step-item"><div class="step-num">6</div><div class="step-text" data-i18n="design.s1.st6">Delivered</div></div>
       </div>
-      <p style="font-size:14px; color:var(--text-muted); margin-top:8px;" data-i18n="design.s1.note">↳ Registered users get one extra step: the app pre-fills their sender card. Steps collapse to 4.</p>
-    </div>
-
-    <!-- 02 QR PAYMENT -->
-    <div style="margin-top: 100px;">
-      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
-        <h3 style="margin:0;" data-i18n="design.s2.title">02 · QR payment — a new habit, not a new technology</h3>
-        <span class="badge pay" data-i18n="design.s2.tag">Payvand Payments</span>
-      </div>
-      <p style="max-width:820px;" data-i18n="design.s2.body">The first icon in the services row. QR sits above mobile top-up and utilities, not buried in a menu — because building the habit requires surfacing it before the habit exists. Each merchant gets a static QR; the customer enters the amount. Favorites remember the merchants you scan every week.</p>
-
-      <div class="card" style="margin-top: 28px; background: white;">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 32px;">
-          <div>
-            <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); margin-bottom:12px;" data-i18n="design.s2.h1">The QR model in Tajikistan</div>
-            <ul class="bullets" style="margin:0;">
-              <li data-i18n="design.s2.l1">Merchant has a static QR code pinned to the counter</li>
-              <li data-i18n="design.s2.l2">Customer opens app → QR tab → scans</li>
-              <li data-i18n="design.s2.l3">Customer enters the amount manually</li>
-              <li data-i18n="design.s2.l4">Confirms, done — no terminal needed</li>
-            </ul>
-          </div>
-          <div>
-            <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); margin-bottom:12px;" data-i18n="design.s2.h2">Favorites & templates</div>
-            <p style="margin:0; font-size:15px;" data-i18n="design.s2.p">Frequently-used payment accounts (mobile operators, internet, utilities) can be pinned as favorites on the home screen with optional auto-payment toggle — so the app learns the user's weekly payments instead of making them re-navigate every time.</p>
-          </div>
-        </div>
+      <p style="font-size:14px; color:var(--text-muted); margin-top:8px;" data-i18n="design.s1.note">↳ The recipient field validates as you type — «Клиент найден!» appears before you commit to anything, so a wrong digit costs a second, not a transfer.</p>
+      <div class="shots">
+        <figure class="shot missing" data-label="TRANSFER · Выбор направления · node 26:8729"><img src="../img/tr-directions.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot1">Choosing a corridor: Russia → Tajikistan by phone number or to a Korti Milli card, Russia → Uzbekistan, and back into Russia.</figcaption></figure>
+        <figure class="shot missing" data-label="TRANSFER · Получатель и сумма · node 26:13643"><img src="../img/tr-recipient.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot2">Recipient and amount on one screen, with the fee and the live rate printed underneath.</figcaption></figure>
+        <figure class="shot missing" data-label="TRANSFER · Подтвердите платёж · node 26:13732"><img src="../img/tr-confirm.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot3">Confirmation is a sheet over the form, not a new page — recipient, amount, fee, date, time.</figcaption></figure>
+        <figure class="shot missing" data-label="TRANSFER · Данные карты списания · node 26:18406"><img src="../img/tr-card.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot4">The card being charged: number, cardholder, CVC and expiry on one screen rather than four.</figcaption></figure>
       </div>
     </div>
 
-    <!-- 03 FRIENDS & FAMILY -->
+    <!-- 02 -->
     <div style="margin-top: 100px;">
       <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
-        <h3 style="margin:0;" data-i18n="design.s3.title">03 · Friends & Family mode — the retention layer</h3>
-        <span class="badge pay" data-i18n="design.s3.tag">Payvand Payments</span>
+        <h3 style="margin:0;" data-i18n="design.s2.title">02 · The rate is on the screen before you type the amount</h3>
+        <span class="badge transfer" data-i18n="design.s2.tag">Payvand Transfer</span>
       </div>
-      <p style="max-width:820px;" data-i18n="design.s3.body">These features make switching away from Payvand expensive — not by locking data, but by building a financial social graph inside the app. The more people you split bills with here, the more reason you have to stay.</p>
-
-      <div class="features-grid">
-        <div class="feature-chip"><div class="fc-icon">📊</div><h4 data-i18n="design.s3.f1.title">Debt tracking</h4><p data-i18n="design.s3.f1.body">Automatic tracking of debts between contacts for transparent balance management.</p></div>
-        <div class="feature-chip"><div class="fc-icon">👥</div><h4 data-i18n="design.s3.f2.title">Group accounts</h4><p data-i18n="design.s3.f2.body">Shared accounts for groups — solves the problem of managing money collectively.</p></div>
-        <div class="feature-chip"><div class="fc-icon">➗</div><h4 data-i18n="design.s3.f3.title">Bill splitting</h4><p data-i18n="design.s3.f3.body">Divide a total among any number of people. Requests go out; money comes back.</p></div>
-        <div class="feature-chip"><div class="fc-icon">📤</div><h4 data-i18n="design.s3.f4.title">Payment requests</h4><p data-i18n="design.s3.f4.body">Send a request for your share of a shared expense. No more awkward reminders.</p></div>
-        <div class="feature-chip"><div class="fc-icon">🎯</div><h4 data-i18n="design.s3.f5.title">Savings goals</h4><p data-i18n="design.s3.f5.body">Create a goal; the app auto-transfers a set amount each month until it's met.</p></div>
-        <div class="feature-chip"><div class="fc-icon">💡</div><h4 data-i18n="design.s3.f6.title">Smart tips</h4><p data-i18n="design.s3.f6.body">Spending pattern analysis with personalized recommendations to improve financial health.</p></div>
+      <p style="max-width:820px;" data-i18n-html="design.s2.body">Under the amount field sits one line: <strong>«Комиссия до 99999 — 1,5%. Текущий курс 1 000 руб = 167,00 сомони»</strong>. It is there before the first keystroke. A person sending money home is doing arithmetic — how much leaves, how much lands — and every app that hides the rate until the last screen makes them do that arithmetic twice. The catalogue of corridors does the same thing one level up: «Без комиссии» next to Payvand-to-Payvand, «Комиссия 1%» next to the paid ones. Price is a navigation label here, not fine print.</p>
+      <div class="shots">
+        <figure class="shot missing" data-label="TRANSFER · Каталог переводов с ценами · node 26:15558"><img src="../img/tr-catalogue.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot1">The transfer catalogue: each corridor carries its price in the list, before you open it.</figcaption></figure>
+        <figure class="shot missing" data-label="TRANSFER · Чек: списание и зачисление · node 26:18501"><img src="../img/tr-receipt.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot2">The receipt splits «сумма списания» from «сумма зачисления» — the two numbers a sender actually cares about.</figcaption></figure>
       </div>
     </div>
 
-    <!-- 04 PAYVAND UI -->
+    <!-- 03 -->
     <div style="margin-top: 100px;">
       <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
-        <h3 style="margin:0;" data-i18n="design.s4.title">04 · Payvand UI — the design system that made two apps feel like one</h3>
-        <span class="badge pay" data-i18n="design.s4.tag">Design system</span>
+        <h3 style="margin:0;" data-i18n="design.s3.title">03 · Registration is a door further in, not a gate at the entrance</h3>
+        <span class="badge transfer" data-i18n="design.s3.tag">Payvand Transfer</span>
       </div>
-      <p style="max-width:820px;" data-i18n="design.s4.body">Rather than designing each app from scratch, I built a shared component library first: card variants (active, secret, add-new), button hierarchy, a custom icon set for each payment category, color tokens, and the distinctive blue gradient card design visible across both apps.</p>
+      <p style="max-width:820px;" data-i18n-html="design.s3.body">The app opens on a guest home screen: four corridors, ready to use. The invitation to register sits <strong>underneath</strong> them — «Зарегистрируйтесь для полного доступа ко всем функциям» — where it reads as an offer rather than a toll. Someone who signs up gets a saved profile, history and a 4-digit access code; someone who does not still gets their money home tonight. This is the one place where we could have copied the competitor and instead went one step further: Favri Intiqol removed the account from the flow, and we made removing it visible on the first screen.</p>
+      <div class="shots">
+        <figure class="shot missing" data-label="TRANSFER · Гостевая главная · node 26:13852"><img src="../img/tr-guest.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot1">The guest home: corridors first, the registration offer after them.</figcaption></figure>
+        <figure class="shot missing" data-label="TRANSFER · Регистрация и код доступа · node 26:8351 / 26:8595"><img src="../img/tr-signup.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot2">Sign-up, then a 4-digit access code you choose yourself and repeat once.</figcaption></figure>
+      </div>
+    </div>
 
-      <div class="grid-2" style="margin-top: 28px;">
-        <div class="card" style="background: linear-gradient(135deg, var(--pay), #7c3aed); padding: 36px; color:white;">
-          <div style="font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px; opacity:0.7;" data-i18n="design.s4.card.label">Payvand UI Library · Card design</div>
-          <div style="font-size:28px; font-weight:900; letter-spacing:-0.03em; margin-bottom:4px;">3 753<sup style="font-size:16px; font-weight:600;">.35</sup></div>
-          <div style="font-size:11px; opacity:0.6; margin-bottom:24px;">* 5623</div>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div style="font-size:12px; opacity:0.6;" data-i18n="design.s4.card.cvv">CVV ●●●</div>
-            <div style="font-size:14px; font-weight:700; opacity:0.8;">Payvand</div>
-          </div>
-        </div>
-        <div>
-          <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); margin-bottom:16px;" data-i18n="design.s4.sys.title">System components</div>
-          <ul class="bullets" style="margin:0;">
-            <li data-i18n-html="design.s4.sys.l1"><strong>Card variants</strong>: active (gradient), secret (masked), grey (add-new placeholder)</li>
-            <li data-i18n-html="design.s4.sys.l2"><strong>Button hierarchy</strong>: primary (solid), secondary (soft), link — consistent across both apps</li>
-            <li data-i18n-html="design.s4.sys.l3"><strong>Custom icon set</strong>: per payment category, service type, and navigation element</li>
-            <li data-i18n-html="design.s4.sys.l4"><strong>3 languages</strong>: RU, EN, TJ — components built for flexible text-length from day one</li>
-          </ul>
-        </div>
+    <!-- 04 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s4.title">04 · QR is the first icon, not a menu item</h3>
+        <span class="badge pay" data-i18n="design.s4.tag">Payvand Wallet</span>
       </div>
+      <p style="max-width:820px;" data-i18n="design.s4.body">NFC acceptance in Tajikistan was barely deployed, but merchants already had static QR codes taped to the counter. So QR went first in the services row on the home screen — ahead of mobile top-up, utilities and everything else — because a habit that does not exist yet has to be visible before it can form. The model works with what was already there: the merchant has a fixed code, the customer enters the amount themselves, confirms, done. No terminal required on either side.</p>
+      <div class="shots">
+        <figure class="shot missing" data-label="WALLET · Главная, QR первой иконкой · node 24:7721"><img src="../img/pw-home.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s4.shot1">The home screen: QR leads the services row, with promotions above and favourites below.</figcaption></figure>
+        <figure class="shot missing" data-label="WALLET · Оплата услуг, три уровня · node 24:6785 / 24:7240 / 24:7317"><img src="../img/pw-services.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s4.shot2">Services, three levels deep: category → provider → payment.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s5.title">05 · A refusal is a screen too</h3>
+        <span class="badge pay" data-i18n="design.s5.tag">Payvand Wallet</span>
+      </div>
+      <p style="max-width:820px;" data-i18n-html="design.s5.body">Two of the transfer outcomes are failures, and both were drawn rather than left to a toast message. <strong>«Недостаточно средств на счету»</strong> and <strong>«У этого контакта нет кошелька Payvand»</strong> get the same sheet, the same weight and the same single way out as the success state. The second one matters more than it looks: it is not an error the sender made, it is a fact about someone else, and saying so plainly is the difference between «the app is broken» and «try the card instead».</p>
+      <div class="shots">
+        <figure class="shot missing" data-label="WALLET · Перевод доставлен · node 24:7565"><img src="../img/pw-delivered.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s5.shot1">Delivered: receipt, save it, or turn it into a template for next month.</figcaption></figure>
+        <figure class="shot missing" data-label="WALLET · Операция отклонена · node 24:7629 / 24:7652"><img src="../img/pw-declined.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s5.shot2">Declined, with the reason named — not a generic failure.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s6.title">06 · Four runs at the same sign-in</h3>
+        <span class="badge pay" data-i18n="design.s6.tag">Payvand Wallet</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s6.body">The file keeps four complete versions of the entry flow — start, sign-up, sign-in, verification — side by side. That is not indecision; a wallet lives or dies on the screen before anyone has seen anything of value, and it was worth redrawing four times. What survived: a phone number and nothing else on the first screen, the code auto-advancing across four cells, «Неверный номер?» as an escape hatch instead of a back button, and a 4-digit code you set yourself so the second session is one gesture.</p>
+      <div class="shots">
+        <figure class="shot missing" data-label="WALLET · Четыре версии входа · node 24:2871 / 24:2905 / 24:3488 / 24:4240"><img src="../img/pw-onboarding.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s6.shot1">Four passes at the entry flow, kept side by side in the file.</figcaption></figure>
+        <figure class="shot missing" data-label="WALLET · История с фильтрами · node 24:6985"><img src="../img/pw-history.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s6.shot2">History with real filters: period, operation type, card or account, amount, reset.</figcaption></figure>
+        <figure class="shot missing" data-label="WALLET · Чат поддержки · node 24:7146"><img src="../img/pw-chat.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s6.shot3">Support is a chat inside the app, with a named operator and a typing state.</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div style="margin-top: 100px;">
+      <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px; flex-wrap:wrap;">
+        <h3 style="margin:0;" data-i18n="design.s7.title">07 · The components, briefly</h3>
+        <span class="badge" data-i18n="design.s7.tag">Both apps</span>
+      </div>
+      <p style="max-width:820px;" data-i18n="design.s7.body">Both apps run on one shared library — card variants, button hierarchy, an icon set per payment category, colour tokens, and type sized for three languages of very different lengths. It lives in a separate file from the screens shown here, so I will not pretend to walk you through it. The point it earned: Transfer was drawn out of components that already existed, so the second app cost a fraction of the first and there was nothing to reconcile afterwards.</p>
     </div>
 
   </div>
@@ -650,20 +675,20 @@ footer .links a:hover { color: white; }
 <!-- OUTCOMES -->
 <section class="bg-dark">
   <div class="container">
-    <div class="section-label" data-i18n="outcomes.label">What was delivered</div>
-    <h2 data-i18n="outcomes.title">A complete UX/UI concept for both apps, ready for development handoff.</h2>
-    <p style="max-width:720px; font-size:18px; color:var(--text-on-dark-secondary);" data-i18n="outcomes.lead">The concept defined the full UX — both home screens, core user flows, the Friends & Family feature set, and the Payvand UI component library — ready to hand off to engineering.</p>
+    <div class="section-label" data-i18n="outcomes.label">What shipped</div>
+    <h2 data-i18n="outcomes.title">Both apps are in the stores today.</h2>
+    <p style="max-width:720px; font-size:18px; color:var(--text-on-dark-secondary);" data-i18n="outcomes.lead">The design covered both home screens, the core flows and the shared component library. Payvand Wallet now carries 250+ services, QR payment with cashback and three languages; Payvand Transfers handles Russia→Tajikistan and the rest of the CIS.</p>
 
     <div class="grid-3" style="margin-top: 56px;">
       <div class="card dark">
         <div style="font-size:13px; color:var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o1.tag">COMPETITIVE POSITION</div>
         <div style="font-size:54px; font-weight:900; letter-spacing:-0.04em; line-height:1; color:white; margin-bottom:12px;">6</div>
-        <p style="margin:0; color:var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o1.body">steps to complete a transfer, with no account required — matching or beating Favri's flow that controlled 49% of the remittance market.</p>
+        <p style="margin:0; color:var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o1.body">steps to complete a transfer, no account required — level with the standard Favri Intiqol had already set, which is what the job required.</p>
       </div>
       <div class="card dark">
         <div style="font-size:13px; color:var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o2.tag">COVERAGE</div>
         <div style="font-size:54px; font-weight:900; letter-spacing:-0.04em; line-height:1; color:white; margin-bottom:12px;">2+1</div>
-        <p style="margin:0; color:var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o2.body">complete apps designed — Payvand Transfer and Payvand Payments — plus the Payvand UI system that ties them together visually.</p>
+        <p style="margin:0; color:var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o2.body">apps designed and shipped — Payvand Wallet on iOS and Android, Payvand Transfers alongside it — plus the Payvand UI system that ties them together.</p>
       </div>
       <div class="card dark">
         <div style="font-size:13px; color:var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o3.tag">INFRASTRUCTURE</div>
@@ -674,7 +699,7 @@ footer .links a:hover { color: white; }
 
     <div style="margin-top:80px;">
       <h3 style="color:white;" data-i18n="outcomes.strat.title">Strategic framing</h3>
-      <p style="color:var(--text-on-dark-secondary); max-width:820px; font-size:18px;" data-i18n-html="outcomes.strat.body">The two-app decision was the design's central argument. Tajikistan's remittance economy was enormous and underserved by apps that prioritized features over simplicity. <strong>Splitting the product gave Payvand a credible path into both markets</strong> — domestic banking via familiarity with Alif mobi, and remittances via a transfer experience that matched the friction-free standard Favri had set.</p>
+      <p style="color:var(--text-on-dark-secondary); max-width:820px; font-size:18px;" data-i18n-html="outcomes.strat.body">The two-app decision was the design's central argument. Tajikistan's remittance economy was enormous and underserved by apps that prioritized features over simplicity. <strong>Both apps shipped</strong> — domestic banking via familiarity with Alif mobi, and remittances via a transfer experience built to the friction-free standard Favri Intiqol had set.</p>
     </div>
   </div>
 </section>
@@ -689,9 +714,9 @@ footer .links a:hover { color: white; }
       <div>
         <h3 data-i18n="lessons.worked.title">What worked</h3>
         <ul class="bullets">
-          <li data-i18n-html="lessons.w1"><strong>Letting market data lead the product strategy.</strong> The case for two separate apps came entirely from transfer data — without the remittance numbers, the argument for a separate simplified app would have felt arbitrary.</li>
+          <li data-i18n-html="lessons.w1"><strong>Separating what I could prove from what I was told.</strong> The strongest version of the two-app argument turned out to be the one that needed no private numbers at all: the competitor had already shipped a second, emptier app. When a market publishes nothing, look for decisions competitors made in public — those are evidence you can still show a year later.</li>
           <li data-i18n-html="lessons.w2"><strong>Designing the UI system before the second app.</strong> Building Payvand UI after Payments and before Transfer meant the second app was faster to design, with zero visual inconsistency between them.</li>
-          <li data-i18n-html="lessons.w3"><strong>Treating the competitor's strength as a design requirement, not a threat.</strong> Favri won because of simplicity. The response wasn't to compete on features — it was to match that simplicity in the one context where it mattered most.</li>
+          <li data-i18n-html="lessons.w3"><strong>Treating the competitor's strength as a design requirement, not a threat.</strong> Favri Intiqol won because of simplicity. The response wasn't to compete on features — it was to match that simplicity in the one context where it mattered most.</li>
         </ul>
       </div>
       <div>
@@ -699,7 +724,6 @@ footer .links a:hover { color: white; }
         <ul class="bullets">
           <li data-i18n-html="lessons.d1"><strong>Test the 6-step flow earlier with actual migrant workers.</strong> The flow was designed from competitive analysis and interviews, but testing it with the specific audience — non-tech-savvy workers, not design-adjacent participants — would have caught usability gaps specific to that user group.</li>
           <li data-i18n-html="lessons.d2"><strong>Define the QR merchant enrollment UX earlier.</strong> The consumer side of QR payment is clean. The merchant onboarding — how a small vendor in Dushanbe gets their static QR code — was left for later and would have shaped the consumer flow if designed in parallel.</li>
-          <li data-i18n-html="lessons.d3"><strong>Design the empty state for Friends & Family from day one.</strong> The social finance features look compelling on a populated screen. An empty Payvand app has no friends, no groups, no debts — that's the most common first-session state, and it deserved as much design attention as the full state.</li>
         </ul>
       </div>
     </div>
@@ -709,10 +733,12 @@ footer .links a:hover { color: white; }
 <!-- CTA -->
 <section class="cta">
   <div class="container">
-    <h2 data-i18n="cta.title">Want to explore the full design?</h2>
-    <p data-i18n="cta.body">The Figma file includes both app flows, the Payvand UI component library, card design system, and the full screen set for both Payments and Transfer.</p>
+    <h2 data-i18n="cta.title">Rather try it than read about it?</h2>
+    <p data-i18n="cta.body">Both apps are in the stores. Install one, send something, and judge the flow with your own thumbs — that is a fairer test than any screenshot in a case study.</p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
-      <a href="https://www.figma.com/design/FmppOU9E8dfXFaHSwefja8/Payvand?node-id=3004-23384" class="btn"><span data-i18n="cta.figma">→ Browse in Figma</span></a>
+      <a href="https://apps.apple.com/ru/app/id1564555761" class="btn" target="_blank" rel="noopener"><span data-i18n="cta.ios">→ Payvand Wallet · App Store</span></a>
+      <a href="https://play.google.com/store/apps/details?id=tj.payvand.app" class="btn btn-secondary" target="_blank" rel="noopener"><span data-i18n="cta.android">→ Payvand Wallet · Google Play</span></a>
+      <a href="https://play.google.com/store/apps/details?id=tj.payvand.transfer" class="btn btn-secondary" target="_blank" rel="noopener"><span data-i18n="cta.transfer">→ Payvand Transfers · Google Play</span></a>
     </div>
   </div>
 </section>
@@ -728,11 +754,12 @@ footer .links a:hover { color: white; }
         </div>
       </div>
       <div class="links">
-        <a href="https://www.figma.com/design/FmppOU9E8dfXFaHSwefja8/Payvand?node-id=3004-23384">Figma</a>
+        <a href="https://apps.apple.com/ru/app/id1564555761" target="_blank" rel="noopener">App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=tj.payvand.app" target="_blank" rel="noopener">Google Play</a>
       </div>
     </div>
     <div style="margin-top:40px; padding-top:24px; border-top:1px solid var(--border-dark); font-size:13px; color:var(--text-on-dark-secondary);" data-i18n="footer.disclaimer">
-      Case study · Payvand App · 2022. UX/UI concept for two mobile applications — Payvand Payments (domestic) and Payvand Transfer (remittances) — built on a shared Payvand UI design system.
+      Case study · Payvand App · 2022. UX/UI for two mobile applications — Payvand Wallet (domestic payments) and Payvand Transfers (remittances) — built on a shared component library. Both apps shipped.
     </div>
   </div>
 </footer>
@@ -741,13 +768,13 @@ footer .links a:hover { color: white; }
 const I18N = {
   en: {
     'nav.back': `All work`,
-    'hero.eyebrow': `UX/UI Design Concept · 2022 · Orion Muhamadiev`,
+    'hero.eyebrow': `UX/UI · 2022 → live on Google Play · Orion Muhamadiev`,
     'hero.title': `<span class="pay-word">Pay</span><span class="or-word">vand</span><br>App`,
     'hero.lede': `Two products that solved two different problems in Tajikistan's money transfer economy — one for domestic payments, one for frictionless remittances from Russia — tied together by a single design system.`,
     'hero.m1.label': `Role`, 'hero.m1.value': `UX/UI Designer`,
     'hero.m2.label': `Year`,
-    'hero.m3.label': `Type`, 'hero.m3.value': `Concept · iOS & Android`,
-    'hero.m4.label': `Apps`, 'hero.m4.value': `Payvand Payments + Transfer`,
+    'hero.m3.label': `Type`, 'hero.m3.value': `Shipped · iOS &amp; Android`,
+    'hero.m4.label': `Apps`, 'hero.m4.value': `Payvand Wallet + Payvand Transfers`,
 
     'phones.pay.label': `PAYVAND PAYMENTS · Full-featured`,
     'phones.pay.bonus': `1 963 BONUSES`,
@@ -771,22 +798,22 @@ const I18N = {
 
     'overview.label': `Project Overview`,
     'overview.title': `One design system. Two apps built for two completely different people.`,
-    'overview.p1': `Payvand MDO is a microfinance organization in Tajikistan building toward full digital banking. The brief was to design a mobile app. The research said there were actually two separate problems — and combining them in one app would have solved neither well.`,
+    'overview.p1': `Payvand Group MDO is a micro-deposit organization in Tajikistan — licensed by the National Bank in October 2021, already running more than 3,000 payment terminals and 7,000 collection points, and moving from that cash network toward digital banking. The brief was &laquo;design a mobile app&raquo;. The market said there were two separate problems, and one app would have solved neither.`,
     'overview.p2': `The result: <strong>Payvand Payments</strong> for registered users doing everyday domestic banking, and <strong>Payvand Transfer</strong> for migrant workers in Russia who just need to send money home quickly — no account required. One Payvand UI library ties the visual language together.`,
-    'overview.st1': `of Tajikistan's GDP is migrant remittances`,
-    'overview.st2': `transferred from Russia to Tajikistan in 2021`,
-    'overview.st3': `average transfer value at the time`,
-    'overview.st4': `of Russia→Tajikistan transfers via Favri (Kommertsbank)`,
+    'overview.st1': `of Tajikistan&rsquo;s GDP came from remittances in 2021 — World Bank`,
+    'overview.st2': `sent from Russia to Tajikistan in 2021 — Central Bank of Russia`,
+    'overview.st3': `average transfer in 2021 — Central Bank of Russia`,
+    'overview.st4': `payment terminals Payvand already ran across the country`,
 
     'problem.label': `The Problem`,
-    'problem.title': `Favri won 49% of the remittance market with one feature: not asking questions.`,
+    'problem.title': `The competitor had already split its products. We had to answer that, not out-feature it.`,
     'problem.remit.title': `The remittance gap`,
-    'problem.remit.p': `Labour migrants from Tajikistan working in Russia needed to send money home regularly. Most were not tech-savvy. The app they chose, Favri by Kommertsbank, dominated not because it was feature-rich — but because it demanded almost nothing from them.`,
-    'problem.remit.p2': `Our data showed 49% of all Russia→Tajikistan transfers went through Favri, with over 40% through Kommertsbank Tajikistan's system. Meanwhile the competition — apps that required account creation, ID verification, and multi-step onboarding — watched those transfers go elsewhere.`,
-    'problem.quote': `"Non-tech-savvy users chose Favri for one reason: simplicity. Simplicity was the product."`,
-    'problem.quote.cite': `— Research finding, competitive analysis 2022`,
+    'problem.remit.p': `Labour migrants from Tajikistan working in Russia needed to send money home regularly. Most were not tech-savvy. The app they chose — Favri Intiqol, Kommertsbank Tajikistan&rsquo;s remittance-only app, separate from its Favri mobile bank — won not by being feature-rich, but by asking almost nothing of them.`,
+    'problem.remit.p2': `Kommertsbank Tajikistan did not try to serve them from its main banking app. It shipped <strong>Favri Intiqol</strong> as a separate product doing one job: money from a Russian card to a phone number or a Korti Milli card, zero commission, nothing else on screen. Everyone else — apps asking for an account, an ID check, a multi-step onboarding — watched those transfers go elsewhere.`,
+    'problem.quote': `&laquo;A competitor who ships a second, emptier app is telling you what the job actually is.&raquo;`,
+    'problem.quote.cite': `— My read of the competitive teardown, 2022`,
     'problem.pay.title': `The domestic payments problem`,
-    'problem.pay.p': `Inside Tajikistan, NFC payment infrastructure was essentially nonexistent. A survey of banking apps found the same complexity users already struggled with. Alif Bank had established the standard with Alif mobi — so strong that "Алифнуть" (to Alif) became a verb meaning "to transfer money."`,
+    'problem.pay.p': `Inside Tajikistan, NFC acceptance was barely deployed. Going through the local banking apps turned up the same complexity people already struggled with, and Alif mobi had set the habit everyone else was measured against.`,
     'problem.pay.p2': `Payvand needed to compete with that habit without just copying it. The insight: go where Alif hasn't — introduce QR payment as the country's primary cashless alternative to NFC, and build favorites/templates for the recurring bills people pay every month.`,
     'problem.pay.tag1': `QR payment (no NFC)`, 'problem.pay.tag2': `Favorites / templates`, 'problem.pay.tag3': `Zero-registration flow`,
     'problem.pay.tag4': `Russia → Tajikistan`, 'problem.pay.tag5': `6-step transfer`, 'problem.pay.tag6': `Payvand UI library`,
@@ -795,16 +822,22 @@ const I18N = {
     'research.title': `The data said "one app." The users said "two different people."`,
     'research.lead': `I used Alif mobi as the primary design reference — not to copy it, but because users already had muscle memory for it. Understanding exactly what they relied on there, and what they found frustrating, shaped every navigation decision.`,
     'research.m1.tag': `Method 01`, 'research.m1.title': `Competitive teardown`,
-    'research.m1.body': `Mapped Alif mobi feature-by-feature — what worked, what had friction, what "Алифнуть" actually meant in practice. Layered Favri on top to understand why it was winning the remittance market: fewer screens, no required account, card-in card-out.`,
+    'research.m1.body': `Mapped Alif mobi feature by feature — what worked, where the friction sat, which habits users had already formed. Then laid Favri Intiqol over it to see why it was winning remittances: fewer screens, no account required, card in, card out.`,
     'research.m2.tag': `Method 02`, 'research.m2.title': `Market data analysis`,
-    'research.m2.body': `Central Bank of Russia and TKB/PSB (TransCapitalBank, Promsvyazbank) transfer data confirmed the scale: $1.794B sent, $160 average, and Favri's 49% share. That share was only possible because migrant workers, not tech enthusiasts, were Favri's core users.`,
-    'research.m3.tag': `Method 03`, 'research.m3.title': `User interviews`,
-    'research.m3.body': `Interviews and surveys with users of both Alif mobi and competitor apps. Key finding: domestic users wanted familiarity and breadth; migrant senders wanted speed and as few barriers as possible. These were genuinely incompatible needs in one app.`,
+    'research.m2.body': `Central Bank of Russia figures set the scale: <strong>$1.79B</strong> sent from Russia to Tajikistan in 2021, at an average of <strong>$128</strong> per transfer. The World Bank put remittances at <strong>27.8% of Tajikistan&rsquo;s GDP</strong> that year. Numbers this size make the case on their own — a market this large, served by apps this hard to use.`,
+    'research.m3.tag': `Method 03`, 'research.m3.title': `A Telegram room that grew by one owner at a time`,
+    'research.m3.body': `Not user research — I want to be precise about that. When the project started we opened a Telegram group and added people to it only as questions came up: whoever owned the answer got pulled in. Over time the room became the project&rsquo;s institutional memory, and polls inside it settled the questions no single person could. It is the closest thing to a spec this project ever had.`,
+    'data.tag': `A note on data`,
+    'data.title': `The number that wanted to be the headline — and why it isn&rsquo;t`,
+    'data.p1': `Payvand&rsquo;s team ran their own research and shared it with everyone working on the app. A market share for Favri Intiqol appeared in it: roughly <strong>49% of Russia→Tajikistan transfers</strong>. It is not in this case study, and the reason matters more than the number.`,
+    'data.p2': `Tajikistan publishes almost nothing. Companies do not disclose turnover — partly so the tax authority has less to ask about — and per-app industry statistics do not exist in any open form. So an internal figure here is unverifiable by construction: not because anyone lied, but because there is nothing to check it against.`,
+    'data.p3': `Hence the rule this case is built on. <strong>Only numbers you can open in a link sit in the headlines</strong> — Central Bank of Russia, World Bank, the app stores. Internal estimates informed the work; they are not presented as fact.`,
+    'data.p4': `And the two-app decision never rested on that 49% anyway. It rested on something anyone can still see: <strong>Kommertsbank had already moved remittances into an app of their own.</strong> An argument that needs a number you cannot show is a weak argument.`,
     'research.insights.title': `Key insights`,
     'research.i1.tag': `Insight 01`, 'research.i1.title': `Simplicity is a feature, not an absence of features`,
-    'research.i1.body': `Favri's users weren't choosing it over richer apps. They were choosing it over apps they couldn't navigate. Simplicity was the entire product.`,
+    'research.i1.body': `Favri Intiqol was not being chosen over richer apps. It was being chosen over apps people could not get through. Simplicity was the entire product.`,
     'research.i2.tag': `Insight 02`, 'research.i2.title': `Registration is a conversion killer for remittances`,
-    'research.i2.body': `A migrant worker sending $160 home doesn't want to create an account. They want to type a card number, verify the amount, and be done. Every extra step loses them.`,
+    'research.i2.body': `A migrant worker sending $128 home doesn&rsquo;t want to create an account. They want to type a card number, verify the amount, and be done. Every extra step loses them.`,
     'research.i3.tag': `Insight 03`, 'research.i3.title': `QR is the viable cashless path in Tajikistan`,
     'research.i3.body': `NFC terminal penetration was near zero. QR codes, already deployed by merchants as static per-merchant codes, were the only realistic path to domestic cashless adoption.`,
 
@@ -815,12 +848,12 @@ const I18N = {
     'define.problem.p2': `One design system (Payvand UI) would ensure visual coherence and brand recognition across both apps, so they still felt like the same company — without forcing users who want simplicity to navigate complexity they'll never use.`,
     'define.compare.title': `What each app needed to be`,
     'define.c1.label': `Payvand Transfer`, 'define.c2.label': `Payvand Payments`,
-    'define.c1.li1': `Zero-registration path`, 'define.c1.li2': `Card-in, card-out (6 steps max)`,
+    'define.c1.li1': `Zero-registration path`, 'define.c1.li2': `Card in, card out — 6 steps, no account`,
     'define.c1.li3': `Russia → Tajikistan, Uzbekistan`, 'define.c1.li4': `No feature noise`,
     'define.c2.li1': `Full account features`, 'define.c2.li2': `QR, utilities, transfers, cards`,
-    'define.c2.li3': `Favorites & templates`, 'define.c2.li4': `Friends & family mode`,
+    'define.c2.li3': `Favorites & templates`, 'define.c2.li4': `Favorites and saved recipients`,
     'define.goals.title': `Design goals`,
-    'define.g1.title': `6 steps, no account`, 'define.g1.body': `Payvand Transfer: recipient card → sender card → amount → CVV → confirm → SMS. <strong>Never ask for registration</strong> on the critical path.`,
+    'define.g1.title': `6 steps, no account`, 'define.g1.body': `Payvand Transfer: direction → recipient and amount → confirm → card → SMS → done. <strong>Never ask for registration</strong> on the critical path.`,
     'define.g2.title': `QR as the cashless habit`, 'define.g2.body': `Establish QR payment as Tajikistan's primary cashless method — <strong>build the habit</strong> before the infrastructure catches up.`,
     'define.g3.title': `One UI library, two apps`, 'define.g3.body': `Payvand UI — cards, buttons, icons, type — applied consistently so both apps <strong>feel like Payvand</strong>, even though they serve different users.`,
 
@@ -828,89 +861,95 @@ const I18N = {
     'process.title': `The four decisions that shaped both products.`,
     'process.lead': `Each of these was a direct response to something specific in the research — not a "best practice" applied generically, but a direct answer to a real user problem that the data had named.`,
     'process.s1.title': `Six steps, no account — and registration as a feature, not a gate`,
-    'process.s1.body': `Payvand Transfer's transfer flow was designed to be completable without ever creating an account. Recipient card number → sender card → amount → CVV/CVV → confirm → SMS verification. Six steps, then done. <strong>Registration unlocks history and repeat-transfer features</strong> — a positive pull, not a mandatory barrier. This was the direct design response to why Favri was winning.`,
+    'process.s1.body': `Payvand Transfer&rsquo;s flow was designed to be completable without ever creating an account. Direction → recipient and amount → confirm → the card being charged → SMS code → delivered. Six steps, then done. <strong>Registration unlocks history and repeat-transfer features</strong> — a positive pull, not a mandatory barrier. This was the direct design response to why Favri was winning.`,
     'process.s2.title': `QR as the primary payment method — designing around the infrastructure gap`,
     'process.s2.body': `Rather than waiting for NFC terminals to proliferate, I designed QR payment as the first and most prominent service in Payvand Payments. In Tajikistan's existing merchant landscape, static QR codes per merchant were already the norm — customers enter the amount themselves. The design worked with that behavior rather than against it, and added <strong>favorites for the merchants people return to every week.</strong>`,
-    'process.s3.title': `"Friends & Family" mode — solving social finance, not just utility finance`,
-    'process.s3.body': `Payvand Payments included a social finance layer that competitive apps didn't have: debt tracking between contacts, group shared accounts, split-bill requests, and savings goals with automatic transfers. <strong>This was the long-term retention layer</strong> — features that make switching costly because your financial social graph lives in the app.`,
-    'process.s4.title': `Payvand UI — a shared design system that made two products feel like one brand`,
+    'process.s4.title': `A shared component library, because there was nothing to inherit`,
     'process.s4.body': `Cards, typography, icon set, color tokens, button hierarchy — all built once and applied to both apps. A user who installs both apps recognizes the family instantly. <strong>The design system also solved the handoff problem</strong>: developers got one source of truth for both products, reducing inconsistency in implementation.`,
 
+    'design.s1.title': `01 · Six steps — parity, not victory`,
+    'design.s1.body': `Corridor, recipient and amount, confirmation, the card being charged, the SMS code, done. <strong>Six steps, and registration is never asked for on the critical path.</strong> To be straight about it: this does not beat Favri Intiqol — it draws level with it. That was the point. On a flow this short there is nothing to win on cleverness; you either clear the same bar or you lose the person at step three. Being worse was the only outcome we could not afford.`,
+    'design.s1.st1': `Direction`,
+    'design.s1.st2': `Recipient and amount`,
+    'design.s1.st3': `Confirm the details`,
+    'design.s1.st4': `The card being charged`,
+    'design.s1.st5': `SMS code`,
+    'design.s1.st6': `Delivered`,
+    'design.s1.note': `↳ The recipient field validates as you type — «Клиент найден!» appears before you commit to anything, so a wrong digit costs a second, not a transfer.`,
+    'design.s1.shot1': `Choosing a corridor: Russia → Tajikistan by phone number or to a Korti Milli card, Russia → Uzbekistan, and back into Russia.`,
+    'design.s1.shot2': `Recipient and amount on one screen, with the fee and the live rate printed underneath.`,
+    'design.s1.shot3': `Confirmation is a sheet over the form, not a new page — recipient, amount, fee, date, time.`,
+    'design.s1.shot4': `The card being charged: number, cardholder, CVC and expiry on one screen rather than four.`,
+    'design.s2.title': `02 · The rate is on the screen before you type the amount`,
+    'design.s2.tag': `Payvand Transfer`,
+    'design.s2.body': `Under the amount field sits one line: <strong>«Комиссия до 99999 — 1,5%. Текущий курс 1 000 руб = 167,00 сомони»</strong>. It is there before the first keystroke. A person sending money home is doing arithmetic — how much leaves, how much lands — and every app that hides the rate until the last screen makes them do that arithmetic twice. The catalogue of corridors does the same thing one level up: «Без комиссии» next to Payvand-to-Payvand, «Комиссия 1%» next to the paid ones. Price is a navigation label here, not fine print.`,
+    'design.s2.shot1': `The transfer catalogue: each corridor carries its price in the list, before you open it.`,
+    'design.s2.shot2': `The receipt splits «сумма списания» from «сумма зачисления» — the two numbers a sender actually cares about.`,
+    'design.s3.title': `03 · Registration is a door further in, not a gate at the entrance`,
+    'design.s3.tag': `Payvand Transfer`,
+    'design.s3.body': `The app opens on a guest home screen: four corridors, ready to use. The invitation to register sits <strong>underneath</strong> them — «Зарегистрируйтесь для полного доступа ко всем функциям» — where it reads as an offer rather than a toll. Someone who signs up gets a saved profile, history and a 4-digit access code; someone who does not still gets their money home tonight. This is the one place where we could have copied the competitor and instead went one step further: Favri Intiqol removed the account from the flow, and we made removing it visible on the first screen.`,
+    'design.s3.shot1': `The guest home: corridors first, the registration offer after them.`,
+    'design.s3.shot2': `Sign-up, then a 4-digit access code you choose yourself and repeat once.`,
+    'design.s4.title': `04 · QR is the first icon, not a menu item`,
+    'design.s4.tag': `Payvand Wallet`,
+    'design.s4.body': `NFC acceptance in Tajikistan was barely deployed, but merchants already had static QR codes taped to the counter. So QR went first in the services row on the home screen — ahead of mobile top-up, utilities and everything else — because a habit that does not exist yet has to be visible before it can form. The model works with what was already there: the merchant has a fixed code, the customer enters the amount themselves, confirms, done. No terminal required on either side.`,
+    'design.s4.shot1': `The home screen: QR leads the services row, with promotions above and favourites below.`,
+    'design.s4.shot2': `Services, three levels deep: category → provider → payment.`,
+    'design.s5.title': `05 · A refusal is a screen too`,
+    'design.s5.tag': `Payvand Wallet`,
+    'design.s5.body': `Two of the transfer outcomes are failures, and both were drawn rather than left to a toast message. <strong>«Недостаточно средств на счету»</strong> and <strong>«У этого контакта нет кошелька Payvand»</strong> get the same sheet, the same weight and the same single way out as the success state. The second one matters more than it looks: it is not an error the sender made, it is a fact about someone else, and saying so plainly is the difference between «the app is broken» and «try the card instead».`,
+    'design.s5.shot1': `Delivered: receipt, save it, or turn it into a template for next month.`,
+    'design.s5.shot2': `Declined, with the reason named — not a generic failure.`,
+    'design.s6.title': `06 · Four runs at the same sign-in`,
+    'design.s6.tag': `Payvand Wallet`,
+    'design.s6.body': `The file keeps four complete versions of the entry flow — start, sign-up, sign-in, verification — side by side. That is not indecision; a wallet lives or dies on the screen before anyone has seen anything of value, and it was worth redrawing four times. What survived: a phone number and nothing else on the first screen, the code auto-advancing across four cells, «Неверный номер?» as an escape hatch instead of a back button, and a 4-digit code you set yourself so the second session is one gesture.`,
+    'design.s6.shot1': `Four passes at the entry flow, kept side by side in the file.`,
+    'design.s6.shot2': `History with real filters: period, operation type, card or account, amount, reset.`,
+    'design.s6.shot3': `Support is a chat inside the app, with a named operator and a typing state.`,
+    'design.s7.title': `07 · The components, briefly`,
+    'design.s7.tag': `Both apps`,
+    'design.s7.body': `Both apps run on one shared library — card variants, button hierarchy, an icon set per payment category, colour tokens, and type sized for three languages of very different lengths. It lives in a separate file from the screens shown here, so I will not pretend to walk you through it. The point it earned: Transfer was drawn out of components that already existed, so the second app cost a fraction of the first and there was nothing to reconcile afterwards.`,
     'design.label': `Design`,
     'design.title': `Key screens and the reasoning behind each.`,
-    'design.s1.title': `01 · The 6-step transfer flow — designed to beat Favri`,
     'design.s1.tag': `Payvand Transfer`,
-    'design.s1.body': `The entire transfer completes in six steps. Registration is never asked for on the critical path. Every step is a single, clear action — no optional fields, no information banners, no cross-sell moments until after the money has moved.`,
-    'design.s1.st1': `Recipient card number`, 'design.s1.st2': `Sender card number`, 'design.s1.st3': `Transfer amount`,
-    'design.s1.st4': `CVC/CVV`, 'design.s1.st5': `Confirm details`, 'design.s1.st6': `SMS verification`,
-    'design.s1.note': `↳ Registered users get one bonus: the app pre-fills their sender card. Steps collapse to 4.`,
 
-    'design.s2.title': `02 · QR payment — a new habit, not a new technology`,
-    'design.s2.tag': `Payvand Payments`,
-    'design.s2.body': `The first icon in the services row. QR sits above mobile top-up and utilities, not buried in a menu — because building the habit requires surfacing it before the habit exists.`,
-    'design.s2.h1': `The QR model in Tajikistan`, 'design.s2.h2': `Favorites & templates`,
-    'design.s2.l1': `Merchant has a static QR code pinned to the counter`,
-    'design.s2.l2': `Customer opens app → QR tab → scans`,
-    'design.s2.l3': `Customer enters the amount manually`,
-    'design.s2.l4': `Confirms, done — no terminal needed`,
-    'design.s2.p': `Frequently-used payment accounts can be pinned as favorites on the home screen with optional auto-payment toggle — so the app learns the user's weekly payments instead of making them re-navigate every time.`,
 
-    'design.s3.title': `03 · Friends & Family mode — the retention layer`,
-    'design.s3.tag': `Payvand Payments`,
-    'design.s3.body': `These features make switching away from Payvand expensive — not by locking data, but by building a financial social graph inside the app. The more people you split bills with here, the more reason you have to stay.`,
-    'design.s3.f1.title': `Debt tracking`, 'design.s3.f1.body': `Automatic tracking of debts between contacts for transparent balance management.`,
-    'design.s3.f2.title': `Group accounts`, 'design.s3.f2.body': `Shared accounts for groups — solves the problem of managing money collectively.`,
-    'design.s3.f3.title': `Bill splitting`, 'design.s3.f3.body': `Divide a total among any number of people. Requests go out; money comes back.`,
-    'design.s3.f4.title': `Payment requests`, 'design.s3.f4.body': `Send a request for your share of a shared expense. No more awkward reminders.`,
-    'design.s3.f5.title': `Savings goals`, 'design.s3.f5.body': `Create a goal; the app auto-transfers a set amount each month until it's met.`,
-    'design.s3.f6.title': `Smart tips`, 'design.s3.f6.body': `Spending pattern analysis with personalized recommendations to improve financial health.`,
-
-    'design.s4.title': `04 · Payvand UI — the design system that made two apps feel like one`,
-    'design.s4.tag': `Design system`,
-    'design.s4.body': `Rather than designing each app from scratch, I built a shared component library first: card variants (active, secret, add-new), button hierarchy, a custom icon set for each payment category, color tokens, and the distinctive blue gradient card design visible across both apps.`,
-    'design.s4.card.label': `Payvand UI Library · Card design`,
-    'design.s4.card.cvv': `CVV ●●●`,
-    'design.s4.sys.title': `System components`,
-    'design.s4.sys.l1': `<strong>Card variants</strong>: active (gradient), secret (masked), grey (add-new placeholder)`,
-    'design.s4.sys.l2': `<strong>Button hierarchy</strong>: primary (solid), secondary (soft), link — consistent across both apps`,
-    'design.s4.sys.l3': `<strong>Custom icon set</strong>: per payment category, service type, and navigation element`,
-    'design.s4.sys.l4': `<strong>3 languages</strong>: RU, EN, TJ — components built for flexible text-length from day one`,
-
-    'outcomes.label': `What was delivered`,
-    'outcomes.title': `A complete UX/UI concept for both apps, ready for development handoff.`,
-    'outcomes.lead': `The concept defined the full UX — both home screens, core user flows, the Friends & Family feature set, and the Payvand UI component library — ready to hand off to engineering.`,
-    'outcomes.o1.tag': `COMPETITIVE POSITION`, 'outcomes.o1.body': `steps to complete a transfer, with no account required — matching or beating Favri's flow that controlled 49% of the remittance market.`,
-    'outcomes.o2.tag': `COVERAGE`, 'outcomes.o2.body': `complete apps designed — Payvand Transfer and Payvand Payments — plus the Payvand UI system that ties them together visually.`,
+    'outcomes.label': `What shipped`,
+    'outcomes.title': `Both apps are in the stores today.`,
+    'outcomes.lead': `The design covered both home screens, the core flows and the shared component library. Payvand Wallet now carries 250+ services, QR payment with cashback and three languages; Payvand Transfers handles Russia→Tajikistan and the rest of the CIS.`,
+    'outcomes.o1.tag': `COMPETITIVE POSITION`, 'outcomes.o1.body': `steps to complete a transfer, no account required — level with the standard Favri Intiqol had already set, which is what the job required.`,
+    'outcomes.o2.tag': `COVERAGE`, 'outcomes.o2.body': `apps designed and shipped — Payvand Wallet on iOS and Android, Payvand Transfers alongside it — plus the Payvand UI system that ties them together.`,
     'outcomes.o3.tag': `INFRASTRUCTURE`, 'outcomes.o3.body': `languages supported from the start (RU, EN, TJ), with components tested for varying text lengths across all three.`,
     'outcomes.strat.title': `Strategic framing`,
-    'outcomes.strat.body': `The two-app decision was the design's central argument. Tajikistan's remittance economy was enormous and underserved by apps that prioritized features over simplicity. <strong>Splitting the product gave Payvand a credible path into both markets</strong> — domestic banking via familiarity with Alif mobi, and remittances via a transfer experience that matched the friction-free standard Favri had set.`,
+    'outcomes.strat.body': `The two-app decision was the design's central argument. Tajikistan's remittance economy was enormous and underserved by apps that prioritized features over simplicity. <strong>Both apps shipped</strong> — domestic banking via familiarity with Alif mobi, and remittances via a transfer experience built to the friction-free standard Favri Intiqol had set.`,
 
     'lessons.label': `Lessons`,
     'lessons.title': `What I'm taking into the next project.`,
     'lessons.worked.title': `What worked`,
-    'lessons.w1': `<strong>Letting market data lead the product strategy.</strong> The case for two separate apps came entirely from transfer data — without the remittance numbers, the argument for a separate simplified app would have felt arbitrary.`,
-    'lessons.w2': `<strong>Designing the UI system before the second app.</strong> Building Payvand UI after Payments and before Transfer meant the second app was faster to design, with zero visual inconsistency.`,
-    'lessons.w3': `<strong>Treating the competitor's strength as a design requirement, not a threat.</strong> Favri won because of simplicity. The response wasn't to compete on features — it was to match that simplicity in the context where it mattered most.`,
+    'lessons.w1': `<strong>Separating what I could prove from what I was told.</strong> The strongest version of the two-app argument turned out to be the one that needed no private numbers at all: the competitor had already shipped a second, emptier app. When a market publishes nothing, look for decisions competitors made in public — those are evidence you can still show a year later.`,
+    'lessons.w2': `<strong>Building the library before the second app.</strong> Components came out of the first app and went into the second, so Transfer was faster to draw and there was nothing to reconcile afterwards.`,
+    'lessons.w3': `<strong>Treating the competitor's strength as a design requirement, not a threat.</strong> Favri Intiqol won because of simplicity. The response wasn't to compete on features — it was to match that simplicity in the context where it mattered most.`,
     'lessons.diff.title': `What I'd do differently`,
-    'lessons.d1': `<strong>Test the 6-step flow with actual migrant workers earlier.</strong> The flow was designed from competitive analysis, but testing with the specific audience — non-tech-savvy workers — would have caught usability gaps that design-adjacent participants wouldn't.`,
+    'lessons.d1': `<strong>Test the flow with actual migrant workers earlier.</strong> The flow was designed from competitive analysis, but testing with the specific audience — non-tech-savvy workers — would have caught usability gaps that design-adjacent participants wouldn't.`,
     'lessons.d2': `<strong>Define the QR merchant enrollment UX earlier.</strong> The consumer side is clean. The merchant onboarding — how a small vendor gets their static QR code — was left for later and would have shaped the consumer flow if designed in parallel.`,
-    'lessons.d3': `<strong>Design the empty state for Friends & Family from day one.</strong> A new Payvand app has no friends, no groups, no debts — that's the most common first-session state, and it deserved as much design attention as the full state.`,
 
-    'cta.title': `Want to explore the full design?`,
-    'cta.body': `The Figma file includes both app flows, the Payvand UI component library, card design system, and the full screen set for both Payments and Transfer.`,
-    'cta.figma': `→ Browse in Figma`,
+    'cta.ios': `→ Payvand Wallet · App Store`,
+    'cta.android': `→ Payvand Wallet · Google Play`,
+    'cta.transfer': `→ Payvand Transfers · Google Play`,
+    'cta.title': `Rather try it than read about it?`,
+    'cta.body': `Both apps are in the stores. Install one, send something, and judge the flow with your own thumbs — that is a fairer test than any screenshot in a case study.`,
     'footer.role': `Product Designer`,
-    'footer.disclaimer': `Case study · Payvand App · 2022. UX/UI concept for two mobile applications — Payvand Payments (domestic) and Payvand Transfer (remittances) — built on a shared Payvand UI design system.`,
+    'footer.disclaimer': `Case study · Payvand App · 2022. UX/UI for two mobile applications — Payvand Wallet (domestic payments) and Payvand Transfers (remittances) — built on a shared component library. Both apps shipped.`,
   },
   ru: {
     'nav.back': `Все проекты`,
-    'hero.eyebrow': `UX/UI Дизайн-концепт · 2022 · Орион Мухамадиев`,
+    'hero.eyebrow': `UX/UI · 2022 → в продакшене · Орион Мухамадиев`,
     'hero.title': `<span class="pay-word">Pay</span><span class="or-word">vand</span><br>App`,
     'hero.lede': `Два продукта, решающих две разные проблемы в экономике денежных переводов Таджикистана — один для внутренних платежей, другой для беспрепятственных переводов из России — объединённые одной дизайн-системой.`,
     'hero.m1.label': `Роль`, 'hero.m1.value': `UX/UI Дизайнер`,
     'hero.m2.label': `Год`,
-    'hero.m3.label': `Тип`, 'hero.m3.value': `Концепт · iOS & Android`,
-    'hero.m4.label': `Приложения`, 'hero.m4.value': `Payvand Payments + Transfer`,
+    'hero.m3.label': `Тип`, 'hero.m3.value': `В продакшене · iOS и Android`,
+    'hero.m4.label': `Приложения`, 'hero.m4.value': `Payvand Wallet + Payvand Transfers`,
 
     'phones.pay.label': `PAYVAND PAYMENTS · Полнофункциональный`,
     'phones.pay.bonus': `1 963 БОНУСОВ`,
@@ -934,40 +973,46 @@ const I18N = {
 
     'overview.label': `Обзор проекта`,
     'overview.title': `Одна дизайн-система. Два приложения для двух совершенно разных людей.`,
-    'overview.p1': `Payvand МДО — микрофинансовая организация в Таджикистане, движущаяся к полноценному цифровому банкингу. Бриф звучал как «спроектировать мобильное приложение». Исследование показало, что проблем на самом деле две — и объединять их в одном приложении значило не решить ни одну.`,
+    'overview.p1': `МДО «Пайванд Групп» — микродепозитная организация в Таджикистане: лицензия Нацбанка получена в октябре 2021 года, в стране уже работало больше 3 000 платёжных терминалов и 7 000 точек приёма, и от этой наличной сети компания шла в цифровой банкинг. Бриф звучал как «спроектировать мобильное приложение». Рынок говорил, что задач две, и одним приложением не решалась ни одна.`,
     'overview.p2': `В результате: <strong>Payvand Payments</strong> для зарегистрированных пользователей, занимающихся повседневным банкингом внутри страны, и <strong>Payvand Transfer</strong> для трудовых мигрантов в России, которым просто нужно быстро отправить деньги домой — без регистрации. Одна UI-библиотека Payvand объединяет визуальный язык обоих.`,
-    'overview.st1': `ВВП Таджикистана составляют переводы мигрантов`,
-    'overview.st2': `переведено из России в Таджикистан в 2021 году`,
-    'overview.st3': `средняя сумма одного перевода на тот момент`,
-    'overview.st4': `переводов из России в Таджикистан — через Фаври (Комерцбанк)`,
+    'overview.st1': `ВВП Таджикистана в 2021 году — переводы мигрантов (Всемирный банк)`,
+    'overview.st2': `переведено из России в Таджикистан в 2021 году (ЦБ РФ)`,
+    'overview.st3': `средний перевод в 2021 году (Банк России)`,
+    'overview.st4': `платёжных терминалов Payvand уже работало по стране`,
 
     'problem.label': `Проблема`,
-    'problem.title': `Фаври завоевала 49% рынка переводов одной функцией: не задавать вопросов.`,
+    'problem.title': `Конкурент уже разделил свои продукты. Отвечать надо было на это, а не пытаться переиграть его функциями.`,
     'problem.remit.title': `Пробел в рынке переводов`,
-    'problem.remit.p': `Трудовые мигранты из Таджикистана в России регулярно отправляли деньги домой. Большинство из них не были технически подготовлены. Приложение, которое они выбирали — Фаври от Комерцбанка — доминировало не потому что было богатым функционально, а потому что требовало от них почти ничего.`,
-    'problem.remit.p2': `Наши данные показали, что 49% всех переводов из России в Таджикистан шли через Фаври, из них более 40% через систему Коммерцбанка Таджикистана. Конкуренты — приложения, требующие создания аккаунта, верификации и многоэтапного онбординга — наблюдали, как переводы уходят в другое место.`,
-    'problem.quote': `«Нетехнологичные пользователи выбирали Фаври по одной причине: простота. Простота и была продуктом».`,
-    'problem.quote.cite': `— Вывод исследования, конкурентный анализ 2022`,
+    'problem.remit.p': `Трудовые мигранты из Таджикистана в России регулярно отправляли деньги домой. Большинство из них не были технически подготовлены. Приложение, которое они выбирали, — Favri Intiqol, отдельное приложение Коммерцбанка Таджикистана только под переводы, не путать с его мобильным банком «Фаври», — побеждало не богатством функций, а тем, что почти ничего от них не требовало.`,
+    'problem.remit.p2': `Коммерцбанк Таджикистана не стал обслуживать их из основного банковского приложения. Он выпустил <strong>Favri Intiqol</strong> — отдельный продукт под одну задачу: деньги с российской карты на номер телефона или на «Корти Милли», комиссия 0%, больше на экране ничего. Остальные — приложения, требующие аккаунта, верификации, многоэтапного онбординга — наблюдали, как переводы уходят мимо.`,
+    'problem.quote': `«Когда конкурент выпускает второе, более пустое приложение — он прямым текстом говорит, в чём здесь работа».`,
+    'problem.quote.cite': `— Мой вывод из конкурентного разбора, 2022`,
     'problem.pay.title': `Проблема внутренних платежей`,
-    'problem.pay.p': `Внутри Таджикистана инфраструктура NFC-оплаты практически отсутствовала. Аудит банковских приложений выявил ту же сложность, с которой пользователи уже боролись. Алиф Банк установил стандарт с Алиф mobi — настолько прочно, что «Алифнуть» стало глаголом, означающим «перевести деньги».`,
+    'problem.pay.p': `Внутри Таджикистана приём по NFC был почти не развёрнут. Разбор местных банковских приложений показал ту же сложность, с которой люди уже мучились, а привычку, по которой мерили всех остальных, задавал Алиф mobi.`,
     'problem.pay.p2': `Payvand нужно было конкурировать с этой привычкой, не просто копируя её. Инсайт: пойти туда, где Алиф ещё не был — ввести QR-оплату как основную безналичную альтернативу NFC в стране, и создать избранное/шаблоны для регулярных платежей, которые люди совершают каждый месяц.`,
     'problem.pay.tag1': `QR-оплата (без NFC)`, 'problem.pay.tag2': `Избранное / шаблоны`, 'problem.pay.tag3': `Флоу без регистрации`,
-    'problem.pay.tag4': `Россия → Таджикистан`, 'problem.pay.tag5': `6-шаговый перевод`, 'problem.pay.tag6': `Библиотека Payvand UI`,
+    'problem.pay.tag4': `Россия → Таджикистан`, 'problem.pay.tag5': `Перевод в 6 шагов`, 'problem.pay.tag6': `Библиотека Payvand UI`,
 
     'research.label': `Исследование`,
     'research.title': `Данные говорили «одно приложение». Пользователи говорили «два разных человека».`,
     'research.lead': `Я использовал Алиф mobi как основной дизайн-референс — не чтобы копировать, а потому что у пользователей уже была мышечная память к нему. Понимание того, на что они опирались там и что вызывало у них трудности, определило каждое навигационное решение.`,
     'research.m1.tag': `Метод 01`, 'research.m1.title': `Конкурентный разбор`,
-    'research.m1.body': `Составил карту Алиф mobi функция за функцией — что работало, что создавало трение, что «Алифнуть» означало на практике. Наложил Фаври, чтобы понять, почему оно побеждало на рынке переводов: меньше экранов, аккаунт не нужен, карта-в карта-из.`,
+    'research.m1.body': `Составил карту Алиф mobi функция за функцией — что работало, где было трение, какие привычки у людей уже сложились. Потом наложил сверху Favri Intiqol, чтобы понять, почему он выигрывает переводы: меньше экранов, аккаунт не нужен, карта на входе, карта на выходе.`,
     'research.m2.tag': `Метод 02`, 'research.m2.title': `Анализ рыночных данных`,
-    'research.m2.body': `Данные Центробанка России и ТКБ/ПСБ (ТрансКапиталБанк, Промсвязьбанк) подтвердили масштаб: $1,794 млрд переведено, $160 средний перевод, 49% рынка у Фаври. Такая доля была возможна только потому, что трудовые мигранты, а не технологически продвинутые пользователи, составляли ядро аудитории Фаври.`,
-    'research.m3.tag': `Метод 03`, 'research.m3.title': `Пользовательские интервью`,
-    'research.m3.body': `Интервью и опросы с пользователями Алиф mobi и конкурирующих приложений. Ключевой вывод: внутренние пользователи хотели знакомости и широты; отправители переводов хотели скорости и минимума барьеров. Это несовместимые потребности в одном приложении.`,
+    'research.m2.body': `Данные Банка России задали масштаб: <strong>$1,79 млрд</strong> переведено из России в Таджикистан в 2021 году при среднем переводе <strong>$128</strong>. По оценке Всемирного банка, переводы в том году составили <strong>27,8% ВВП</strong> Таджикистана. Цифры такого порядка доказывают сами себя — рынок огромный, а приложения, которые его обслуживают, трудные.`,
+    'research.m3.tag': `Метод 03`, 'research.m3.title': `Телеграм-группа, которая росла по одному ответственному`,
+    'research.m3.body': `Это не пользовательское исследование — здесь я хочу быть точным. Когда проект начинался, мы завели группу в телеграме и добавляли туда людей только по мере появления вопросов: нужен ответ — приходит тот, кто за это отвечает. Постепенно комната стала памятью проекта, а голосования внутри неё закрывали вопросы, которые не мог решить один человек. Это самое близкое к ТЗ, что у проекта вообще было.`,
+    'data.tag': `Заметка о данных`,
+    'data.title': `Цифра, которая просилась в заголовок, и почему её здесь нет`,
+    'data.p1': `Команда Payvand вела собственные исследования и делилась ими со всеми, кто работал над приложением. Там звучала доля Favri Intiqol на рынке переводов — около <strong>49% всех переводов Россия → Таджикистан</strong>. В кейсе её нет, и причина важнее самого числа.`,
+    'data.p2': `Таджикистан почти ничего не публикует. Компании не раскрывают обороты — в том числе чтобы у налоговой было меньше вопросов, — а отраслевой статистики по приложениям не существует ни в каком открытом виде. Поэтому внутренняя цифра здесь непроверяема по устройству: не потому что кто-то соврал, а потому что сверять не с чем.`,
+    'data.p3': `Отсюда правило, по которому собран кейс. <strong>В заголовках и карточках стоят только те числа, которые открываются по ссылке</strong> — Банк России, Всемирный банк, сторы. Внутренние оценки я слышал и учитывал в работе, но за факт не выдаю.`,
+    'data.p4': `И решение про два приложения на эти 49% всё равно не опиралось. Оно опиралось на то, что видно снаружи до сих пор: <strong>Коммерцбанк уже вынес переводы в отдельное приложение.</strong> Аргумент, которому нужна цифра, которую нельзя показать, — слабый аргумент.`,
     'research.insights.title': `Ключевые инсайты`,
     'research.i1.tag': `Инсайт 01`, 'research.i1.title': `Простота — это функция, а не отсутствие функций`,
-    'research.i1.body': `Пользователи Фаври выбирали его не в пользу более богатых приложений. Они выбирали его вместо приложений, в которых не могли разобраться. Простота и была продуктом целиком.`,
+    'research.i1.body': `Favri Intiqol выбирали не вместо более богатых приложений. Его выбирали вместо приложений, через которые не могли пройти. Простота и была продуктом целиком.`,
     'research.i2.tag': `Инсайт 02`, 'research.i2.title': `Регистрация убивает конверсию в переводах`,
-    'research.i2.body': `Трудовой мигрант, отправляющий $160 домой, не хочет создавать аккаунт. Он хочет ввести номер карты, подтвердить сумму и закончить. Каждый дополнительный шаг теряет его.`,
+    'research.i2.body': `Трудовой мигрант, отправляющий домой $128, не хочет создавать аккаунт. Он хочет ввести номер карты, подтвердить сумму и закончить. Каждый дополнительный шаг теряет его.`,
     'research.i3.tag': `Инсайт 03`, 'research.i3.title': `QR — реальный путь к безналичным в Таджикистане`,
     'research.i3.body': `Проникновение NFC-терминалов было около нуля. QR-коды, уже развёрнутые мерчантами как статичные коды для каждого, были единственным реальным путём к внутреннему безналичному приёму платежей.`,
 
@@ -978,12 +1023,12 @@ const I18N = {
     'define.problem.p2': `Одна дизайн-система (Payvand UI) обеспечит визуальную согласованность и узнаваемость бренда в обоих приложениях, чтобы они всё равно ощущались как одна компания — не заставляя пользователей, которым нужна простота, навигировать по сложности, которую они никогда не используют.`,
     'define.compare.title': `Чем должно быть каждое приложение`,
     'define.c1.label': `Payvand Transfer`, 'define.c2.label': `Payvand Payments`,
-    'define.c1.li1': `Путь без регистрации`, 'define.c1.li2': `Карта-в, карта-из (максимум 6 шагов)`,
+    'define.c1.li1': `Путь без регистрации`, 'define.c1.li2': `Карта на входе, карта на выходе — 6 шагов без аккаунта`,
     'define.c1.li3': `Россия → Таджикистан, Узбекистан`, 'define.c1.li4': `Никакого лишнего функционала`,
     'define.c2.li1': `Полноценный аккаунт`, 'define.c2.li2': `QR, коммуналка, переводы, карты`,
-    'define.c2.li3': `Избранное и шаблоны`, 'define.c2.li4': `Режим «Друзья и семья»`,
+    'define.c2.li3': `Избранное и шаблоны`, 'define.c2.li4': `Избранное и сохранённые получатели`,
     'define.goals.title': `Дизайн-цели`,
-    'define.g1.title': `6 шагов без аккаунта`, 'define.g1.body': `Payvand Transfer: карта получателя → карта отправителя → сумма → CVV → подтверждение → СМС. <strong>Никогда не спрашивать регистрацию</strong> на критическом пути.`,
+    'define.g1.title': `6 шагов без аккаунта`, 'define.g1.body': `Payvand Transfer: направление → получатель и сумма → подтверждение → карта → СМС → готово. <strong>Никогда не спрашивать регистрацию</strong> на критическом пути.`,
     'define.g2.title': `QR как привычка к безналу`, 'define.g2.body': `Утвердить QR-оплату как основной безналичный метод Таджикистана — <strong>формировать привычку</strong> до того, как инфраструктура догонит.`,
     'define.g3.title': `Одна UI-библиотека, два приложения`, 'define.g3.body': `Payvand UI — карточки, кнопки, иконки, шрифт — применяется единообразно, чтобы оба приложения <strong>ощущались как Payvand</strong>, хотя и служат разным пользователям.`,
 
@@ -991,79 +1036,85 @@ const I18N = {
     'process.title': `Четыре решения, определившие оба продукта.`,
     'process.lead': `Каждое из них — прямой ответ на конкретную находку из исследования, а не обобщённая «лучшая практика», а прямой ответ на реальную проблему пользователя, которую назвали данные.`,
     'process.s1.title': `Шесть шагов без аккаунта — и регистрация как функция, а не барьер`,
-    'process.s1.body': `Флоу перевода в Payvand Transfer разработан так, чтобы его можно было завершить, никогда не создавая аккаунт. Номер карты получателя → карта отправителя → сумма → CVV → подтверждение → СМС-верификация. Шесть шагов, затем готово. <strong>Регистрация открывает историю и функцию повтора перевода</strong> — позитивное притяжение, а не обязательный барьер. Это прямой дизайн-ответ на то, почему побеждала Фаври.`,
+    'process.s1.body': `Флоу перевода в Payvand Transfer сделан так, чтобы его можно было пройти, вообще не заводя аккаунт. Направление → получатель и сумма → подтверждение → карта списания → СМС-код → доставлен. Шесть шагов — и готово. <strong>Регистрация открывает историю и функцию повтора перевода</strong> — позитивное притяжение, а не обязательный барьер. Это прямой дизайн-ответ на то, почему побеждала Фаври.`,
     'process.s2.title': `QR как основной метод оплаты — дизайн вокруг инфраструктурного пробела`,
     'process.s2.body': `Вместо того чтобы ждать распространения NFC-терминалов, я разместил QR-оплату первой и самой заметной услугой в Payvand Payments. В существующей среде мерчантов Таджикистана статичные QR-коды для каждого уже были нормой — покупатели сами вводят сумму. Дизайн работал с этим поведением, а не против него, и добавил <strong>избранное для мерчантов, к которым люди возвращаются каждую неделю.</strong>`,
-    'process.s3.title': `Режим «Друзья и семья» — решение социальных финансов, а не только утилитарных`,
-    'process.s3.body': `Payvand Payments включал слой социальных финансов, которого у конкурентов не было: отслеживание долгов между контактами, общие групповые счета, запросы на разделение счёта и сберегательные цели с автоматическими переводами. <strong>Это был долгосрочный слой удержания</strong> — функции, которые делают переход дорогостоящим, потому что финансовый социальный граф живёт в приложении.`,
-    'process.s4.title': `Payvand UI — общая дизайн-система, благодаря которой два продукта ощущаются как один бренд`,
+    'process.s4.title': `Общая библиотека компонентов, потому что наследовать было нечего`,
     'process.s4.body': `Карточки, типографика, набор иконок, цветовые токены, иерархия кнопок — всё создано один раз и применено к обоим приложениям. Пользователь, установивший оба, мгновенно узнаёт семью. <strong>Дизайн-система также решила проблему передачи разработчикам</strong>: они получили единый источник правды для обоих продуктов, снизив непоследовательность в реализации.`,
 
+    'design.s1.title': `01 · Шесть шагов — паритет, а не победа`,
+    'design.s1.body': `Коридор, получатель и сумма, подтверждение, карта списания, СМС-код, готово. <strong>Шесть шагов, и регистрация на критическом пути не запрашивается ни разу.</strong> Скажу прямо: это не переигрывает Favri Intiqol, это с ним вровень. В том и была задача. На таком коротком флоу выигрывать нечем — ты либо берёшь ту же планку, либо теряешь человека на третьем шаге. Единственное, чего нельзя было допустить, — оказаться хуже.`,
+    'design.s1.st1': `Направление`,
+    'design.s1.st2': `Получатель и сумма`,
+    'design.s1.st3': `Подтверждение`,
+    'design.s1.st4': `Карта списания`,
+    'design.s1.st5': `СМС-код`,
+    'design.s1.st6': `Доставлен`,
+    'design.s1.note': `↳ Поле получателя проверяется на лету — «Клиент найден!» появляется до того, как ты на что-то согласился, поэтому неверная цифра стоит секунды, а не перевода.`,
+    'design.s1.shot1': `Выбор коридора: Россия → Таджикистан по номеру телефона или на «Корти Милли», Россия → Узбекистан, и обратно в Россию.`,
+    'design.s1.shot2': `Получатель и сумма на одном экране, под ними — комиссия и текущий курс.`,
+    'design.s1.shot3': `Подтверждение — шторка поверх формы, а не новая страница: получатель, сумма, комиссия, дата, время.`,
+    'design.s1.shot4': `Карта списания: номер, владелец, CVC и срок на одном экране, а не на четырёх.`,
+    'design.s2.title': `02 · Курс стоит на экране раньше, чем ты ввёл сумму`,
+    'design.s2.tag': `Payvand Transfer`,
+    'design.s2.body': `Под полем суммы стоит одна строка: <strong>«Комиссия до 99999 — 1,5%. Текущий курс 1 000 руб = 167,00 сомони»</strong>. Она там до первого нажатия. Человек, отправляющий деньги домой, считает — сколько ушло, сколько дошло, — и любое приложение, которое прячет курс до последнего экрана, заставляет его считать дважды. Каталог направлений делает то же уровнем выше: «Без комиссии» рядом с переводом на Payvand, «Комиссия 1%» рядом с платными. Цена здесь — подпись в навигации, а не мелкий шрифт.`,
+    'design.s2.shot1': `Каталог переводов: у каждого коридора цена стоит прямо в списке, до того как его открыли.`,
+    'design.s2.shot2': `Чек разделяет «сумму списания» и «сумму зачисления» — два числа, которые отправителя и волнуют.`,
+    'design.s3.title': `03 · Регистрация — дверь дальше, а не турникет на входе`,
+    'design.s3.tag': `Payvand Transfer`,
+    'design.s3.body': `Приложение открывается гостевой главной: четыре коридора, работают сразу. Приглашение зарегистрироваться стоит <strong>под ними</strong> — «Зарегистрируйтесь для полного доступа ко всем функциям», — и читается как предложение, а не как плата за вход. Кто зарегистрировался, получает сохранённый профиль, историю и четырёхзначный код доступа; кто нет — всё равно доводит деньги до дома сегодня вечером. Это единственное место, где можно было просто скопировать конкурента, а мы пошли на шаг дальше: Favri Intiqol убрал аккаунт из флоу, а мы сделали это отсутствие видимым на первом же экране.`,
+    'design.s3.shot1': `Гостевая главная: сначала коридоры, предложение регистрации — после них.`,
+    'design.s3.shot2': `Регистрация, затем четырёхзначный код доступа, который придумываешь сам и повторяешь один раз.`,
+    'design.s4.title': `04 · QR — первая иконка, а не пункт меню`,
+    'design.s4.tag': `Payvand Wallet`,
+    'design.s4.body': `Приём по NFC в Таджикистане был почти не развёрнут, зато у мерчантов уже висели статичные QR-коды на прилавке. Поэтому QR встал первым в ряду услуг на главной — раньше пополнения связи, коммуналки и всего остального, — потому что привычку, которой ещё нет, надо сначала показать. Модель работает с тем, что уже было: у мерчанта фиксированный код, покупатель сам вводит сумму, подтверждает, готово. Терминал не нужен ни одной стороне.`,
+    'design.s4.shot1': `Главная: QR открывает ряд услуг, над ним акции, под ним избранное.`,
+    'design.s4.shot2': `Услуги в три уровня: категория → поставщик → оплата.`,
+    'design.s5.title': `05 · Отказ — это тоже экран`,
+    'design.s5.tag': `Payvand Wallet`,
+    'design.s5.body': `Два исхода перевода из нескольких — неуспешные, и оба нарисованы, а не оставлены всплывашке. <strong>«Недостаточно средств на счету»</strong> и <strong>«У этого контакта нет кошелька Payvand»</strong> получают ту же шторку, тот же вес и тот же единственный выход, что и успех. Второй важнее, чем кажется: это не ошибка отправителя, это факт о другом человеке, и сказать это прямо — разница между «приложение сломалось» и «попробуй на карту».`,
+    'design.s5.shot1': `Доставлен: чек, сохранить, или превратить в шаблон на следующий месяц.`,
+    'design.s5.shot2': `Отклонён, и причина названа — не абстрактная неудача.`,
+    'design.s6.title': `06 · Четыре захода на один и тот же вход`,
+    'design.s6.tag': `Payvand Wallet`,
+    'design.s6.body': `В файле лежат четыре полные версии входа — start, sign-up, sign-in, verification — рядом друг с другом. Это не нерешительность: кошелёк живёт или умирает на экране, где человек ещё не увидел ничего ценного, и его стоило перерисовать четыре раза. Что осталось: номер телефона и больше ничего на первом экране, код, сам перескакивающий по четырём ячейкам, «Неверный номер?» как выход вместо кнопки назад, и четырёхзначный код, который задаёшь сам, чтобы второй вход был одним жестом.`,
+    'design.s6.shot1': `Четыре прогона входа, оставленные в файле рядом.`,
+    'design.s6.shot2': `История с настоящими фильтрами: период, тип операции, карта или счёт, сумма, сброс.`,
+    'design.s6.shot3': `Поддержка — чат внутри приложения, с именем оператора и состоянием «печатает».`,
+    'design.s7.title': `07 · О компонентах — коротко`,
+    'design.s7.tag': `Оба приложения`,
+    'design.s7.body': `Оба приложения стоят на одной библиотеке — варианты карточек, иерархия кнопок, набор иконок под категории платежей, цветовые токены и типографика под три языка очень разной длины. Она лежит в отдельном файле от экранов, показанных здесь, так что подробной экскурсии не будет. Что она дала: Transfer рисовался из уже существующих компонентов, поэтому второе приложение обошлось в разы дешевле первого, и приводить потом ничего в соответствие не пришлось.`,
     'design.label': `Дизайн`,
     'design.title': `Ключевые экраны и логика за каждым из них.`,
-    'design.s1.title': `01 · 6-шаговый флоу перевода — спроектирован чтобы переиграть Фаври`,
     'design.s1.tag': `Payvand Transfer`,
-    'design.s1.body': `Весь перевод завершается за шесть шагов. Регистрация никогда не запрашивается на критическом пути. Каждый шаг — единственное, чёткое действие: никаких опциональных полей, никаких информационных баннеров, никаких предложений допродажи до того, как деньги отправлены.`,
-    'design.s1.st1': `Номер карты получателя`, 'design.s1.st2': `Номер карты отправителя`, 'design.s1.st3': `Сумма перевода`,
-    'design.s1.st4': `CVC/CVV`, 'design.s1.st5': `Подтверждение данных`, 'design.s1.st6': `СМС-верификация`,
-    'design.s1.note': `↳ У зарегистрированных пользователей есть бонус: приложение автозаполняет карту отправителя. Шагов становится 4.`,
 
-    'design.s2.title': `02 · QR-оплата — новая привычка, а не новая технология`,
-    'design.s2.tag': `Payvand Payments`,
-    'design.s2.body': `Первая иконка в ряду услуг. QR стоит выше пополнения мобильного и коммуналки, а не спрятан в меню — потому что выработка привычки требует показать её раньше, чем привычка возникнет.`,
-    'design.s2.h1': `Модель QR в Таджикистане`, 'design.s2.h2': `Избранное и шаблоны`,
-    'design.s2.l1': `У мерчанта есть статичный QR-код на прилавке`,
-    'design.s2.l2': `Покупатель открывает приложение → вкладку QR → сканирует`,
-    'design.s2.l3': `Покупатель сам вводит сумму`,
-    'design.s2.l4': `Подтверждает, готово — терминал не нужен`,
-    'design.s2.p': `Часто используемые платёжные счета можно закрепить как избранные на главном экране с опциональным автоплатежом — чтобы приложение запомнило еженедельные платежи пользователя вместо того, чтобы заставлять его каждый раз заново искать нужный раздел.`,
 
-    'design.s3.title': `03 · Режим «Друзья и семья» — слой удержания`,
-    'design.s3.tag': `Payvand Payments`,
-    'design.s3.body': `Эти функции делают уход из Payvand дорогим — не за счёт блокировки данных, а за счёт того, что финансовый социальный граф живёт в приложении. Чем больше людей, с которыми ты здесь делишь счета, тем больше причин остаться.`,
-    'design.s3.f1.title': `Счётчики долгов`, 'design.s3.f1.body': `Автоматическое отслеживание долгов между контактами для прозрачного управления задолженностями.`,
-    'design.s3.f2.title': `Групповые счета`, 'design.s3.f2.body': `Общие счета для групп — решает проблему совместного управления финансами.`,
-    'design.s3.f3.title': `Разделение платежа`, 'design.s3.f3.body': `Делит общую сумму на любое количество людей. Запросы уходят, деньги возвращаются.`,
-    'design.s3.f4.title': `Запросы оплаты`, 'design.s3.f4.body': `Отправить запрос на свою долю общего расхода. Без неловких напоминаний.`,
-    'design.s3.f5.title': `Целевые накопления`, 'design.s3.f5.body': `Создаёшь цель — приложение автоматически переводит фиксированную сумму каждый месяц, пока цель не достигнута.`,
-    'design.s3.f6.title': `Интеллектуальные советы`, 'design.s3.f6.body': `Анализ паттернов расходов с персональными рекомендациями для улучшения финансового здоровья.`,
-
-    'design.s4.title': `04 · Payvand UI — дизайн-система, благодаря которой два приложения ощущаются как один бренд`,
-    'design.s4.tag': `Дизайн-система`,
-    'design.s4.body': `Вместо того чтобы проектировать каждое приложение с нуля, я сначала создал общую библиотеку компонентов: варианты карточек (активная, скрытая, добавить-новую), иерархию кнопок, кастомный набор иконок для каждой категории платежей, цветовые токены и узнаваемый синий градиентный дизайн карточки, видимый в обоих приложениях.`,
-    'design.s4.card.label': `Payvand UI Library · Card design`,
-    'design.s4.card.cvv': `CVV ●●●`,
-    'design.s4.sys.title': `Компоненты системы`,
-    'design.s4.sys.l1': `<strong>Варианты карточек</strong>: активная (градиент), скрытая (маскированная), серая (плейсхолдер «добавить»)`,
-    'design.s4.sys.l2': `<strong>Иерархия кнопок</strong>: основная (заливка), вторичная (мягкая), ссылка — единообразно в обоих приложениях`,
-    'design.s4.sys.l3': `<strong>Кастомный набор иконок</strong>: для каждой категории платежей, типа услуги и элемента навигации`,
-    'design.s4.sys.l4': `<strong>3 языка</strong>: RU, EN, TJ — компоненты спроектированы с учётом гибкой длины текста с первого дня`,
-
-    'outcomes.label': `Что было сдано`,
-    'outcomes.title': `Полный UX/UI концепт обоих приложений, готовый к передаче в разработку.`,
-    'outcomes.lead': `Концепт определил полный UX — оба главных экрана, основные пользовательские флоу, набор функций «Друзья и семья» и библиотеку компонентов Payvand UI — готово к передаче в разработку.`,
-    'outcomes.o1.tag': `КОНКУРЕНТНАЯ ПОЗИЦИЯ`, 'outcomes.o1.body': `шагов для завершения перевода без необходимости аккаунта — соответствует или превосходит флоу Фаври, контролировавшей 49% рынка переводов.`,
-    'outcomes.o2.tag': `ОХВАТ`, 'outcomes.o2.body': `полностью спроектированных приложения — Payvand Transfer и Payvand Payments — плюс система Payvand UI, связывающая их визуально.`,
+    'outcomes.label': `Что вышло`,
+    'outcomes.title': `Оба приложения сегодня лежат в сторах.`,
+    'outcomes.lead': `Дизайн покрыл оба главных экрана, основные флоу и общую библиотеку компонентов. Сегодня в Payvand Wallet больше 250 услуг, QR-оплата с кэшбэком и три языка; Payvand Transfers обслуживает Россию → Таджикистан и остальной СНГ.`,
+    'outcomes.o1.tag': `КОНКУРЕНТНАЯ ПОЗИЦИЯ`, 'outcomes.o1.body': `шагов на перевод, без аккаунта — вровень со стандартом, который уже задал Favri Intiqol; этого и требовала задача.`,
+    'outcomes.o2.tag': `ОХВАТ`, 'outcomes.o2.body': `приложения спроектированы и вышли — Payvand Wallet в App Store и Google Play, рядом Payvand Transfers — плюс система Payvand UI, которая их связывает.`,
     'outcomes.o3.tag': `ИНФРАСТРУКТУРА`, 'outcomes.o3.body': `языка поддерживаются с самого начала (RU, EN, TJ), компоненты протестированы на переменную длину текста во всех трёх.`,
     'outcomes.strat.title': `Стратегическое обоснование`,
-    'outcomes.strat.body': `Решение о двух приложениях было центральным аргументом дизайна. Экономика переводов Таджикистана была огромной и недообслуживаемой приложениями, ставившими функциональность выше простоты. <strong>Разделение продукта дало Payvand реальный путь на оба рынка</strong> — внутренний банкинг через знакомость с Алиф mobi, и переводы через опыт, соответствующий стандарту без трений, который установила Фаври.`,
+    'outcomes.strat.body': `Решение о двух приложениях было центральным аргументом дизайна. Экономика переводов Таджикистана была огромной и недообслуживаемой приложениями, ставившими функциональность выше простоты. <strong>Оба приложения вышли</strong> — внутренний банкинг через знакомость с Алиф mobi, и переводы через опыт, собранный под тот же стандарт без трений, который задал Favri Intiqol.`,
 
     'lessons.label': `Выводы`,
     'lessons.title': `Что я забираю в следующий проект.`,
     'lessons.worked.title': `Что сработало`,
-    'lessons.w1': `<strong>Данные рынка как основа продуктовой стратегии.</strong> Кейс для двух отдельных приложений целиком основывался на данных переводов — без цифр по переводам аргумент в пользу отдельного упрощённого приложения выглядел бы произвольным.`,
-    'lessons.w2': `<strong>Создать UI-систему до второго приложения.</strong> Построение Payvand UI после Payments и до Transfer сделало проектирование второго приложения быстрее, без визуальных несоответствий.`,
-    'lessons.w3': `<strong>Относиться к сильной стороне конкурента как к дизайн-требованию, а не угрозе.</strong> Фаври победила простотой. Ответом было не соревноваться в функциях, а соответствовать той же простоте в том контексте, где она имела наибольшее значение.`,
+    'lessons.w1': `<strong>Отделять то, что могу доказать, от того, что мне рассказали.</strong> Самой крепкой версией аргумента про два приложения оказалась та, которой вообще не нужны закрытые цифры: конкурент уже выпустил второе, более пустое приложение. Когда рынок ничего не публикует, ищи решения, которые конкуренты приняли публично, — их можно показать и через год.`,
+    'lessons.w2': `<strong>Собирать библиотеку до второго приложения.</strong> Компоненты вышли из первого приложения и легли во второе, поэтому Transfer рисовался быстрее, и потом нечего было приводить в соответствие.`,
+    'lessons.w3': `<strong>Относиться к сильной стороне конкурента как к дизайн-требованию, а не угрозе.</strong> Favri Intiqol победил простотой. Ответом было не соревноваться в функциях, а соответствовать той же простоте в том контексте, где она имела наибольшее значение.`,
     'lessons.diff.title': `Что бы сделал иначе`,
-    'lessons.d1': `<strong>Тестировать 6-шаговый флоу с реальными трудовыми мигрантами раньше.</strong> Флоу проектировался по конкурентному анализу, но тестирование с конкретной аудиторией — нетехнологичными работниками — выявило бы юзабилити-пробелы, которые близкие к дизайну участники не заметят.`,
+    'lessons.d1': `<strong>Тестировать флоу с реальными трудовыми мигрантами раньше.</strong> Флоу проектировался по конкурентному анализу, но тестирование с конкретной аудиторией — нетехнологичными работниками — выявило бы юзабилити-пробелы, которые близкие к дизайну участники не заметят.`,
     'lessons.d2': `<strong>Определить UX онбординга мерчантов для QR раньше.</strong> Сторона потребителя чистая. Онбординг мерчантов — как небольшой продавец в Душанбе получает свой статичный QR-код — остался на потом, хотя мог бы повлиять на пользовательский флоу, если бы проектировался параллельно.`,
-    'lessons.d3': `<strong>Проектировать пустой стейт «Друзей и семьи» с первого дня.</strong> Новое приложение Payvand не имеет друзей, групп, долгов — это самый распространённый стейт первой сессии, и он заслуживал столько же внимания в дизайне, сколько полный стейт.`,
 
-    'cta.title': `Хотите изучить полный дизайн?`,
-    'cta.body': `В файле Figma — флоу обоих приложений, библиотека компонентов Payvand UI, система дизайна карточек и полный набор экранов для Payments и Transfer.`,
-    'cta.figma': `→ Смотреть в Figma`,
+    'cta.ios': `→ Payvand Wallet · App Store`,
+    'cta.android': `→ Payvand Wallet · Google Play`,
+    'cta.transfer': `→ Payvand Transfers · Google Play`,
+    'cta.title': `Лучше потрогать, чем читать?`,
+    'cta.body': `Оба приложения лежат в сторах. Поставьте, отправьте что-нибудь и оцените флоу собственными пальцами — это честнее любого скриншота в кейсе.`,
     'footer.role': `Продакт-дизайнер`,
-    'footer.disclaimer': `Кейс · Payvand App · 2022. UX/UI концепт двух мобильных приложений — Payvand Payments (внутренние) и Payvand Transfer (переводы) — построенных на единой дизайн-системе Payvand UI.`,
+    'footer.disclaimer': `Кейс · Payvand App · 2022. UX/UI двух мобильных приложений — Payvand Wallet (внутренние платежи) и Payvand Transfers (переводы) — на общей библиотеке компонентов. Оба вышли в продакшен.`,
   }
 };
 
