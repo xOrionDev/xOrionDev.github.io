@@ -157,11 +157,11 @@ section.bg-dark .cbefore p, section.bg-dark .cafter p { color: var(--text-second
 .badge.pay { background: var(--pay-soft); color: #1d4ed8; }
 .badge.transfer { background: var(--transfer-soft); color: #9a4004; }
 
-.step-flow { display: flex; gap: 0; margin: 32px 0; flex-wrap: wrap; }
-.step-item { flex: 1; min-width: 100px; display: flex; flex-direction: column; align-items: center; position: relative; }
+.step-flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin: 32px 0; }
+.step-item { display: flex; flex-direction: column; align-items: center; position: relative; }
 .step-item:not(:last-child)::after { content: '→'; position: absolute; right: -10px; top: 16px; font-size: 14px; color: var(--text-muted); }
 .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--pay); color: white; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-.step-text { font-size: 11.5px; text-align: center; color: var(--text-secondary); font-weight: 500; line-height: 1.3; }
+.step-text { font-size: 11px; hyphens: auto; text-align: center; color: var(--text-secondary); font-weight: 500; line-height: 1.3; }
 
 .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--border); margin: 24px 0; }
 .compare .cbefore { background: #fff8f3; padding: 32px; }
@@ -211,7 +211,7 @@ footer .links a:hover { color: white; }
   .phone-vs { display: none; }
   section { padding: 64px 0; }
   .lang-fixed { top: 16px; right: 16px; }
-  .step-flow { gap: 12px; }
+  .step-flow { grid-template-columns: repeat(3, 1fr); row-gap: 24px; column-gap: 8px; }
   .step-item::after { display: none; }
 }
 
@@ -428,7 +428,7 @@ footer .links a:hover { color: white; }
 
     <h3 style="color:white; margin-top:80px;" data-i18n="define.goals.title">Design goals</h3>
     <div class="grid-3" style="margin-top:24px;">
-      <div class="card dark"><h4 data-i18n="define.g1.title">6 steps, no account</h4><p data-i18n-html="define.g1.body">Payvand Transfer: direction → recipient and amount → confirm → card → SMS → done. <strong>Never ask for registration</strong> on the critical path.</p></div>
+      <div class="card dark"><h4 data-i18n="define.g1.title">6 steps, no account</h4><p data-i18n-html="define.g1.body">Payvand Transfer: direction → recipient and amount → card → confirm → SMS → done. <strong>Never ask for registration</strong> on the critical path.</p></div>
       <div class="card dark"><h4 data-i18n="define.g2.title">QR as the cashless habit</h4><p data-i18n-html="define.g2.body">Establish QR payment as Tajikistan's primary cashless method — <strong>build the habit</strong> before the infrastructure catches up.</p></div>
       <div class="card dark"><h4 data-i18n="define.g3.title">One UI library, two apps</h4><p data-i18n-html="define.g3.body">Payvand UI — cards, buttons, icons, type — applied consistently so both apps <strong>feel like Payvand</strong>, even though they serve different users.</p></div>
     </div>
@@ -448,7 +448,7 @@ footer .links a:hover { color: white; }
         <div class="step-circle">1</div>
         <div>
           <h4 data-i18n="process.s1.title">Six steps, no account — and registration as a feature, not a gate</h4>
-          <p data-i18n-html="process.s1.body">Payvand Transfer&rsquo;s flow was designed to be completable without ever creating an account. Direction → recipient and amount → confirm → the card being charged → SMS code → delivered. Six steps, then done. <strong>Registration unlocks history and repeat-transfer features</strong> — a positive pull, not a mandatory barrier. This was the direct design response to why Favri was winning.</p>
+          <p data-i18n-html="process.s1.body">Payvand Transfer&rsquo;s flow was designed to be completable without ever creating an account. Direction → recipient and amount → the card being charged → confirm → SMS code → delivered. Six steps, then done. <strong>Registration unlocks history and repeat-transfer features</strong> — a positive pull, not a mandatory barrier. This was the direct design response to why Favri was winning.</p>
         </div>
       </div>
 
@@ -484,21 +484,21 @@ footer .links a:hover { color: white; }
         <h3 style="margin:0;" data-i18n="design.s1.title">01 · Six steps — parity, not victory</h3>
         <span class="badge transfer" data-i18n="design.s1.tag">Payvand Transfer</span>
       </div>
-      <p style="max-width:820px;" data-i18n-html="design.s1.body">Corridor, recipient and amount, confirmation, the card being charged, the SMS code, done. <strong>Six steps, and registration is never asked for on the critical path.</strong> To be straight about it: this does not beat Favri Intiqol — it draws level with it. That was the point. On a flow this short there is nothing to win on cleverness; you either clear the same bar or you lose the person at step three. Being worse was the only outcome we could not afford.</p>
-      <div class="steps-flow">
+      <p style="max-width:820px;" data-i18n-html="design.s1.body">Corridor, recipient and amount, the card being charged, confirmation, the SMS code, done. <strong>Six steps, and registration is never asked for on the critical path.</strong> To be straight about it: this does not beat Favri Intiqol — it draws level with it. That was the point. On a flow this short there is nothing to win on cleverness; you either clear the same bar or you lose the person at step three. Being worse was the only outcome we could not afford.</p>
+      <div class="step-flow">
         <div class="step-item"><div class="step-num">1</div><div class="step-text" data-i18n="design.s1.st1">Direction</div></div>
         <div class="step-item"><div class="step-num">2</div><div class="step-text" data-i18n="design.s1.st2">Recipient and amount</div></div>
-        <div class="step-item"><div class="step-num">3</div><div class="step-text" data-i18n="design.s1.st3">Confirm the details</div></div>
-        <div class="step-item"><div class="step-num">6</div><div class="step-text" data-i18n="design.s1.st4">The card being charged</div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-text" data-i18n="design.s1.st3">The card being charged</div></div>
+        <div class="step-item"><div class="step-num">6</div><div class="step-text" data-i18n="design.s1.st4">Confirm the details</div></div>
         <div class="step-item"><div class="step-num">5</div><div class="step-text" data-i18n="design.s1.st5">SMS code</div></div>
         <div class="step-item"><div class="step-num">6</div><div class="step-text" data-i18n="design.s1.st6">Delivered</div></div>
       </div>
       <p style="font-size:14px; color:var(--text-muted); margin-top:8px;" data-i18n="design.s1.note">↳ The recipient field validates as you type — «Клиент найден!» appears before you commit to anything, so a wrong digit costs a second, not a transfer.</p>
       <div class="shots">
-        <figure class="shot missing" data-label="TRANSFER · Выбор направления · node 26:8729"><img src="../img/tr-directions.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot1">Choosing a corridor: Russia → Tajikistan by phone number or to a Korti Milli card, Russia → Uzbekistan, and back into Russia.</figcaption></figure>
-        <figure class="shot missing" data-label="TRANSFER · Получатель и сумма · node 26:13643"><img src="../img/tr-recipient.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot2">Recipient and amount on one screen, with the fee and the live rate printed underneath.</figcaption></figure>
-        <figure class="shot missing" data-label="TRANSFER · Подтвердите платёж · node 26:13732"><img src="../img/tr-confirm.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot3">Confirmation is a sheet over the form, not a new page — recipient, amount, fee, date, time.</figcaption></figure>
-        <figure class="shot missing" data-label="TRANSFER · Данные карты списания · node 26:18406"><img src="../img/tr-card.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot4">The card being charged: number, cardholder, CVC and expiry on one screen rather than four.</figcaption></figure>
+        <figure class="shot" data-label="TRANSFER · 1 · Выбор коридора"><img src="../img/tr-home.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot1">Choosing a corridor: Russia → Tajikistan by phone number or to a Korti Milli card, Russia → Uzbekistan, and back into Russia.</figcaption></figure>
+        <figure class="shot" data-label="TRANSFER · 2 · Получатель и сумма"><img src="../img/tr-recipient.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot2">Recipient and amount on one screen. A tick appears on the card field the moment it validates, and the fee and live rate sit under the amount before you type it.</figcaption></figure>
+        <figure class="shot" data-label="TRANSFER · 3 · Карта списания"><img src="../img/tr-card.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot3">The card being charged: number, cardholder in Latin, CVC and expiry — one screen instead of four.</figcaption></figure>
+        <figure class="shot" data-label="TRANSFER · 4 · Подтверждение"><img src="../img/tr-confirm.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot4">Confirmation is a sheet over the form: recipient, amount charged, fee, amount credited, date, time. Both currencies, side by side.</figcaption></figure>
       </div>
     </div>
 
@@ -509,10 +509,6 @@ footer .links a:hover { color: white; }
         <span class="badge transfer" data-i18n="design.s2.tag">Payvand Transfer</span>
       </div>
       <p style="max-width:820px;" data-i18n-html="design.s2.body">Under the amount field sits one line: <strong>«Комиссия до 99999 — 1,5%. Текущий курс 1 000 руб = 167,00 сомони»</strong>. It is there before the first keystroke. A person sending money home is doing arithmetic — how much leaves, how much lands — and every app that hides the rate until the last screen makes them do that arithmetic twice. The catalogue of corridors does the same thing one level up: «Без комиссии» next to Payvand-to-Payvand, «Комиссия 1%» next to the paid ones. Price is a navigation label here, not fine print.</p>
-      <div class="shots">
-        <figure class="shot missing" data-label="TRANSFER · Каталог переводов с ценами · node 26:15558"><img src="../img/tr-catalogue.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot1">The transfer catalogue: each corridor carries its price in the list, before you open it.</figcaption></figure>
-        <figure class="shot missing" data-label="TRANSFER · Чек: списание и зачисление · node 26:18501"><img src="../img/tr-receipt.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot2">The receipt splits «сумма списания» from «сумма зачисления» — the two numbers a sender actually cares about.</figcaption></figure>
-      </div>
     </div>
 
     <!-- 03 -->
@@ -523,8 +519,8 @@ footer .links a:hover { color: white; }
       </div>
       <p style="max-width:820px;" data-i18n-html="design.s3.body">The app opens on a guest home screen: four corridors, ready to use. The invitation to register sits <strong>underneath</strong> them — «Зарегистрируйтесь для полного доступа ко всем функциям» — where it reads as an offer rather than a toll. Someone who signs up gets a saved profile, history and a 4-digit access code; someone who does not still gets their money home tonight. This is the one place where we could have copied the competitor and instead went one step further: Favri Intiqol removed the account from the flow, and we made removing it visible on the first screen.</p>
       <div class="shots">
-        <figure class="shot missing" data-label="TRANSFER · Гостевая главная · node 26:13852"><img src="../img/tr-guest.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot1">The guest home: corridors first, the registration offer after them.</figcaption></figure>
-        <figure class="shot missing" data-label="TRANSFER · Регистрация и код доступа · node 26:8351 / 26:8595"><img src="../img/tr-signup.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot2">Sign-up, then a 4-digit access code you choose yourself and repeat once.</figcaption></figure>
+        <figure class="shot" data-label="TRANSFER · Вход по номеру телефона"><img src="../img/tr-signup.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot1">One field on the whole screen, and the terms checkbox next to the button rather than buried under it.</figcaption></figure>
+        <figure class="shot" data-label="TRANSFER · Код доступа"><img src="../img/tr-code.png" alt="" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot2">A 4-digit code you set yourself, so the second session is one gesture instead of another SMS.</figcaption></figure>
       </div>
     </div>
 
@@ -746,7 +742,7 @@ const I18N = {
     'define.c2.li1': `Full account features`, 'define.c2.li2': `QR, utilities, transfers, cards`,
     'define.c2.li3': `Favorites & templates`, 'define.c2.li4': `Favorites and saved recipients`,
     'define.goals.title': `Design goals`,
-    'define.g1.title': `6 steps, no account`, 'define.g1.body': `Payvand Transfer: direction → recipient and amount → confirm → card → SMS → done. <strong>Never ask for registration</strong> on the critical path.`,
+    'define.g1.title': `6 steps, no account`, 'define.g1.body': `Payvand Transfer: direction → recipient and amount → card → confirm → SMS → done. <strong>Never ask for registration</strong> on the critical path.`,
     'define.g2.title': `QR as the cashless habit`, 'define.g2.body': `Establish QR payment as Tajikistan's primary cashless method — <strong>build the habit</strong> before the infrastructure catches up.`,
     'define.g3.title': `One UI library, two apps`, 'define.g3.body': `Payvand UI — cards, buttons, icons, type — applied consistently so both apps <strong>feel like Payvand</strong>, even though they serve different users.`,
 
@@ -754,35 +750,33 @@ const I18N = {
     'process.title': `The four decisions that shaped both products.`,
     'process.lead': `Each of these was a direct response to something specific in the research — not a "best practice" applied generically, but a direct answer to a real user problem that the data had named.`,
     'process.s1.title': `Six steps, no account — and registration as a feature, not a gate`,
-    'process.s1.body': `Payvand Transfer&rsquo;s flow was designed to be completable without ever creating an account. Direction → recipient and amount → confirm → the card being charged → SMS code → delivered. Six steps, then done. <strong>Registration unlocks history and repeat-transfer features</strong> — a positive pull, not a mandatory barrier. This was the direct design response to why Favri was winning.`,
+    'process.s1.body': `Payvand Transfer&rsquo;s flow was designed to be completable without ever creating an account. Direction → recipient and amount → the card being charged → confirm → SMS code → delivered. Six steps, then done. <strong>Registration unlocks history and repeat-transfer features</strong> — a positive pull, not a mandatory barrier. This was the direct design response to why Favri was winning.`,
     'process.s2.title': `QR as the primary payment method — designing around the infrastructure gap`,
     'process.s2.body': `Rather than waiting for NFC terminals to proliferate, I designed QR payment as the first and most prominent service in Payvand Payments. In Tajikistan's existing merchant landscape, static QR codes per merchant were already the norm — customers enter the amount themselves. The design worked with that behavior rather than against it, and added <strong>favorites for the merchants people return to every week.</strong>`,
     'process.s4.title': `A shared component library, because there was nothing to inherit`,
     'process.s4.body': `Cards, typography, icon set, color tokens, button hierarchy — all built once and applied to both apps. A user who installs both apps recognizes the family instantly. <strong>The design system also solved the handoff problem</strong>: developers got one source of truth for both products, reducing inconsistency in implementation.`,
 
     'design.s1.title': `01 · Six steps — parity, not victory`,
-    'design.s1.body': `Corridor, recipient and amount, confirmation, the card being charged, the SMS code, done. <strong>Six steps, and registration is never asked for on the critical path.</strong> To be straight about it: this does not beat Favri Intiqol — it draws level with it. That was the point. On a flow this short there is nothing to win on cleverness; you either clear the same bar or you lose the person at step three. Being worse was the only outcome we could not afford.`,
+    'design.s1.body': `Corridor, recipient and amount, the card being charged, confirmation, the SMS code, done. <strong>Six steps, and registration is never asked for on the critical path.</strong> To be straight about it: this does not beat Favri Intiqol — it draws level with it. That was the point. On a flow this short there is nothing to win on cleverness; you either clear the same bar or you lose the person at step three. Being worse was the only outcome we could not afford.`,
     'design.s1.st1': `Direction`,
     'design.s1.st2': `Recipient and amount`,
-    'design.s1.st3': `Confirm the details`,
-    'design.s1.st4': `The card being charged`,
+    'design.s1.st3': `The card being charged`,
+    'design.s1.st4': `Confirm the details`,
     'design.s1.st5': `SMS code`,
     'design.s1.st6': `Delivered`,
     'design.s1.note': `↳ The recipient field validates as you type — «Клиент найден!» appears before you commit to anything, so a wrong digit costs a second, not a transfer.`,
     'design.s1.shot1': `Choosing a corridor: Russia → Tajikistan by phone number or to a Korti Milli card, Russia → Uzbekistan, and back into Russia.`,
-    'design.s1.shot2': `Recipient and amount on one screen, with the fee and the live rate printed underneath.`,
-    'design.s1.shot3': `Confirmation is a sheet over the form, not a new page — recipient, amount, fee, date, time.`,
-    'design.s1.shot4': `The card being charged: number, cardholder, CVC and expiry on one screen rather than four.`,
+    'design.s1.shot2': `Recipient and amount on one screen. A tick appears on the card field the moment it validates, and the fee and live rate sit under the amount before you type it.`,
+    'design.s1.shot3': `The card being charged: number, cardholder in Latin, CVC and expiry — one screen instead of four.`,
+    'design.s1.shot4': `Confirmation is a sheet over the form: recipient, amount charged, fee, amount credited, date, time. Both currencies, side by side.`,
     'design.s2.title': `02 · The rate is on the screen before you type the amount`,
     'design.s2.tag': `Payvand Transfer`,
     'design.s2.body': `Under the amount field sits one line: <strong>«Комиссия до 99999 — 1,5%. Текущий курс 1 000 руб = 167,00 сомони»</strong>. It is there before the first keystroke. A person sending money home is doing arithmetic — how much leaves, how much lands — and every app that hides the rate until the last screen makes them do that arithmetic twice. The catalogue of corridors does the same thing one level up: «Без комиссии» next to Payvand-to-Payvand, «Комиссия 1%» next to the paid ones. Price is a navigation label here, not fine print.`,
-    'design.s2.shot1': `The transfer catalogue: each corridor carries its price in the list, before you open it.`,
-    'design.s2.shot2': `The receipt splits «сумма списания» from «сумма зачисления» — the two numbers a sender actually cares about.`,
     'design.s3.title': `03 · Registration is a door further in, not a gate at the entrance`,
     'design.s3.tag': `Payvand Transfer`,
     'design.s3.body': `The app opens on a guest home screen: four corridors, ready to use. The invitation to register sits <strong>underneath</strong> them — «Зарегистрируйтесь для полного доступа ко всем функциям» — where it reads as an offer rather than a toll. Someone who signs up gets a saved profile, history and a 4-digit access code; someone who does not still gets their money home tonight. This is the one place where we could have copied the competitor and instead went one step further: Favri Intiqol removed the account from the flow, and we made removing it visible on the first screen.`,
-    'design.s3.shot1': `The guest home: corridors first, the registration offer after them.`,
-    'design.s3.shot2': `Sign-up, then a 4-digit access code you choose yourself and repeat once.`,
+    'design.s3.shot1': `One field on the whole screen, and the terms checkbox next to the button rather than buried under it.`,
+    'design.s3.shot2': `A 4-digit code you set yourself, so the second session is one gesture instead of another SMS.`,
     'design.s4.title': `04 · QR is the first icon, not a menu item`,
     'design.s4.tag': `Payvand Wallet`,
     'design.s4.body': `NFC acceptance in Tajikistan was barely deployed, but merchants already had static QR codes taped to the counter. So QR went first in the services row on the home screen — ahead of mobile top-up, utilities and everything else — because a habit that does not exist yet has to be visible before it can form. The model works with what was already there: the merchant has a fixed code, the customer enters the amount themselves, confirms, done. No terminal required on either side.`,
@@ -906,7 +900,7 @@ const I18N = {
     'define.c2.li1': `Полноценный аккаунт`, 'define.c2.li2': `QR, коммуналка, переводы, карты`,
     'define.c2.li3': `Избранное и шаблоны`, 'define.c2.li4': `Избранное и сохранённые получатели`,
     'define.goals.title': `Дизайн-цели`,
-    'define.g1.title': `6 шагов без аккаунта`, 'define.g1.body': `Payvand Transfer: направление → получатель и сумма → подтверждение → карта → СМС → готово. <strong>Никогда не спрашивать регистрацию</strong> на критическом пути.`,
+    'define.g1.title': `6 шагов без аккаунта`, 'define.g1.body': `Payvand Transfer: направление → получатель и сумма → карта → подтверждение → СМС → готово. <strong>Никогда не спрашивать регистрацию</strong> на критическом пути.`,
     'define.g2.title': `QR как привычка к безналу`, 'define.g2.body': `Утвердить QR-оплату как основной безналичный метод Таджикистана — <strong>формировать привычку</strong> до того, как инфраструктура догонит.`,
     'define.g3.title': `Одна UI-библиотека, два приложения`, 'define.g3.body': `Payvand UI — карточки, кнопки, иконки, шрифт — применяется единообразно, чтобы оба приложения <strong>ощущались как Payvand</strong>, хотя и служат разным пользователям.`,
 
@@ -914,35 +908,33 @@ const I18N = {
     'process.title': `Четыре решения, определившие оба продукта.`,
     'process.lead': `Каждое из них — прямой ответ на конкретную находку из исследования, а не обобщённая «лучшая практика», а прямой ответ на реальную проблему пользователя, которую назвали данные.`,
     'process.s1.title': `Шесть шагов без аккаунта — и регистрация как функция, а не барьер`,
-    'process.s1.body': `Флоу перевода в Payvand Transfer сделан так, чтобы его можно было пройти, вообще не заводя аккаунт. Направление → получатель и сумма → подтверждение → карта списания → СМС-код → доставлен. Шесть шагов — и готово. <strong>Регистрация открывает историю и функцию повтора перевода</strong> — позитивное притяжение, а не обязательный барьер. Это прямой дизайн-ответ на то, почему побеждала Фаври.`,
+    'process.s1.body': `Флоу перевода в Payvand Transfer сделан так, чтобы его можно было пройти, вообще не заводя аккаунт. Направление → получатель и сумма → карта списания → подтверждение → СМС-код → доставлен. Шесть шагов — и готово. <strong>Регистрация открывает историю и функцию повтора перевода</strong> — позитивное притяжение, а не обязательный барьер. Это прямой дизайн-ответ на то, почему побеждала Фаври.`,
     'process.s2.title': `QR как основной метод оплаты — дизайн вокруг инфраструктурного пробела`,
     'process.s2.body': `Вместо того чтобы ждать распространения NFC-терминалов, я разместил QR-оплату первой и самой заметной услугой в Payvand Payments. В существующей среде мерчантов Таджикистана статичные QR-коды для каждого уже были нормой — покупатели сами вводят сумму. Дизайн работал с этим поведением, а не против него, и добавил <strong>избранное для мерчантов, к которым люди возвращаются каждую неделю.</strong>`,
     'process.s4.title': `Общая библиотека компонентов, потому что наследовать было нечего`,
     'process.s4.body': `Карточки, типографика, набор иконок, цветовые токены, иерархия кнопок — всё создано один раз и применено к обоим приложениям. Пользователь, установивший оба, мгновенно узнаёт семью. <strong>Дизайн-система также решила проблему передачи разработчикам</strong>: они получили единый источник правды для обоих продуктов, снизив непоследовательность в реализации.`,
 
     'design.s1.title': `01 · Шесть шагов — паритет, а не победа`,
-    'design.s1.body': `Коридор, получатель и сумма, подтверждение, карта списания, СМС-код, готово. <strong>Шесть шагов, и регистрация на критическом пути не запрашивается ни разу.</strong> Скажу прямо: это не переигрывает Favri Intiqol, это с ним вровень. В том и была задача. На таком коротком флоу выигрывать нечем — ты либо берёшь ту же планку, либо теряешь человека на третьем шаге. Единственное, чего нельзя было допустить, — оказаться хуже.`,
+    'design.s1.body': `Коридор, получатель и сумма, карта списания, подтверждение, СМС-код, готово. <strong>Шесть шагов, и регистрация на критическом пути не запрашивается ни разу.</strong> Скажу прямо: это не переигрывает Favri Intiqol, это с ним вровень. В том и была задача. На таком коротком флоу выигрывать нечем — ты либо берёшь ту же планку, либо теряешь человека на третьем шаге. Единственное, чего нельзя было допустить, — оказаться хуже.`,
     'design.s1.st1': `Направление`,
     'design.s1.st2': `Получатель и сумма`,
-    'design.s1.st3': `Подтверждение`,
-    'design.s1.st4': `Карта списания`,
+    'design.s1.st3': `Карта списания`,
+    'design.s1.st4': `Подтверждение`,
     'design.s1.st5': `СМС-код`,
     'design.s1.st6': `Доставлен`,
     'design.s1.note': `↳ Поле получателя проверяется на лету — «Клиент найден!» появляется до того, как ты на что-то согласился, поэтому неверная цифра стоит секунды, а не перевода.`,
     'design.s1.shot1': `Выбор коридора: Россия → Таджикистан по номеру телефона или на «Корти Милли», Россия → Узбекистан, и обратно в Россию.`,
-    'design.s1.shot2': `Получатель и сумма на одном экране, под ними — комиссия и текущий курс.`,
-    'design.s1.shot3': `Подтверждение — шторка поверх формы, а не новая страница: получатель, сумма, комиссия, дата, время.`,
-    'design.s1.shot4': `Карта списания: номер, владелец, CVC и срок на одном экране, а не на четырёх.`,
+    'design.s1.shot2': `Получатель и сумма на одном экране. На поле карты появляется галочка в момент валидации, а комиссия и текущий курс стоят под суммой ещё до того, как её ввели.`,
+    'design.s1.shot3': `Карта списания: номер, владелец латиницей, CVC и срок — один экран вместо четырёх.`,
+    'design.s1.shot4': `Подтверждение — шторка поверх формы: получатель, сумма списания, комиссия, сумма зачисления, дата, время. Обе валюты рядом.`,
     'design.s2.title': `02 · Курс стоит на экране раньше, чем ты ввёл сумму`,
     'design.s2.tag': `Payvand Transfer`,
     'design.s2.body': `Под полем суммы стоит одна строка: <strong>«Комиссия до 99999 — 1,5%. Текущий курс 1 000 руб = 167,00 сомони»</strong>. Она там до первого нажатия. Человек, отправляющий деньги домой, считает — сколько ушло, сколько дошло, — и любое приложение, которое прячет курс до последнего экрана, заставляет его считать дважды. Каталог направлений делает то же уровнем выше: «Без комиссии» рядом с переводом на Payvand, «Комиссия 1%» рядом с платными. Цена здесь — подпись в навигации, а не мелкий шрифт.`,
-    'design.s2.shot1': `Каталог переводов: у каждого коридора цена стоит прямо в списке, до того как его открыли.`,
-    'design.s2.shot2': `Чек разделяет «сумму списания» и «сумму зачисления» — два числа, которые отправителя и волнуют.`,
     'design.s3.title': `03 · Регистрация — дверь дальше, а не турникет на входе`,
     'design.s3.tag': `Payvand Transfer`,
     'design.s3.body': `Приложение открывается гостевой главной: четыре коридора, работают сразу. Приглашение зарегистрироваться стоит <strong>под ними</strong> — «Зарегистрируйтесь для полного доступа ко всем функциям», — и читается как предложение, а не как плата за вход. Кто зарегистрировался, получает сохранённый профиль, историю и четырёхзначный код доступа; кто нет — всё равно доводит деньги до дома сегодня вечером. Это единственное место, где можно было просто скопировать конкурента, а мы пошли на шаг дальше: Favri Intiqol убрал аккаунт из флоу, а мы сделали это отсутствие видимым на первом же экране.`,
-    'design.s3.shot1': `Гостевая главная: сначала коридоры, предложение регистрации — после них.`,
-    'design.s3.shot2': `Регистрация, затем четырёхзначный код доступа, который придумываешь сам и повторяешь один раз.`,
+    'design.s3.shot1': `Одно поле на весь экран, и чекбокс условий рядом с кнопкой, а не спрятан под ней.`,
+    'design.s3.shot2': `Четырёхзначный код, который задаёшь сам, — чтобы второй вход был одним жестом, а не ещё одной СМС.`,
     'design.s4.title': `04 · QR — первая иконка, а не пункт меню`,
     'design.s4.tag': `Payvand Wallet`,
     'design.s4.body': `Приём по NFC в Таджикистане был почти не развёрнут, зато у мерчантов уже висели статичные QR-коды на прилавке. Поэтому QR встал первым в ряду услуг на главной — раньше пополнения связи, коммуналки и всего остального, — потому что привычку, которой ещё нет, надо сначала показать. Модель работает с тем, что уже было: у мерчанта фиксированный код, покупатель сам вводит сумму, подтверждает, готово. Терминал не нужен ни одной стороне.`,
