@@ -652,13 +652,13 @@ footer .links a:hover { color: white; }
       </div>
       <div class="stat-card">
         <div class="icon" style="background:rgba(121,119,223,0.15); color: var(--ch-email)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div>
-        <div class="big">17</div>
+        <div class="big">23</div>
         <div class="label" data-i18n="overview.stat.admin">admin sections</div>
       </div>
       <div class="stat-card">
         <div class="icon" style="background:rgba(65,168,201,0.15); color: var(--ch-telegram)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="big">~110</div>
-        <div class="label" data-i18n="overview.stat.frames">Figma frames shipped</div>
+        <div class="big">~170</div>
+        <div class="label" data-i18n="overview.stat.frames">Figma frames in the admin file</div>
       </div>
       <div class="stat-card">
         <div class="icon" style="background:rgba(255,158,0,0.15); color: var(--warning)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
@@ -818,7 +818,7 @@ footer .links a:hover { color: white; }
         <div class="step-num">3</div>
         <div>
           <h4 data-i18n="process.s3.title">Two interfaces, one model: Admin vs Partner</h4>
-          <p data-i18n-html="process.s3.body">Through interviews it became obvious that <strong>internal admins and customer marketers don't share a problem</strong>. Admins moderate, configure shared infrastructure (gateways, anti-pumping rules), and resolve incidents. Marketers create audiences and campaigns. I designed two completely separate IAs on top of the same data model — Admin (17 sections, dense, table-heavy) and Partner cabinet (11 sections, task-flow oriented, whitelabel-ready as "alif business").</p>
+          <p data-i18n-html="process.s3.body">Through interviews it became obvious that <strong>internal admins and customer marketers don't share a problem</strong>. Admins moderate, configure shared infrastructure (gateways, anti-pumping rules), and resolve incidents. Marketers create audiences and campaigns. I designed two completely separate IAs on top of the same data model — Admin (23 sections, dense, table-heavy) and the the client cabinet (11 sections, task-flow first, and deliberately lighter).</p>
         </div>
       </div>
 
@@ -949,21 +949,21 @@ footer .links a:hover { color: white; }
 
     <div style="margin-top: 100px;">
       <div style="display:flex; align-items:baseline; gap:16px; margin-bottom:8px;">
-        <h3 style="margin:0;" data-i18n="design.s4.title">04 · Partner cabinet — same engine, different brand</h3>
-        <span class="badge info" data-i18n="design.s4.tag">Partner view</span>
+        <h3 style="margin:0;" data-i18n="design.s4.title">04 · Client cabinet — same engine, a different set of permissions</h3>
+        <span class="badge info" data-i18n="design.s4.tag">Client view</span>
       </div>
-      <p style="max-width:820px;" data-i18n-html="design.s4.body">When a customer logs in, they don't see "smsgate.tj" — they see <strong>alif business</strong> (or their own brand, eventually). The Partner cabinet is 11 sections: Dashboard, Channels, Contact Groups, Audiences, Templates, Broadcasts, Quick Send, Journal, Reports, Profile, API & Docs. Sidebar groups are collapsible. The user avatar sits at the bottom — they live there, they shouldn't have to keep reaching for the top-right.</p>
+      <p style="max-width:820px;" data-i18n-html="design.s4.body">When a customer logs in they see 11 sections: Dashboard, Channels, Contact Groups, Audiences, Templates, Broadcasts, Quick Send, Journal, Reports, Profile, API &amp; Docs. What makes it a different product from the admin is what it <strong>withholds</strong>: the customer sees their gateways but cannot connect one, and the screen says so in plain words instead of hiding a disabled button. In exchange they get everything the admin has no business owning — their own balance with «enough for ~14 days», a spend forecast, contact import by file, an audience builder with AND filters and exclusions, and an API section with cURL examples so their developer never has to file a ticket.</p>
 
       <div class="compare">
         <div class="before">
-          <div class="label" data-i18n="design.s4.before.tag">Before · admin only</div>
-          <h4 style="margin:0 0 8px;">"smsgate.tj"</h4>
-          <p style="font-size:14px; color: var(--text-secondary); margin:0;" data-i18n="design.s4.before.body">One UI, one brand, support engineers configuring everything by hand for paying customers.</p>
+          <div class="label" data-i18n="design.s4.before.tag">Before · one interface for everyone</div>
+          <h4 style="margin:0 0 8px;">62%</h4>
+          <p style="font-size:14px; color: var(--text-secondary); margin:0;" data-i18n="design.s4.before.body">of support tickets were &laquo;configure this for me&raquo; — tasks the UI technically allowed, done by an engineer because nobody else could get through them.</p>
         </div>
         <div class="after">
-          <div class="label" data-i18n="design.s4.after.tag">After · whitelabel partner</div>
-          <h4 style="margin:0 0 8px;">"alif business" <span data-i18n="design.s4.after.h">(or any partner brand)</span></h4>
-          <p style="font-size:14px; color: var(--text-secondary); margin:0;" data-i18n="design.s4.after.body">Self-service UI. The partner sees their own brand, manages their own channels, runs their own campaigns. The same product can be sold under three different brands without a code change.</p>
+          <div class="label" data-i18n="design.s4.after.tag">After · two interfaces, one model</div>
+          <h4 style="margin:0 0 8px;">11 + 23</h4>
+          <p style="font-size:14px; color: var(--text-secondary); margin:0;" data-i18n="design.s4.after.body">sections, split by who owns the job. The customer runs campaigns without asking; the platform keeps gateways, moderation and anti-fraud, because those were never the customer&rsquo;s to run.</p>
         </div>
       </div>
     </div>
@@ -1038,13 +1038,13 @@ footer .links a:hover { color: white; }
       <div class="card dark">
         <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o3.tag">SUPPORT LOAD</div>
         <div style="font-size:54px; font-weight:800; letter-spacing:-0.04em; line-height:1; color: white; margin-bottom: 12px;">−60%</div>
-        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o3.body">target reduction in "configure this for me" support tickets. The Partner cabinet replaces 62% of current ticket categories with self-service.</p>
+        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o3.body">target reduction in "configure this for me" support tickets. The Client cabinet replaces 62% of current ticket categories with self-service.</p>
       </div>
     </div>
 
     <div style="margin-top: 80px;">
       <h3 style="color: white;" data-i18n="outcomes.strat.title">Strategic outcome</h3>
-      <p style="color: var(--text-on-dark-secondary); max-width: 820px; font-size: 18px;" data-i18n-html="outcomes.strat.body">The platform stops being "the Tajik SMS gateway" and becomes a regional communication infrastructure. The brand can be applied as <em>alif business</em> for the Alif group, white-labeled for a Tashkent partner in Uzbekistan, and sold direct to mid-market banks across the CIS. The architecture supports WhatsApp and Push in 2027 without a redesign.</p>
+      <p style="color: var(--text-on-dark-secondary); max-width: 820px; font-size: 18px;" data-i18n-html="outcomes.strat.body">The platform stops being "the Tajik SMS gateway" and becomes a regional communication infrastructure. From here the brand can be deployed as <em>alif business</em> inside the Alif group, white-labeled for a partner in Tashkent, and sold direct to mid-market banks across the CIS — but that is the next step: in the current screens the customer still sees the platform&rsquo;s own brand. The architecture supports WhatsApp and Push in 2027 without a redesign.</p>
     </div>
   </div>
 </section>
@@ -1080,7 +1080,7 @@ footer .links a:hover { color: white; }
 <section class="cta">
   <div class="container">
     <h2 data-i18n="cta.title">Want to dig into the actual screens?</h2>
-    <p data-i18n="cta.body">A fully clickable HTML prototype covers all 28 sections — 17 in the admin, 11 in the partner cabinet — bilingual, light and dark, with realistic data and working exports. It still carries the old SMS Center name: the rebrand came after it.</p>
+    <p data-i18n-html="cta.body">A fully clickable HTML prototype covers <strong>32 sections — 21 in the admin, 11 in the client cabinet</strong> — bilingual, light and dark, with realistic data and working exports. Click through it rather than take my word for any of this.</p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
       <a href="../prototype/sms-gate.html" class="btn" target="_blank" rel="noopener"><span data-i18n="cta.proto">→ Open the live prototype</span></a>
 
@@ -1130,7 +1130,7 @@ const I18N = {
     'overview.p3': 'I was brought in as the sole designer to lead this transformation: research, IA, interaction, visual system, and Figma-to-dev hand-off — all of it.',
     'overview.stat.client': 'client cabinet sections',
     'overview.stat.admin': 'admin sections',
-    'overview.stat.frames': 'Figma frames shipped',
+    'overview.stat.frames': 'Figma frames in the admin file',
     'overview.stat.channels': 'channels (SMS·Email·TG → +WhatsApp·Push)',
 
     'problem.label': 'The Problem',
@@ -1194,7 +1194,7 @@ const I18N = {
     'process.s2.title': 'Build a cascade — even though Email and Telegram alone would have shipped sooner',
     'process.s2.body': 'The killer feature in Edna is the <strong>cascade</strong>: "try Telegram first, fall back to Email after 30s, fall back to SMS after 2 minutes." For OTP and transactional flows it cuts SMS cost dramatically without hurting delivery. I pushed for shipping the cascade in v1 because half the value of multichannel <em>is</em> the cascade. Without it, customers just pick the cheapest channel and the platform doesn\'t earn its keep.',
     'process.s3.title': 'Two interfaces, one model: Admin vs Partner',
-    'process.s3.body': 'Through interviews it became obvious that <strong>internal admins and customer marketers don\'t share a problem</strong>. Admins moderate, configure shared infrastructure (gateways, anti-pumping rules), and resolve incidents. Marketers create audiences and campaigns. I designed two completely separate IAs on top of the same data model — Admin (17 sections, dense, table-heavy) and Partner cabinet (11 sections, task-flow oriented, whitelabel-ready as "alif business").',
+    'process.s3.body': 'Through interviews it became obvious that <strong>internal admins and customer marketers don\'t share a problem</strong>. Admins moderate, configure shared infrastructure (gateways, anti-pumping rules), and resolve incidents. Marketers create audiences and campaigns. I designed two completely separate IAs on top of the same data model — Admin (23 sections, dense, table-heavy) and the the client cabinet (11 sections, task-flow first, and deliberately lighter).',
     'process.s5.title': 'Rename the product — because "SMS gateway" cannot cross a border',
     'process.s5.body': 'The name <strong>smsgate.tj</strong> pins the product to one channel and one country, and both were about to stop being true. I proposed <strong>Alif Tech Connect</strong>: a name that survives Email, Telegram, WhatsApp and Push, and survives Tashkent and Almaty. With it came a separate identity — indigo <code>#4F46E5</code>, deliberately not the green of Alif Bank, because ATC is a company inside the group rather than the bank itself. Renaming a product nobody has trouble finding is a hard sell; the argument that landed was that every month of delay makes the migration more expensive.',
     'process.s4.title': 'Designed a Wizard-only flow — then deleted it',
@@ -1226,13 +1226,12 @@ const I18N = {
     'design.s3.final': 'final fallback',
     'design.s3.note': '<strong>Worst-case total duration: 2 min 30 sec.</strong> 87% of OTPs deliver on stage 1 (Telegram) at ~10x lower cost than SMS.',
 
-    'design.s4.title': '04 · Partner cabinet — same engine, different brand', 'design.s4.tag': 'Partner view',
-    'design.s4.body': 'When a customer logs in, they don\'t see "smsgate.tj" — they see <strong>alif business</strong> (or their own brand, eventually). The Partner cabinet is 11 sections: Dashboard, Channels, Contact Groups, Audiences, Templates, Broadcasts, Quick Send, Journal, Reports, Profile, API & Docs. Sidebar groups are collapsible. The user avatar sits at the bottom — they live there, they shouldn\'t have to keep reaching for the top-right.',
-    'design.s4.before.tag': 'Before · admin only',
-    'design.s4.before.body': 'One UI, one brand, support engineers configuring everything by hand for paying customers.',
-    'design.s4.after.tag': 'After · whitelabel partner',
-    'design.s4.after.h': '(or any partner brand)',
-    'design.s4.after.body': 'Self-service UI. The partner sees their own brand, manages their own channels, runs their own campaigns. The same product can be sold under three different brands without a code change.',
+    'design.s4.title': '04 · Client cabinet — same engine, a different set of permissions', 'design.s4.tag': 'Client view',
+    'design.s4.body': 'When a customer logs in they see 11 sections: Dashboard, Channels, Contact Groups, Audiences, Templates, Broadcasts, Quick Send, Journal, Reports, Profile, API &amp; Docs. What makes it a different product from the admin is what it <strong>withholds</strong>: the customer sees their gateways but cannot connect one, and the screen says so in plain words instead of hiding a disabled button. In exchange they get everything the admin has no business owning — their own balance with «enough for ~14 days», a spend forecast, contact import by file, an audience builder with AND filters and exclusions, and an API section with cURL examples so their developer never has to file a ticket.',
+    'design.s4.before.tag': 'Before · one interface for everyone',
+    'design.s4.before.body': 'of support tickets were «configure this for me» — tasks the UI technically allowed, done by an engineer because nobody else could get through them.',
+    'design.s4.after.tag': 'After · two interfaces, one model',
+    'design.s4.after.body': 'sections, split by who owns the job. The customer runs campaigns without asking; the platform keeps gateways, moderation and anti-fraud, because those were never the customer’s to run.',
 
     'design.s5.title': '05 · Bilingual from day one — not an afterthought',
     'design.s5.body': 'Every label, every error, every empty state was authored in <strong>RU and EN simultaneously</strong> inside Figma and the prototype. The pill switcher in the topbar isn\'t decoration — it actually retranslates the whole UI. The reason: this product is going to Uzbekistan and Kazakhstan in 2026/27. If i18n waits until then, it\'s a full re-architecture. Doing it now costs days; doing it later would cost months.',
@@ -1255,9 +1254,9 @@ const I18N = {
     'outcomes.o2.tag': 'UNIT ECONOMICS',
     'outcomes.o2.body': 'expected cost per delivered message for cascade users (OTP especially). Bigger margin per customer = budget for the next market.',
     'outcomes.o3.tag': 'SUPPORT LOAD',
-    'outcomes.o3.body': 'target reduction in "configure this for me" support tickets. The Partner cabinet replaces 62% of current ticket categories with self-service.',
+    'outcomes.o3.body': 'target reduction in "configure this for me" support tickets. The Client cabinet replaces 62% of current ticket categories with self-service.',
     'outcomes.strat.title': 'Strategic outcome',
-    'outcomes.strat.body': 'The platform stops being "the Tajik SMS gateway" and becomes a regional communication infrastructure. The brand can be applied as <em>alif business</em> for the Alif group, white-labeled for a Tashkent partner in Uzbekistan, and sold direct to mid-market banks across the CIS. The architecture supports WhatsApp and Push in 2027 without a redesign.',
+    'outcomes.strat.body': 'The platform stops being "the Tajik SMS gateway" and becomes a regional communication infrastructure. From here the brand can be deployed as <em>alif business</em> inside the Alif group, white-labeled for a partner in Tashkent, and sold direct to mid-market banks across the CIS — but that is the next step: in the current screens the customer still sees the platform&rsquo;s own brand. The architecture supports WhatsApp and Push in 2027 without a redesign.',
 
     'lessons.label': 'Lessons',
     'lessons.title': 'What I\'m taking with me into the next project.',
@@ -1271,7 +1270,7 @@ const I18N = {
     'lessons.d3': '<strong>Get a real customer in the kickoff.</strong> Three of my insights came from interviews with bank marketers. I could have done those in week 1 instead of week 2 and avoided one wrong-direction prototype.',
 
     'cta.title': 'Want to dig into the actual screens?',
-    'cta.body': 'A fully clickable HTML prototype covers all 28 sections — 17 in the admin, 11 in the partner cabinet — bilingual, light and dark, with realistic data and working exports. It still carries the old SMS Center name: the rebrand came after it.',
+    'cta.body': 'A fully clickable HTML prototype covers <strong>32 sections — 21 in the admin, 11 in the client cabinet</strong> — bilingual, light and dark, with realistic data and working exports. Click through it rather than take my word for any of this.',
     'cta.proto': '→ Open the live prototype',
 
     'footer.role': 'Product Designer · Alif Tech',
@@ -1295,7 +1294,7 @@ const I18N = {
     'overview.p3': 'Меня пригласили как единственного дизайнера, чтобы возглавить эту трансформацию: research, IA, interaction, визуальная система, передача в разработку — всё это.',
     'overview.stat.client': 'разделов клиентского кабинета',
     'overview.stat.admin': 'разделов админ-части',
-    'overview.stat.frames': 'Figma-фреймов сделано',
+    'overview.stat.frames': 'Figma-фреймов в файле админки',
     'overview.stat.channels': 'каналов (SMS·Email·TG → +WhatsApp·Push)',
 
     'problem.label': 'Проблема',
@@ -1359,7 +1358,7 @@ const I18N = {
     'process.s2.title': 'Сделал каскады — хотя без них Email и Telegram уехали бы в прод раньше',
     'process.s2.body': 'Killer-фича Edna — это <strong>каскад</strong>: «попробуй Telegram, если не доставлено за 30 секунд — Email, если ещё через 2 минуты не доставлено — SMS». Для OTP и транзакционных потоков это режет стоимость SMS драматически без потери доставки. Я настоял, чтобы каскад был в v1, потому что половина ценности multichannel <em>и есть</em> каскад. Без него клиенты просто выберут самый дешёвый канал, и платформа не заработает.',
     'process.s3.title': 'Два интерфейса, одна модель: Admin и Partner',
-    'process.s3.body': 'После интервью стало очевидно, что <strong>внутренние админы и клиентские маркетологи не делят общую проблему</strong>. Админы модерируют, настраивают общую инфраструктуру (шлюзы, anti-pumping правила), разбирают инциденты. Маркетологи создают аудитории и кампании. Я спроектировал две полностью отдельные IA поверх одной модели данных — Admin (17 разделов, плотный, табличный) и Partner cabinet (11 разделов, task-flow, white-label-ready как «alif business»).',
+    'process.s3.body': 'После интервью стало очевидно, что <strong>внутренние админы и клиентские маркетологи не делят общую проблему</strong>. Админы модерируют, настраивают общую инфраструктуру (шлюзы, anti-pumping правила), разбирают инциденты. Маркетологи создают аудитории и кампании. Я спроектировал две полностью отдельные IA поверх одной модели данных — Admin (23 раздела, плотный, табличный) и клиентский кабинет (11 разделов, task-flow, и заметно легче админки).',
     'process.s5.title': 'Переименовать продукт — потому что «SMS-шлюз» не переезжает через границу',
     'process.s5.body': 'Название <strong>smsgate.tj</strong> прибивает продукт к одному каналу и одной стране, а скоро не должно было остаться ни того ни другого. Предложил <strong>Alif Tech Connect</strong> — имя, которое переживает Email, Telegram, WhatsApp и Push, и переживает Ташкент с Алматы. Вместе с ним — отдельная айдентика: индиго <code>#4F46E5</code>, намеренно не зелёный Alif Bank, потому что ATC — компания внутри группы, а не сам банк. Переименовывать продукт, который и так находят, — тяжёлая продажа; сработал аргумент, что каждый месяц отсрочки делает миграцию дороже.',
     'process.s4.title': 'Спроектировал Wizard-only flow — и удалил его',
@@ -1391,16 +1390,15 @@ const I18N = {
     'design.s3.final': 'финальный fallback',
     'design.s3.note': '<strong>Худшая суммарная длительность: 2 мин 30 сек.</strong> 87% OTP доставляются на ступени 1 (Telegram) при ~10x меньшей стоимости по сравнению с SMS.',
 
-    'design.s4.title': '04 · Partner cabinet — тот же движок, другой бренд', 'design.s4.tag': 'Partner view',
-    'design.s4.body': 'Когда клиент логинится, он не видит «smsgate.tj» — он видит <strong>alif business</strong> (или свой собственный бренд в будущем). Partner cabinet — это 11 разделов: Дашборд, Каналы, Группы контактов, Аудитории, Шаблоны, Рассылки, Быстрая отправка, Журнал, Отчёты, Профиль, API & Документация. Группы сайдбара сворачиваемые. Аватар пользователя — внизу сайдбара, потому что они живут там, а не в правом верхнем углу.',
-    'design.s4.before.tag': 'До · только админка',
-    'design.s4.before.body': 'Один UI, один бренд, инженеры поддержки настраивают всё руками для платящих клиентов.',
-    'design.s4.after.tag': 'После · white-label для партнёров',
-    'design.s4.after.h': '(или любой бренд партнёра)',
-    'design.s4.after.body': 'Self-service UI. Партнёр видит свой бренд, управляет своими каналами, ведёт свои кампании. Тот же продукт можно продавать под тремя разными брендами без изменений в коде.',
+    'design.s4.title': '04 · Кабинет клиента — тот же движок, другой набор прав', 'design.s4.tag': 'Client view',
+    'design.s4.body': 'Кабинет — 11 разделов: Дашборд, Каналы, Группы контактов, Аудитории, Шаблоны, Рассылки, Быстрая отправка, Журнал записей, Отчёты, Профиль, API и документация. Отдельным продуктом его делает не то, что он даёт, а то, чего <strong>не даёт</strong>: клиент видит свои шлюзы, но подключить их не может — и на экране это написано словами, а не спрятано за выключенной кнопкой. Взамен он получает всё, чем админке владеть незачем: собственный баланс с подписью «хватит на 14 дней», прогноз расхода, импорт контактов файлом, конструктор аудиторий с AND-фильтрами и исключениями, и раздел API с примерами cURL — чтобы разработчик клиента не заводил тикет.',
+    'design.s4.before.tag': 'До · один интерфейс на всех',
+    'design.s4.before.body': 'обращений в поддержку были «настройте за меня» — задачи, которые интерфейс в принципе позволял, но выполнял их инженер, потому что больше никто не мог через них пройти.',
+    'design.s4.after.tag': 'После · два интерфейса, одна модель',
+    'design.s4.after.body': 'разделов, разведённых по тому, чья это работа. Клиент ведёт кампании, ни у кого не спрашивая; у платформы остаются шлюзы, модерация и антифрод — они никогда и не были делом клиента.',
 
     'design.s5.title': '05 · Двуязычность с первого дня — не отложенная задача',
-    'design.s5.body': 'Каждая подпись, каждая ошибка, каждое пустое состояние написаны на <strong>RU и EN одновременно</strong> в Figma и в прототипе. Pill-переключатель в топбаре — не декорация, он реально переписывает весь UI. Причина: этот продукт идёт в Узбекистан и Казахстан в 2026/27. Если i18n ждёт до этого момента — это полная реархитектура. Сейчас она стоит дней; потом стоила бы месяцев.',
+    'design.s5.body': 'Каждая подпись, каждая ошибка, каждое пустое состояние написаны на <strong>RU и EN одновременно</strong> — в прототипе, где pill-переключатель в топбаре реально переписывает весь интерфейс, в светлой и тёмной теме. Файлы Figmaрусские; второй язык живёт в прототипе, и именно на нём шли ревью с заказчиком. Зачем это вообще делать сейчас: продукт идёт в Узбекистан и Казахстан в 2026/27. Если i18n ждёт до этого момента — это полная реархитектура. Сейчас она стоит дней; потом стоила бы месяцев.',
 
     'testing.label': 'Валидация',
     'testing.title': 'Уверенность пришлось строить без продакшен-данных — заняв её у живых пользователей, в три цикла.',
@@ -1420,9 +1418,9 @@ const I18N = {
     'outcomes.o2.tag': 'UNIT-ЭКОНОМИКА',
     'outcomes.o2.body': 'ожидаемая стоимость доставленного сообщения для cascade-пользователей (особенно OTP). Бо́льшая маржа на клиенте = бюджет на следующий рынок.',
     'outcomes.o3.tag': 'НАГРУЗКА НА SUPPORT',
-    'outcomes.o3.body': 'целевое снижение «настройте за меня» тикетов. Partner cabinet замещает 62% текущих категорий тикетов через self-service.',
+    'outcomes.o3.body': 'целевое снижение «настройте за меня» тикетов. Client cabinet замещает 62% текущих категорий тикетов через self-service.',
     'outcomes.strat.title': 'Стратегический результат',
-    'outcomes.strat.body': 'Платформа перестаёт быть «таджикским SMS-шлюзом» и становится региональной коммуникационной инфраструктурой. Бренд применяется как <em>alif business</em> для Alif-группы, white-label под ташкентского партнёра в Узбекистане, и продаётся напрямую mid-market банкам по СНГ. Архитектура поддерживает WhatsApp и Push в 2027 без редизайна.',
+    'outcomes.strat.body': 'Платформа перестаёт быть «таджикским SMS-шлюзом» и становится региональной коммуникационной инфраструктурой. Дальше бренд можно развернуть как <em>alif business</em> внутри Alif-группы, под white-label для партнёра в Ташкенте и напрямую для mid-market банков по СНГ — но это следующий шаг: в нынешних макетах клиент всё ещё видит бренд платформы. Архитектура поддерживает WhatsApp и Push в 2027 без редизайна.',
 
     'lessons.label': 'Уроки',
     'lessons.title': 'Что я забираю с собой в следующий проект.',
@@ -1436,7 +1434,7 @@ const I18N = {
     'lessons.d3': '<strong>Привести реального клиента в kickoff.</strong> Три моих инсайта пришли из интервью с маркетологами банков. Я мог сделать эти интервью на 1-й неделе вместо 2-й и избежать одного прототипа в неправильном направлении.',
 
     'cta.title': 'Хочется покопаться в реальных экранах?',
-    'cta.body': 'Полностью кликабельный HTML-прототип покрывает все 28 разделов — 17 в админке, 11 в партнёрском кабинете — двуязычный, светлая и тёмная тема, с реалистичными данными и работающими экспортами. На нём ещё старое имя SMS Center: ребрендинг случился позже.',
+    'cta.body': 'Полностью кликабельный HTML-прототип покрывает <strong>32 раздела — 21 в админке и 11 в клиентском кабинете</strong> — двуязычный, светлая и тёмная тема, с реалистичными данными и работающими экспортами. Лучше прокликать его, чем верить мне на слово.',
     'cta.proto': '→ Открыть живой прототип',
 
     'footer.role': 'Product Designer · Alif Tech',
