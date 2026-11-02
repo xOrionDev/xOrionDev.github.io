@@ -188,7 +188,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
       <a data-nav href="#work" data-i18n="nav.work">Work</a>
       <a data-nav href="#about" data-i18n="nav.about">About</a>
       <a data-nav href="#contact" data-i18n="nav.contact">Contact</a>
-      <a class="cv" href="cv.pdf" target="_blank" rel="noopener" data-i18n="nav.cv">CV</a>
+      <a class="cv" data-cv href="cv/Orion_Muhamadiev_CV_Product_Designer_EN.pdf" target="_blank" rel="noopener" data-i18n="nav.cv">CV</a>
       <div class="lang">
         <button id="langEn" class="active" onclick="setLang('en')">EN</button>
         <button id="langRu" onclick="setLang('ru')">RU</button>
@@ -385,7 +385,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
       <a class="btn" href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>
       <a class="btn ghost" href="https://t.me/dsgnorion" target="_blank" rel="noopener" data-i18n="contact.tg">Telegram</a>
       <a class="btn ghost" href="https://www.linkedin.com/in/orionmuhamadiev/" target="_blank" rel="noopener" data-i18n="contact.li">LinkedIn</a>
-      <a class="btn ghost" href="cv.pdf" target="_blank" rel="noopener" data-i18n="contact.cv">Open CV (PDF)</a>
+      <a class="btn ghost" data-cv href="cv/Orion_Muhamadiev_CV_Product_Designer_EN.pdf" target="_blank" rel="noopener" data-i18n="contact.cv">Open CV — PDF, English</a>
     </div>
   </div>
 </section>
@@ -470,7 +470,7 @@ const I18N = {
     'contact.label': `Contact`,
     'contact.title': `Have a system that's outgrown its first design?`,
     'contact.body': `I'm open to product design roles and selected freelance work. The fastest way to reach me is email or Telegram.`,
-    'contact.tg': `Telegram`, 'contact.li': `LinkedIn`, 'contact.cv': `Open CV (PDF)`,
+    'contact.tg': `Telegram`, 'contact.li': `LinkedIn`, 'contact.cv': `Open CV — PDF, English`,
     'footer.note': `Built as a static site — no tracking, no cookies.`
   },
   ru: {
@@ -542,7 +542,7 @@ const I18N = {
     'contact.label': `Контакты`,
     'contact.title': `Есть система, которая переросла свой первый дизайн?`,
     'contact.body': `Открыт к предложениям по продуктовому дизайну и отдельным фриланс-проектам. Быстрее всего — почта или Telegram.`,
-    'contact.tg': `Telegram`, 'contact.li': `LinkedIn`, 'contact.cv': `Открыть резюме (PDF)`,
+    'contact.tg': `Telegram`, 'contact.li': `LinkedIn`, 'contact.cv': `Открыть резюме — PDF, русский`,
     'footer.note': `Статический сайт — без трекинга и куки.`
   }
 };
@@ -558,6 +558,10 @@ function setLang(lang) {
     const v = dict[el.getAttribute('data-i18n-html')];
     if (v !== undefined) el.innerHTML = v;
   });
+  const cvFile = lang === 'ru'
+    ? 'cv/Orion_Muhamadiev_CV_Product_Designer_RU.pdf'
+    : 'cv/Orion_Muhamadiev_CV_Product_Designer_EN.pdf';
+  document.querySelectorAll('[data-cv]').forEach(el => el.setAttribute('href', cvFile));
   document.getElementById('langEn').classList.toggle('active', lang === 'en');
   document.getElementById('langRu').classList.toggle('active', lang === 'ru');
   try { localStorage.setItem('lang', lang); } catch (e) {}
