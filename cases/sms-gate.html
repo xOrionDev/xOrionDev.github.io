@@ -328,7 +328,6 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba
   margin-top: 12px;
 }
 
-.browser-frame {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
@@ -336,17 +335,11 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba
   box-shadow: 0 30px 80px -20px rgba(0,0,0,0.15);
   margin: 32px 0;
 }
-.browser-frame .bar {
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border);
   padding: 12px 16px;
   display: flex; align-items: center; gap: 8px;
 }
-.browser-frame .dot { width: 12px; height: 12px; border-radius: 50%; }
-.browser-frame .dot.r { background: #ff5f57; }
-.browser-frame .dot.y { background: #febc2e; }
-.browser-frame .dot.g { background: #28c840; }
-.browser-frame .url {
   flex: 1;
   text-align: center;
   font-size: 13px;
@@ -358,29 +351,24 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba
   margin: 0 auto;
 }
 
-.dash-mock {
   display: grid;
   grid-template-columns: 220px 1fr;
   background: var(--bg-grey);
   min-height: 540px;
 }
-.dash-mock .sidebar {
   background: var(--bg);
   padding: 20px 16px;
   border-right: 1px solid var(--border);
 }
-.dash-mock .logo {
   display: flex; align-items: center; gap: 8px;
   font-weight: 800; font-size: 16px;
   margin-bottom: 28px;
 }
-.dash-mock .logo-mark {
   width: 28px; height: 28px;
   background: var(--brand);
   border-radius: 8px;
   position: relative;
 }
-.dash-mock .logo-mark::after {
   content: '';
   position: absolute;
   width: 14px; height: 14px;
@@ -389,8 +377,6 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba
   border-radius: 4px;
   transform: rotate(45deg);
 }
-.dash-mock .nav-section { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; padding: 0 8px 8px; margin-top: 16px; }
-.dash-mock .nav-item {
   display: flex; align-items: center; gap: 10px;
   padding: 8px 10px;
   font-size: 13px;
@@ -398,13 +384,9 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba
   border-radius: 8px;
   margin-bottom: 2px;
 }
-.dash-mock .nav-item.active { background: var(--bg-grey); color: var(--text); font-weight: 600; }
-.dash-mock .main { padding: 20px 24px; }
-.dash-mock .topbar {
   display: flex; align-items: center; gap: 12px;
   margin-bottom: 24px;
 }
-.dash-mock .search {
   flex: 1;
   background: var(--bg);
   border: 1px solid var(--border);
@@ -415,7 +397,6 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba
   max-width: 340px;
   margin: 0 auto;
 }
-.dash-mock .lang-pill {
   display: inline-flex;
   background: var(--bg);
   border: 1px solid var(--border);
@@ -423,26 +404,16 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba
   padding: 2px;
   font-size: 12px; font-weight: 600;
 }
-.dash-mock .lang-pill span { padding: 5px 10px; border-radius: 99px; }
-.dash-mock .lang-pill .on { background: var(--brand); color: white; }
-.dash-mock .icon-btn { width: 32px; height: 32px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border); }
-.dash-mock .metrics {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 20px;
 }
-.dash-mock .metric {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 14px;
 }
-.dash-mock .metric.dark { background: var(--bg-dark); color: white; border-color: var(--bg-dark); }
-.dash-mock .metric .lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 6px; }
-.dash-mock .metric.dark .lbl { color: rgba(255,255,255,0.6); }
-.dash-mock .metric .val { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
-.dash-mock .chart {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -450,8 +421,6 @@ section.bg-dark ul.bullets li { border-color: rgba(255,255,255,0.1); color: rgba
   height: 200px;
   display: flex; align-items: end; gap: 14px;
 }
-.dash-mock .chart .bar { flex: 1; background: var(--border); border-radius: 4px 4px 0 0; position: relative; }
-.dash-mock .chart .bar.active { background: var(--bg-dark); }
 
 .ch-chip {
   display: inline-flex; align-items: center; gap: 6px;
@@ -604,6 +573,14 @@ footer .links a:hover { color: white; }
   section { padding: 60px 0; }
   .lang-fixed { top: 16px; right: 16px; }
 }
+
+/* screenshots */
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px; }
+.shot { margin: 0; }
+.shot img { width: 100%; height: auto; display: block; border-radius: 32px; border: 1px solid var(--border); box-shadow: 0 12px 40px rgba(10,16,40,0.10); }
+.shot figcaption { font-size: 13px; color: var(--text-muted); margin-top: 12px; line-height: 1.55; }
+.shot.missing img { display: none; }
+.shot.missing::before { content: '\2B1A  ' attr(data-label); display: flex; align-items: center; justify-content: center; text-align: center; min-height: 240px; border: 2px dashed var(--border); border-radius: 32px; color: var(--text-muted); font-size: 12px; font-weight: 600; padding: 18px; background: var(--bg-grey); }
 </style>
 </head>
 <body>
@@ -854,52 +831,10 @@ footer .links a:hover { color: white; }
         <h3 style="margin:0;" data-i18n="design.s1.title">01 · Admin dashboard</h3>
         <span class="badge brand" data-i18n="design.s1.tag">Admin view</span>
       </div>
-      <p style="max-width:820px;" data-i18n="design.s1.body">High density for operators who live inside this screen. Four headline metrics in the top row (one dark-state showing the focused KPI), a bar chart with one tone for context and a single saturated bar for the day being inspected, a donut for channel distribution, and recent broadcasts/system notifications below. No marketing flourishes — this is a control room.</p>
+      <p style="max-width:820px;" data-i18n-html="design.s1.body">An operator opens this and sees one organisation: contract number in the header, volume this month, and the price tier it has climbed to. The tariff ladder is the part I am most pleased with — five steps from 0.50 down to 0.15 TJS, with &laquo;вы здесь&raquo; marking the current one and a line underneath doing the arithmetic nobody does on their own: <strong>&laquo;send another 51 770 SMS this month and the price drops to 0.22 — at your volume that is about 4 100 TJS saved&raquo;</strong>. A pricing table becomes a reason to consolidate traffic here instead of splitting it across vendors. Notifications are ranked, not listed — CRITICAL for a failing SMTP handshake, ATTENTION for a signature stuck in moderation two days, INFO for a tariff change next month. And the channel strip at the bottom — 70% SMS, 18% Telegram, 12% Email — is the entire project measured in one widget.</p>
 
-      <div class="browser-frame">
-        <div class="bar"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div><div class="url">smsgate.tj/admin/dashboard</div></div>
-        <div class="dash-mock">
-          <div class="sidebar">
-            <div class="logo"><div class="logo-mark"></div>SMSCENTER</div>
-            <div class="nav-section" data-i18n="design.s1.nav.main">Main</div>
-            <div class="nav-item active" data-i18n="design.s1.nav.dashboard">▦ Dashboard</div>
-            <div class="nav-item" data-i18n="design.s1.nav.orgs">▢ Organizations</div>
-            <div class="nav-section" data-i18n="design.s1.nav.dir">Directories</div>
-            <div class="nav-item" data-i18n="design.s1.nav.senders">◔ Senders</div>
-            <div class="nav-item" data-i18n="design.s1.nav.channels">◇ Channels</div>
-            <div class="nav-section" data-i18n="design.s1.nav.routing">Routing</div>
-            <div class="nav-item" data-i18n="design.s1.nav.audiences">⌘ Audiences</div>
-            <div class="nav-item" data-i18n="design.s1.nav.templates">▤ Templates</div>
-            <div class="nav-item" data-i18n="design.s1.nav.cascades">⤢ Cascades</div>
-            <div class="nav-section" data-i18n="design.s1.nav.sending">Sending</div>
-            <div class="nav-item" data-i18n="design.s1.nav.broadcasts">⤳ Broadcasts</div>
-          </div>
-          <div class="main">
-            <div class="topbar">
-              <div class="search" data-i18n="design.s1.search">🔍 Search by ID, name, TIN...</div>
-              <div class="lang-pill"><span class="on">RU</span><span>EN</span></div>
-              <div class="icon-btn"></div>
-              <div class="icon-btn"></div>
-            </div>
-            <div style="font-size:22px; font-weight:800; margin-bottom:4px;" data-i18n="design.s1.h">Dashboard</div>
-            <div style="font-size:13px; color:var(--text-muted); margin-bottom:20px;" data-i18n="design.s1.sub">Good morning, Nabijon · Today, May 28, 2026</div>
-            <div class="metrics">
-              <div class="metric dark"><div class="lbl" data-i18n="design.s1.m1.lbl">Sent today</div><div class="val">2 458 320</div></div>
-              <div class="metric"><div class="lbl" data-i18n="design.s1.m2.lbl">% delivery</div><div class="val">96.8%</div></div>
-              <div class="metric"><div class="lbl" data-i18n="design.s1.m3.lbl">Active broadcasts</div><div class="val">17</div></div>
-              <div class="metric"><div class="lbl" data-i18n="design.s1.m4.lbl">Organizations</div><div class="val">8</div></div>
-            </div>
-            <div class="chart">
-              <div class="bar" style="height: 50%"></div>
-              <div class="bar" style="height: 72%"></div>
-              <div class="bar" style="height: 48%"></div>
-              <div class="bar" style="height: 88%"></div>
-              <div class="bar active" style="height: 95%"></div>
-              <div class="bar" style="height: 75%"></div>
-              <div class="bar" style="height: 60%"></div>
-            </div>
-          </div>
-        </div>
+      <div class="shots">
+        <figure class="shot" data-label="ADMIN · Главная"><img src="../img/atc-dashboard.png" alt="Alif Tech Connect admin dashboard" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s1.shot">The admin looking at one organisation: contract number in the header, this month&rsquo;s volume, the price tier it has reached, and the channel split — 70% SMS, 18% Telegram, 12% Email. That split is the whole project in one widget.</figcaption></figure>
       </div>
     </div>
 
@@ -1100,7 +1035,7 @@ footer .links a:hover { color: white; }
         </div>
       </div>
       <div class="links">
-        <a href="mailto:nabijon.muhamadiev@alif.tj">nabijon.muhamadiev@alif.tj</a>
+        <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>
         <a href="../prototype/sms-gate.html" target="_blank" rel="noopener">Прототип</a>
         <a href="smsgate-prototype.html" data-i18n="footer.proto">Prototype</a>
       </div>
@@ -1203,15 +1138,9 @@ const I18N = {
     'design.label': 'Design',
     'design.title': 'The system, screen by screen.',
     'design.lead': 'The visual system follows a tight design-token model in Figma — one accent (<code>#4F46E5</code>), one neutral scale, semantic status colors, and a strict pill/card geometry (12 / 16 / 999px radii). Below are the screens that carry the most product weight.',
+    'design.s1.shot': 'The admin looking at one organisation: contract number in the header, this month&rsquo;s volume, the price tier it has reached, and the channel split — 70% SMS, 18% Telegram, 12% Email. That split is the whole project in one widget.',
     'design.s1.title': '01 · Admin dashboard', 'design.s1.tag': 'Admin view',
-    'design.s1.body': 'High density for operators who live inside this screen. Four headline metrics in the top row (one dark-state showing the focused KPI), a bar chart with one tone for context and a single saturated bar for the day being inspected, a donut for channel distribution, and recent broadcasts/system notifications below. No marketing flourishes — this is a control room.',
-    'design.s1.nav.main': 'Main', 'design.s1.nav.dashboard': '▦ Dashboard', 'design.s1.nav.orgs': '▢ Organizations',
-    'design.s1.nav.dir': 'Directories', 'design.s1.nav.senders': '◔ Senders', 'design.s1.nav.channels': '◇ Channels',
-    'design.s1.nav.routing': 'Routing', 'design.s1.nav.audiences': '⌘ Audiences', 'design.s1.nav.templates': '▤ Templates', 'design.s1.nav.cascades': '⤢ Cascades',
-    'design.s1.nav.sending': 'Sending', 'design.s1.nav.broadcasts': '⤳ Broadcasts',
-    'design.s1.search': '🔍 Search by ID, name, TIN...',
-    'design.s1.h': 'Dashboard', 'design.s1.sub': 'Good morning, Nabijon · Today, May 28, 2026',
-    'design.s1.m1.lbl': 'Sent today', 'design.s1.m2.lbl': '% delivery', 'design.s1.m3.lbl': 'Active broadcasts', 'design.s1.m4.lbl': 'Organizations',
+    'design.s1.body': 'An operator opens this and sees one organisation: contract number in the header, volume this month, and the price tier it has climbed to. The tariff ladder is the part I am most pleased with — five steps from 0.50 down to 0.15 TJS, with &laquo;вы здесь&raquo; marking the current one and a line underneath doing the arithmetic nobody does on their own: <strong>&laquo;send another 51 770 SMS this month and the price drops to 0.22 — at your volume that is about 4 100 TJS saved&raquo;</strong>. A pricing table becomes a reason to consolidate traffic here instead of splitting it across vendors. Notifications are ranked, not listed — CRITICAL for a failing SMTP handshake, ATTENTION for a signature stuck in moderation two days, INFO for a tariff change next month. And the channel strip at the bottom — 70% SMS, 18% Telegram, 12% Email — is the entire project measured in one widget.',
 
     'design.s2.title': '02 · The channel chip — a tiny component carrying the whole product story',
     'design.s2.body': 'A solid pill in the channel\'s own color, white text. It appears in tables (rows of broadcasts, journal entries), in audiences, in templates, in dashboards. Designing this component first meant every other surface could be built with it. WhatsApp and Push are baked in at the token level — they appear with a "coming soon" tag in v1 and will go live without a redesign.',
@@ -1367,15 +1296,9 @@ const I18N = {
     'design.label': 'Дизайн',
     'design.title': 'Система, экран за экраном.',
     'design.lead': 'Визуальная система построена вокруг строгой токен-модели в Figma — один акцент (<code>#4F46E5</code>), нейтральная шкала, семантические цвета статусов, и жёсткая геометрия pill/card (радиусы 12 / 16 / 999px). Ниже — экраны, несущие больше всего продуктового веса.',
+    'design.s1.shot': 'Админ смотрит на одну организацию: номер договора в шапке, объём за месяц, достигнутая ступень цены и раскладка по каналам — 70% SMS, 18% Telegram, 12% Email. Эта раскладка и есть весь проект в одном виджете.',
     'design.s1.title': '01 · Админский дашборд', 'design.s1.tag': 'Admin view',
-    'design.s1.body': 'Высокая плотность для операторов, которые живут в этом экране весь день. Четыре главные метрики в верхнем ряду (одна в тёмном состоянии — текущий KPI в фокусе), bar-chart в монохроме с одной выделенной полосой для разглядываемого дня, donut по распределению каналов, и таблица последних рассылок + системные уведомления ниже. Без маркетинговых украшений — это командный центр.',
-    'design.s1.nav.main': 'Основное', 'design.s1.nav.dashboard': '▦ Дашборд', 'design.s1.nav.orgs': '▢ Организации',
-    'design.s1.nav.dir': 'Справочники', 'design.s1.nav.senders': '◔ Подписи', 'design.s1.nav.channels': '◇ Каналы',
-    'design.s1.nav.routing': 'Маршрутизация', 'design.s1.nav.audiences': '⌘ Аудитории', 'design.s1.nav.templates': '▤ Шаблоны', 'design.s1.nav.cascades': '⤢ Каскады',
-    'design.s1.nav.sending': 'Рассылки', 'design.s1.nav.broadcasts': '⤳ Рассылки',
-    'design.s1.search': '🔍 Поиск по ID, названию, ИНН...',
-    'design.s1.h': 'Дашборд', 'design.s1.sub': 'Добрый день, Nabijon · Сегодня, 28 мая 2026',
-    'design.s1.m1.lbl': 'Отправлено сегодня', 'design.s1.m2.lbl': '% доставки', 'design.s1.m3.lbl': 'Активных рассылок', 'design.s1.m4.lbl': 'Организации',
+    'design.s1.body': 'Оператор открывает экран и видит одну организацию: номер договора в шапке, объём за месяц и ступень тарифа, до которой она добралась. Тарифная лестница — то, чем я доволен больше всего: пять ступеней от 0.50 до 0.15 TJS, отметка «вы здесь» на текущей и строка под ней, которая считает за клиента то, что он сам считать не станет: <strong>«отправьте ещё 51 770 SMS в этом месяце — цена упадёт до 0.22, при вашем объёме это экономия ≈ 4 100 TJS»</strong>. Прайс-лист превращается в повод свести трафик сюда, а не размазывать по подрядчикам. Уведомления не перечислены, а ранжированы: КРИТИЧНО — отвалившийся SMTP, ВНИМАНИЕ — подпись, зависшая на модерации два дня, ИНФО — смена тарифов со следующего месяца. А полоска каналов внизу — 70% SMS, 18% Telegram, 12% Email — это весь проект, измеренный одним виджетом.',
 
     'design.s2.title': '02 · Channel chip — крошечный компонент, несущий весь продуктовый сторителлинг',
     'design.s2.body': 'Solid-pill в собственном цвете канала, белый текст. Появляется в таблицах (строки рассылок, записи журнала), в аудиториях, в шаблонах, в дашбордах. Спроектировать этот компонент первым означало, что любая другая поверхность собирается из него. WhatsApp и Push зашиты на уровне токенов — в v1 они показываются с тегом «скоро» и пойдут в прод без редизайна.',

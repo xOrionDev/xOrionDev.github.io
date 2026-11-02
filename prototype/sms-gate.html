@@ -886,7 +886,7 @@ html[data-theme="dark"] .chart { background: linear-gradient(180deg, rgba(59,130
     <p style="text-align:center; color:var(--text-muted); margin:0 0 24px; font-size:13px;" data-i18n="login.subtitle">Войдите в свой аккаунт</p>
     <div class="field" style="margin-bottom:14px;">
       <label class="field-label" data-i18n="login.email">Электронная почта</label>
-      <input class="input" type="email" value="nabijon.muhamadiev@alif.tj" />
+      <input class="input" type="email" value="admin@smsgate.tj" />
     </div>
     <div class="field" style="margin-bottom:18px;">
       <label class="field-label" data-i18n="login.password">Пароль</label>
@@ -1416,7 +1416,7 @@ function openUserMenu() {
         <div class="user-avatar" style="width:48px; height:48px; font-size:16px;">НМ</div>
         <div>
           <div style="font-weight:700;">Nabijon Muhamadiev</div>
-          <div class="text-sm muted">nabijon.muhamadiev@alif.tj</div>
+          <div class="text-sm muted">admin@smsgate.tj</div>
           <div class="text-sm muted">${t('user.role.superadmin')}</div>
         </div>
       </div>
@@ -1863,7 +1863,7 @@ const DATA = {
     {id:'ORG-008', name:'TCELL', inn:'080808080', responsible:'Сафаров Тимур', phone:'+992 901 00 11 22', email:'corp@tcell.tj', users:9, regDate:'2026-04-22', active:true},
   ],
   users: [
-    {id:'U-001', name:'Nabijon Muhamadiev', email:'nabijon.muhamadiev@alif.tj', phone:'+992 901 11 22 33', org:'smsgate.tj', role:'Суперадмин', lastLogin:'2026-05-28 09:15', regDate:'2025-06-12', active:true},
+    {id:'U-001', name:'Nabijon Muhamadiev', email:'admin@smsgate.tj', phone:'+992 901 11 22 33', org:'smsgate.tj', role:'Суперадмин', lastLogin:'2026-05-28 09:15', regDate:'2025-06-12', active:true},
     {id:'U-002', name:'Каримов Шукрулло', email:'karim@alif.tj', phone:'+992 901 22 33 44', org:'Alif Bank', role:'Администратор', lastLogin:'2026-05-28 08:30', regDate:'2025-08-12', active:true},
     {id:'U-003', name:'Назарова Малика', email:'malika@365trends.tj', phone:'+992 909 11 22 33', org:'365 Trends', role:'Маркетолог', lastLogin:'2026-05-27 17:20', regDate:'2025-09-01', active:true},
     {id:'U-004', name:'Иванов Иван', email:'ivan@alif.tj', phone:'+992 988 44 55 66', org:'AlifMobi', role:'Оператор', lastLogin:'2026-05-28 10:00', regDate:'2025-10-15', active:true},
@@ -1971,13 +1971,13 @@ const DATA = {
   ],
   events: [
     {dt:'2026-05-28 14:32:11', user:'Karim K.', email:'karim@alif.tj', ip:'92.242.45.12', section:'sec.broadcasts', action:'Запуск рассылки', object:'B-100001 — Снижение лимита'},
-    {dt:'2026-05-28 14:15:03', user:'Nabijon M.', email:'nabijon.muhamadiev@alif.tj', ip:'92.242.45.13', section:'sec.signatures', action:'Изменение статуса', object:'SIG-006 — promo@365.tj'},
+    {dt:'2026-05-28 14:15:03', user:'Nabijon M.', email:'admin@smsgate.tj', ip:'92.242.45.13', section:'sec.signatures', action:'Изменение статуса', object:'SIG-006 — promo@365.tj'},
     {dt:'2026-05-28 13:48:22', user:'Malika N.', email:'malika@365trends.tj', ip:'85.96.12.4', section:'sec.templates', action:'Создание', object:'T-E-002 — Промо Весенняя акция'},
     {dt:'2026-05-28 12:30:00', user:'Karim K.', email:'karim@alif.tj', ip:'92.242.45.12', section:'sec.audiences', action:'Экспорт данных', object:'AUD-003 — Снижение лимита (SMS)'},
     {dt:'2026-05-28 11:20:48', user:'Ivan I.', email:'ivan@alif.tj', ip:'92.242.45.20', section:'sec.broadcasts', action:'Создание', object:'B-100006 — AlifMobi welcome bot'},
     {dt:'2026-05-28 10:00:11', user:'Anna P.', email:'anna@alif.tj', ip:'92.242.45.18', section:'sec.users', action:'Вход', object:'U-005'},
     {dt:'2026-05-28 09:48:00', user:'Karim K.', email:'karim@alif.tj', ip:'92.242.45.12', section:'sec.cascades', action:'Изменение', object:'C-001 — OTP критический каскад'},
-    {dt:'2026-05-28 09:15:00', user:'Nabijon M.', email:'nabijon.muhamadiev@alif.tj', ip:'92.242.45.13', section:'sec.organizations', action:'Создание', object:'ORG-008 — TCELL'},
+    {dt:'2026-05-28 09:15:00', user:'Nabijon M.', email:'admin@smsgate.tj', ip:'92.242.45.13', section:'sec.organizations', action:'Создание', object:'ORG-008 — TCELL'},
     {dt:'2026-05-28 08:30:00', user:'Karim K.', email:'karim@alif.tj', ip:'92.242.45.12', section:'sec.dashboard', action:'Вход', object:'U-002'},
     {dt:'2026-05-27 17:20:00', user:'Malika N.', email:'malika@365trends.tj', ip:'85.96.12.4', section:'sec.dashboard', action:'Выход', object:'U-003'},
   ],
@@ -6916,7 +6916,7 @@ function renderProfileMy() {
           <button class="btn btn-secondary" onclick="showToast('info','Загрузка','Выберите изображение')">${ICONS.upload}Изменить фото</button>
         </div>
         <div class="field"><label class="field-label">ФИО</label><input class="input" value="Nabijon Muhamadiev" /></div>
-        <div class="field"><label class="field-label">Email (логин)</label><input class="input" value="nabijon.muhamadiev@alif.tj" /></div>
+        <div class="field"><label class="field-label">Email (логин)</label><input class="input" value="admin@smsgate.tj" /></div>
         <div class="field"><label class="field-label">Мобильный номер</label><input class="input" value="+992 901 11 22 33" /></div>
         <div class="field"><label class="field-label">Язык интерфейса</label><select class="select"><option ${LANG==='ru'?'selected':''}>Русский</option><option ${LANG==='en'?'selected':''}>English</option><option>Тоҷикӣ (скоро)</option></select></div>
         <div class="field"><label class="field-label">Часовой пояс</label><select class="select"><option>UTC+5 (Душанбе)</option><option>UTC+3 (Москва)</option><option>UTC+0 (Лондон)</option></select></div>

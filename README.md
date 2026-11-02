@@ -55,4 +55,4 @@ portfolio/
 - [ ] Заменить `#` в ссылках Telegram и LinkedIn на реальные (секция «Контакты» в `index.html`)
 - [ ] Выгрузить 12 PNG из Figma в `img/` по файлу `umedmall-export-list.md`
 - [ ] Проверить кейсы KK Service, SMS-Gate, Payvand — они ещё не вычитаны так же, как UmedMall
-- [ ] Решить, оставлять ли рабочую почту `@alif.tj` или завести личную
+- [x] Почта в портфолио — личная `dsgnorion@gmail.com`; рабочая `@alif.tj` убрана
