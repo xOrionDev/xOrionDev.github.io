@@ -113,16 +113,16 @@ section { padding: 96px 0; }
 /* WORK */
 .work-grid { display: grid; gap: 28px; margin-top: 52px; }
 .case {
-  display: grid; grid-template-columns: 1.15fr 1fr; gap: 0;
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 0;
   border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
   transition: transform .2s, box-shadow .2s, border-color .2s; background: var(--bg);
 }
 .case:hover { transform: translateY(-3px); box-shadow: 0 18px 48px rgba(10,10,10,.09); border-color: #dfe2e8; }
-.case .body { padding: 40px; display: flex; flex-direction: column; }
+.case .body { padding: 40px; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
 .case .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent, var(--brand)); margin-bottom: 14px; }
 .case h3 { margin-bottom: 12px; }
-.case p { font-size: 16px; margin-bottom: 22px; }
-.case .metrics { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+.case p { font-size: 16px; margin-bottom: 22px; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+.case .metrics { display: flex; flex-wrap: wrap; gap: 10px; }
 .case .metric { background: var(--bg-surface); border-radius: 10px; padding: 9px 14px; font-size: 13px; font-weight: 600; color: var(--text-secondary); }
 .case .metric b { color: var(--text); }
 .case .note { margin-top: 18px; font-size: 13px; line-height: 1.5; color: var(--text-muted); }
@@ -131,9 +131,10 @@ section { padding: 96px 0; }
 .case:hover .cta span.arr { transform: translateX(4px); }
 .case .cta span.arr { transition: transform .2s; display: inline-block; }
 .case .visual {
-  background: var(--accent, var(--brand)); position: relative; min-height: 280px;
-  display: flex; align-items: center; justify-content: center; padding: 36px; overflow: hidden;
+  background: var(--accent, var(--brand)); position: relative; min-width: 0; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; padding: 36px; height: 100%;
 }
+.case .visual::before { content: ''; display: block; padding-top: 133.333%; }
 .case .visual::after {
   content: ''; position: absolute; inset: 0;
   background: radial-gradient(120% 90% at 80% 10%, rgba(255,255,255,.28), transparent 60%);
@@ -149,7 +150,8 @@ section { padding: 96px 0; }
 .case .visual .mark.over .cap { margin-top: 0; opacity: .95; text-shadow: 0 1px 10px rgba(0,0,0,.6); }
 @media (max-width: 860px) {
   .case { grid-template-columns: 1fr; }
-  .case .visual { min-height: 180px; order: -1; }
+  .case .visual { order: -1; }
+  .case .visual::before { padding-top: 62%; }
   .case .body { padding: 28px; }
 }
 
@@ -180,10 +182,10 @@ section { padding: 96px 0; }
 footer { background: var(--bg-dark); color: var(--text-on-dark-secondary); padding: 0 0 44px; font-size: 13px; }
 footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
 .side-visual { position: relative; min-width: 0; overflow: hidden; background: #1f2bd4; height: 100%; }
-.side-visual::before { content: ''; display: block; padding-top: 100%; }
+.side-visual::before { content: ''; display: block; padding-top: 133.333%; }
 
 .side-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-@media (max-width: 760px) { .side-grid { grid-template-columns: 1fr !important; } .side-grid > div:first-child { padding: 28px !important; } .side-visual { order: -1; } .side-visual::before { padding-top: 56.25%; } }
+@media (max-width: 760px) { .side-grid { grid-template-columns: 1fr !important; } .side-grid > div:first-child { padding: 28px !important; } .side-visual { order: -1; } .side-visual::before { padding-top: 62%; } }
 </style>
 </head>
 <body>
@@ -257,13 +259,13 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
         <div class="body">
           <div class="kicker" data-i18n="case.kk.kicker">Internal B2B · Alif Bank</div>
           <h3>KK Service — a queue for the credit committee</h3>
-          <p data-i18n="case.kk.body">The decision was being made inside the bank's shared CRM — a platform built for every department at once, where a reviewer spends the first part of their attention deciding what on screen is irrelevant. I designed the committee's own workspace: a queue that fixes the order of work, templated questions instead of free-form requests, and the profile a decision is built from.</p>
+          <p data-i18n="case.kk.body">The decision was being made inside the bank&rsquo;s shared CRM, where a reviewer spends the first part of their attention deciding what on screen is irrelevant. I designed the committee its own workspace: a queue that fixes the order of work, templated questions instead of free-form requests, and the profile a decision is built from.</p>
           <div class="metrics">
             <div class="metric"><b>6</b> <span data-i18n="case.kk.m1">tabs behind one decision</span></div>
             <div class="metric"><b>20</b> <span data-i18n="case.kk.m2">question templates</span></div>
             <div class="metric"><b>2</b> <span data-i18n="case.kk.m3">clocks in every row</span></div>
           </div>
-          <div class="note" data-i18n-html="case.kk.note">Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a></div>
+          <div class="note" data-i18n="case.kk.note">Under NDA. Full screens and Figma walkthrough on request — dsgnorion@gmail.com</div>
           <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
         </div>
         <div class="visual has-cover"><img src="img/cover-kk.jpg" alt="KK Service — alif cc"><div class="mark over"><div class="cap" data-i18n="case.kk.cap">2025–2026 · completed & live</div></div></div>
@@ -279,7 +281,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
             <div class="metric"><b>2.4M+</b> <span data-i18n="case.sms.m2">messages / month</span></div>
             <div class="metric"><b>~110</b> <span data-i18n="case.sms.m3">Figma frames shipped</span></div>
           </div>
-          <div class="note" data-i18n-html="case.sms.note">Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a></div>
+          <div class="note" data-i18n="case.sms.note">Under NDA. Full screens and Figma walkthrough on request — dsgnorion@gmail.com</div>
           <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
         </div>
         <div class="visual has-cover"><img src="img/cover-atc.jpg" alt="Alif Tech Connect"><div class="mark over"><div class="cap" data-i18n="case.sms.cap">2026 · in development</div></div></div>
@@ -295,7 +297,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
             <div class="metric"><b>~810K</b> <span data-i18n="case.dc.m2">monthly active</span></div>
             <div class="metric"><b>300+</b> <span data-i18n="case.dc.m3">services in one model</span></div>
           </div>
-          <div class="note" data-i18n-html="case.dc.note"><a href="https://apps.apple.com/app/id1575124638" target="_blank" rel="noopener">App Store</a> · <a href="https://play.google.com/store/apps/details?id=tj.dc.next1" target="_blank" rel="noopener">Google Play</a></div>
+          <div class="note" data-i18n="case.dc.note">Live on the App Store and Google Play</div>
           <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
         </div>
         <div class="visual has-cover"><img src="img/cover-dcnext.jpg" alt="DC Next"><div class="mark over"><div class="cap" data-i18n="case.dc.cap">2021–2022 · shipped, still live</div></div></div>
@@ -456,9 +458,9 @@ const I18N = {
     'work.label': `Selected work`,
     'work.title': `Five systems, each with a decision I'd defend in a room.`,
     'work.lede': `Every case study below covers the same ground: what the business needed, what I found, what I chose, and what I'd do differently. All bilingual — EN and RU.`,
-    'case.kk.note': `Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>`,
-    'case.sms.note': `Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>`,
-    'case.dc.note': `<a href="https://apps.apple.com/app/id1575124638" target="_blank" rel="noopener">App Store</a> · <a href="https://play.google.com/store/apps/details?id=tj.dc.next1" target="_blank" rel="noopener">Google Play</a>`,
+    'case.kk.note': `Under NDA. Full screens and Figma walkthrough on request — dsgnorion@gmail.com`,
+    'case.sms.note': `Under NDA. Full screens and Figma walkthrough on request — dsgnorion@gmail.com`,
+    'case.dc.note': `Live on the App Store and Google Play`,
     'case.payvand.note': `Shipped on iOS &amp; Android in 2022 · temporarily unavailable in stores`,
     'case.read': `Read the case study`,
 
@@ -468,7 +470,7 @@ const I18N = {
     'case.umedmall.cap': `2025–2026 · live`,
 
     'case.kk.kicker': `Internal B2B · Alif Bank`,
-    'case.kk.body': `The decision was being made inside the bank's shared CRM — a platform built for every department at once, where a reviewer spends the first part of their attention deciding what on screen is irrelevant. I designed the committee's own workspace: a queue that fixes the order of work, templated questions instead of free-form requests, and the profile a decision is built from.`,
+    'case.kk.body': `The decision was being made inside the bank&rsquo;s shared CRM, where a reviewer spends the first part of their attention deciding what on screen is irrelevant. I designed the committee its own workspace: a queue that fixes the order of work, templated questions instead of free-form requests, and the profile a decision is built from.`,
     'case.kk.m1': `tabs behind one decision`, 'case.kk.m2': `question templates`, 'case.kk.m3': `clocks in every row`,
     'case.kk.cap': `2025–2026 · completed & live`,
 
@@ -539,9 +541,9 @@ const I18N = {
     'work.label': `Избранные проекты`,
     'work.title': `Пять систем — и в каждой решение, которое я готов защищать.`,
     'work.lede': `Каждый кейс ниже построен одинаково: что нужно было бизнесу, что я выяснил, что выбрал и что сделал бы иначе. Все двуязычные — EN и RU.`,
-    'case.kk.note': `Под NDA. Полные макеты и разбор в Figma — по запросу. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>`,
-    'case.sms.note': `Под NDA. Полные макеты и разбор в Figma — по запросу. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>`,
-    'case.dc.note': `<a href="https://apps.apple.com/app/id1575124638" target="_blank" rel="noopener">App Store</a> · <a href="https://play.google.com/store/apps/details?id=tj.dc.next1" target="_blank" rel="noopener">Google Play</a>`,
+    'case.kk.note': `Под NDA. Полные макеты и разбор в Figma — по запросу, dsgnorion@gmail.com`,
+    'case.sms.note': `Под NDA. Полные макеты и разбор в Figma — по запросу, dsgnorion@gmail.com`,
+    'case.dc.note': `Доступно в App Store и Google Play`,
     'case.payvand.note': `Выпущено на iOS и Android в 2022 · временно недоступно в сторах`,
     'case.read': `Читать кейс`,
 
@@ -551,7 +553,7 @@ const I18N = {
     'case.umedmall.cap': `2025–2026 · работает`,
 
     'case.kk.kicker': `Внутренний B2B · Alif Bank`,
-    'case.kk.body': `Решение принималось в общей CRM — платформе, построенной сразу под все департаменты, где проверяющий первую часть внимания тратит на то, чтобы понять, что на экране к нему не относится. Я спроектировал собственное рабочее место комитета: очередь, закрепившую порядок работы, шаблонные вопросы вместо свободных запросов и профиль, на котором строится решение.`,
+    'case.kk.body': `Решение принималось в общей CRM, где проверяющий первую часть внимания тратит на то, чтобы понять, что на экране к нему не относится. Я спроектировал комитету собственное рабочее место: очередь, закрепившую порядок работы, шаблонные вопросы вместо свободных запросов и профиль, на котором строится решение.`,
     'case.kk.m1': `вкладок за одним решением`, 'case.kk.m2': `шаблонов вопросов`, 'case.kk.m3': `таймера в каждой строке`,
     'case.kk.cap': `2025–2026 · завершён и работает`,
 
