@@ -179,7 +179,9 @@ section { padding: 96px 0; }
 
 footer { background: var(--bg-dark); color: var(--text-on-dark-secondary); padding: 0 0 44px; font-size: 13px; }
 footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
-@media (max-width: 760px) { .side-grid { grid-template-columns: 1fr !important; gap: 28px !important; padding: 28px !important; } }
+.side-visual { position: relative; aspect-ratio: 8 / 7; background: #1f2bd4; }
+.side-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+@media (max-width: 760px) { .side-grid { grid-template-columns: 1fr !important; } .side-grid > div:first-child { padding: 28px !important; } .side-visual { aspect-ratio: 16 / 9; order: -1; } }
 </style>
 </head>
 <body>
@@ -320,13 +322,14 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
 <!-- SIDE PROJECT -->
 <section style="padding-top: 0;">
   <div class="container">
-    <div class="card" style="padding: 0; overflow: hidden;">
-      <img src="img/cover-plugin.jpg" alt="HTML to Figma — By Orion, Figma Community plugin" style="width:100%; height:auto; display:block;">
-      <div style="padding: 36px 40px 40px;">
+    <div class="card side-grid" style="padding: 0; overflow: hidden; display:grid; grid-template-columns: 1.15fr 1fr; gap: 0; align-items:stretch;">
+      <div style="padding: 40px 36px 40px 44px; display:flex; flex-direction:column; justify-content:center;">
         <div class="section-label" style="margin-bottom:14px;" data-i18n="side.label">Side project · Figma Community</div>
-        <p style="margin:0 0 24px; font-size:16px; color: var(--text-secondary); max-width: 760px;" data-i18n-html="side.body">More and more of us design through Claude now, and the result usually arrives as an HTML prototype. Getting it back into Figma is where it stalls: the built-in converter takes <strong>one open page at a time</strong>, so a twelve-screen prototype means twelve runs. This plugin takes the whole thing in one click. Manual mode shows the tabs and states the prototype contains, so you pick what becomes a frame instead of importing everything blindly. And when the prototype was generated against a connected design system, it comes across using those components and tokens rather than flat rectangles — that is how it works for me; I would like to hear whether it holds up on other people&rsquo;s files.</p>
+        <h3 style="margin:0 0 14px; font-size: clamp(21px, 2.2vw, 28px); letter-spacing:-0.02em;">HTML to Figma — By Orion</h3>
+        <p style="margin:0 0 26px; font-size:16px; color: var(--text-secondary);" data-i18n-html="side.body">More and more of us design through Claude now, and the result usually arrives as an HTML prototype. Getting it back into Figma is where it stalls: the built-in converter takes <strong>one open page at a time</strong>, so a twelve-screen prototype means twelve runs. This plugin takes the whole thing in one click. Manual mode shows the tabs and states the prototype contains, so you pick what becomes a frame instead of importing everything blindly. And when the prototype was generated against a connected design system, it comes across using those components and tokens rather than flat rectangles — that is how it works for me; I would like to hear whether it holds up on other people&rsquo;s files.</p>
         <a class="btn" href="https://www.figma.com/community/plugin/1691449778162613554/html-to-figma-by-orion" target="_blank" rel="noopener"><span data-i18n="side.link">→ Open on Figma Community</span></a>
       </div>
+      <div class="side-visual"><img src="img/cover-plugin.jpg" alt="HTML to Figma — By Orion, Figma Community plugin"></div>
     </div>
   </div>
 </section>
