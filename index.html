@@ -179,9 +179,11 @@ section { padding: 96px 0; }
 
 footer { background: var(--bg-dark); color: var(--text-on-dark-secondary); padding: 0 0 44px; font-size: 13px; }
 footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
-.side-visual { position: relative; aspect-ratio: 8 / 7; min-width: 0; overflow: hidden; background: #1f2bd4; }
+.side-visual { position: relative; min-width: 0; overflow: hidden; background: #1f2bd4; height: 100%; }
+.side-visual::before { content: ''; display: block; padding-top: 100%; }
+
 .side-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-@media (max-width: 760px) { .side-grid { grid-template-columns: 1fr !important; } .side-grid > div:first-child { padding: 28px !important; } .side-visual { aspect-ratio: 16 / 9; order: -1; } }
+@media (max-width: 760px) { .side-grid { grid-template-columns: 1fr !important; } .side-grid > div:first-child { padding: 28px !important; } .side-visual { order: -1; } .side-visual::before { padding-top: 56.25%; } }
 </style>
 </head>
 <body>
