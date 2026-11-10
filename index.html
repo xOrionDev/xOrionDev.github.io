@@ -314,16 +314,12 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
 <!-- SIDE PROJECT -->
 <section style="padding-top: 0;">
   <div class="container">
-    <div class="card side-grid" style="padding: 44px; display:grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items:center;">
-      <div>
-        <div class="section-label" style="margin-bottom:14px;" data-i18n="side.label">Side project</div>
-        <h3 style="margin:0 0 14px; font-size: clamp(22px, 2.4vw, 30px);">HTML to Figma — By Orion</h3>
-        <p style="margin:0 0 24px; font-size:16px; color: var(--text-secondary);" data-i18n-html="side.body">More and more of us design through Claude now, and the result usually arrives as an HTML prototype. Getting it back into Figma is where it stalls: the built-in converter takes <strong>one open page at a time</strong>, so a twelve-screen prototype means twelve runs. This plugin takes the whole thing in one click. Manual mode shows the tabs and states the prototype contains, so you pick what becomes a frame instead of importing everything blindly. And when the prototype was generated against a connected design system, it comes across using those components and tokens rather than flat rectangles — that is how it works for me; I would like to hear whether it holds up on other people&rsquo;s files.</p>
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <img src="img/cover-plugin.jpg" alt="HTML to Figma — By Orion, Figma Community plugin" style="width:100%; height:auto; display:block;">
+      <div style="padding: 36px 40px 40px;">
+        <div class="section-label" style="margin-bottom:14px;" data-i18n="side.label">Side project · Figma Community</div>
+        <p style="margin:0 0 24px; font-size:16px; color: var(--text-secondary); max-width: 760px;" data-i18n-html="side.body">More and more of us design through Claude now, and the result usually arrives as an HTML prototype. Getting it back into Figma is where it stalls: the built-in converter takes <strong>one open page at a time</strong>, so a twelve-screen prototype means twelve runs. This plugin takes the whole thing in one click. Manual mode shows the tabs and states the prototype contains, so you pick what becomes a frame instead of importing everything blindly. And when the prototype was generated against a connected design system, it comes across using those components and tokens rather than flat rectangles — that is how it works for me; I would like to hear whether it holds up on other people&rsquo;s files.</p>
         <a class="btn" href="https://www.figma.com/community/plugin/1691449778162613554/html-to-figma-by-orion" target="_blank" rel="noopener"><span data-i18n="side.link">→ Open on Figma Community</span></a>
-      </div>
-      <div style="text-align:center;">
-        <div style="font-size: clamp(34px, 5vw, 52px); font-weight:800; letter-spacing:-0.04em; line-height:1.05;">HTML<br><span style="color: var(--text-muted);">→</span><br>Figma</div>
-        <div style="margin-top:16px; font-size:13px; color: var(--text-muted); font-weight:600;" data-i18n="side.meta">Figma Community · free</div>
       </div>
     </div>
   </div>
@@ -476,10 +472,9 @@ const I18N = {
     'case.payvand.m1': `apps, one system`, 'case.payvand.m3': `Marked as concept`,
     'case.payvand.cap': `2022 · concept`,
 
-    'side.label': `Side project`,
+    'side.label': `Side project · Figma Community`,
     'side.body': `More and more of us design through Claude now, and the result usually arrives as an HTML prototype. Getting it back into Figma is where it stalls: the built-in converter takes <strong>one open page at a time</strong>, so a twelve-screen prototype means twelve runs. This plugin takes the whole thing in one click. Manual mode shows the tabs and states the prototype contains, so you pick what becomes a frame instead of importing everything blindly. And when the prototype was generated against a connected design system, it comes across using those components and tokens rather than flat rectangles — that is how it works for me; I would like to hear whether it holds up on other people&rsquo;s files.`,
     'side.link': `→ Open on Figma Community`,
-    'side.meta': `Figma Community · free`,
     'about.label': `About`,
     'about.title': `I design the part of the product nobody screenshots.`,
     'about.lede': `Attribute models, role permissions, moderation queues, state machines — the layer that decides whether the pretty screen on top actually works at scale. I like specs that contradict each other, because reconciling them is the job.`,
@@ -556,10 +551,9 @@ const I18N = {
     'case.payvand.m1': `приложения, одна система`, 'case.payvand.m3': `Помечено как концепт`,
     'case.payvand.cap': `2022 · концепт`,
 
-    'side.label': `Сайд-проект`,
+    'side.label': `Сайд-проект · Figma Community`,
     'side.body': `Всё больше из нас проектируют через Claude, и результат чаще всего приходит HTML-прототипом. Застревает он на обратном пути в Figma: встроенный конвертер берёт <strong>по одной открытой странице за раз</strong>, то есть прототип на двенадцать экранов — это двенадцать заходов. Плагин переносит всё сразу, одним кликом. Ручной режим показывает, какие в прототипе есть табы и состояния, — выбираешь, что именно станет фреймом, а не импортируешь вслепую. А если прототип собирался на подключённой дизайн-системе, он переносится её компонентами и токенами, а не плоскими прямоугольниками. По крайней мере у меня работает так — интересно, как поведёт себя на чужих файлах.`,
     'side.link': `→ Открыть в Figma Community`,
-    'side.meta': `Figma Community · бесплатно`,
     'about.label': `Обо мне`,
     'about.title': `Я проектирую ту часть продукта, которую никто не скриншотит.`,
     'about.lede': `Модели атрибутов, права ролей, очереди модерации, машины состояний — слой, от которого зависит, будет ли работать красивый экран сверху. Люблю противоречащие друг другу ТЗ: свести их — и есть работа.`,
