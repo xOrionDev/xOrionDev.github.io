@@ -787,7 +787,7 @@ footer .links a:hover { color: white; }
         <div class="step-num">2</div>
         <div>
           <h4 data-i18n="process.s2.title">Build a cascade — even though Email and Telegram alone would have shipped sooner</h4>
-          <p data-i18n-html="process.s2.body">The killer feature in Edna is the <strong>cascade</strong>: "try Telegram first, fall back to Email after 30s, fall back to SMS after 2 minutes." For OTP and transactional flows it cuts SMS cost dramatically without hurting delivery. I pushed for shipping the cascade in v1 because half the value of multichannel <em>is</em> the cascade. Without it, customers just pick the cheapest channel and the platform doesn't earn its keep.</p>
+          <p data-i18n-html="process.s2.body">The killer feature in Edna is the <strong>cascade</strong>: "try Telegram first, fall back to Email after 15s, fall back to SMS after another 30s." For OTP and transactional flows it cuts SMS cost dramatically without hurting delivery. I pushed for shipping the cascade in v1 because half the value of multichannel <em>is</em> the cascade. Without it, customers just pick the cheapest channel and the platform doesn't earn its keep.</p>
         </div>
       </div>
 
@@ -840,45 +840,19 @@ footer .links a:hover { color: white; }
 
     <div style="margin-top: 100px;">
       <h3 data-i18n="design.s2.title">02 · The channel chip — a tiny component carrying the whole product story</h3>
-      <p style="max-width:820px;" data-i18n="design.s2.body">A solid pill in the channel's own color, white text. It appears in tables (rows of broadcasts, journal entries), in audiences, in templates, in dashboards. Designing this component first meant every other surface could be built with it. WhatsApp and Push are baked in at the token level — they appear with a "coming soon" tag in v1 and will go live without a redesign.</p>
+      <p style="max-width:820px;" data-i18n="design.s2.body">A solid pill in the channel's own color, white text. It appears in tables (rows of broadcasts, journal entries), in audiences, in templates, in dashboards. Designing this component first meant every other surface could be built with it. WhatsApp and Push are baked in at the token level and drawn alongside the rest — turning them on needs no redesign. The chip also carries a signature count, so it reports which channel and how many you have configured at once: a status, not a label.</p>
 
-      <div class="card" style="margin-top:32px; background: var(--bg); display:flex; gap:14px; flex-wrap:wrap; padding: 40px;">
-        <span class="ch-chip sms">SMS</span>
-        <span class="ch-chip email">Email</span>
-        <span class="ch-chip telegram">Telegram</span>
-        <span class="ch-chip whatsapp">WhatsApp <span style="opacity:0.7; font-weight:500;" data-i18n="design.s2.soon"> · soon</span></span>
-        <span class="ch-chip push">Push <span style="opacity:0.7; font-weight:500;" data-i18n="design.s2.soon2"> · soon</span></span>
+      <div class="shots">
+        <figure class="shot" data-label="ATC · Channel chips"><img src="../img/atc-chips.png" alt="Channel chips" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s2.shot">The same component across five channels. Three live, two reserved — and the badge shows how many signatures each one has, so the chip is a status, not a label.</figcaption></figure>
       </div>
-
-      <p style="margin-top: 24px; font-size: 15px; color: var(--text-muted);" data-i18n="design.s2.caption">↑ The same component, three channels live and two reserved. Adding a new channel = one design token.</p>
     </div>
 
     <div style="margin-top: 100px;">
       <h3 data-i18n="design.s3.title">03 · Cascade builder — visual logic, not a JSON editor</h3>
-      <p style="max-width:820px;" data-i18n="design.s3.body">A vertical drag-and-drop list of stages. Each stage is one channel + signature + template + timeout + transition condition. A running total of "worst-case duration" updates as the user adds stages, so they understand: a 4-stage cascade with 30s+2m+5m timeouts can take up to 7m30s in the worst case. The user-facing model is "this then this then this if not delivered" — never "edit JSON."</p>
+      <p style="max-width:820px;" data-i18n="design.s3.body">A vertical drag-and-drop list of stages. Each stage is one channel + signature + template + timeout + transition condition. The total timeout computes itself and sits in the corner: Telegram waits 15 seconds, Email 30, then SMS — 5 minutes 30 seconds worst case. The user sees that number before launching, instead of learning it from a report. The user-facing model is "this then this then this if not delivered" — never "edit JSON."</p>
 
-      <div class="card" style="margin-top: 32px; background: var(--bg); padding: 32px;">
-        <div style="display:flex; gap:12px; align-items:center; padding: 14px 16px; border:1px solid var(--border); border-radius: 12px; margin-bottom: 8px;">
-          <div style="width:28px; height:28px; border-radius:50%; background: var(--brand-soft); color: var(--brand); font-weight:800; display:inline-flex; align-items:center; justify-content:center;">1</div>
-          <span class="ch-chip telegram">Telegram</span>
-          <div style="flex:1; font-size:14px;"><strong>@alif_otp_bot</strong> · OTP-Telegram <span data-i18n="design.s3.tpl">template</span></div>
-          <div style="font-size:13px; color: var(--text-muted);" data-i18n="design.s3.t1">timeout 30s →</div>
-        </div>
-        <div style="text-align:center; color: var(--text-muted); font-size:12px; padding: 4px 0;" data-i18n="design.s3.fallback">↓ If not delivered</div>
-        <div style="display:flex; gap:12px; align-items:center; padding: 14px 16px; border:1px solid var(--border); border-radius: 12px; margin-bottom: 8px;">
-          <div style="width:28px; height:28px; border-radius:50%; background: var(--brand-soft); color: var(--brand); font-weight:800; display:inline-flex; align-items:center; justify-content:center;">2</div>
-          <span class="ch-chip email">Email</span>
-          <div style="flex:1; font-size:14px;"><strong>noreply@alif.tj</strong> · OTP-Email <span data-i18n="design.s3.tpl2">template</span></div>
-          <div style="font-size:13px; color: var(--text-muted);" data-i18n="design.s3.t2">timeout 2min →</div>
-        </div>
-        <div style="text-align:center; color: var(--text-muted); font-size:12px; padding: 4px 0;" data-i18n="design.s3.fallback2">↓ If not delivered</div>
-        <div style="display:flex; gap:12px; align-items:center; padding: 14px 16px; border:1px solid var(--border); border-radius: 12px;">
-          <div style="width:28px; height:28px; border-radius:50%; background: var(--brand-soft); color: var(--brand); font-weight:800; display:inline-flex; align-items:center; justify-content:center;">3</div>
-          <span class="ch-chip sms">SMS</span>
-          <div style="flex:1; font-size:14px;"><strong>Alif</strong> · OTP-SMS <span data-i18n="design.s3.tpl3">template</span></div>
-          <div style="font-size:13px; color: var(--text-muted);" data-i18n="design.s3.final">final fallback</div>
-        </div>
-        <div style="margin-top:20px; padding:12px 16px; background: var(--bg-surface); border-radius: 12px; font-size: 13px; color: var(--text-secondary);" data-i18n-html="design.s3.note"><strong>Worst-case total duration: 2 min 30 sec.</strong> 87% of OTPs deliver on stage 1 (Telegram) at ~10x lower cost than SMS.</div>
+      <div class="shots">
+        <figure class="shot" data-label="ATC · Ступени каскада"><img src="../img/atc-cascade.png" alt="Cascade builder" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot">Three stages, each a channel with its own timeout, and the total printed in the corner — 5 min 30 sec. Drag the handle to reorder; the arithmetic updates itself.</figcaption></figure>
       </div>
     </div>
 
@@ -1127,7 +1101,7 @@ const I18N = {
     'process.s1.title': 'Generalize "Альфанумерик" into "Sender" (Подпись)',
     'process.s1.body': 'The legacy product had a section called <em>Альфанумерик</em> — SMS sender IDs. With three channels, I could have made three lists. Instead I introduced a single <strong>Подпись (Sender)</strong> concept that polymorphs by channel: alphanumeric for SMS, "Name &lt;email@domain&gt;" for Email, a bot username for Telegram. Same moderation workflow, same approval state machine, same UI shell. This single decision collapsed three would-be sections into one and made WhatsApp/Push trivial to add later.',
     'process.s2.title': 'Build a cascade — even though Email and Telegram alone would have shipped sooner',
-    'process.s2.body': 'The killer feature in Edna is the <strong>cascade</strong>: "try Telegram first, fall back to Email after 30s, fall back to SMS after 2 minutes." For OTP and transactional flows it cuts SMS cost dramatically without hurting delivery. I pushed for shipping the cascade in v1 because half the value of multichannel <em>is</em> the cascade. Without it, customers just pick the cheapest channel and the platform doesn\'t earn its keep.',
+    'process.s2.body': 'The killer feature in Edna is the <strong>cascade</strong>: "try Telegram first, fall back to Email after 15s, fall back to SMS after another 30s." For OTP and transactional flows it cuts SMS cost dramatically without hurting delivery. I pushed for shipping the cascade in v1 because half the value of multichannel <em>is</em> the cascade. Without it, customers just pick the cheapest channel and the platform doesn\'t earn its keep.',
     'process.s3.title': 'Two interfaces, one model: Admin vs Partner',
     'process.s3.body': 'Through interviews it became obvious that <strong>internal admins and customer marketers don\'t share a problem</strong>. Admins moderate, configure shared infrastructure (gateways, anti-pumping rules), and resolve incidents. Marketers create audiences and campaigns. I designed two completely separate IAs on top of the same data model — Admin (23 sections, dense, table-heavy) and the the client cabinet (11 sections, task-flow first, and deliberately lighter).',
     'process.s5.title': 'Rename the product — because "SMS gateway" cannot cross a border',
@@ -1142,18 +1116,13 @@ const I18N = {
     'design.s1.title': '01 · Admin dashboard', 'design.s1.tag': 'Admin view',
     'design.s1.body': 'An operator opens this and sees one organisation: contract number in the header, volume this month, and the price tier it has climbed to. The tariff ladder is the part I am most pleased with — five steps from 0.50 down to 0.15 TJS, with &laquo;вы здесь&raquo; marking the current one and a line underneath doing the arithmetic nobody does on their own: <strong>&laquo;send another 51 770 SMS this month and the price drops to 0.22 — at your volume that is about 4 100 TJS saved&raquo;</strong>. A pricing table becomes a reason to consolidate traffic here instead of splitting it across vendors. Notifications are ranked, not listed — CRITICAL for a failing SMTP handshake, ATTENTION for a signature stuck in moderation two days, INFO for a tariff change next month. And the channel strip at the bottom — 70% SMS, 18% Telegram, 12% Email — is the entire project measured in one widget.',
 
+    'design.s2.shot': 'The same component across five channels. Three live, two reserved — and the badge shows how many signatures each one has, so the chip is a status, not a label.',
     'design.s2.title': '02 · The channel chip — a tiny component carrying the whole product story',
-    'design.s2.body': 'A solid pill in the channel\'s own color, white text. It appears in tables (rows of broadcasts, journal entries), in audiences, in templates, in dashboards. Designing this component first meant every other surface could be built with it. WhatsApp and Push are baked in at the token level — they appear with a "coming soon" tag in v1 and will go live without a redesign.',
-    'design.s2.soon': ' · soon', 'design.s2.soon2': ' · soon',
-    'design.s2.caption': '↑ The same component, three channels live and two reserved. Adding a new channel = one design token.',
+    'design.s2.body': 'A solid pill in the channel\'s own color, white text. It appears in tables (rows of broadcasts, journal entries), in audiences, in templates, in dashboards. Designing this component first meant every other surface could be built with it. WhatsApp and Push are baked in at the token level and drawn alongside the rest — turning them on needs no redesign. The chip also carries a signature count, so it reports which channel and how many you have configured at once: a status, not a label.',
 
+    'design.s3.shot': 'Three stages, each a channel with its own timeout, and the total printed in the corner — 5 min 30 sec. Drag the handle to reorder; the arithmetic updates itself.',
     'design.s3.title': '03 · Cascade builder — visual logic, not a JSON editor',
-    'design.s3.body': 'A vertical drag-and-drop list of stages. Each stage is one channel + signature + template + timeout + transition condition. A running total of "worst-case duration" updates as the user adds stages, so they understand: a 4-stage cascade with 30s+2m+5m timeouts can take up to 7m30s in the worst case. The user-facing model is "this then this then this if not delivered" — never "edit JSON."',
-    'design.s3.tpl': 'template', 'design.s3.tpl2': 'template', 'design.s3.tpl3': 'template',
-    'design.s3.t1': 'timeout 30s →', 'design.s3.t2': 'timeout 2min →',
-    'design.s3.fallback': '↓ If not delivered', 'design.s3.fallback2': '↓ If not delivered',
-    'design.s3.final': 'final fallback',
-    'design.s3.note': '<strong>Worst-case total duration: 2 min 30 sec.</strong> 87% of OTPs deliver on stage 1 (Telegram) at ~10x lower cost than SMS.',
+    'design.s3.body': 'A vertical drag-and-drop list of stages. Each stage is one channel + signature + template + timeout + transition condition. The total timeout computes itself and sits in the corner: Telegram waits 15 seconds, Email 30, then SMS — 5 minutes 30 seconds worst case. The user sees that number before launching, instead of learning it from a report. The user-facing model is "this then this then this if not delivered" — never "edit JSON."',
 
     'design.s4.title': '04 · Client cabinet — same engine, a different set of permissions', 'design.s4.tag': 'Client view',
     'design.s4.body': 'When a customer logs in they see 11 sections: Dashboard, Channels, Contact Groups, Audiences, Templates, Broadcasts, Quick Send, Journal, Reports, Profile, API &amp; Docs. What makes it a different product from the admin is what it <strong>withholds</strong>: the customer sees their gateways but cannot connect one, and the screen says so in plain words instead of hiding a disabled button. In exchange they get everything the admin has no business owning — their own balance with «enough for ~14 days», a spend forecast, contact import by file, an audience builder with AND filters and exclusions, and an API section with cURL examples so their developer never has to file a ticket.',
@@ -1285,7 +1254,7 @@ const I18N = {
     'process.s1.title': 'Обобщил «Альфанумерик» в «Подпись» (Sender)',
     'process.s1.body': 'В легаси-продукте был раздел <em>Альфанумерик</em> — SMS sender ID. С тремя каналами я мог бы сделать три списка. Вместо этого я ввёл единую сущность <strong>Подпись</strong>, которая полиморфна по каналу: alphanumeric для SMS, «Имя &lt;email@домен&gt;» для Email, username бота для Telegram. Один workflow модерации, одна state-machine, один UI shell. Это одно решение схлопнуло три потенциальных раздела в один и сделало добавление WhatsApp/Push тривиальным.',
     'process.s2.title': 'Сделал каскады — хотя без них Email и Telegram уехали бы в прод раньше',
-    'process.s2.body': 'Killer-фича Edna — это <strong>каскад</strong>: «попробуй Telegram, если не доставлено за 30 секунд — Email, если ещё через 2 минуты не доставлено — SMS». Для OTP и транзакционных потоков это режет стоимость SMS драматически без потери доставки. Я настоял, чтобы каскад был в v1, потому что половина ценности multichannel <em>и есть</em> каскад. Без него клиенты просто выберут самый дешёвый канал, и платформа не заработает.',
+    'process.s2.body': 'Killer-фича Edna — это <strong>каскад</strong>: «попробуй Telegram, не доставлено за 15 секунд — Email, не доставлено ещё за 30 — SMS». Для OTP и транзакционных потоков это режет стоимость SMS драматически без потери доставки. Я настоял, чтобы каскад был в v1, потому что половина ценности multichannel <em>и есть</em> каскад. Без него клиенты просто выберут самый дешёвый канал, и платформа не заработает.',
     'process.s3.title': 'Два интерфейса, одна модель: Admin и Partner',
     'process.s3.body': 'После интервью стало очевидно, что <strong>внутренние админы и клиентские маркетологи не делят общую проблему</strong>. Админы модерируют, настраивают общую инфраструктуру (шлюзы, anti-pumping правила), разбирают инциденты. Маркетологи создают аудитории и кампании. Я спроектировал две полностью отдельные IA поверх одной модели данных — Admin (23 раздела, плотный, табличный) и клиентский кабинет (11 разделов, task-flow, и заметно легче админки).',
     'process.s5.title': 'Переименовать продукт — потому что «SMS-шлюз» не переезжает через границу',
@@ -1300,18 +1269,13 @@ const I18N = {
     'design.s1.title': '01 · Админский дашборд', 'design.s1.tag': 'Admin view',
     'design.s1.body': 'Оператор открывает экран и видит одну организацию: номер договора в шапке, объём за месяц и ступень тарифа, до которой она добралась. Тарифная лестница — то, чем я доволен больше всего: пять ступеней от 0.50 до 0.15 TJS, отметка «вы здесь» на текущей и строка под ней, которая считает за клиента то, что он сам считать не станет: <strong>«отправьте ещё 51 770 SMS в этом месяце — цена упадёт до 0.22, при вашем объёме это экономия ≈ 4 100 TJS»</strong>. Прайс-лист превращается в повод свести трафик сюда, а не размазывать по подрядчикам. Уведомления не перечислены, а ранжированы: КРИТИЧНО — отвалившийся SMTP, ВНИМАНИЕ — подпись, зависшая на модерации два дня, ИНФО — смена тарифов со следующего месяца. А полоска каналов внизу — 70% SMS, 18% Telegram, 12% Email — это весь проект, измеренный одним виджетом.',
 
+    'design.s2.shot': 'Один и тот же компонент на пяти каналах. Три работают, два зарезервированы — а бейдж показывает, сколько у канала подписей, так что чип это статус, а не ярлык.',
     'design.s2.title': '02 · Channel chip — крошечный компонент, несущий весь продуктовый сторителлинг',
-    'design.s2.body': 'Solid-pill в собственном цвете канала, белый текст. Появляется в таблицах (строки рассылок, записи журнала), в аудиториях, в шаблонах, в дашбордах. Спроектировать этот компонент первым означало, что любая другая поверхность собирается из него. WhatsApp и Push зашиты на уровне токенов — в v1 они показываются с тегом «скоро» и пойдут в прод без редизайна.',
-    'design.s2.soon': ' · скоро', 'design.s2.soon2': ' · скоро',
-    'design.s2.caption': '↑ Один компонент, три живых канала и два зарезервированных. Добавить новый канал = один токен.',
+    'design.s2.body': 'Solid-pill в собственном цвете канала, белый текст. Появляется в таблицах (строки рассылок, записи журнала), в аудиториях, в шаблонах, в дашбордах. Спроектировать этот компонент первым означало, что любая другая поверхность собирается из него. WhatsApp и Push зашиты на уровне токенов и нарисованы наравне с остальными — когда их включат, редизайн не понадобится. Внутри чипа ещё и счётчик подписей: компонент показывает не только «какой канал», но и «сколько их у тебя настроено», то есть работает статусом, а не ярлыком.',
 
+    'design.s3.shot': 'Три ступени, у каждой свой таймаут, и общий итог в углу — 5 мин 30 сек. Порядок меняется перетаскиванием, арифметика пересчитывается сама.',
     'design.s3.title': '03 · Конструктор каскадов — визуальная логика, не JSON-редактор',
-    'design.s3.body': 'Вертикальный drag-and-drop список ступеней. Каждая ступень — один канал + подпись + шаблон + таймаут + условие перехода. Общая «худшая длительность» обновляется по мере добавления ступеней, чтобы пользователь понимал: каскад из 4 ступеней с таймаутами 30с+2м+5м может занять до 7м30с в худшем случае. Пользовательская модель — «это, потом это, потом это, если не доставлено» — никогда не «отредактируй JSON».',
-    'design.s3.tpl': 'шаблон', 'design.s3.tpl2': 'шаблон', 'design.s3.tpl3': 'шаблон',
-    'design.s3.t1': 'таймаут 30с →', 'design.s3.t2': 'таймаут 2мин →',
-    'design.s3.fallback': '↓ Если не доставлено', 'design.s3.fallback2': '↓ Если не доставлено',
-    'design.s3.final': 'финальный fallback',
-    'design.s3.note': '<strong>Худшая суммарная длительность: 2 мин 30 сек.</strong> 87% OTP доставляются на ступени 1 (Telegram) при ~10x меньшей стоимости по сравнению с SMS.',
+    'design.s3.body': 'Вертикальный drag-and-drop список ступеней. Каждая ступень — один канал + подпись + шаблон + таймаут + условие перехода. Общий таймаут считается сам и стоит в углу: Telegram ждёт 15 секунд, Email — 30, дальше SMS, итого 5 минут 30 секунд в худшем случае. Пользователь видит эту цифру до запуска, а не узнаёт её из отчёта. Пользовательская модель — «это, потом это, потом это, если не доставлено» — никогда не «отредактируй JSON».',
 
     'design.s4.title': '04 · Кабинет клиента — тот же движок, другой набор прав', 'design.s4.tag': 'Client view',
     'design.s4.body': 'Кабинет — 11 разделов: Дашборд, Каналы, Группы контактов, Аудитории, Шаблоны, Рассылки, Быстрая отправка, Журнал записей, Отчёты, Профиль, API и документация. Отдельным продуктом его делает не то, что он даёт, а то, чего <strong>не даёт</strong>: клиент видит свои шлюзы, но подключить их не может — и на экране это написано словами, а не спрятано за выключенной кнопкой. Взамен он получает всё, чем админке владеть незачем: собственный баланс с подписью «хватит на 14 дней», прогноз расхода, импорт контактов файлом, конструктор аудиторий с AND-фильтрами и исключениями, и раздел API с примерами cURL — чтобы разработчик клиента не заводил тикет.',
