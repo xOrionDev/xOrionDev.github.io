@@ -394,7 +394,7 @@ footer .links a:hover { color: white; }
         <div class="step-num">1</div>
         <div>
           <h4 data-i18n="process.s1.title">A queue with four sub-statuses that nobody has to set</h4>
-          <p data-i18n-html="process.s1.body">Not in queue → In queue → Under review → Reviewed. Every transition fires off an action someone was already taking: sending the application, opening it, changing the decision status. <strong>No one maintains the queue, which is exactly why it stays true.</strong> A reviewed application deletes itself from the page and everything below moves up one.</p>
+          <p data-i18n-html="process.s1.body">Not in queue → In queue → Under review → Reviewed. Every transition is triggered by an action someone was already taking: sending the application, opening it, changing the decision status. <strong>No one maintains the queue, which is exactly why it stays true.</strong> A reviewed application deletes itself from the page and everything below moves up one.</p>
           <div class="statusflow">
             <span class="st" data-i18n="process.s1.st1">Not in queue</span><span class="ar">→</span>
             <span class="st on" data-i18n="process.s1.st2">In queue</span><span class="ar">→</span>
@@ -422,7 +422,7 @@ footer .links a:hover { color: white; }
         <div class="step-num">3</div>
         <div>
           <h4 data-i18n="process.s3.title">Two clocks, because they measure different things</h4>
-          <p data-i18n-html="process.s3.body">Each row carries <strong>«Under review: 16 min»</strong> and <strong>«Client waiting: 27 min»</strong>. The second one is a person sitting in a branch. The first is how long we have had their application open. A form submitted online at two in the morning and a man in a chair three metres away look identical in a database — these two numbers are what make them different on screen, and they are the reason walk-in applications get cleared first.</p>
+          <p data-i18n-html="process.s3.body">Each row carries <strong>&ldquo;Under review: 16 min&rdquo;</strong> and <strong>&ldquo;Client waiting: 27 min&rdquo;</strong>. The second one is a person sitting in a branch. The first is how long we have had their application open. A form submitted online at two in the morning and a man in a chair three metres away look identical in a database — these two numbers are what make them different on screen, and they are the reason walk-in applications get cleared first.</p>
         </div>
       </div>
 
@@ -497,7 +497,7 @@ footer .links a:hover { color: white; }
 
     <div style="margin-top: 88px;">
       <h3 data-i18n="design.s3.title">03 · Credit history — five years, every bank in the country, one chart</h3>
-      <p style="max-width:820px;" data-i18n="design.s3.body">The vertical axis is what the client owed that month, the horizontal one is the calendar. Months with missed payments are enlarged and red, so a bad year is visible before anything is read. The source switches between Alif, the national bureau, or both — and the bureau view deliberately excludes Alif's own loans, because duplicating them would make a client look twice as indebted as they are.</p>
+      <p style="max-width:820px;" data-i18n="design.s3.body">The vertical axis is what the client owed that month, the horizontal one is the calendar. Months with missed payments are enlarged and red, so a bad year is visible before anything is read. The source switches between Alif, the national bureau and both — and the bureau view deliberately excludes Alif's own loans, because duplicating them would make a client look twice as indebted as they are.</p>
       <div class="shots">
         <figure class="shot" data-label="img/kk-profile-history.png — График Алиф / БКИТ"><img src="../img/kk-profile-history.png" alt="Credit history chart" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot1">Two databases on one chart; hovering a red point gives the loan number, the days late and the amount paid.</figcaption></figure>
         <figure class="shot" data-label="img/kk-history-table.png — Фильтры и таблица кредитов"><img src="../img/kk-history-table.png" alt="Credit history table" onerror="this.parentElement.classList.add('missing')"><figcaption data-i18n="design.s3.shot2">Below the chart, the loans themselves: role, amount, balance, dates, misses, status, monthly payment.</figcaption></figure>
@@ -590,7 +590,7 @@ footer .links a:hover { color: white; }
       <div class="card dark">
         <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o2.tag">AUTOMATED SHARE</div>
         <div style="font-size:54px; font-weight:800; letter-spacing:-0.04em; line-height:1; color: white; margin-bottom: 12px;">~90%</div>
-        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o2.body">of credit decisions are resolved by the scoring engine, leaving the committee the cases that need judgement.</p>
+        <p style="margin:0; color: var(--text-on-dark-secondary); font-size:14px;" data-i18n="outcomes.o2.body">of credit decisions are resolved by the scoring engine, leaving the committee the cases that need judgment.</p>
       </div>
       <div class="card dark">
         <div style="font-size:14px; color: var(--text-on-dark-secondary); margin-bottom:8px;" data-i18n="outcomes.o3.tag">WALK-IN APPLICATIONS</div>
@@ -640,6 +640,7 @@ footer .links a:hover { color: white; }
   <div class="container">
     <h2 data-i18n="cta.title">Want to see the rest of the system?</h2>
     <p data-i18n="cta.body">The full Figma file covers the queue, the committee page, the client profile and the admin panel — in light and dark themes.</p>
+    <p style="margin:-18px auto 28px; max-width:620px; font-size:14px; opacity:.8;" data-i18n-html="cta.nda">Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com" style="color:inherit; text-decoration:underline;">dsgnorion@gmail.com</a></p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
       <a href="../index.html" class="btn"><span data-i18n="cta.back">→ All case studies</span></a>
     </div>
@@ -707,7 +708,7 @@ const I18N = {
     'process.title': `Five decisions that moved a conversation into a system.`,
     'process.lead': `Building the page was the easy half. The hard half was making it stay accurate without anyone maintaining it, and making the order of work visible enough that fairness stops depending on attention.`,
     'process.s1.title': `A queue with four sub-statuses that nobody has to set`,
-    'process.s1.body': `Not in queue → In queue → Under review → Reviewed. Every transition fires off an action someone was already taking: sending the application, opening it, changing the decision status. <strong>No one maintains the queue, which is exactly why it stays true.`,
+    'process.s1.body': `Not in queue → In queue → Under review → Reviewed. Every transition is triggered by an action someone was already taking: sending the application, opening it, changing the decision status. <strong>No one maintains the queue, which is exactly why it stays true.`,
     'process.s1.st1': `Not in queue`,
     'process.s1.st2': `In queue`,
     'process.s1.st3': `Under review`,
@@ -717,7 +718,7 @@ const I18N = {
     'process.s2.demo1': `Waiting, nobody has opened it`,
     'process.s2.demo2': `Opened — the bar goes out, an avatar appears`,
     'process.s3.title': `Two clocks, because they measure different things`,
-    'process.s3.body': `Each row carries <strong>«Under review: 16 min»`,
+    'process.s3.body': `Each row carries <strong>&ldquo;Under review: 16 min&rdquo;`,
     'process.s4.title': `Twenty templates instead of a text field`,
     'process.s4.body': `The committee almost never asks something new — it asks the same twenty things. So the reply is a dropdown, not free text: four categories, twenty templates. Picking one <strong>changes the application's main status automatically</strong>, because the category already says what state the application is really in. And a validation rule that nothing before could enforce: while a mandatory to-do is open, the application cannot come back to the committee. That alone ended the habit of re-sending the same case.`,
     'process.s5.title': `The answer goes under its own question — and the comment stops pretending to be a task`,
@@ -736,7 +737,7 @@ const I18N = {
     'design.s2.shot3': `Spending, opened up: online and in-store purchases, utilities and transfers abroad — 30, 90 and 365 days side by side.`,
     'design.s2.shot4': `Documents carry their own history — checked, new or outdated, and by whom — with the parsed passport beside them.`,
     'design.s3.title': `03 · Credit history — five years, every bank in the country, one chart`,
-    'design.s3.body': `The vertical axis is what the client owed that month, the horizontal one is the calendar. Months with missed payments are enlarged and red, so a bad year is visible before anything is read. The source switches between Alif, the national bureau, or both — and the bureau view deliberately excludes Alif's own loans, because duplicating them would make a client look twice as indebted as they are.`,
+    'design.s3.body': `The vertical axis is what the client owed that month, the horizontal one is the calendar. Months with missed payments are enlarged and red, so a bad year is visible before anything is read. The source switches between Alif, the national bureau and both — and the bureau view deliberately excludes Alif's own loans, because duplicating them would make a client look twice as indebted as they are.`,
     'design.s3.shot1': `Two databases on one chart; hovering a red point gives the loan number, the days late and the amount paid.`,
     'design.s3.shot2': `Below the chart, the loans themselves: role, amount, balance, dates, misses, status, monthly payment.`,
     'design.s3.extra': `Opening a loan is the part I'd defend hardest. On the left, each due date with a tick, or a delay written out as its period, its length in days and the amount short. On the right, <strong>what the collections team actually wrote about this person`,
@@ -781,7 +782,7 @@ const I18N = {
     'outcomes.o1.tag': `DECISION ACCURACY`,
     'outcomes.o1.body': `of the engine's decisions proved right — the approved went on to pay, and the declined genuinely could not have. Across hundreds of criteria a human errs more often.`,
     'outcomes.o2.tag': `AUTOMATED SHARE`,
-    'outcomes.o2.body': `of credit decisions are resolved by the scoring engine, leaving the committee the cases that need judgement.`,
+    'outcomes.o2.body': `of credit decisions are resolved by the scoring engine, leaving the committee the cases that need judgment.`,
     'outcomes.o3.tag': `WALK-IN APPLICATIONS`,
     'outcomes.o3.body': `minutes to process an application filed in branch — roughly half the previous time, while the customer waits.`,
     'outcomes.camp.title': `The campaign that nobody had to be rescued from`,
@@ -799,6 +800,7 @@ const I18N = {
     'lessons.d3': `<strong>Write down which claims came from where.`,
     'cta.title': `Want to see the rest of the system?`,
     'cta.body': `The full Figma file covers the queue, the committee page, the client profile and the admin panel — in light and dark themes.`,
+    'cta.nda': `Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com" style="color:inherit; text-decoration:underline;">dsgnorion@gmail.com</a>`,
     'cta.back': `→ All case studies`,
     'footer.role': `Product Designer`,
     'footer.disclaimer': `Case study · KK Service · Alif Bank · 2025–2026. Internal tool; screens shown use test data. Post-launch figures are internal bank data, shared by the head of the credit department.`,
@@ -932,6 +934,7 @@ const I18N = {
     'lessons.d3': `<strong>Записывал бы, какое утверждение откуда взялось.</strong> Часть проекта описывали мне с чужих слов, и отделить увиденное от услышанного потом заняло куда больше времени, чем заняло бы сразу.`,
     'cta.title': `Хотите посмотреть остальную систему?`,
     'cta.body': `Полный Figma-файл включает очередь, страницу комитета, профиль клиента и админ-панель — в светлой и тёмной темах.`,
+    'cta.nda': `Под NDA. Полные макеты и разбор в Figma — по запросу. <a href="mailto:dsgnorion@gmail.com" style="color:inherit; text-decoration:underline;">dsgnorion@gmail.com</a>`,
     'cta.back': `→ Все кейсы`,
     'footer.role': `Продуктовый дизайнер`,
     'footer.disclaimer': `Кейс · KK Service · Алиф Банк · 2025–2026. Внутренний инструмент; на экранах тестовые данные. Цифры после запуска — внутренние данные банка, сообщённые руководителем отдела кредитования.`,

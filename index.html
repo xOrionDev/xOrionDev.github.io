@@ -125,7 +125,9 @@ section { padding: 96px 0; }
 .case .metrics { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
 .case .metric { background: var(--bg-surface); border-radius: 10px; padding: 9px 14px; font-size: 13px; font-weight: 600; color: var(--text-secondary); }
 .case .metric b { color: var(--text); }
-.case .cta { margin-top: 24px; font-weight: 700; font-size: 15px; color: var(--accent, var(--brand)); display: inline-flex; align-items: center; gap: 8px; }
+.case .note { margin-top: 18px; font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+.case .note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.case .cta { margin-top: 18px; font-weight: 700; font-size: 15px; color: var(--accent, var(--brand)); display: inline-flex; align-items: center; gap: 8px; }
 .case:hover .cta span.arr { transform: translateX(4px); }
 .case .cta span.arr { transition: transform .2s; display: inline-block; }
 .case .visual {
@@ -214,11 +216,11 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
 
     <div class="companies">
       <span class="cap" data-i18n="hero.co.cap">Worked at</span>
-      <span class="co">Alif Technology <span>2026 — now</span></span>
-      <span class="co">Alif Bank <span>2024 — 2026</span></span>
-      <span class="co">Upwork <span>2022 — 2023</span></span>
-      <span class="co">Dushanbe City Bank <span>2021 — 2022</span></span>
-      <span class="co">Hilton Dushanbe <span>2018 — 2020</span></span>
+      <span class="co">Alif Technology <span>2026 – now</span></span>
+      <span class="co">Alif Bank <span>2024–2026</span></span>
+      <span class="co">Upwork <span>2022–2023</span></span>
+      <span class="co">Dushanbe City Bank <span>2021–2022</span></span>
+      <span class="co">Hilton Dushanbe <span>2018–2020</span></span>
     </div>
   </div>
 </header>
@@ -227,7 +229,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
 <section id="work">
   <div class="container">
     <div class="section-label" data-i18n="work.label">Selected work</div>
-    <h2 data-i18n="work.title">Four systems, each with a decision I'd defend in a room.</h2>
+    <h2 data-i18n="work.title">Five systems, each with a decision I'd defend in a room.</h2>
     <p style="max-width: 720px; font-size: 19px;" data-i18n="work.lede">Every case study below covers the same ground: what the business needed, what I found, what I chose, and what I'd do differently. All bilingual — EN and RU.</p>
 
     <div class="work-grid">
@@ -236,7 +238,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
         <div class="body">
           <div class="kicker" data-i18n="case.umedmall.kicker">Marketplace · Client, Admin & Seller</div>
           <h3>UmedMall Marketplace OS</h3>
-          <p data-i18n="case.umedmall.body">Three specs written months apart by different people, for three interfaces that had to agree on one taxonomy. I designed the storefront, the moderator console and the seller cabinet — and the attribute engine underneath all three.</p>
+          <p data-i18n="case.umedmall.body">Three specs written months apart by different people, for three interfaces that had to agree on one taxonomy. I designed the storefront, the moderator console and the seller portal — and the attribute engine underneath all three.</p>
           <div class="metrics">
             <div class="metric"><b>3 → 1</b> <span data-i18n="case.umedmall.m1">surfaces, one data model</span></div>
             <div class="metric"><b>0</b> <span data-i18n="case.umedmall.m2">free-text attributes</span></div>
@@ -257,6 +259,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
             <div class="metric"><b>20</b> <span data-i18n="case.kk.m2">question templates</span></div>
             <div class="metric"><b>2</b> <span data-i18n="case.kk.m3">clocks in every row</span></div>
           </div>
+          <div class="note" data-i18n-html="case.kk.note">Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a></div>
           <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
         </div>
         <div class="visual has-cover"><img src="img/cover-kk.jpg" alt="KK Service — alif cc"><div class="mark over"><div class="cap" data-i18n="case.kk.cap">2025–2026 · completed & live</div></div></div>
@@ -264,7 +267,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
 
       <a class="case" href="cases/sms-gate.html" style="--accent: var(--c-sms);">
         <div class="body">
-          <div class="kicker" data-i18n="case.sms.kicker">Platform redesign · Alif Tech</div>
+          <div class="kicker" data-i18n="case.sms.kicker">Platform redesign · Alif Technology</div>
           <h3>Alif Tech Connect</h3>
           <p data-i18n="case.sms.body">The largest SMS platform in Tajikistan, built when SMS was the only channel that mattered. I turned it into multichannel communication infrastructure — Email and Telegram now, WhatsApp and Push reserved at the token level — ready to sell outside Tajikistan.</p>
           <div class="metrics">
@@ -272,6 +275,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
             <div class="metric"><b>2.4M+</b> <span data-i18n="case.sms.m2">messages / month</span></div>
             <div class="metric"><b>~110</b> <span data-i18n="case.sms.m3">Figma frames shipped</span></div>
           </div>
+          <div class="note" data-i18n-html="case.sms.note">Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a></div>
           <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
         </div>
         <div class="visual has-cover"><img src="img/cover-atc.jpg" alt="Alif Tech Connect"><div class="mark over"><div class="cap" data-i18n="case.sms.cap">2026 · in development</div></div></div>
@@ -281,12 +285,13 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
         <div class="body">
           <div class="kicker" data-i18n="case.dc.kicker">Mobile banking · Dushanbe City Bank</div>
           <h3>DC Next — a bank and a city in one app</h3>
-          <p data-i18n="case.dc.body">The legacy app hid the two things people open a banking app for — the balance and paying — in a grid where everything weighed the same. I put the balance on top, cut eleven equal tiles down to four primary actions, and let favourites fill themselves from what people actually repeat.</p>
+          <p data-i18n="case.dc.body">The legacy app hid the two things people open a banking app for — the balance and paying — in a grid where everything weighed the same. I put the balance on top, cut eleven equal tiles down to four primary actions, and let favorites fill themselves from what people actually repeat.</p>
           <div class="metrics">
             <div class="metric"><b>~1.7M</b> <span data-i18n="case.dc.m1">registered users</span></div>
             <div class="metric"><b>~810K</b> <span data-i18n="case.dc.m2">monthly active</span></div>
             <div class="metric"><b>300+</b> <span data-i18n="case.dc.m3">services in one model</span></div>
           </div>
+          <div class="note" data-i18n-html="case.dc.note"><a href="https://apps.apple.com/app/id1575124638" target="_blank" rel="noopener">App Store</a> · <a href="https://play.google.com/store/apps/details?id=tj.dc.next1" target="_blank" rel="noopener">Google Play</a></div>
           <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
         </div>
         <div class="visual has-cover"><img src="img/cover-dcnext.jpg" alt="DC Next"><div class="mark over"><div class="cap" data-i18n="case.dc.cap">2021–2022 · shipped, still live</div></div></div>
@@ -294,17 +299,18 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
 
       <a class="case" href="cases/payvand.html" style="--accent: var(--c-payvand);">
         <div class="body">
-          <div class="kicker" data-i18n="case.payvand.kicker">Mobile · concept, 2022</div>
+          <div class="kicker" data-i18n="case.payvand.kicker">Mobile · 2022</div>
           <h3>Payvand — Payments & Transfer</h3>
           <p data-i18n="case.payvand.body">The brief asked for one app. Research said there were two problems: everyday domestic banking for registered users, and frictionless remittances from Russia for people who won't register at all. Two apps, one design system.</p>
           <div class="metrics">
             <div class="metric"><b>2</b> <span data-i18n="case.payvand.m1">apps, one system</span></div>
             <div class="metric"><b>iOS + Android</b></div>
-            <div class="metric" data-i18n="case.payvand.m3">Marked as concept</div>
+            <div class="metric" data-i18n="case.payvand.m3">iOS + Android</div>
           </div>
+          <div class="note" data-i18n-html="case.payvand.note">Shipped on iOS &amp; Android in 2022 · temporarily unavailable in stores</div>
           <div class="cta"><span data-i18n="case.read">Read the case study</span> <span class="arr">→</span></div>
         </div>
-        <div class="visual has-cover"><img src="img/cover-payvand.jpg" alt="Payvand App"><div class="mark over"><div class="cap" data-i18n="case.payvand.cap">2022 · concept</div></div></div>
+        <div class="visual has-cover"><img src="img/cover-payvand.jpg" alt="Payvand App"><div class="mark over"><div class="cap" data-i18n="case.payvand.cap">2022 · shipped</div></div></div>
       </a>
 
     </div>
@@ -334,22 +340,22 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
 
     <div style="margin-top: 56px;">
       <div class="exp">
-        <div class="when">Mar 2026 — now</div>
+        <div class="when">Mar 2026 – now</div>
         <div>
           <h4 data-i18n="exp.aliftech.role">Product Designer</h4>
           <div class="co">Alif Technology</div>
           <p data-i18n="exp.aliftech.body">Sole designer on platform products — communication infrastructure, marketplace and new business lines.</p>
           <ul>
-            <li data-i18n="exp.aliftech.l1">Alif Tech Connect — multichannel communication platform (ex smsgate.tj)</li>
-            <li data-i18n="exp.aliftech.l2">UmedMall — marketplace: storefront, moderator console, seller cabinet</li>
+            <li data-i18n="exp.aliftech.l1">Alif Tech Connect — multichannel communication platform (formerly smsgate.tj)</li>
+            <li data-i18n="exp.aliftech.l2">UmedMall — marketplace: storefront, moderator console, seller portal</li>
             <li data-i18n="exp.aliftech.l3">Alif Charge — EV charging network, BRD to production landing</li>
-            <li data-i18n="exp.aliftech.l4">JetQR — admin panel and merchant cabinet for QR payments on coffee machines</li>
+            <li data-i18n="exp.aliftech.l4">JetQR — admin panel and merchant portal for QR payments on coffee machines</li>
           </ul>
         </div>
       </div>
 
       <div class="exp">
-        <div class="when">Jan 2024 — Mar 2026</div>
+        <div class="when">Jan 2024 – Mar 2026</div>
         <div>
           <h4 data-i18n="exp.alif.role">Product Designer</h4>
           <div class="co">Alif Bank</div>
@@ -364,19 +370,19 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
       </div>
 
       <div class="exp">
-        <div class="when">May 2022 — Sep 2023</div>
+        <div class="when">May 2022 – Sep 2023</div>
         <div>
           <h4 data-i18n="exp.upwork.role">Freelance UI &amp; Brand Designer</h4>
           <div class="co">Upwork</div>
           <p data-i18n="exp.upwork.body">Branding and UI for international clients: landing pages, mobile-first interfaces, rapid prototyping in Figma.</p>
           <ul>
-            <li data-i18n="exp.upwork.l1">Payvand — payments and transfers app, concept, 2022</li>
+            <li data-i18n="exp.upwork.l1">Payvand — payments and transfers app, 2022</li>
           </ul>
         </div>
       </div>
 
       <div class="exp">
-        <div class="when">Jan 2021 — Feb 2022</div>
+        <div class="when">Jan 2021 – Feb 2022</div>
         <div>
           <h4 data-i18n="exp.dc.role">UX/UI Designer</h4>
           <div class="co">Dushanbe City Bank</div>
@@ -391,7 +397,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
       </div>
 
       <div class="exp">
-        <div class="when">Aug 2018 — Jan 2020</div>
+        <div class="when">Aug 2018 – Jan 2020</div>
         <div>
           <h4 data-i18n="exp.hilton.role">Brand Designer</h4>
           <div class="co">Hilton Dushanbe</div>
@@ -400,7 +406,7 @@ footer .inner { border-top: 1px solid var(--border-dark); padding-top: 26px; dis
       </div>
     </div>
 
-    <p style="margin-top: 42px; font-size: 15px; color: var(--text-muted); max-width: 760px;" data-i18n="about.edu">Education: Saint Petersburg Electrotechnical University &laquo;LETI&raquo; — Master&rsquo;s, Applied Mathematics &amp; Computer Science (2015–2017). Russian-Tajik (Slavonic) University — Bachelor&rsquo;s, Applied Informatics in Economics (2011–2015).</p>
+    <p style="margin-top: 42px; font-size: 15px; color: var(--text-muted); max-width: 760px;" data-i18n="about.edu">Education: Saint Petersburg Electrotechnical University &ldquo;LETI&rdquo; — Master&rsquo;s, Applied Mathematics &amp; Computer Science (2015–2017). Russian-Tajik (Slavonic) University — Bachelor&rsquo;s, Applied Informatics in Economics (2011–2015).</p>
   </div>
 </section>
 
@@ -443,12 +449,16 @@ const I18N = {
     'hero.co.cap': `Worked at`,
 
     'work.label': `Selected work`,
-    'work.title': `Four systems, each with a decision I'd defend in a room.`,
+    'work.title': `Five systems, each with a decision I'd defend in a room.`,
     'work.lede': `Every case study below covers the same ground: what the business needed, what I found, what I chose, and what I'd do differently. All bilingual — EN and RU.`,
+    'case.kk.note': `Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>`,
+    'case.sms.note': `Under NDA. Full screens and Figma walkthrough available on request. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>`,
+    'case.dc.note': `<a href="https://apps.apple.com/app/id1575124638" target="_blank" rel="noopener">App Store</a> · <a href="https://play.google.com/store/apps/details?id=tj.dc.next1" target="_blank" rel="noopener">Google Play</a>`,
+    'case.payvand.note': `Shipped on iOS &amp; Android in 2022 · temporarily unavailable in stores`,
     'case.read': `Read the case study`,
 
     'case.umedmall.kicker': `Marketplace · Client, Admin & Seller`,
-    'case.umedmall.body': `Three specs written months apart by different people, for three interfaces that had to agree on one taxonomy. I designed the storefront, the moderator console and the seller cabinet — and the attribute engine underneath all three.`,
+    'case.umedmall.body': `Three specs written months apart by different people, for three interfaces that had to agree on one taxonomy. I designed the storefront, the moderator console and the seller portal — and the attribute engine underneath all three.`,
     'case.umedmall.m1': `surfaces, one data model`, 'case.umedmall.m2': `free-text attributes`, 'case.umedmall.m3': `nav groups`,
     'case.umedmall.cap': `2025–2026 · live`,
 
@@ -457,20 +467,20 @@ const I18N = {
     'case.kk.m1': `tabs behind one decision`, 'case.kk.m2': `question templates`, 'case.kk.m3': `clocks in every row`,
     'case.kk.cap': `2025–2026 · completed & live`,
 
-    'case.sms.kicker': `Platform redesign · Alif Tech`,
+    'case.sms.kicker': `Platform redesign · Alif Technology`,
     'case.sms.body': `The largest SMS platform in Tajikistan, built when SMS was the only channel that mattered. I turned it into multichannel communication infrastructure — Email and Telegram now, WhatsApp and Push reserved at the token level — ready to sell outside Tajikistan.`,
     'case.sms.m1': `channels, architecture-ready`, 'case.sms.m2': `messages / month`, 'case.sms.m3': `Figma frames shipped`,
     'case.sms.cap': `2026 · in development`,
 
     'case.dc.kicker': `Mobile banking · Dushanbe City Bank`,
-    'case.dc.body': `The legacy app hid the two things people open a banking app for — the balance and paying — in a grid where everything weighed the same. I put the balance on top, cut eleven equal tiles down to four primary actions, and let favourites fill themselves from what people actually repeat.`,
+    'case.dc.body': `The legacy app hid the two things people open a banking app for — the balance and paying — in a grid where everything weighed the same. I put the balance on top, cut eleven equal tiles down to four primary actions, and let favorites fill themselves from what people actually repeat.`,
     'case.dc.m1': `registered users`, 'case.dc.m2': `monthly active`, 'case.dc.m3': `services in one model`,
     'case.dc.cap': `2021–2022 · shipped, still live`,
 
-    'case.payvand.kicker': `Mobile · concept, 2022`,
+    'case.payvand.kicker': `Mobile · 2022`,
     'case.payvand.body': `The brief asked for one app. Research said there were two problems: everyday domestic banking for registered users, and frictionless remittances from Russia for people who won't register at all. Two apps, one design system.`,
-    'case.payvand.m1': `apps, one system`, 'case.payvand.m3': `Marked as concept`,
-    'case.payvand.cap': `2022 · concept`,
+    'case.payvand.m1': `apps, one system`, 'case.payvand.m3': `iOS + Android`,
+    'case.payvand.cap': `2022 · shipped`,
 
     'side.label': `Side project · Figma Community`,
     'side.body': `More and more of us design through Claude now, and the result usually arrives as an HTML prototype. Getting it back into Figma is where it stalls: the built-in converter takes <strong>one open page at a time</strong>, so a twelve-screen prototype means twelve runs. This plugin takes the whole thing in one click. Manual mode shows the tabs and states the prototype contains, so you pick what becomes a frame instead of importing everything blindly. And when the prototype was generated against a connected design system, it comes across using those components and tokens rather than flat rectangles — that is how it works for me; I would like to hear whether it holds up on other people&rsquo;s files.`,
@@ -480,13 +490,13 @@ const I18N = {
     'about.lede': `Attribute models, role permissions, moderation queues, state machines — the layer that decides whether the pretty screen on top actually works at scale. I like specs that contradict each other, because reconciling them is the job.`,
     'exp.aliftech.role': `Product Designer`,
     'exp.aliftech.body': `Sole designer on platform products — communication infrastructure, marketplace and new business lines.`,
-    'exp.aliftech.l1': `Alif Tech Connect — multichannel communication platform (ex smsgate.tj)`,
-    'exp.aliftech.l2': `UmedMall — marketplace: storefront, moderator console, seller cabinet`,
+    'exp.aliftech.l1': `Alif Tech Connect — multichannel communication platform (formerly smsgate.tj)`,
+    'exp.aliftech.l2': `UmedMall — marketplace: storefront, moderator console, seller portal`,
     'exp.aliftech.l3': `Alif Charge — EV charging network, BRD to production landing`,
     'exp.upwork.role': `Freelance UI & Brand Designer`,
     'exp.upwork.body': `Branding and UI for international clients: landing pages, mobile-first interfaces, rapid prototyping in Figma.`,
-    'exp.upwork.l1': `Payvand — payments and transfers app, concept, 2022`,
-    'exp.aliftech.l4': `JetQR — admin panel and merchant cabinet for QR payments on coffee machines`,
+    'exp.upwork.l1': `Payvand — payments and transfers app, 2022`,
+    'exp.aliftech.l4': `JetQR — admin panel and merchant portal for QR payments on coffee machines`,
     'exp.alif.role': `Product Designer`,
     'exp.alif.body': `Seven large-scale products and 20+ independent functional modules across fintech, admin systems and internal operations.`,
     'exp.alif.l1': `Alif Mobi — mobile banking app`,
@@ -501,7 +511,7 @@ const I18N = {
     'exp.dc.l4': `International transfers to 50+ countries`,
     'exp.hilton.role': `Brand Designer`,
     'exp.hilton.body': `Branding and marketing assets; rebranding of the Inasia restaurant.`,
-    'about.edu': `Education: Saint Petersburg Electrotechnical University «LETI» — Master’s, Applied Mathematics & Computer Science (2015–2017). Russian-Tajik (Slavonic) University — Bachelor’s, Applied Informatics in Economics (2011–2015).`,
+    'about.edu': `Education: Saint Petersburg Electrotechnical University &ldquo;LETI&rdquo; — Master’s, Applied Mathematics & Computer Science (2015–2017). Russian-Tajik (Slavonic) University — Bachelor’s, Applied Informatics in Economics (2011–2015).`,
 
     'contact.label': `Contact`,
     'contact.title': `Have a system that's outgrown its first design?`,
@@ -522,8 +532,12 @@ const I18N = {
     'hero.co.cap': `Работал в`,
 
     'work.label': `Избранные проекты`,
-    'work.title': `Четыре системы — и в каждой решение, которое я готов защищать.`,
+    'work.title': `Пять систем — и в каждой решение, которое я готов защищать.`,
     'work.lede': `Каждый кейс ниже построен одинаково: что нужно было бизнесу, что я выяснил, что выбрал и что сделал бы иначе. Все двуязычные — EN и RU.`,
+    'case.kk.note': `Под NDA. Полные макеты и разбор в Figma — по запросу. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>`,
+    'case.sms.note': `Под NDA. Полные макеты и разбор в Figma — по запросу. <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>`,
+    'case.dc.note': `<a href="https://apps.apple.com/app/id1575124638" target="_blank" rel="noopener">App Store</a> · <a href="https://play.google.com/store/apps/details?id=tj.dc.next1" target="_blank" rel="noopener">Google Play</a>`,
+    'case.payvand.note': `Выпущено на iOS и Android в 2022 · временно недоступно в сторах`,
     'case.read': `Читать кейс`,
 
     'case.umedmall.kicker': `Маркетплейс · Клиент, Админка, Продавец`,
@@ -536,7 +550,7 @@ const I18N = {
     'case.kk.m1': `вкладок за одним решением`, 'case.kk.m2': `шаблонов вопросов`, 'case.kk.m3': `таймера в каждой строке`,
     'case.kk.cap': `2025–2026 · завершён и работает`,
 
-    'case.sms.kicker': `Редизайн платформы · Alif Tech`,
+    'case.sms.kicker': `Редизайн платформы · Alif Technology`,
     'case.sms.body': `Крупнейшая SMS-платформа Таджикистана, построенная тогда, когда SMS были единственным каналом. Я превратил её в многоканальную инфраструктуру — Email и Telegram сейчас, WhatsApp и Push зарезервированы на уровне токенов — готовую к продаже за пределами страны.`,
     'case.sms.m1': `каналов, архитектура готова`, 'case.sms.m2': `сообщений в месяц`, 'case.sms.m3': `фреймов сдано в Figma`,
     'case.sms.cap': `2026 · в разработке`,
@@ -546,10 +560,10 @@ const I18N = {
     'case.dc.m1': `зарегистрированных`, 'case.dc.m2': `активных в месяц`, 'case.dc.m3': `сервисов в одной модели`,
     'case.dc.cap': `2021–2022 · в релизе, работает`,
 
-    'case.payvand.kicker': `Мобильное · концепт, 2022`,
+    'case.payvand.kicker': `Мобильное · 2022`,
     'case.payvand.body': `В брифе было одно приложение. Исследование показало две разные задачи: повседневный банкинг для зарегистрированных и переводы из России без трения для тех, кто регистрироваться не станет. Два приложения, одна дизайн-система.`,
-    'case.payvand.m1': `приложения, одна система`, 'case.payvand.m3': `Помечено как концепт`,
-    'case.payvand.cap': `2022 · концепт`,
+    'case.payvand.m1': `приложения, одна система`, 'case.payvand.m3': `iOS + Android`,
+    'case.payvand.cap': `2022 · выпущено`,
 
     'side.label': `Сайд-проект · Figma Community`,
     'side.body': `Всё больше из нас проектируют через Claude, и результат чаще всего приходит HTML-прототипом. Застревает он на обратном пути в Figma: встроенный конвертер берёт <strong>по одной открытой странице за раз</strong>, то есть прототип на двенадцать экранов — это двенадцать заходов. Плагин переносит всё сразу, одним кликом. Ручной режим показывает, какие в прототипе есть табы и состояния, — выбираешь, что именно станет фреймом, а не импортируешь вслепую. А если прототип собирался на подключённой дизайн-системе, он переносится её компонентами и токенами, а не плоскими прямоугольниками. По крайней мере у меня работает так — интересно, как поведёт себя на чужих файлах.`,
@@ -564,7 +578,7 @@ const I18N = {
     'exp.aliftech.l3': `Alif Charge — сеть EV-зарядок, от BRD до лендинга в проде`,
     'exp.upwork.role': `Фриланс: UI и бренд-дизайнер`,
     'exp.upwork.body': `Брендинг и UI для международных клиентов: лендинги, mobile-first интерфейсы, прототипы в Figma.`,
-    'exp.upwork.l1': `Payvand — приложение платежей и переводов, концепт, 2022`,
+    'exp.upwork.l1': `Payvand — приложение платежей и переводов, 2022`,
     'exp.aliftech.l4': `JetQR — админ-панель и кабинет мерчанта для QR-оплаты в кофейных автоматах`,
     'exp.alif.role': `Продуктовый дизайнер`,
     'exp.alif.body': `Семь крупных продуктов и 20+ самостоятельных функциональных модулей: финтех, админ-системы, внутренние операционные платформы.`,
