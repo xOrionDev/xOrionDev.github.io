@@ -621,9 +621,14 @@ footer .links a:hover { color: white; }
 <!-- CTA -->
 <section class="cta">
   <div class="container">
-    <h2 data-i18n="cta.title">It shipped, then it came down</h2>
-    <p data-i18n="cta.body">Both apps shipped in 2022 and ran in production; they are out of the stores for now. What follows is the design as it was built.</p>
-    <p style="margin:0 auto; max-width:620px; font-size:15px; opacity:.85;" data-i18n="cta.status">Shipped on iOS &amp; Android in 2022 · temporarily unavailable in stores</p>
+    <h2 data-i18n="cta.title">One is still in the stores. The other the bank took down.</h2>
+    <p data-i18n="cta.body">Payvand Wallet shipped in 2022 and is still live — install it and judge the flow with your own thumbs, that is a fairer test than any screenshot in a case study. Payvand Transfers shipped too, and was later withdrawn from the stores by the bank; what you see of it here is the design as it was built.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://apps.apple.com/ru/app/id1564555761" class="btn" target="_blank" rel="noopener"><span data-i18n="cta.ios">→ Payvand Wallet · App Store</span></a>
+      <a href="https://play.google.com/store/apps/details?id=tj.payvand.app" class="btn btn-secondary" target="_blank" rel="noopener"><span data-i18n="cta.android">→ Payvand Wallet · Google Play</span></a>
+      <a href="../index.html" class="btn btn-secondary"><span data-i18n="cta.back">→ All case studies</span></a>
+    </div>
+    <p style="margin:22px auto 0; max-width:620px; font-size:14px; opacity:.75;" data-i18n="cta.gone">Payvand Transfers is no longer in the stores — the bank withdrew it.</p>
   </div>
 </section>
 
@@ -639,6 +644,8 @@ footer .links a:hover { color: white; }
       </div>
       <div class="links">
         <a href="mailto:dsgnorion@gmail.com">dsgnorion@gmail.com</a>
+        <a href="https://apps.apple.com/ru/app/id1564555761" target="_blank" rel="noopener">App Store</a>
+        <a href="https://play.google.com/store/apps/details?id=tj.payvand.app" target="_blank" rel="noopener">Google Play</a>
       </div>
     </div>
     <div style="margin-top:40px; padding-top:24px; border-top:1px solid var(--border-dark); font-size:13px; color:var(--text-on-dark-secondary);" data-i18n="footer.disclaimer">
@@ -794,9 +801,12 @@ const I18N = {
     'lessons.d1': `<strong>Test the flow with actual migrant workers earlier.</strong> The flow was designed from competitive analysis, but testing with the specific audience — non-tech-savvy workers — would have caught usability gaps that design-adjacent participants wouldn't.`,
     'lessons.d2': `<strong>Define the QR merchant enrollment UX earlier.</strong> The consumer side is clean. The merchant onboarding — how a small vendor gets their static QR code — was left for later and would have shaped the consumer flow if designed in parallel.`,
 
-    'cta.status': `Shipped on iOS &amp; Android in 2022 · temporarily unavailable in stores`,
-    'cta.title': `It shipped, then it came down`,
-    'cta.body': `Both apps shipped in 2022 and ran in production; they are out of the stores for now. What follows is the design as it was built.`,
+    'cta.ios': `→ Payvand Wallet · App Store`,
+    'cta.android': `→ Payvand Wallet · Google Play`,
+    'cta.back': `→ All case studies`,
+    'cta.gone': `Payvand Transfers is no longer in the stores — the bank withdrew it.`,
+    'cta.title': `One is still in the stores. The other the bank took down.`,
+    'cta.body': `Payvand Wallet shipped in 2022 and is still live — install it and judge the flow with your own thumbs, that is a fairer test than any screenshot in a case study. Payvand Transfers shipped too, and was later withdrawn from the stores by the bank; what you see of it here is the design as it was built.`,
     'footer.role': `Product Designer`,
     'footer.disclaimer': `Case study · Payvand App · 2022. UX/UI for two mobile applications — Payvand Wallet (domestic payments) and Payvand Transfers (remittances) — built on a shared component library. Both apps shipped.`,
   },
@@ -945,9 +955,12 @@ const I18N = {
     'lessons.d1': `<strong>Тестировать флоу с реальными трудовыми мигрантами раньше.</strong> Флоу проектировался по конкурентному анализу, но тестирование с конкретной аудиторией — нетехнологичными работниками — выявило бы юзабилити-пробелы, которые близкие к дизайну участники не заметят.`,
     'lessons.d2': `<strong>Определить UX онбординга мерчантов для QR раньше.</strong> Сторона потребителя чистая. Онбординг мерчантов — как небольшой продавец в Душанбе получает свой статичный QR-код — остался на потом, хотя мог бы повлиять на пользовательский флоу, если бы проектировался параллельно.`,
 
-    'cta.status': `Выпущено на iOS и Android в 2022 · временно недоступно в сторах`,
-    'cta.title': `Оно вышло, а потом его сняли`,
-    'cta.body': `Оба приложения вышли в 2022 и работали в проде; сейчас их в сторах нет. Ниже — дизайн в том виде, в каком он был собран.`,
+    'cta.ios': `→ Payvand Wallet · App Store`,
+    'cta.android': `→ Payvand Wallet · Google Play`,
+    'cta.back': `→ Все кейсы`,
+    'cta.gone': `Payvand Transfers в сторах больше нет — банк его убрал.`,
+    'cta.title': `Одно до сих пор в сторах. Второе банк убрал.`,
+    'cta.body': `Payvand Wallet вышел в 2022 и работает до сих пор — поставьте и оцените флоу собственными пальцами, это честнее любого скриншота в кейсе. Payvand Transfers тоже выходил, но позже банк убрал его из сторов; здесь он показан таким, каким был собран.`,
     'footer.role': `Продакт-дизайнер`,
     'footer.disclaimer': `Кейс · Payvand App · 2022. UX/UI двух мобильных приложений — Payvand Wallet (внутренние платежи) и Payvand Transfers (переводы) — на общей библиотеке компонентов. Оба вышли в продакшен.`,
   }
